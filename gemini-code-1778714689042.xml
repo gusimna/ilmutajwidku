@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultmessages='false' b:layouts='false' b:responsive='true' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/namespaces/blogger/template' xmlns:data='http://www.google.com/namespaces/blogger/data' xmlns:expr='http://www.google.com/namespaces/blogger/expr'>
+  <head>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <title>STICKER FORGE | WALLPAPER ENGINE 2026</title>
+    <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&amp;display=swap' rel='stylesheet'/>
+    <b:skin><![CDATA[
+      :root {
+          --bg: #03040a;
+          --card: rgba(10, 12, 22, 0.9);
+          --stellar: #6366f1; /* Indigo Stellar */
+          --nebula: #a855f7; /* Purple Nebula */
+          --text: #f8fafc;
+          --border: rgba(99, 102, 241, 0.15);
+      }
+
+      body { 
+          background: var(--bg); 
+          background-image: radial-gradient(circle at 100% 0%, #1e1b4b 0%, #03040a 60%);
+          color: var(--text); 
+          font-family: 'Plus Jakarta Sans', sans-serif; 
+          margin: 0; 
+          padding: 20px; 
+          min-height: 100vh;
+      }
+
+      .container { max-width: 1300px; margin: 0 auto; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+      
+      /* Zen Mode */
+      .zen-active .config-panel { opacity: 0; pointer-events: none; display: none; }
+      .zen-active .main-grid { grid-template-columns: 1fr; }
+      .zen-active .container { max-width: 850px; }
+
+      header { 
+          display: flex; 
+          justify-content: space-between; 
+          align-items: center; 
+          border-bottom: 1px solid var(--border); 
+          padding-bottom: 25px; 
+          margin-bottom: 40px; 
+      }
+      .brand-box h1 { margin: 0; font-size: 1.6rem; letter-spacing: -1px; font-weight: 800; text-transform: uppercase; }
+      .brand-box h1 span { background: linear-gradient(to right, var(--stellar), var(--nebula)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      .brand-box p { margin: 0; font-size: 0.6rem; font-weight: 900; color: #312e81; letter-spacing: 4px; text-transform: uppercase; }
+
+      .main-grid { display: grid; grid-template-columns: 380px 1fr; gap: 35px; }
+
+      .config-panel { 
+          background: var(--card); 
+          backdrop-filter: blur(15px);
+          border-radius: 28px; 
+          padding: 35px; 
+          border: 1px solid var(--border); 
+          position: sticky; 
+          top: 20px; 
+          height: fit-content;
+          box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      }
+
+      .zen-btn { 
+          background: transparent; 
+          color: var(--stellar); 
+          border: 1px solid var(--stellar); 
+          padding: 8px 22px; 
+          border-radius: 30px; 
+          font-size: 0.65rem; 
+          font-weight: 900; 
+          cursor: pointer; 
+          transition: 0.3s;
+      }
+      .zen-btn:hover { background: var(--stellar); color: #fff; box-shadow: 0 0 20px rgba(99, 102, 241, 0.4); }
+
+      label { 
+          display: block; 
+          font-size: 0.6rem; 
+          font-weight: 800; 
+          color: var(--nebula); 
+          text-transform: uppercase; 
+          letter-spacing: 2px; 
+          margin: 20px 0 8px 0; 
+      }
+
+      input, select { 
+          width: 100%; 
+          background: rgba(0,0,0,0.4); 
+          border: 1px solid #1e1b4b; 
+          color: white; 
+          padding: 15px; 
+          border-radius: 14px; 
+          font-size: 0.85rem; 
+          box-sizing: border-box; 
+          outline: none;
+      }
+      input:focus { border-color: var(--stellar); }
+
+      .btn-forge { 
+          width: 100%; 
+          background: linear-gradient(45deg, var(--stellar), var(--nebula)); 
+          color: #fff; 
+          border: none; 
+          padding: 18px; 
+          border-radius: 14px; 
+          font-weight: 900; 
+          cursor: pointer; 
+          margin-top: 30px; 
+          text-transform: uppercase; 
+          letter-spacing: 1px;
+      }
+
+      .output-area { 
+          background: rgba(0,0,0,0.2); 
+          border-radius: 28px; 
+          padding: 40px; 
+          min-height: 800px; 
+          border: 1px solid var(--border); 
+      }
+
+      .empty-state { 
+          text-align: center; 
+          margin-top: 350px; 
+          color: #1e1b4b; 
+          font-weight: 900; 
+          letter-spacing: 12px; 
+          text-transform: uppercase; 
+          font-size: 1.5rem; 
+      }
+
+      .wall-card { 
+          background: #080a12; 
+          padding: 35px; 
+          border-radius: 24px; 
+          margin-bottom: 30px; 
+          border-bottom: 4px solid var(--stellar); 
+          position: relative; 
+          animation: slideUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+
+      @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+
+      .copy-btn { 
+          position: absolute; 
+          top: 30px; 
+          right: 30px; 
+          background: #0f172a; 
+          color: var(--stellar); 
+          border: 1px solid var(--stellar); 
+          padding: 8px 18px; 
+          border-radius: 12px; 
+          font-size: 0.65rem; 
+          font-weight: 900; 
+          cursor: pointer; 
+      }
+
+      pre { font-family: 'Monaco', monospace; font-size: 0.85rem; color: #94a3b8; white-space: pre-wrap; margin: 20px 0 0 0; line-height: 1.7; }
+      .tag { color: var(--stellar); font-size: 0.6rem; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
+
+      footer { margin-top: 100px; padding: 50px; border-top: 1px solid #1e1b4b; text-align: center; }
+      footer span { color: #1e1b4b; font-weight: 900; letter-spacing: 6px; font-size: 0.8rem; text-transform: uppercase; }
+    ]]></b:skin>
+  </head>
+  <body>
+    <div class='container' id='mainApp'>
+      <header>
+        <div class='brand-box'>
+          <h1>STICKER <span>FORGE</span></h1>
+          <p>WALLPAPER ENGINE 2026</p>
+        </div>
+        <button class='zen-btn' onclick='toggleZen()'>ZEN FOCUS</button>
+      </header>
+
+      <div class='main-grid'>
+        <div class='config-panel'>
+          <label>Wallpaper Theme</label>
+          <input id='theme' placeholder='e.g. Cyberpunk Rainy Street, Floating Islands...' type='text'/>
+
+          <label>Visual Perspective</label>
+          <select id='perspective'>
+            <option value='Wide Angle Cinematic View'>Wide Cinematic</option>
+            <option value='Macro Close-up Detail'>Macro Detail</option>
+            <option value='Bird&#39;s Eye Drone View'>Aerial View</option>
+            <option value='Low Angle Heroic View'>Low Angle</option>
+            <option value='Isometric 3D Room'>Isometric</option>
+          </select>
+
+          <label>Lighting &amp; Mood</label>
+          <select id='mood'>
+            <option value='Golden Hour, Soft Warm Glow'>Golden Hour</option>
+            <option value='Midnight Blue, Cold &amp; Moody'>Midnight Moody</option>
+            <option value='Neon Glitch, Vibrant &amp; Chaotic'>Neon Glitch</option>
+            <option value='Ethereal Dreamscape, Soft Volumetric Fog'>Ethereal Fog</option>
+            <option value='Bioluminescent Glow, Dark &amp; Deep'>Bioluminescent</option>
+          </select>
+
+          <label>Format Target</label>
+          <select id='format'>
+            <option value='--ar 16:9'>Desktop (16:9)</option>
+            <option value='--ar 9:16'>Mobile Vertical (9:16)</option>
+            <option value='--ar 21:9'>Ultrawide (21:9)</option>
+            <option value='--ar 4:5'>Social Media (4:5)</option>
+          </select>
+
+          <button class='btn-forge' onclick='forgeWall()'>FORGE WALLPAPER</button>
+          
+          <div style='text-align:center; margin-top:25px;'>
+            <span onclick='resetApp()' style='color:#1e1b4b; font-size:0.6rem; cursor:pointer; font-weight:900; letter-spacing:1px;'>RESET CONFIG</span>
+          </div>
+        </div>
+
+        <div class='output-area' id='output'>
+          <div class='empty-state'>STICKER FORGE 2026</div>
+        </div>
+      </div>
+
+      <footer>
+        <span>STICKER FORGE 2026</span>
+      </footer>
+    </div>
+
+    <script type='text/javascript'>
+      //<![CDATA[
+      function toggleZen() {
+        document.body.classList.toggle('zen-active');
+      }
+
+      function resetApp() {
+        if(confirm("Hapus semua konfigurasi wallpaper?")) {
+          document.getElementById('theme').value = "";
+          document.getElementById('output').innerHTML = '<div class="empty-state">STICKER FORGE 2026</div>';
+        }
+      }
+
+      function forgeWall() {
+        const theme = document.getElementById('theme').value || "Infinite Horizon";
+        const pers = document.getElementById('perspective').value;
+        const mood = document.getElementById('mood').value;
+        const ar = document.getElementById('format').value;
+        const out = document.getElementById('output');
+
+        out.innerHTML = "";
+
+        const variants = [
+          {
+            tag: "ULTRA-DETAILED WALLPAPER PROMPT",
+            content: `Masterpiece wallpaper of ${theme}. \nPerspective: ${pers}.\nAtmosphere: ${mood}.\n\nTechnical Specifications: 8k resolution, highly detailed, photorealistic, cinematic lighting, ray tracing, sharp focus, vibrant colors, editorial photography style, breathtaking composition. ${ar} --v 6.1 --stylize 400`
+          },
+          {
+            tag: "ARTISTIC STYLIZED CONCEPT",
+            content: `A stylized digital art wallpaper representing ${theme}. Mood: ${mood}. Using ${pers} perspective. Intricate patterns, dreamy aesthetics, professional digital painting, smooth gradients, clean edges. Optimized for high-end displays. ${ar}`
+          }
+        ];
+
+        variants.forEach(v => {
+          let card = document.createElement('div');
+          card.className = 'wall-card';
+          
+          let tag = document.createElement('div');
+          tag.className = 'tag';
+          tag.innerText = v.tag;
+
+          let btn = document.createElement('button');
+          btn.className = 'copy-btn';
+          btn.innerText = 'COPY';
+          btn.onclick = () => {
+            navigator.clipboard.writeText(v.content);
+            btn.innerText = 'COPIED';
+            setTimeout(() => { btn.innerText = 'COPY'; }, 1500);
+          };
+
+          let pre = document.createElement('pre');
+          pre.innerText = v.content;
+
+          card.appendChild(tag);
+          card.appendChild(btn);
+          card.appendChild(pre);
+          out.appendChild(card);
+        });
+      }
+      //]]>
+    </script>
+
+    <div style='display:none;'>
+      <b:section id='wall-core' maxwidgets='1' showaddelement='yes'/>
+    </div>
+  </body>
+</html>
