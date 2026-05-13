@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultmessages='false' b:layouts='false' b:responsive='true' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/namespaces/blogger/template' xmlns:data='http://www.google.com/namespaces/blogger/data' xmlns:expr='http://www.google.com/namespaces/blogger/expr'>
+  <head>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <title>STICKER FORGE | SEAMLESS PATTERN 2026</title>
+    <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&amp;display=swap' rel='stylesheet'/>
+    <b:skin><![CDATA[
+      :root {
+          --bg: #020403;
+          --card: rgba(10, 20, 15, 0.95);
+          --emerald: #10b981;
+          --mint: #34d399;
+          --text: #e2e8f0;
+          --border: rgba(16, 185, 129, 0.1);
+      }
+
+      body { 
+          background: var(--bg); 
+          background-image: linear-gradient(to bottom right, #020403, #061a12);
+          color: var(--text); 
+          font-family: 'Plus Jakarta Sans', sans-serif; 
+          margin: 0; 
+          padding: 20px; 
+          min-height: 100vh;
+          transition: 0.5s ease;
+      }
+
+      .container { max-width: 1300px; margin: 0 auto; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+      
+      /* Zen Mode */
+      .zen-active .config-panel { opacity: 0; pointer-events: none; transform: translateX(-30px); display: none; }
+      .zen-active .main-grid { grid-template-columns: 1fr; }
+      .zen-active .container { max-width: 850px; }
+
+      header { 
+          display: flex; 
+          justify-content: space-between; 
+          align-items: center; 
+          border-bottom: 1px solid var(--border); 
+          padding-bottom: 30px; 
+          margin-bottom: 40px; 
+      }
+      .brand-group h1 { margin: 0; font-size: 1.6rem; letter-spacing: -1px; font-weight: 800; text-transform: uppercase; }
+      .brand-group h1 span { color: var(--emerald); }
+      .brand-group p { margin: 0; font-size: 0.6rem; font-weight: 900; color: #2d4a3e; letter-spacing: 4px; text-transform: uppercase; }
+
+      .main-grid { display: grid; grid-template-columns: 380px 1fr; gap: 35px; }
+
+      .config-panel { 
+          background: var(--card); 
+          border-radius: 28px; 
+          padding: 35px; 
+          border: 1px solid var(--border); 
+          position: sticky; 
+          top: 20px; 
+          height: fit-content;
+          box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      }
+
+      .zen-btn { 
+          background: #0a1a14; 
+          color: var(--emerald); 
+          border: 1px solid var(--emerald); 
+          padding: 8px 22px; 
+          border-radius: 30px; 
+          font-size: 0.65rem; 
+          font-weight: 900; 
+          cursor: pointer; 
+          transition: 0.3s;
+      }
+      .zen-btn:hover { background: var(--emerald); color: #000; }
+
+      label { 
+          display: block; 
+          font-size: 0.6rem; 
+          font-weight: 800; 
+          color: var(--mint); 
+          text-transform: uppercase; 
+          letter-spacing: 2px; 
+          margin: 20px 0 8px 0; 
+      }
+
+      input, select { 
+          width: 100%; 
+          background: rgba(0,0,0,0.5); 
+          border: 1px solid #1a2e25; 
+          color: white; 
+          padding: 15px; 
+          border-radius: 12px; 
+          font-size: 0.85rem; 
+          box-sizing: border-box; 
+          outline: none;
+          transition: 0.3s;
+      }
+      input:focus { border-color: var(--emerald); }
+
+      .btn-forge { 
+          width: 100%; 
+          background: var(--emerald); 
+          color: #000; 
+          border: none; 
+          padding: 18px; 
+          border-radius: 14px; 
+          font-weight: 900; 
+          cursor: pointer; 
+          margin-top: 30px; 
+          text-transform: uppercase; 
+          letter-spacing: 1px;
+      }
+
+      .output-area { 
+          background: rgba(0,0,0,0.2); 
+          border-radius: 28px; 
+          padding: 40px; 
+          min-height: 800px; 
+          border: 1px solid var(--border); 
+      }
+
+      .empty-state { 
+          text-align: center; 
+          margin-top: 350px; 
+          color: #0d1a14; 
+          font-weight: 900; 
+          letter-spacing: 12px; 
+          text-transform: uppercase; 
+          font-size: 1.5rem; 
+      }
+
+      .pattern-card { 
+          background: #080c0a; 
+          padding: 30px; 
+          border-radius: 24px; 
+          margin-bottom: 30px; 
+          border-top: 4px solid var(--emerald); 
+          position: relative; 
+          animation: slideUp 0.5s ease-out;
+      }
+
+      @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+      .copy-trigger { 
+          position: absolute; 
+          top: 25px; 
+          right: 25px; 
+          background: #111; 
+          color: var(--emerald); 
+          border: 1px solid var(--emerald); 
+          padding: 8px 16px; 
+          border-radius: 10px; 
+          font-size: 0.6rem; 
+          font-weight: 900; 
+          cursor: pointer; 
+      }
+
+      pre { font-family: 'Monaco', monospace; font-size: 0.8rem; color: #889990; white-space: pre-wrap; margin: 15px 0 0 0; line-height: 1.6; }
+      .tag { color: var(--mint); font-size: 0.6rem; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
+
+      .app-footer { margin-top: 100px; padding: 50px; border-top: 1px solid #0d1a14; text-align: center; }
+      .app-footer span { color: #1a2e25; font-weight: 900; letter-spacing: 6px; font-size: 0.8rem; text-transform: uppercase; }
+    ]]></b:skin>
+  </head>
+  <body>
+    <div class='container' id='mainApp'>
+      <header>
+        <div class='brand-group'>
+          <h1>STICKER <span>FORGE</span></h1>
+          <p>SEAMLESS PATTERN ENGINE 2026</p>
+        </div>
+        <button class='zen-btn' onclick='toggleZen()'>ZEN FOCUS</button>
+      </header>
+
+      <div class='main-grid'>
+        <div class='config-panel'>
+          <label>Pattern Subject</label>
+          <input id='subject' placeholder='e.g. Tropical Leaves, Geometric Grid...' type='text'/>
+
+          <label>Pattern Type</label>
+          <select id='type'>
+            <option value='Seamless Repeating Pattern'>Seamless Tile</option>
+            <option value='Organic Abstract Flow'>Organic Flow</option>
+            <option value='Geometric Grid Tessellation'>Geometric Grid</option>
+            <option value='Symmetrical Kaleidoscope'>Kaleidoscope</option>
+          </select>
+
+          <label>Visual Style</label>
+          <select id='style'>
+            <option value='Flat Vector Illustration'>Flat Vector</option>
+            <option value='Hand-drawn Watercolor'>Watercolor</option>
+            <option value='Luxury Marble &amp; Gold Foil'>Luxury Marble</option>
+            <option value='Minimalist Line Art Repeat'>Minimalist Line Art</option>
+          </select>
+
+          <label>Color Theme</label>
+          <select id='colors'>
+            <option value='Emerald, Sage, and Dark Forest'>Emerald Forest</option>
+            <option value='High-Contrast Midnight &amp; Silver'>Midnight Silver</option>
+            <option value='Warm Terracotta &amp; Cream'>Earthy Warm</option>
+            <option value='Cyber Neon &amp; Obsidian'>Cyber Neon</option>
+          </select>
+
+          <button class='btn-forge' onclick='forgePattern()'>FORGE PATTERN</button>
+          
+          <div style='text-align:center; margin-top:25px;'>
+            <span onclick='resetApp()' style='color:#1a2e25; font-size:0.6rem; cursor:pointer; font-weight:900; letter-spacing:1px;'>RESET CANVAS</span>
+          </div>
+        </div>
+
+        <div class='output-area' id='output'>
+          <div class='empty-state'>STICKER FORGE 2026</div>
+        </div>
+      </div>
+
+      <footer class='app-footer'>
+        <span>STICKER FORGE 2026</span>
+      </footer>
+    </div>
+
+    <script type='text/javascript'>
+      //<![CDATA[
+      function toggleZen() {
+        document.body.classList.toggle('zen-active');
+      }
+
+      function resetApp() {
+        if(confirm("Hapus semua konfigurasi pola?")) {
+          document.getElementById('subject').value = "";
+          document.getElementById('output').innerHTML = '<div class="empty-state">STICKER FORGE 2026</div>';
+        }
+      }
+
+      function forgePattern() {
+        const sub = document.getElementById('subject').value || "Abstract Motif";
+        const typ = document.getElementById('type').value;
+        const sty = document.getElementById('style').value;
+        const col = document.getElementById('colors').value;
+        const out = document.getElementById('output');
+
+        out.innerHTML = "";
+
+        const prompts = [
+          {
+            tag: "SEAMLESS MASTER PROMPT",
+            text: `Masterpiece ${typ} of ${sub}. \nStyle: ${sty}.\nPalette: ${col}.\n\nTechnical: Perfectly seamless, repeating tile, high-resolution vector aesthetic, balanced composition, no borders, professional textile design quality, 8k resolution. --tile --v 6.1`
+          },
+          {
+            tag: "ARTISTIC REPEAT CONCEPT",
+            text: `Seamless surface pattern featuring ${sub} in a ${sty} layout. Using ${col}. Clean edges for infinite looping, elegant wallpaper aesthetic, symmetrical balance, professional digital design.`
+          }
+        ];
+
+        prompts.forEach(p => {
+          let card = document.createElement('div');
+          card.className = 'pattern-card';
+          
+          let tag = document.createElement('div');
+          tag.className = 'tag';
+          tag.innerText = p.tag;
+
+          let btn = document.createElement('button');
+          btn.className = 'copy-trigger';
+          btn.innerText = 'COPY';
+          btn.onclick = () => {
+            navigator.clipboard.writeText(p.text);
+            btn.innerText = 'DONE';
+            setTimeout(() => { btn.innerText = 'COPY'; }, 1500);
+          };
+
+          let pre = document.createElement('pre');
+          pre.innerText = p.text;
+
+          card.appendChild(tag);
+          card.appendChild(btn);
+          card.appendChild(pre);
+          out.appendChild(card);
+        });
+      }
+      //]]>
+    </script>
+  </body>
+</html>
