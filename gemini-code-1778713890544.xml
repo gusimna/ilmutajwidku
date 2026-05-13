@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultmessages='false' b:layouts='false' b:responsive='true' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/namespaces/blogger/template' xmlns:data='http://www.google.com/namespaces/blogger/data' xmlns:expr='http://www.google.com/namespaces/blogger/expr'>
+  <head>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <title>STICKER FORGE | LOGO GENERATOR 2026</title>
+    <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&amp;display=swap' rel='stylesheet'/>
+    <b:skin><![CDATA[
+      :root {
+          --bg: #050505;
+          --card: #0f0f0f;
+          --accent: #e2e8f0; /* Midnight Silver */
+          --gold: #c6a306;
+          --text: #ffffff;
+          --border: #1a1a1a;
+      }
+
+      body { 
+          background: var(--bg); 
+          color: var(--text); 
+          font-family: 'Plus Jakarta Sans', sans-serif; 
+          margin: 0; 
+          padding: 20px; 
+          transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
+      }
+
+      .container { max-width: 1200px; margin: 0 auto; transition: 0.5s; }
+      
+      /* Zen Mode */
+      .zen-active .side-panel { opacity: 0; pointer-events: none; transform: translateX(-30px); display: none; }
+      .zen-active .main-grid { grid-template-columns: 1fr; }
+      .zen-active .container { max-width: 850px; }
+
+      header { border-left: 4px solid var(--accent); padding-left: 20px; margin-bottom: 40px; display: flex; justify-content: space-between; align-items: flex-end; }
+      header h1 { margin: 0; font-size: 1.6rem; letter-spacing: -1px; font-weight: 800; text-transform: uppercase; }
+      header h1 span { color: var(--gold); }
+      header p { margin: 0; font-size: 0.6rem; font-weight: 900; color: #444; letter-spacing: 3px; text-transform: uppercase; }
+
+      .main-grid { display: grid; grid-template-columns: 380px 1fr; gap: 30px; margin-top: 30px; }
+
+      .side-panel { 
+          background: var(--card); 
+          border-radius: 20px; 
+          padding: 30px; 
+          border: 1px solid var(--border); 
+          position: sticky; 
+          top: 20px; 
+          height: fit-content;
+      }
+
+      .zen-btn { 
+          background: transparent; 
+          color: var(--accent); 
+          border: 1px solid var(--accent); 
+          padding: 8px 20px; 
+          border-radius: 30px; 
+          font-size: 0.65rem; 
+          font-weight: 800; 
+          cursor: pointer; 
+          letter-spacing: 1px;
+      }
+
+      label { 
+          display: block; 
+          font-size: 0.6rem; 
+          font-weight: 900; 
+          color: var(--gold); 
+          text-transform: uppercase; 
+          letter-spacing: 2px; 
+          margin-bottom: 8px; 
+          margin-top: 20px;
+      }
+
+      input, select { 
+          width: 100%; 
+          background: #000; 
+          border: 1px solid #222; 
+          color: white; 
+          padding: 14px; 
+          border-radius: 10px; 
+          font-size: 0.85rem; 
+          box-sizing: border-box; 
+          outline: none;
+      }
+      input:focus { border-color: var(--accent); }
+
+      .btn-primary { 
+          width: 100%; 
+          background: var(--accent); 
+          color: #000; 
+          border: none; 
+          padding: 16px; 
+          border-radius: 10px; 
+          font-weight: 800; 
+          cursor: pointer; 
+          margin-top: 30px; 
+          text-transform: uppercase;
+      }
+
+      .output-area { 
+          background: #000; 
+          border-radius: 20px; 
+          padding: 30px; 
+          min-height: 700px; 
+          border: 1px solid var(--border); 
+      }
+
+      .placeholder-brand { 
+          text-align: center; 
+          margin-top: 300px; 
+          color: #111; 
+          font-weight: 900; 
+          letter-spacing: 10px; 
+          text-transform: uppercase; 
+          font-size: 1.5rem; 
+      }
+
+      .card { 
+          background: #0a0a0a; 
+          padding: 25px; 
+          border-radius: 15px; 
+          margin-bottom: 25px; 
+          border: 1px solid #111; 
+          position: relative; 
+          animation: slideUp 0.4s ease;
+      }
+
+      @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+      .copy-btn { 
+          position: absolute; 
+          top: 20px; 
+          right: 20px; 
+          background: #1a1a1a; 
+          color: var(--accent); 
+          border: 1px solid var(--accent); 
+          padding: 6px 12px; 
+          border-radius: 6px; 
+          font-size: 0.6rem; 
+          font-weight: 800; 
+          cursor: pointer; 
+      }
+
+      pre { font-family: 'Monaco', monospace; font-size: 0.8rem; color: #888; white-space: pre-wrap; margin: 0; line-height: 1.6; }
+      .tag { color: var(--gold); font-size: 0.6rem; font-weight: 900; margin-bottom: 5px; text-transform: uppercase; }
+
+      footer { margin-top: 100px; padding: 40px; border-top: 1px solid #111; text-align: center; }
+      footer span { color: #333; font-weight: 900; letter-spacing: 5px; font-size: 0.75rem; text-transform: uppercase; }
+    ]]></b:skin>
+  </head>
+  <body>
+    <div class='container' id='mainApp'>
+      <header>
+        <div class='brand'>
+          <h1>STICKER <span>FORGE</span></h1>
+          <p>LOGO DESIGN ENGINE 2026</p>
+        </div>
+        <button class='zen-btn' onclick='toggleZen()'>ZEN FOCUS</button>
+      </header>
+
+      <div class='main-grid'>
+        <div class='side-panel'>
+          <label>Subject / Business Name</label>
+          <input id='subject' placeholder='e.g. Phoenix Tech...' type='text'/>
+
+          <label>Logo Style</label>
+          <select id='style'>
+            <option value='Minimalist Line Art'>Minimalist Line Art</option>
+            <option value='Modern Geometric Vector'>Geometric Vector</option>
+            <option value='Luxury Badge Emblem'>Luxury Badge</option>
+            <option value='Futuristic Abstract Mark'>Futuristic Abstract</option>
+            <option value='Vintage Hand-Drawn Mascot'>Vintage Mascot</option>
+          </select>
+
+          <label>Visual Element</label>
+          <input id='element' placeholder='e.g. Eagle wing, circuit patterns...' type='text'/>
+
+          <label>Color Palette</label>
+          <select id='colors'>
+            <option value='Monochrome Slate &amp; White'>Monochrome Slate</option>
+            <option value='Gold &amp; Deep Obsidian'>Gold &amp; Obsidian</option>
+            <option value='Cyber Neon Blue &amp; Violet'>Cyber Neon</option>
+            <option value='Earthy Terracotta &amp; Sage'>Earthy Nature</option>
+          </select>
+
+          <button class='btn-primary' onclick='forgeLogo()'>FORGE LOGO</button>
+          
+          <div style='text-align:center; margin-top:20px;'>
+            <span onclick='resetApp()' style='color:#333; font-size:0.6rem; cursor:pointer; font-weight:800; letter-spacing:1px;'>RESET CONFIGURATION</span>
+          </div>
+        </div>
+
+        <div class='output-area' id='output'>
+          <div class='placeholder-brand'>STICKER FORGE 2026</div>
+        </div>
+      </div>
+
+      <footer>
+        <span>STICKER FORGE 2026</span>
+      </footer>
+    </div>
+
+    <script type='text/javascript'>
+      //<![CDATA[
+      function toggleZen() {
+        document.body.classList.toggle('zen-active');
+      }
+
+      function resetApp() {
+        if(confirm("Hapus semua konfigurasi logo?")) {
+          document.getElementById('subject').value = "";
+          document.getElementById('element').value = "";
+          document.getElementById('output').innerHTML = '<div class="placeholder-brand">STICKER FORGE 2026</div>';
+        }
+      }
+
+      function forgeLogo() {
+        const sub = document.getElementById('subject').value || "Project X";
+        const sty = document.getElementById('style').value;
+        const ele = document.getElementById('element').value || "unique symbol";
+        const col = document.getElementById('colors').value;
+        const out = document.getElementById('output');
+
+        out.innerHTML = "";
+
+        const logoPrompts = [
+          {
+            type: "VECTOR MASTER PROMPT",
+            text: `Professional logo design for "${sub}". \nStyle: ${sty}.\nCore Element: ${ele}.\nColor Palette: ${col}.\n\nTechnical: High-end vector graphics, clean lines, symmetrical balance, minimalist aesthetic, versatile for branding, flat design, white background. --v 6.1 --stylize 250`
+          },
+          {
+            type: "CONCEPTUAL BRANDING",
+            text: `Modern branding identity of ${sub}, featuring a ${sty} logo combining ${ele}. Using ${col}. Luxurious finish, professional spacing, corporate identity quality, 8k resolution, sharp edges.`
+          }
+        ];
+
+        logoPrompts.forEach(p => {
+          let card = document.createElement('div');
+          card.className = 'card';
+          
+          let tag = document.createElement('div');
+          tag.className = 'tag';
+          tag.innerText = p.type;
+
+          let btn = document.createElement('button');
+          btn.className = 'copy-btn';
+          btn.innerText = 'COPY';
+          btn.onclick = () => {
+            navigator.clipboard.writeText(p.text);
+            btn.innerText = 'DONE';
+            setTimeout(() => { btn.innerText = 'COPY'; }, 1200);
+          };
+
+          let pre = document.createElement('pre');
+          pre.innerText = p.text;
+
+          card.appendChild(tag);
+          card.appendChild(btn);
+          card.appendChild(pre);
+          out.appendChild(card);
+        });
+      }
+      //]]>
+    </script>
+
+    <div style='display:none;'>
+      <b:section id='logo-core' maxwidgets='1' showaddelement='yes'/>
+    </div>
+  </body>
+</html>
