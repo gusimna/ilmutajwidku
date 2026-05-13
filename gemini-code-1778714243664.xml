@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultmessages='false' b:layouts='false' b:responsive='true' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/namespaces/blogger/template' xmlns:data='http://www.google.com/namespaces/blogger/data' xmlns:expr='http://www.google.com/namespaces/blogger/expr'>
+  <head>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <title>STICKER FORGE | UI ELEMENTS 2026</title>
+    <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&amp;display=swap' rel='stylesheet'/>
+    <b:skin><![CDATA[
+      :root {
+          --bg: #040508;
+          --card: rgba(13, 17, 23, 0.9);
+          --emerald: #10b981;
+          --sky: #0ea5e9;
+          --text: #f1f5f9;
+          --border: rgba(255, 255, 255, 0.08);
+      }
+
+      body { 
+          background: var(--bg); 
+          background-image: radial-gradient(circle at 0% 0%, #0a192f 0%, #040508 50%);
+          color: var(--text); 
+          font-family: 'Plus Jakarta Sans', sans-serif; 
+          margin: 0; 
+          padding: 20px; 
+          transition: 0.5s ease;
+      }
+
+      .container { max-width: 1250px; margin: 0 auto; transition: 0.5s; }
+      
+      /* Zen Mode */
+      .zen-active .panel-controls { opacity: 0; pointer-events: none; transform: scale(0.98); display: none; }
+      .zen-active .layout-grid { grid-template-columns: 1fr; }
+      .zen-active .container { max-width: 800px; }
+
+      header { 
+          display: flex; 
+          justify-content: space-between; 
+          align-items: center; 
+          border-bottom: 1px solid var(--border); 
+          padding-bottom: 30px; 
+          margin-bottom: 40px; 
+      }
+      .brand-title { margin: 0; font-size: 1.5rem; letter-spacing: -1px; font-weight: 800; }
+      .brand-title span { color: var(--emerald); }
+      .subtitle { margin: 0; font-size: 0.6rem; font-weight: 900; color: #444; letter-spacing: 4px; text-transform: uppercase; }
+
+      .layout-grid { display: grid; grid-template-columns: 380px 1fr; gap: 35px; }
+
+      .panel-controls { 
+          background: var(--card); 
+          backdrop-filter: blur(10px);
+          border-radius: 24px; 
+          padding: 35px; 
+          border: 1px solid var(--border); 
+          position: sticky; 
+          top: 20px; 
+          height: fit-content;
+      }
+
+      .zen-toggle { 
+          background: transparent; 
+          color: var(--emerald); 
+          border: 1px solid var(--emerald); 
+          padding: 8px 22px; 
+          border-radius: 30px; 
+          font-size: 0.65rem; 
+          font-weight: 900; 
+          cursor: pointer; 
+          transition: 0.3s;
+      }
+      .zen-toggle:hover { background: var(--emerald); color: #000; box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
+
+      label { 
+          display: block; 
+          font-size: 0.6rem; 
+          font-weight: 800; 
+          color: var(--sky); 
+          text-transform: uppercase; 
+          letter-spacing: 2px; 
+          margin: 20px 0 8px 0; 
+      }
+
+      input, select { 
+          width: 100%; 
+          background: rgba(0,0,0,0.4); 
+          border: 1px solid #222; 
+          color: white; 
+          padding: 15px; 
+          border-radius: 12px; 
+          font-size: 0.85rem; 
+          box-sizing: border-box; 
+          transition: 0.3s;
+          outline: none;
+      }
+      input:focus, select:focus { border-color: var(--emerald); }
+
+      .btn-forge { 
+          width: 100%; 
+          background: var(--emerald); 
+          color: #000; 
+          border: none; 
+          padding: 18px; 
+          border-radius: 12px; 
+          font-weight: 900; 
+          cursor: pointer; 
+          margin-top: 30px; 
+          text-transform: uppercase; 
+          letter-spacing: 1px;
+      }
+
+      .output-area { 
+          background: rgba(0,0,0,0.3); 
+          border-radius: 24px; 
+          padding: 35px; 
+          min-height: 750px; 
+          border: 1px solid var(--border); 
+      }
+
+      .placeholder-forge { 
+          text-align: center; 
+          margin-top: 320px; 
+          color: #111; 
+          font-weight: 900; 
+          letter-spacing: 12px; 
+          text-transform: uppercase; 
+          font-size: 1.4rem; 
+      }
+
+      .ui-card { 
+          background: #090b10; 
+          padding: 30px; 
+          border-radius: 20px; 
+          margin-bottom: 30px; 
+          border-right: 4px solid var(--emerald); 
+          position: relative; 
+          animation: slideIn 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+
+      @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+
+      .copy-btn { 
+          position: absolute; 
+          top: 25px; 
+          right: 25px; 
+          background: #111; 
+          color: var(--emerald); 
+          border: 1px solid var(--emerald); 
+          padding: 8px 16px; 
+          border-radius: 10px; 
+          font-size: 0.6rem; 
+          font-weight: 900; 
+          cursor: pointer; 
+      }
+      .copy-btn:hover { background: var(--emerald); color: #000; }
+
+      pre { font-family: 'Monaco', monospace; font-size: 0.8rem; color: #94a3b8; white-space: pre-wrap; margin: 0; margin-top: 15px; line-height: 1.6; }
+      .type-label { color: var(--sky); font-size: 0.6rem; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase; }
+
+      footer { margin-top: 100px; padding: 40px; border-top: 1px solid var(--border); text-align: center; }
+      footer span { color: #222; font-weight: 900; letter-spacing: 6px; font-size: 0.7rem; text-transform: uppercase; }
+    ]]></b:skin>
+  </head>
+  <body>
+    <div class='container' id='mainContainer'>
+      <header>
+        <div class='brand'>
+          <h1 class='brand-title'>STICKER <span>FORGE</span></h1>
+          <p class='subtitle'>UI ELEMENTS ENGINE 2026</p>
+        </div>
+        <button class='zen-toggle' onclick='toggleZen()'>ZEN FOCUS</button>
+      </header>
+
+      <div class='layout-grid'>
+        <div class='panel-controls'>
+          <label>Element Component</label>
+          <select id='component'>
+            <option value='Dashboard Cards &amp; Widgets'>Dashboard Widgets</option>
+            <option value='Glassmorphism Mobile App UI'>Mobile Glassmorphism</option>
+            <option value='Futuristic Navigation Menu'>Navigation System</option>
+            <option value='High-End Data Visualization'>Data Charts</option>
+            <option value='Login / Authentication Screen'>Login Interface</option>
+          </select>
+
+          <label>UI Subject / Purpose</label>
+          <input id='purpose' placeholder='e.g. Crypto Wallet, Smart Home...' type='text'/>
+
+          <label>Visual Style</label>
+          <select id='style'>
+            <option value='Modern Neumorphism, soft shadows'>Soft Neumorphism</option>
+            <option value='Sleek Glassmorphism, blurred depth'>Clear Glassmorphism</option>
+            <option value='Minimalist Brutalism, bold borders'>Minimalist Brutalism</option>
+            <option value='Cybernetic / Sci-Fi, glowing lines'>Cybernetic Sci-Fi</option>
+          </select>
+
+          <label>Accent Color</label>
+          <select id='color'>
+            <option value='Emerald Green &amp; Deep Slate'>Emerald Slate</option>
+            <option value='Electric Blue &amp; Obsidian'>Electric Obsidian</option>
+            <option value='Vivid Violet &amp; Midnight'>Vivid Violet</option>
+            <option value='Gold &amp; Dark Velvet'>Gold Velvet</option>
+          </select>
+
+          <button class='btn-forge' onclick='forgeUI()'>FORGE UI PROMPT</button>
+          
+          <div style='text-align:center; margin-top:25px;'>
+            <span onclick='resetForge()' style='color:#333; font-size:0.6rem; cursor:pointer; font-weight:900; letter-spacing:1px;'>CLEAR WORKSPACE</span>
+          </div>
+        </div>
+
+        <div class='output-area' id='output'>
+          <div class='placeholder-forge'>STICKER FORGE 2026</div>
+        </div>
+      </div>
+
+      <footer>
+        <span>STICKER FORGE 2026</span>
+      </footer>
+    </div>
+
+    <script type='text/javascript'>
+      //<![CDATA[
+      function toggleZen() {
+        document.body.classList.toggle('zen-active');
+      }
+
+      function resetForge() {
+        if(confirm("Hapus semua konfigurasi UI?")) {
+          document.getElementById('purpose').value = "";
+          document.getElementById('output').innerHTML = '<div class="placeholder-forge">STICKER FORGE 2026</div>';
+        }
+      }
+
+      function forgeUI() {
+        const comp = document.getElementById('component').value;
+        const purp = document.getElementById('purpose').value || "Innovative Solution";
+        const sty = document.getElementById('style').value;
+        const col = document.getElementById('color').value;
+        const out = document.getElementById('output');
+
+        out.innerHTML = "";
+
+        const uiPrompts = [
+          {
+            tag: "UI DESIGN PROMPT",
+            content: `Professional UI/UX concept for a ${purp}. \nElement: ${comp}.\nStyle: ${sty}.\nPalette: ${col}.\n\nTechnical details: High-fidelity design, professional layout, user-centric hierarchy, 8k resolution, clean edges, sophisticated gradients, pixel-perfect alignment, Dribbble/Behance aesthetic. --v 6.1`
+          },
+          {
+            tag: "UX ARCHITECTURE",
+            content: `A comprehensive ${sty} layout for ${purp}. Focusing on ${comp}. Using ${col} color scheme. Emphasis on usability, modern typography, consistent spacing, and premium interactive elements. Professional digital product photography style.`
+          }
+        ];
+
+        uiPrompts.forEach(p => {
+          let div = document.createElement('div');
+          div.className = 'ui-card';
+          
+          let tag = document.createElement('div');
+          tag.className = 'type-label';
+          tag.innerText = p.tag;
+
+          let btn = document.createElement('button');
+          btn.className = 'copy-btn';
+          btn.innerText = 'COPY';
+          btn.onclick = () => {
+            navigator.clipboard.writeText(p.content);
+            btn.innerText = 'COPIED';
+            setTimeout(() => { btn.innerText = 'COPY'; }, 1500);
+          };
+
+          let pre = document.createElement('pre');
+          pre.innerText = p.content;
+
+          div.appendChild(tag);
+          div.appendChild(btn);
+          div.appendChild(pre);
+          out.appendChild(div);
+        });
+      }
+      //]]>
+    </script>
+
+    <div style='display:none;'>
+      <b:section id='ui-section' maxwidgets='1' showaddelement='yes'/>
+    </div>
+  </body>
+</html>
