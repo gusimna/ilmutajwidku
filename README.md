@@ -1,2 +1,1 @@
-# ilmutajwidku
-GitHub Pages
+XML for Blogger theme
