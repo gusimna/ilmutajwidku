@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultmessages='false' b:layouts='false' b:responsive='true' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+  <head>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'/>
+    <title>PROMPT ENGINE | HOLY EDITION 2026</title>
+    <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&amp;display=swap' rel='stylesheet'/>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css' rel='stylesheet'/>
+    
+    <b:skin><![CDATA[
+      :root {
+          --bg: #040508;
+          --card: #0c111d;
+          --accent: #10b981; /* Emerald */
+          --velvet: #6366f1;
+          --text: #f9fafb;
+          --border: rgba(16, 185, 129, 0.15);
+      }
+
+      * { box-sizing: border-box; }
+      body { 
+          background: var(--bg); color: var(--text); 
+          font-family: 'Plus Jakarta Sans', sans-serif; 
+          margin: 0; padding: 15px; min-height: 100vh; overflow-x: hidden;
+      }
+
+      .container { width: 100%; max-width: 1100px; margin: 0 auto; transition: 0.4s ease; }
+      
+      /* ZEN MODE */
+      .zen-active .config-panel { display: none; }
+      .zen-active .main-grid { grid-template-columns: 1fr; }
+      .zen-active .container { max-width: 800px; }
+
+      header { 
+          display: flex; justify-content: space-between; align-items: center;
+          padding-bottom: 20px; border-bottom: 1px solid var(--border); margin-bottom: 25px;
+      }
+      .brand h1 { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.5px; margin: 0; text-transform: uppercase; }
+      .brand h1 span { color: var(--accent); }
+
+      /* GRID LAYOUT */
+      .main-grid { display: flex; flex-wrap: wrap; gap: 25px; }
+
+      .config-panel { 
+          flex: 1 1 320px; max-width: 100%;
+          background: var(--card); border-radius: 24px; padding: 25px;
+          border: 1px solid var(--border); height: fit-content;
+      }
+
+      .output-area { flex: 2 1 400px; min-width: 0; }
+
+      label { 
+          display: block; font-size: 0.6rem; font-weight: 800; color: #4b5563;
+          text-transform: uppercase; letter-spacing: 1.5px; margin: 15px 0 6px 0;
+      }
+
+      select, input {
+          width: 100%; background: #020617; border: 1px solid #1f2937;
+          color: white; padding: 12px; border-radius: 12px; font-size: 0.85rem; outline: none;
+      }
+      select:focus, input:focus { border-color: var(--accent); }
+
+      .btn-forge {
+          width: 100%; background: var(--accent); color: #020617;
+          border: none; padding: 16px; border-radius: 12px; font-weight: 800;
+          cursor: pointer; margin-top: 20px; text-transform: uppercase; font-size: 0.8rem;
+      }
+
+      .btn-zen {
+          background: transparent; border: 1px solid var(--accent);
+          color: var(--accent); padding: 7px 15px; border-radius: 20px;
+          font-size: 0.65rem; font-weight: 800; cursor: pointer;
+      }
+
+      /* CARD DESIGN */
+      .result-card {
+          background: #020617; border-radius: 24px; padding: 25px;
+          border: 1px solid var(--border); animation: fadeIn 0.4s ease;
+      }
+
+      .prompt-wrapper { position: relative; margin-top: 20px; width: 100%; }
+      
+      pre {
+          background: #000; color: var(--accent); padding: 20px; border-radius: 14px;
+          font-size: 0.75rem; border: 1px solid #111827;
+          font-family: 'Courier New', monospace;
+          white-space: pre-wrap; word-break: break-all; overflow-x: hidden;
+      }
+
+      .copy-btn {
+          position: absolute; top: 12px; right: 12px;
+          background: var(--accent); color: #000; border: none;
+          padding: 6px 12px; border-radius: 8px; font-size: 0.65rem;
+          font-weight: 800; cursor: pointer; z-index: 10;
+      }
+
+      @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    ]]></b:skin>
+  </head>
+
+  <body>
+    <div class='container' id='appContainer'>
+      <header>
+        <div class='brand'>
+          <h1>HOLY<span>ENGINE</span> 2026</h1>
+        </div>
+        <button class='btn-zen' onclick='toggleZen()'>ZEN FOCUS</button>
+      </header>
+
+      <div class='main-grid'>
+        <div class='config-panel'>
+          <label>Topic / Concept</label>
+          <input id='topicInput' placeholder='Enter main idea...' type='text'/>
+
+          <label>Visual Style</label>
+          <select id='styleSelect'>
+            <option value='Cinematic Photography'>Cinematic Photo</option>
+            <option value='Digital Illustration'>Digital Illustration</option>
+            <option value='Minimalist Graphic'>Minimalist Graphic</option>
+            <option value='Abstract Bio-Organic'>Abstract Bio-Organic</option>
+          </select>
+
+          <label>Project Type</label>
+          <select id='typeSelect'>
+            <option value='Infographic'>Infographic</option>
+            <option value='Social Media Post'>Social Media Post</option>
+            <option value='Professional Poster'>Professional Poster</option>
+          </select>
+
+          <button class='btn-forge' onclick='forgePrompt()'>GENERATE JSON</button>
+          
+          <button onclick='resetParams()' style='background:transparent; border:none; color:#374151; font-size:0.6rem; font-weight:800; margin-top:15px; cursor:pointer; width:100%;'>RESET PARAMETERS</button>
+        </div>
+
+        <div class='output-area' id='outputArea'>
+          <div style='text-align:center; padding-top:120px; color:#111827; font-weight:800; letter-spacing:6px; font-size:0.8rem;'>
+            ENGINE STANDBY
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type='text/javascript'>
+      //<![CDATA[
+      function toggleZen() {
+          document.getElementById('appContainer').classList.toggle('zen-active');
+      }
+
+      function resetParams() {
+          document.getElementById('topicInput').value = '';
+          document.getElementById('outputArea').innerHTML = '<div style="text-align:center; padding-top:120px; color:#111827; font-weight:800; letter-spacing:6px; font-size:0.8rem;">ENGINE STANDBY</div>';
+      }
+
+      async function copyText(btn) {
+          const pre = btn.nextElementSibling;
+          try {
+              await navigator.clipboard.writeText(pre.textContent);
+              const original = btn.innerHTML;
+              btn.innerHTML = 'COPIED';
+              setTimeout(() => btn.innerHTML = original, 1500);
+          } catch (err) { console.error(err); }
+      }
+
+      function forgePrompt() {
+          const topic = document.getElementById('topicInput').value || 'Undefined Concept';
+          const style = document.getElementById('styleSelect').value;
+          const type = document.getElementById('typeSelect').value;
+          const out = document.getElementById('outputArea');
+
+          const promptJSON = {
+              author: "@holy",
+              version: "4.0-a",
+              timestamp: new Date().toISOString(),
+              engine_config: {
+                  topic: topic,
+                  aesthetic: style,
+                  format: type,
+                  aspect_ratio: "16:9"
+              },
+              master_prompt: `High-end ${type}, subject: ${topic}, aesthetic: ${style}, cinematic lighting, premium textures, 8k resolution, professional composition --v 6.1 --stylize 250`
+          };
+
+          out.innerHTML = `
+              <div class="result-card">
+                  <div style="font-size:0.65rem; color:var(--accent); font-weight:800; margin-bottom:15px; letter-spacing:2px;">GENERATED ARTIFACT</div>
+                  <div class="prompt-wrapper">
+                      <button class="copy-btn" onclick="copyText(this)">COPY JSON</button>
+                      <pre>${JSON.stringify(promptJSON, null, 4)}</pre>
+                  </div>
+              </div>
+          `;
+      }
+      //]]>
+    </script>
+        <b:section id='main' showaddelement='yes'/>
+  </body>
+</html>
