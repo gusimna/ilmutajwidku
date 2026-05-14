@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsversion='3' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/charts/static/chi/gviz/1.0/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <meta charset='UTF-8'/>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <title><data:blog.pageTitle/></title>
+    <b:skin><![CDATA[
+        /* 
+        THEME: Intimate Narrative & Wellness (Velvet Edition)
+        SYSTEM: Adult Fiction & Sex-Education Framework
+        */
+        :root {
+            --velvet: #2d0b1a;
+            --rose-gold: #b76e79;
+            --silk: #f8f1f1;
+            --noir: #1a1a1a;
+            --wine: #5c1a2c;
+        }
+        body {
+            background-color: var(--noir);
+            color: var(--silk);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0; padding: 0;
+            line-height: 1.6;
+        }
+        .header-wrap {
+            background: linear-gradient(180deg, var(--velvet), var(--noir));
+            color: var(--rose-gold);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--rose-gold);
+        }
+        .header-wrap h1 { font-family: 'Playfair Display', serif; font-size: 32px; letter-spacing: 3px; margin-bottom: 10px; }
+        .main-container {
+            max-width: 800px;
+            margin: -30px auto 60px;
+            padding: 20px;
+        }
+        .intimate-card {
+            background: #251018;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            padding: 40px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(183, 110, 121, 0.2);
+        }
+        .input-group { margin-bottom: 25px; }
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--rose-gold);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .input-group input, .input-group textarea, .input-group select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--rose-gold);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            box-sizing: border-box;
+            background: #1a080f;
+            color: var(--silk);
+        }
+        .input-group textarea { height: 100px; resize: vertical; }
+
+        .options-row { display: flex; gap: 20px; flex-wrap: wrap; }
+        .flex-item { flex: 1; min-width: 200px; }
+
+        h2 { color: var(--rose-gold); text-align: center; font-family: 'Playfair Display', serif; font-style: italic; font-size: 26px; }
+        
+        .copy-btn {
+            background: var(--rose-gold);
+            color: var(--velvet);
+            border: none;
+            padding: 18px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            border-radius: 8px;
+            transition: 0.4s;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .copy-btn:hover { background: var(--silk); color: var(--velvet); box-shadow: 0 0 20px rgba(183, 110, 121, 0.4); }
+        footer { text-align: center; color: #555; padding: 30px; font-size: 12px; letter-spacing: 2px; }
+    ]]></b:skin>
+</head>
+
+<body>
+    <div class='header-wrap'>
+        <h1>🌹 INTIMATE STORY ENGINE</h1>
+        <p>Sophisticated Narratives &amp; Wellness Education</p>
+    </div>
+
+    <div class='main-container'>
+        <div class='intimate-card'>
+            <h2>Narrative Architect</h2>
+            
+            <div class='options-row'>
+                <div class='input-group flex-item'>
+                    <label>Bahasa Narasi:</label>
+                    <select id='inputLang'>
+                        <option value='id'>Bahasa Indonesia (Dewasa &amp; Elegan)</option>
+                        <option value='en'>English (Sophisticated &amp; Bold)</option>
+                    </select>
+                </div>
+                <div class='input-group flex-item'>
+                    <label>Durasi Cerita:</label>
+                    <select id='inputLength'>
+                        <option value='Pendek (Short Story/Drabble)'>Pendek</option>
+                        <option value='Sedang (Medium One-Shot)'>Sedang</option>
+                        <option value='Panjang (Full Detailed Narrative)'>Panjang</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class='input-group'>
+                <label>Tema / Vibes &amp; Skenario:</label>
+                <input id='inputTitle' placeholder='Contoh: Honeymoon di Paris, Reuni mantan kekasih, atau Eksplorasi baru...' type='text'/>
+            </div>
+            
+            <div class='input-group'>
+                <label>Fokus Edukasi / Catatan Khusus:</label>
+                <textarea id='inputNotes' placeholder='Misal: Fokus pada pentingnya komunikasi, teknik foreplay, atau aspek "aftercare" setelah berhubungan...'/>
+            </div>
+
+            <button class='copy-btn' onclick='copyPrompt()'>GENERATE INTIMATE PROMPT 🔞</button>
+            
+            <div style='display:none'>
+                <pre id='templateID'>
+&lt;prompt_engine name="IntimateStory"&gt;
+    &lt;identity_context&gt;
+        Penulis fiksi dewasa profesional dan konsultan kesehatan seksual. Gaya bahasa elegan, deskriptif, dan fokus pada koneksi emosional serta konsensus. Hindari kata-kata kasar/vulgar yang tidak perlu; gunakan diksi yang artistik namun tetap menggugah.
+    &lt;/identity_context&gt;
+    &lt;structure_compliance&gt;
+        &lt;section id="Atmosphere"&gt;Bangun setting dan mood yang mendalam.&lt;/section&gt;
+        &lt;section id="Chemistry"&gt;Gambarkan interaksi emosional dan komunikasi antar karakter.&lt;/section&gt;
+        &lt;section id="Narrative"&gt;Panjang cerita: [USER_LENGTH].&lt;/section&gt;
+        &lt;section id="Education"&gt;Sisipkan elemen edukasi seks yang sehat (misal: komunikasi keinginan, kenyamanan, atau teknik tertentu) secara organik ke dalam cerita.&lt;/section&gt;
+    &lt;/structure_compliance&gt;
+    &lt;execution&gt;
+        Tulis cerita khusus dewasa (18+) dalam Bahasa Indonesia:
+        TEMA/SKENARIO: [USER_TITLE]
+        FOKUS EDUKASI/CATATAN: [USER_NOTES]
+        FORMAT: [USER_LENGTH]
+    &lt;/execution&gt;
+&lt;/prompt_engine&gt;
+                </pre>
+                <pre id='templateEN'>
+&lt;prompt_engine name="IntimateStory"&gt;
+    &lt;identity_context&gt;
+        Professional Adult Fiction Writer and Sexual Wellness Educator. Style is sophisticated, sensory-focused, and prioritizes emotional connection and consent. Use evocative, literary diction over crude language.
+    &lt;/identity_context&gt;
+    &lt;structure_compliance&gt;
+        &lt;section id="Setting"&gt;Detailed atmosphere and sensory buildup.&lt;/section&gt;
+        &lt;section id="Dynamic"&gt;Emotional chemistry and verbal communication between partners.&lt;/section&gt;
+        &lt;section id="Length"&gt;Duration: [USER_LENGTH].&lt;/section&gt;
+        &lt;section id="Wellness"&gt;Integrate positive sex-education elements (e.g., boundaries, aftercare, or specific wellness tips) into the plot.&lt;/section&gt;
+    &lt;/structure_compliance&gt;
+    &lt;execution&gt;
+        Write a sophisticated 18+ intimate story in English:
+        THEME/SCENARIO: [USER_TITLE]
+        WELLNESS FOCUS/NOTES: [USER_NOTES]
+        FORMAT: [USER_LENGTH]
+    &lt;/execution&gt;
+&lt;/prompt_engine&gt;
+                </pre>
+            </div>
+        </div>
+
+        <b:section id='main' showaddelement='yes'>
+            <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog'>
+                <b:includable id='main'>
+                    <b:loop values='data:posts' var='post'>
+                        <div class='intimate-card'>
+                            <h2><a expr:href='data:post.url'><data:post.title/></a></h2>
+                            <div class='post-body'>
+                                <data:post.body/>
+                            </div>
+                        </div>
+                    </b:loop>
+                </b:includable>
+            </b:widget>
+        </b:section>
+    </div>
+
+    <footer>
+        &copy; 2026 Intimate Framework | Wellness Content System by @heaven
+    </footer>
+
+    <script type='text/javascript'>
+        function copyPrompt() {
+            var title = document.getElementById("inputTitle").value || "An Unforgettable Night";
+            var notes = document.getElementById("inputNotes").value || "Focus on healthy communication and sensory connection.";
+            var length = document.getElementById("inputLength").value;
+            var lang = document.getElementById("inputLang").value;
+            
+            var template = (lang === 'id') ? 
+                           document.getElementById("templateID").innerText : 
+                           document.getElementById("templateEN").innerText;
+            
+            var finalPrompt = template
+                .replace("[USER_TITLE]", title)
+                .replace("[USER_NOTES]", notes)
+                .replace(/\[USER_LENGTH\]/g, length);
+            
+            var tempElem = document.createElement("textarea");
+            tempElem.value = finalPrompt;
+            document.body.appendChild(tempElem);
+            tempElem.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempElem);
+            
+            alert("🌹 Intimate Prompt (" + length + ") copied! Keep it private and safe.");
+        }
+    </script>
+</body>
+</html>

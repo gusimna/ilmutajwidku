@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsversion='3' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/charts/static/chi/gviz/1.0/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <meta charset='UTF-8'/>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <title><data:blog.pageTitle/></title>
+    <b:skin><![CDATA[
+        /* 
+        THEME: Quotes Calendar (Earth Tone & Minimalist)
+        SYSTEM: 30-Day Content Planner
+        */
+        :root {
+            --warm-sand: #f5ebe0;
+            --clay: #d5bdaf;
+            --terracotta: #a98467;
+            --deep-oak: #6c584c;
+            --text-dark: #352f2a;
+        }
+        body {
+            background-color: var(--warm-sand);
+            color: var(--text-dark);
+            font-family: 'Inter', 'Quicksand', sans-serif;
+            margin: 0; padding: 0;
+        }
+        .header-wrap {
+            background: linear-gradient(135deg, var(--terracotta), var(--deep-oak));
+            color: #fff;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--clay);
+        }
+        .main-container {
+            max-width: 800px;
+            margin: -40px auto 60px;
+            padding: 20px;
+        }
+        .quote-card {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(108, 88, 76, 0.15);
+            padding: 40px;
+            margin-bottom: 25px;
+            border: 1px solid var(--clay);
+        }
+        .input-group { margin-bottom: 25px; }
+        .input-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--deep-oak);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .input-group input, .input-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--warm-sand);
+            border-radius: 12px;
+            font-family: inherit;
+            box-sizing: border-box;
+            background: #fafafa;
+            transition: 0.3s;
+        }
+        .input-group input:focus, .input-group textarea:focus {
+            outline: none;
+            border-color: var(--terracotta);
+            background: #fff;
+        }
+        .input-group textarea { height: 110px; }
+
+        .lang-options { display: flex; gap: 30px; margin-top: 10px; }
+        .lang-item { display: flex; align-items: center; cursor: pointer; font-weight: 600; }
+        .lang-item input { width: auto; margin-right: 10px; accent-color: var(--terracotta); }
+
+        h2 { color: var(--terracotta); text-align: center; margin-top: 0; font-family: 'Playfair Display', serif; font-size: 28px; }
+        
+        .copy-btn {
+            background: var(--deep-oak);
+            color: white;
+            border: none;
+            padding: 18px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            border-radius: 12px;
+            transition: 0.4s;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .copy-btn:hover { background: var(--terracotta); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(169, 132, 103, 0.4); }
+        footer { text-align: center; color: var(--terracotta); padding: 30px; font-size: 13px; font-style: italic; }
+    ]]></b:skin>
+</head>
+
+<body>
+    <div class='header-wrap'>
+        <h1>✨ 30-DAY QUOTES PLANNER</h1>
+        <p>Generate a month of inspiration in a single click</p>
+    </div>
+
+    <div class='main-container'>
+        <div class='quote-card'>
+            <h2>Content Strategist Engine</h2>
+            
+            <div class='input-group'>
+                <label>Bahasa Quotes:</label>
+                <div class='lang-options'>
+                    <label class='lang-item'>
+                        <input checked='checked' name='lang' type='radio' value='id'/> Indonesia (Poetik)
+                    </label>
+                    <label class='lang-item'>
+                        <input name='lang' type='radio' value='en'/> English (Aesthetic)
+                    </label>
+                </div>
+            </div>
+
+            <div class='input-group'>
+                <label>Tema Utama Bulan Ini:</label>
+                <input id='inputTitle' placeholder='Contoh: Self-Love, Resilience, Career Growth, atau Stoicism...' type='text'/>
+            </div>
+            
+            <div class='input-group'>
+                <label>Kombinasi Vibes &amp; Catatan Khusus:</label>
+                <textarea id='inputNotes' placeholder='Misal: Campurkan vibes yang ceria, sedih, dan sarkas. Tambahkan nama brand saya @heaven di setiap akhir quote...'/>
+            </div>
+
+            <button class='copy-btn' onclick='copyPrompt()'>GENERATE 30-DAY PROMPT 📅</button>
+            
+            <div style='display:none'>
+                <pre id='templateID'>
+&lt;prompt_engine name="QuotesPlanner30Days"&gt;
+    &lt;identity_context&gt;
+        Seorang Creative Content Planner dan Penulis Kata-kata estetik. Mampu menciptakan berbagai gaya bahasa (vibes) mulai dari yang puitis, motivasional, hingga minimalis.
+    &lt;/identity_context&gt;
+    &lt;structure_compliance&gt;
+        &lt;section id="Plan"&gt;Buat tabel untuk 30 hari.&lt;/section&gt;
+        &lt;section id="Columns"&gt;Kolom terdiri dari: Hari ke-, Vibe (Mood), dan Kutipan (Quotes).&lt;/section&gt;
+        &lt;section id="Variety"&gt;Pastikan vibes berganti setiap hari agar tidak membosankan (misal: Hari 1 Zen, Hari 2 Ambisi, Hari 3 Melankolis, dsb).&lt;/section&gt;
+        &lt;section id="Formatting"&gt;Gunakan gaya bahasa "Show, Don't Tell" yang cocok untuk caption Instagram/TikTok.&lt;/section&gt;
+    &lt;/structure_compliance&gt;
+    &lt;execution&gt;
+        Hasilkan 30 quotes unik dalam Bahasa Indonesia:
+        TEMA UTAMA: [USER_TITLE]
+        INSTRUKSI VIBES/TAMBAHAN: [USER_NOTES]
+    &lt;/execution&gt;
+&lt;/prompt_engine&gt;
+                </pre>
+                <pre id='templateEN'>
+&lt;prompt_engine name="QuotesPlanner30Days"&gt;
+    &lt;identity_context&gt;
+        Professional Content Strategist and Wordsmith. Expert in creating viral, aesthetic, and emotionally resonant quotes for social media.
+    &lt;/identity_context&gt;
+    &lt;structure_compliance&gt;
+        &lt;section id="Calendar"&gt;Create a 30-day table.&lt;/section&gt;
+        &lt;section id="Diversity"&gt;Alternate between different vibes daily (e.g., Sunday: Restful, Monday: Hustle, Tuesday: Stoic, etc.).&lt;/section&gt;
+        &lt;section id="Style"&gt;Maintain a consistent yet evolving aesthetic tone throughout the month.&lt;/section&gt;
+        &lt;section id="CallToAction"&gt;Ensure each quote is shareable and impactful.&lt;/section&gt;
+    &lt;/structure_compliance&gt;
+    &lt;execution&gt;
+        Generate 30 unique quotes in English:
+        MAIN THEME: [USER_TITLE]
+        VIBE MIX / SPECIAL NOTES: [USER_NOTES]
+    &lt;/execution&gt;
+&lt;/prompt_engine&gt;
+                </pre>
+            </div>
+        </div>
+
+        <b:section id='main' showaddelement='yes'>
+            <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog'>
+                <b:includable id='main'>
+                    <b:loop values='data:posts' var='post'>
+                        <div class='quote-card'>
+                            <h2><a expr:href='data:post.url'><data:post.title/></a></h2>
+                            <div class='post-body'>
+                                <data:post.body/>
+                            </div>
+                        </div>
+                    </b:loop>
+                </b:includable>
+            </b:widget>
+        </b:section>
+    </div>
+
+    <footer>
+        &copy; 2026 Daily Quotes Engine | Watermarked by @circlemonth
+    </footer>
+
+    <script type='text/javascript'>
+        function copyPrompt() {
+            var title = document.getElementById("inputTitle").value || "Life & Wisdom";
+            var notes = document.getElementById("inputNotes").value || "Mix of different daily vibes.";
+            
+            var selectedLang = document.querySelector('input[name="lang"]:checked').value;
+            var template = (selectedLang === 'id') ? 
+                           document.getElementById("templateID").innerText : 
+                           document.getElementById("templateEN").innerText;
+            
+            var finalPrompt = template.replace("[USER_TITLE]", title).replace("[USER_NOTES]", notes);
+            
+            var tempElem = document.createElement("textarea");
+            tempElem.value = finalPrompt;
+            document.body.appendChild(tempElem);
+            tempElem.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempElem);
+            
+            alert("✨ 30-Day Quotes Prompt (" + (selectedLang === 'id' ? 'Indonesia' : 'English') + ") copied! Your content is ready for a month.");
+        }
+    </script>
+</body>
+</html>

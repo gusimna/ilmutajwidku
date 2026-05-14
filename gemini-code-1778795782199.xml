@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsversion='3' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/charts/static/chi/gviz/1.0/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <meta charset='UTF-8'/>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <title><data:blog.pageTitle/></title>
+    <b:skin><![CDATA[
+        /* 
+        THEME: Culinary Master Engine (Cinnamon & Charcoal Edition)
+        SYSTEM: Professional Recipe & Gastronomy Framework
+        */
+        :root {
+            --cinnamon: #d2691e;
+            --charcoal: #2d2d2d;
+            --cream: #fff9f0;
+            --gold-leaf: #bc9c1a;
+            --text-dark: #1a1a1a;
+        }
+        body {
+            background-color: #f4f1ea;
+            color: var(--text-dark);
+            font-family: 'Playfair Display', serif;
+            margin: 0; padding: 0;
+        }
+        .header-wrap {
+            background: var(--charcoal);
+            color: var(--gold-leaf);
+            padding: 50px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--cinnamon);
+        }
+        .main-container {
+            max-width: 850px;
+            margin: -30px auto 60px;
+            padding: 20px;
+        }
+        .culinary-card {
+            background: var(--cream);
+            border-radius: 8px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            padding: 40px;
+            margin-bottom: 25px;
+            border: 1px solid #e0dcd0;
+            position: relative;
+        }
+        .culinary-card::before {
+            content: "";
+            position: absolute;
+            top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border: 1px solid #e0dcd0;
+            pointer-events: none;
+        }
+        .input-group { margin-bottom: 25px; position: relative; z-index: 2; }
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: var(--charcoal);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        .input-group input, .input-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 0;
+            font-family: 'Inter', sans-serif;
+            box-sizing: border-box;
+            background: #fff;
+        }
+        .input-group textarea { height: 100px; resize: vertical; }
+
+        .lang-options { display: flex; gap: 30px; margin-top: 10px; }
+        .lang-item { display: flex; align-items: center; cursor: pointer; font-weight: 600; color: var(--charcoal); }
+        .lang-item input { width: auto; margin-right: 10px; accent-color: var(--cinnamon); }
+
+        h2 { color: var(--cinnamon); text-align: center; margin-top: 0; font-style: italic; font-size: 28px; }
+        
+        .copy-btn {
+            background: var(--charcoal);
+            color: var(--gold-leaf);
+            border: none;
+            padding: 18px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: 0.3s;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            z-index: 2;
+            position: relative;
+        }
+        .copy-btn:hover { background: var(--cinnamon); color: #fff; }
+        footer { text-align: center; color: #777; padding: 20px; font-size: 12px; letter-spacing: 1px; }
+    ]]></b:skin>
+</head>
+
+<body>
+    <div class='header-wrap'>
+        <h1>👨‍🍳 CULINARY MASTER ENGINE</h1>
+        <p>Elevate Your Kitchen into a Gastronomy Studio</p>
+    </div>
+
+    <div class='main-container'>
+        <div class='culinary-card'>
+            <h2>Recipe Architect</h2>
+            
+            <div class='input-group'>
+                <label>Pilihan Bahasa Resep:</label>
+                <div class='lang-options'>
+                    <label class='lang-item'>
+                        <input checked='checked' name='lang' type='radio' value='id'/> Bahasa Indonesia
+                    </label>
+                    <label class='lang-item'>
+                        <input name='lang' type='radio' value='en'/> English (Chef Standard)
+                    </label>
+                </div>
+            </div>
+
+            <div class='input-group'>
+                <label>Nama Hidangan / Konsep:</label>
+                <input id='inputTitle' placeholder='Contoh: Steak Saus Rendang atau Pasta Seafood...' type='text'/>
+            </div>
+            
+            <div class='input-group'>
+                <label>Bahan Tersedia / Catatan Diet:</label>
+                <textarea id='inputNotes' placeholder='Sebutkan bahan utama yang ada atau pantangan (misal: tanpa gluten, low carb)...'/>
+            </div>
+
+            <button class='copy-btn' onclick='copyPrompt()'>GENERATE CHEF PROMPT</button>
+            
+            <div style='display:none'>
+                <pre id='templateID'>
+&lt;prompt_engine name="CulinaryMaster"&gt;
+    &lt;identity_context&gt;
+        Executive Chef bintang Michelin. Fokus pada teknik gastronomi, keseimbangan rasa (umami, acid, salt, sweet), dan estetika penyajian.
+    &lt;/identity_context&gt;
+    &lt;structure_compliance&gt;
+        &lt;section id="Concept"&gt;Filosofi hidangan dan profil rasa.&lt;/section&gt;
+        &lt;section id="Ingredients"&gt;Daftar bahan presisi dengan saran kualitas bahan.&lt;/section&gt;
+        &lt;section id="Technique"&gt;Langkah memasak detail dengan teknik profesional (misal: searing, emulsifying).&lt;/section&gt;
+        &lt;section id="ChefSecret"&gt;Tips pro untuk meningkatkan level hidangan ini.&lt;/section&gt;
+        &lt;section id="Plating"&gt;Instruksi visual cara menyajikan di atas piring.&lt;/section&gt;
+    &lt;/structure_compliance&gt;
+    &lt;execution&gt;
+        Buat resep eksklusif dalam Bahasa Indonesia:
+        HIDANGAN: [USER_TITLE]
+        CATATAN BAHAN/DIET: [USER_NOTES]
+    &lt;/execution&gt;
+&lt;/prompt_engine&gt;
+                </pre>
+                <pre id='templateEN'>
+&lt;prompt_engine name="CulinaryMaster"&gt;
+    &lt;identity_context&gt;
+        Michelin-starred Executive Chef. Focus on technical precision, flavor balancing, and modern plating aesthetics.
+    &lt;/identity_context&gt;
+    &lt;structure_compliance&gt;
+        &lt;section id="Inspiration"&gt;The dish's philosophy and flavor profile.&lt;/section&gt;
+        &lt;section id="MiseEnPlace"&gt;Precise ingredient list with quality recommendations.&lt;/section&gt;
+        &lt;section id="Execution"&gt;Professional step-by-step techniques.&lt;/section&gt;
+        &lt;section id="ProTips"&gt;Secret techniques to elevate the dish.&lt;/section&gt;
+        &lt;section id="Service"&gt;Plating and pairing suggestions.&lt;/section&gt;
+    &lt;/structure_compliance&gt;
+    &lt;execution&gt;
+        Create a signature recipe in English:
+        DISH: [USER_TITLE]
+        DIETARY/INGREDIENT NOTES: [USER_NOTES]
+    &lt;/execution&gt;
+&lt;/prompt_engine&gt;
+                </pre>
+            </div>
+        </div>
+
+        <b:section id='main' showaddelement='yes'>
+            <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog'>
+                <b:includable id='main'>
+                    <b:loop values='data:posts' var='post'>
+                        <div class='culinary-card'>
+                            <h2><a expr:href='data:post.url'><data:post.title/></a></h2>
+                            <div class='post-body'>
+                                <data:post.body/>
+                            </div>
+                        </div>
+                    </b:loop>
+                </b:includable>
+            </b:widget>
+        </b:section>
+    </div>
+
+    <footer>
+        Culinary Master Engine &copy; 2026 | Gastronomy Framework by @holy
+    </footer>
+
+    <script type='text/javascript'>
+        function copyPrompt() {
+            var title = document.getElementById("inputTitle").value || "Dish of the Day";
+            var notes = document.getElementById("inputNotes").value || "Use available seasonal ingredients.";
+            
+            var selectedLang = document.querySelector('input[name="lang"]:checked').value;
+            var template = (selectedLang === 'id') ? 
+                           document.getElementById("templateID").innerText : 
+                           document.getElementById("templateEN").innerText;
+            
+            var finalPrompt = template.replace("[USER_TITLE]", title).replace("[USER_NOTES]", notes);
+            
+            var tempElem = document.createElement("textarea");
+            tempElem.value = finalPrompt;
+            document.body.appendChild(tempElem);
+            tempElem.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempElem);
+            
+            alert("👨‍🍳 Master Recipe Prompt (" + (selectedLang === 'id' ? 'Indonesia' : 'English') + ") copied! Ready for the kitchen.");
+        }
+    </script>
+</body>
+</html>

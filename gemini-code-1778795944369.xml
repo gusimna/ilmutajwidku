@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsversion='3' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/charts/static/chi/gviz/1.0/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <meta charset='UTF-8'/>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <title><data:blog.pageTitle/></title>
+    <b:skin><![CDATA[
+        /* 
+        THEME: Islamic Preacher Framework (Navy & Gold Edition)
+        SYSTEM: Khutbah & Da'wah Script Engine
+        */
+        :root {
+            --navy: #0f172a;
+            --gold: #c5a059;
+            --soft-gold: #f4ecd8;
+            --white: #ffffff;
+            --text-gray: #475569;
+        }
+        body {
+            background-color: #f1f5f9;
+            color: var(--navy);
+            font-family: 'Amiri', 'Inter', serif;
+            margin: 0; padding: 0;
+        }
+        .header-wrap {
+            background: linear-gradient(135deg, var(--navy), #1e293b);
+            color: var(--gold);
+            padding: 50px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--gold);
+        }
+        .main-container {
+            max-width: 850px;
+            margin: -30px auto 60px;
+            padding: 20px;
+        }
+        .daawah-card {
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.1);
+            padding: 40px;
+            margin-bottom: 25px;
+            border: 1px solid var(--soft-gold);
+            border-top: 6px solid var(--gold);
+        }
+        .input-group { margin-bottom: 25px; }
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: var(--navy);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .input-group input, .input-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            box-sizing: border-box;
+            background: #fff;
+            font-size: 15px;
+        }
+        .input-group textarea { height: 110px; resize: vertical; }
+
+        .lang-options { display: flex; gap: 30px; margin-top: 10px; }
+        .lang-item { display: flex; align-items: center; cursor: pointer; font-weight: 600; }
+        .lang-item input { width: auto; margin-right: 10px; accent-color: var(--gold); }
+
+        h2 { color: var(--navy); text-align: center; margin-top: 0; font-size: 26px; border-bottom: 1px solid var(--soft-gold); padding-bottom: 15px; }
+        
+        .copy-btn {
+            background: var(--gold);
+            color: var(--navy);
+            border: none;
+            padding: 18px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            border-radius: 8px;
+            transition: 0.3s;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .copy-btn:hover { background: var(--navy); color: var(--gold); }
+        footer { text-align: center; color: var(--text-gray); padding: 20px; font-size: 13px; }
+    ]]></b:skin>
+</head>
+
+<body>
+    <div class='header-wrap'>
+        <h1>نظام إعداد الخطب والمحاضرات</h1>
+        <p>Islamic Da'wah &amp; Khutbah Framework System</p>
+    </div>
+
+    <div class='main-container'>
+        <div class='daawah-card'>
+            <h2>DA'WAH SCRIPT GENERATOR</h2>
+            
+            <div class='input-group'>
+                <label>Bahasa Penyampaian:</label>
+                <div class='lang-options'>
+                    <label class='lang-item'>
+                        <input checked='checked' name='lang' type='radio' value='id'/> Bahasa Indonesia
+                    </label>
+                    <label class='lang-item'>
+                        <input name='lang' type='radio' value='ar'/> Full Arabic (العربية)
+                    </label>
+                </div>
+            </div>
+
+            <div class='input-group'>
+                <label>Tema Khotbah / Judul Ceramah:</label>
+                <input id='inputTitle' placeholder='Contoh: Keutamaan Sabar, Adab Tetangga, atau Rezeki Halal...' type='text'/>
+            </div>
+            
+            <div class='input-group'>
+                <label>Poin Utama / Referensi Ayat &amp; Hadits:</label>
+                <textarea id='inputNotes' placeholder='Misal: Masukkan Surat Al-Baqarah ayat 153, sasarannya pemuda, durasi 15 menit...'/>
+            </div>
+
+            <button class='copy-btn' onclick='copyPrompt()'>SALIN PROMPT KHOTBAH ✨</button>
+            
+            <div style='display:none'>
+                <pre id='templateID'>
+&lt;prompt_engine name="IslamicPreacher"&gt;
+    &lt;identity_context&gt;
+        Ustadz/Khatib yang kompeten dalam ilmu syar'i. Gunakan retorika dakwah yang bijak, menyentuh hati (mauidzah hasanah), dan sistematis. Pastikan setiap poin berbasis dalil.
+    &lt;/identity_context&gt;
+    &lt;structure_compliance&gt;
+        &lt;section id="Muqaddimah"&gt;Pembukaan (Hamdalah, Shalawat, Wasiat Takwa).&lt;/section&gt;
+        &lt;section id="Intisari"&gt;Penjelasan materi dengan dalil Al-Qur'an dan Hadits.&lt;/section&gt;
+        &lt;section id="Aplikasi"&gt;Contoh nyata dalam kehidupan sehari-hari dan solusinya.&lt;/section&gt;
+        &lt;section id="Ibrah"&gt;Kesimpulan dan renungan penutup.&lt;/section&gt;
+        &lt;section id="Doa"&gt;Doa penutup yang khidmat.&lt;/section&gt;
+    &lt;/structure_compliance&gt;
+    &lt;execution&gt;
+        Susun naskah lengkap dalam Bahasa Indonesia:
+        TEMA: [USER_TITLE]
+        POIN KHUSUS/REFERENSI: [USER_NOTES]
+    &lt;/execution&gt;
+&lt;/prompt_engine&gt;
+                </pre>
+                <pre id='templateAR'>
+&lt;prompt_engine name="IslamicPreacher"&gt;
+    &lt;identity_context&gt;
+        خطيب مفوه وعالم شرعي. اللغة المستخدمة هي اللغة العربية الفصحى البليغة والمؤثرة.
+    &lt;/identity_context&gt;
+    &lt;structure_compliance&gt;
+        &lt;section id="Muqaddimah"&gt;الحمد والثناء والوصية بتقوى الله.&lt;/section&gt;
+        &lt;section id="AlMaudu"&gt;شرح الموضوع مع الأدلة الشرعية من الكتاب والسنة.&lt;/section&gt;
+        &lt;section id="AlWaqi"&gt;ربط الموضوع بالواقع المعاصر والدروس المستفادة.&lt;/section&gt;
+        &lt;section id="AlKhatimah"&gt;الخلاصة والدعاء للمسلمين.&lt;/section&gt;
+    &lt;/structure_compliance&gt;
+    &lt;execution&gt;
+        اكتب نصاً كاملاً للموضوع التالي باللغة العربية:
+        الموضوع: [USER_TITLE]
+        ملاحظات إضافية: [USER_NOTES]
+    &lt;/execution&gt;
+&lt;/prompt_engine&gt;
+                </pre>
+            </div>
+        </div>
+
+        <b:section id='main' showaddelement='yes'>
+            <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog'>
+                <b:includable id='main'>
+                    <b:loop values='data:posts' var='post'>
+                        <div class='daawah-card'>
+                            <h2><a expr:href='data:post.url'><data:post.title/></a></h2>
+                            <div class='post-body'>
+                                <data:post.body/>
+                            </div>
+                        </div>
+                    </b:loop>
+                </b:includable>
+            </b:widget>
+        </b:section>
+    </div>
+
+    <footer>
+        &copy; 2026 Da'wah Framework | System by @holy
+    </footer>
+
+    <script type='text/javascript'>
+        function copyPrompt() {
+            var title = document.getElementById("inputTitle").value || "[Tema Belum Diisi]";
+            var notes = document.getElementById("inputNotes").value || "[Tanpa Catatan Tambahan]";
+            
+            var selectedLang = document.querySelector('input[name="lang"]:checked').value;
+            var template = (selectedLang === 'id') ? 
+                           document.getElementById("templateID").innerText : 
+                           document.getElementById("templateAR").innerText;
+            
+            var finalPrompt = template.replace("[USER_TITLE]", title).replace("[USER_NOTES]", notes);
+            
+            var tempElem = document.createElement("textarea");
+            tempElem.value = finalPrompt;
+            document.body.appendChild(tempElem);
+            tempElem.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempElem);
+            
+            alert("✨ Prompt Khotbah (" + (selectedLang === 'id' ? 'Indonesia' : 'Arab') + ") Berhasil Disalin!");
+        }
+    </script>
+</body>
+</html>

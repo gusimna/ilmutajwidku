@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsversion='3' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/charts/static/chi/gviz/1.0/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <meta charset='UTF-8'/>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <title><data:blog.pageTitle/></title>
+    <b:skin><![CDATA[
+        /* 
+        THEME: Poetry & Literary Engine (Ink & Parchment)
+        SYSTEM: Multiverse Poetry Generator
+        */
+        :root {
+            --midnight: #1a1c2c;
+            --ink: #2c3e50;
+            --paper: #fdf6e3;
+            --feather: #94a3b8;
+            --wine: #722f37;
+        }
+        body {
+            background-color: #f1f1f1;
+            color: var(--ink);
+            font-family: 'EB Garamond', serif;
+            margin: 0; padding: 0;
+            line-height: 1.6;
+        }
+        .header-wrap {
+            background: var(--midnight);
+            color: var(--paper);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--wine);
+        }
+        .main-container {
+            max-width: 800px;
+            margin: -40px auto 60px;
+            padding: 20px;
+        }
+        .poetry-card {
+            background: var(--paper);
+            border-radius: 4px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            padding: 45px;
+            margin-bottom: 25px;
+            border: 1px solid #ddd;
+            position: relative;
+        }
+        .poetry-card::after {
+            content: "✒️";
+            position: absolute;
+            bottom: 20px; right: 20px;
+            font-size: 24px; opacity: 0.3;
+        }
+        .input-group { margin-bottom: 25px; }
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: var(--wine);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .input-group input, .input-group textarea, .input-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 0;
+            font-family: 'Inter', sans-serif;
+            box-sizing: border-box;
+            background: #fff;
+        }
+        .input-group textarea { height: 90px; }
+
+        .options-row { display: flex; gap: 20px; flex-wrap: wrap; }
+        .flex-item { flex: 1; min-width: 200px; }
+
+        h2 { color: var(--midnight); text-align: center; margin-top: 0; font-style: italic; font-size: 32px; border-bottom: 1px double var(--wine); padding-bottom: 10px; }
+        
+        .copy-btn {
+            background: var(--wine);
+            color: #fff;
+            border: none;
+            padding: 18px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: 0.3s;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        .copy-btn:hover { background: var(--midnight); letter-spacing: 5px; }
+        footer { text-align: center; color: #666; padding: 20px; font-size: 12px; letter-spacing: 1px; font-style: italic; }
+    ]]></b:skin>
+</head>
+
+<body>
+    <div class='header-wrap'>
+        <h1>📜 THE POETRY ENGINE</h1>
+        <p>Words are the soul's calligraphy</p>
+    </div>
+
+    <div class='main-container'>
+        <div class='poetry-card'>
+            <h2>Lyrical Architect</h2>
+            
+            <div class='options-row'>
+                <div class='input-group flex-item'>
+                    <label>Bahasa Puisi:</label>
+                    <select id='inputLang'>
+                        <option value='id'>Bahasa Indonesia (Sastrawan)</option>
+                        <option value='en'>English (Contemporary/Classic)</option>
+                    </select>
+                </div>
+                <div class='input-group flex-item'>
+                    <label>Panjang Puisi:</label>
+                    <select id='inputLength'>
+                        <option value='Pendek (1-3 bait)'>Pendek (1-3 bait)</option>
+                        <option value='Sedang (4-7 bait)'>Sedang (4-7 bait)</option>
+                        <option value='Panjang (10-12 bait)'>Panjang (10-12 bait)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class='input-group'>
+                <label>Tema / Vibes Puisi:</label>
+                <input id='inputTitle' placeholder='Contoh: Melankolis di bawah hujan, Semangat fajar, atau Kerinduan yang sunyi...' type='text'/>
+            </div>
+            
+            <div class='input-group'>
+                <label>Metafora / Kata Kunci Khusus:</label>
+                <textarea id='inputNotes' placeholder='Masukkan kata-kata tertentu yang harus ada, atau jelaskan perasaan yang ingin dicapai...'/>
+            </div>
+
+            <button class='copy-btn' onclick='copyPrompt()'>GENERATE POETIC PROMPT</button>
+            
+            <div style='display:none'>
+                <pre id='templateID'>
+&lt;prompt_engine name="PoetryArchitect"&gt;
+    &lt;identity_context&gt;
+        Penyair kontemporer dan sastrawan yang ahli dalam diksi puitis, rima, dan permainan metafora. Mampu membangkitkan emosi yang dalam melalui kata-kata.
+    &lt;/identity_context&gt;
+    &lt;structure_compliance&gt;
+        &lt;section id="Meter"&gt;Pilih aliran (Bebas, Soneta, atau Balada) yang sesuai dengan vibes.&lt;/section&gt;
+        &lt;section id="Stanza"&gt;Panjang puisi: [USER_LENGTH].&lt;/section&gt;
+        &lt;section id="Imagery"&gt;Gunakan citraan indrawi (penglihatan, pendengaran, perasa) yang kuat.&lt;/section&gt;
+        &lt;section id="Signature"&gt;Akhiri dengan penutup yang meninggalkan kesan mendalam.&lt;/section&gt;
+    &lt;/structure_compliance&gt;
+    &lt;execution&gt;
+        Tulis puisi orisinal dalam Bahasa Indonesia:
+        VIBES/TEMA: [USER_TITLE]
+        METAFORA KHUSUS: [USER_NOTES]
+        FORMAT: [USER_LENGTH]
+    &lt;/execution&gt;
+&lt;/prompt_engine&gt;
+                </pre>
+                <pre id='templateEN'>
+&lt;prompt_engine name="PoetryArchitect"&gt;
+    &lt;identity_context&gt;
+        Professional Poet and Anthologist. Master of evocative language, sophisticated metaphors, and rhythmic flow. 
+    &lt;/identity_context&gt;
+    &lt;structure_compliance&gt;
+        &lt;section id="Style"&gt;Adapt to a suitable poetic form (Free verse, Blank verse, or Narrative).&lt;/section&gt;
+        &lt;section id="Scope"&gt;Length: [USER_LENGTH].&lt;/section&gt;
+        &lt;section id="Diction"&gt;Use rare, evocative, and poignant vocabulary.&lt;/section&gt;
+        &lt;section id="Tone"&gt;Deeply reflect the requested mood and atmosphere.&lt;/section&gt;
+    &lt;/structure_compliance&gt;
+    &lt;execution&gt;
+        Compose an original poem in English:
+        THEME/VIBES: [USER_TITLE]
+        KEYWORDS/METAPHORS: [USER_NOTES]
+        FORMAT: [USER_LENGTH]
+    &lt;/execution&gt;
+&lt;/prompt_engine&gt;
+                </pre>
+            </div>
+        </div>
+
+        <b:section id='main' showaddelement='yes'>
+            <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog'>
+                <b:includable id='main'>
+                    <b:loop values='data:posts' var='post'>
+                        <div class='poetry-card'>
+                            <h2><a expr:href='data:post.url'><data:post.title/></a></h2>
+                            <div class='post-body'>
+                                <data:post.body/>
+                            </div>
+                        </div>
+                    </b:loop>
+                </b:includable>
+            </b:widget>
+        </b:section>
+    </div>
+
+    <footer>
+        &copy; 2026 The Poetry Engine | Creative Studio by @heaven
+    </footer>
+
+    <script type='text/javascript'>
+        function copyPrompt() {
+            var title = document.getElementById("inputTitle").value || "A Silent Whisper";
+            var notes = document.getElementById("inputNotes").value || "Deep emotions and vivid imagery.";
+            var length = document.getElementById("inputLength").value;
+            var lang = document.getElementById("inputLang").value;
+            
+            var template = (lang === 'id') ? 
+                           document.getElementById("templateID").innerText : 
+                           document.getElementById("templateEN").innerText;
+            
+            var finalPrompt = template
+                .replace("[USER_TITLE]", title)
+                .replace("[USER_NOTES]", notes)
+                .replace(/\[USER_LENGTH\]/g, length);
+            
+            var tempElem = document.createElement("textarea");
+            tempElem.value = finalPrompt;
+            document.body.appendChild(tempElem);
+            tempElem.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempElem);
+            
+            alert("✒️ Poetic Prompt (" + length + ") copied! Let the ink flow.");
+        }
+    </script>
+</body>
+</html>

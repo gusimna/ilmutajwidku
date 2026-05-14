@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsversion='3' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/charts/static/chi/gviz/1.0/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <meta charset='UTF-8'/>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <title><data:blog.pageTitle/></title>
+    <b:skin><![CDATA[
+        /* 
+        THEME: Medical Compendium (Clinical Teal & Slate)
+        SYSTEM: Academic Health & Psychology Summary
+        */
+        :root {
+            --teal: #0d9488;
+            --slate-dark: #1e293b;
+            --clinical-blue: #f0f9ff;
+            --accent-red: #ef4444;
+            --text-main: #334155;
+        }
+        body {
+            background-color: #f8fafc;
+            color: var(--text-main);
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            margin: 0; padding: 0;
+        }
+        .header-wrap {
+            background: linear-gradient(135deg, var(--slate-dark), #0f172a);
+            color: #fff;
+            padding: 50px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--teal);
+        }
+        .header-wrap h1 { color: var(--teal); margin: 0; font-size: 28px; letter-spacing: 1px; }
+        .main-container {
+            max-width: 900px;
+            margin: -30px auto 60px;
+            padding: 20px;
+        }
+        .medical-card {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 35px;
+            margin-bottom: 25px;
+            border-left: 6px solid var(--teal);
+        }
+        .input-group { margin-bottom: 25px; }
+        .input-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--slate-dark);
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+        .input-group input, .input-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: inherit;
+            box-sizing: border-box;
+            background: #fdfdfd;
+        }
+        .input-group textarea { height: 120px; font-size: 14px; }
+
+        .lang-options { display: flex; gap: 25px; margin-top: 10px; }
+        .lang-item { display: flex; align-items: center; cursor: pointer; font-weight: 600; font-size: 14px; }
+        .lang-item input { width: auto; margin-right: 8px; accent-color: var(--teal); }
+
+        h2 { color: var(--slate-dark); font-size: 22px; margin-top: 0; display: flex; align-items: center; }
+        h2::before { content: '📋'; margin-right: 10px; }
+        
+        .copy-btn {
+            background: var(--teal);
+            color: white;
+            border: none;
+            padding: 18px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            border-radius: 8px;
+            transition: 0.3s;
+            font-size: 15px;
+            text-transform: uppercase;
+        }
+        .copy-btn:hover { background: var(--slate-dark); box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3); }
+        footer { text-align: center; color: #94a3b8; padding: 25px; font-size: 12px; }
+    ]]></b:skin>
+</head>
+
+<body>
+    <div class='header-wrap'>
+        <h1>MED-STUDY COMPENDIUM</h1>
+        <p>Medical, Health, &amp; Psychology Summary Engine</p>
+    </div>
+
+    <div class='main-container'>
+        <div class='medical-card'>
+            <h2>Academic Summary Generator</h2>
+            
+            <div class='input-group'>
+                <label>Pilihan Bahasa Ringkasan:</label>
+                <div class='lang-options'>
+                    <label class='lang-item'>
+                        <input checked='checked' name='lang' type='radio' value='id'/> Indonesia (Akademik)
+                    </label>
+                    <label class='lang-item'>
+                        <input name='lang' type='radio' value='en'/> English (Scientific)
+                    </label>
+                </div>
+            </div>
+
+            <div class='input-group'>
+                <label>Topik Perkuliahan / Penyakit / Teori:</label>
+                <input id='inputTitle' placeholder='Misal: Diabetes Mellitus Tipe 2, Mekanisme Dopamin, atau Teori Kognitif...' type='text'/>
+            </div>
+            
+            <div class='input-group'>
+                <label>Catatan Kuliah / Poin Penting (Raw Notes):</label>
+                <textarea id='inputNotes' placeholder='Masukkan catatan berantakan dari dosen, hasil lab, atau terminologi yang ingin dijelaskan lebih dalam...'/>
+            </div>
+
+            <button class='copy-btn' onclick='copyPrompt()'>COPY STUDY PROMPT 🔬</button>
+            
+            <div style='display:none'>
+                <pre id='templateID'>
+&lt;prompt_engine name="MedicalTutor"&gt;
+    &lt;identity_context&gt;
+        Dosen Pakar Kedokteran dan Psikologi Klinis. Mampu menjelaskan konsep rumit menjadi ringkasan yang high-yield (sangat berguna untuk ujian dan praktik).
+    &lt;/identity_context&gt;
+    &lt;structure_compliance&gt;
+        &lt;section id="Definisi"&gt;Etiologi dan definisi singkat.&lt;/section&gt;
+        &lt;section id="Patofisiologi"&gt;Mekanisme terjadinya (step-by-step).&lt;/section&gt;
+        &lt;section id="Manifestasi"&gt;Tanda dan gejala klinis (Key Features).&lt;/section&gt;
+        &lt;section id="Diagnosis"&gt;Kriteria diagnosis atau pemeriksaan penunjang.&lt;/section&gt;
+        &lt;section id="Tatalaksana"&gt;Prinsip terapi/intervensi (Pharmacology/Psychotherapy).&lt;/section&gt;
+        &lt;section id="Mnemonic"&gt;Jembatan keledai untuk menghafal poin sulit.&lt;/section&gt;
+    &lt;/structure_compliance&gt;
+    &lt;execution&gt;
+        Buat ringkasan akademis yang sistematis dalam Bahasa Indonesia:
+        TOPIK: [USER_TITLE]
+        CATATAN TAMBAHAN: [USER_NOTES]
+    &lt;/execution&gt;
+&lt;/prompt_engine&gt;
+                </pre>
+                <pre id='templateEN'>
+&lt;prompt_engine name="MedicalTutor"&gt;
+    &lt;identity_context&gt;
+        Senior Medical &amp; Psychology Academic Tutor. Expert in high-yield medical education and evidence-based clinical explanations.
+    &lt;/identity_context&gt;
+    &lt;structure_compliance&gt;
+        &lt;section id="Overview"&gt;Definition and epidemiology/etiology.&lt;/section&gt;
+        &lt;section id="Pathophysiology"&gt;The biological/psychological mechanism.&lt;/section&gt;
+        &lt;section id="ClinicalPresentation"&gt;Signs, symptoms, and primary characteristics.&lt;/section&gt;
+        &lt;section id="Workup"&gt;Diagnostic gold standards and laboratory findings.&lt;/section&gt;
+        &lt;section id="Management"&gt;First-line treatment and clinical guidelines.&lt;/section&gt;
+        &lt;section id="Mnemonics"&gt;Study aids to remember key facts.&lt;/section&gt;
+    &lt;/structure_compliance&gt;
+    &lt;execution&gt;
+        Generate a systematic academic summary in English:
+        TOPIC: [USER_TITLE]
+        LECTURE NOTES: [USER_NOTES]
+    &lt;/execution&gt;
+&lt;/prompt_engine&gt;
+                </pre>
+            </div>
+        </div>
+
+        <b:section id='main' showaddelement='yes'>
+            <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog'>
+                <b:includable id='main'>
+                    <b:loop values='data:posts' var='post'>
+                        <div class='medical-card'>
+                            <h2><a expr:href='data:post.url'><data:post.title/></a></h2>
+                            <div class='post-body'>
+                                <data:post.body/>
+                            </div>
+                        </div>
+                    </b:loop>
+                </b:includable>
+            </b:widget>
+        </b:section>
+    </div>
+
+    <footer>
+        Medical Compendium &copy; 2026 | Academic Support System by @holy
+    </footer>
+
+    <script type='text/javascript'>
+        function copyPrompt() {
+            var title = document.getElementById("inputTitle").value || "[Topik Belum Diisi]";
+            var notes = document.getElementById("inputNotes").value || "[Gunakan pengetahuan medismu untuk merangkum topik ini]";
+            
+            var selectedLang = document.querySelector('input[name="lang"]:checked').value;
+            var template = (selectedLang === 'id') ? 
+                           document.getElementById("templateID").innerText : 
+                           document.getElementById("templateEN").innerText;
+            
+            var finalPrompt = template.replace("[USER_TITLE]", title).replace("[USER_NOTES]", notes);
+            
+            var tempElem = document.createElement("textarea");
+            tempElem.value = finalPrompt;
+            document.body.appendChild(tempElem);
+            tempElem.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempElem);
+            
+            alert("🔬 Prompt Akademik (" + (selectedLang === 'id' ? 'Indonesia' : 'English') + ") Berhasil Disalin!");
+        }
+    </script>
+</body>
+</html>
