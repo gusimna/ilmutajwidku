@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultmessages='false' b:layouts='false' b:responsive='true' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/namespaces/blogger/template' xmlns:data='http://www.google.com/namespaces/blogger/data' xmlns:expr='http://www.google.com/namespaces/blogger/expr'>
+  <head>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <title>QURANVIZ | INFOGRAPHIC ENGINE</title>
+    <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&amp;family=Amiri:wght@400;700&amp;display=swap' rel='stylesheet'/>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css' rel='stylesheet'/>
+    
+    <b:skin><![CDATA[
+      :root {
+          --bg: #05070a;
+          --card: #0f172a;
+          --accent: #10b981; /* Emerald */
+          --gold: #eab308;
+          --text: #f8fafc;
+          --border: rgba(16, 185, 129, 0.1);
+      }
+
+      body { 
+          background: var(--bg); 
+          color: var(--text); 
+          font-family: 'Plus Jakarta Sans', sans-serif; 
+          margin: 0; padding: 20px;
+          min-height: 100vh;
+      }
+
+      .container { max-width: 1200px; margin: 0 auto; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+      
+      /* ZEN MODE LOGIC */
+      .zen-active .config-panel { display: none; }
+      .zen-active .main-grid { grid-template-columns: 1fr; }
+      .zen-active .container { max-width: 800px; }
+
+      header { 
+          display: flex; justify-content: space-between; align-items: center;
+          padding-bottom: 20px; border-bottom: 1px solid var(--border); margin-bottom: 30px;
+      }
+
+      .brand h1 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; margin: 0; }
+      .brand h1 span { color: var(--accent); }
+
+      .main-grid { display: grid; grid-template-columns: 350px 1fr; gap: 30px; }
+
+      /* SIDEBAR PANEL */
+      .config-panel { 
+          background: var(--card); border-radius: 20px; padding: 30px;
+          border: 1px solid var(--border); height: fit-content;
+          position: sticky; top: 20px;
+      }
+
+      label { 
+          display: block; font-size: 0.65rem; font-weight: 800; color: #64748b;
+          text-transform: uppercase; letter-spacing: 1.5px; margin: 15px 0 8px 0;
+      }
+
+      select, input {
+          width: 100%; background: #020617; border: 1px solid #1e293b;
+          color: white; padding: 12px; border-radius: 10px; font-size: 0.9rem;
+      }
+
+      .btn-primary {
+          width: 100%; background: var(--accent); color: #020617;
+          border: none; padding: 15px; border-radius: 10px; font-weight: 800;
+          cursor: pointer; margin-top: 20px; text-transform: uppercase;
+      }
+
+      .btn-zen {
+          background: transparent; border: 1px solid var(--accent);
+          color: var(--accent); padding: 8px 15px; border-radius: 20px;
+          font-size: 0.7rem; font-weight: 800; cursor: pointer;
+      }
+
+      /* OUTPUT AREA */
+      .output-area { min-height: 600px; }
+      
+      .quran-card {
+          background: #020617; border-radius: 24px; padding: 40px;
+          border: 1px solid var(--border); animation: fadeIn 0.5s ease;
+      }
+
+      .arabic-text {
+          font-family: 'Amiri', serif; font-size: 2.2rem; text-align: right;
+          direction: rtl; line-height: 2; color: var(--gold); margin-bottom: 20px;
+      }
+
+      .translation { font-size: 1.1rem; line-height: 1.6; color: #94a3b8; }
+
+      pre {
+          background: #000; color: #10b981; padding: 20px; border-radius: 12px;
+          font-size: 0.8rem; overflow-x: auto; margin-top: 20px;
+          border: 1px dashed #1e293b; position: relative;
+      }
+
+      @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    ]]></b:skin>
+  </head>
+
+  <body>
+    <div class='container' id='appBody'>
+      <header>
+        <div class='brand'>
+          <h1>QURAN<span>VIZ</span> 2026</h1>
+        </div>
+        <button class='btn-zen' onclick='toggleZen()'>ZEN FOCUS</button>
+      </header>
+
+      <div class='main-grid'>
+        <div class='config-panel'>
+          <label>Pilih Surah</label>
+          <select id='surahSelect' onchange='onSurahChange()'>
+            <option value=''>Memuat...</option>
+          </select>
+
+          <label>Pilih Ayat</label>
+          <select id='ayatSelect'>
+            <option value='all'>Semua Ayat</option>
+          </select>
+
+          <label>Preset Gaya</label>
+          <select id='styleSelect'>
+            <option value='Emerald Gold'>Elegan Emerald Gold</option>
+            <option value='Midnight Minimal'>Midnight Minimalist</option>
+            <option value='Royal Ottoman'>Royal Ottoman Gold</option>
+          </select>
+
+          <button class='btn-primary' onclick='generateViz()'>FORGE INFOGRAPHIC</button>
+          
+          <div style='text-align:center; margin-top:20px;'>
+            <span onclick='resetAll()' style='color:#334155; font-size:0.6rem; cursor:pointer; font-weight:800; letter-spacing:1px;'>RESET PARAMETERS</span>
+          </div>
+        </div>
+
+        <div class='output-area' id='outputContainer'>
+          <div style='text-align:center; padding-top:200px; color:#1e293b; font-weight:800; letter-spacing:10px;'>
+            READY FOR ENGINE
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type='text/javascript'>
+      //<![CDATA[
+      const quranList = [
+          {id: 1, name: "Al-Fatihah", total: 7},
+          {id: 18, name: "Al-Kahf", total: 110},
+          {id: 36, name: "Ya-Sin", total: 83},
+          {id: 67, name: "Al-Mulk", total: 30}
+          // Tambahkan daftar lengkap di sini
+      ];
+
+      function initApp() {
+          const select = document.getElementById('surahSelect');
+          select.innerHTML = '<option value="">-- Pilih Surah --</option>';
+          quranList.forEach(s => {
+              let opt = document.createElement('option');
+              opt.value = s.id;
+              opt.textContent = `${s.id}. ${s.name}`;
+              select.appendChild(opt);
+          });
+      }
+
+      function onSurahChange() {
+          const id = document.getElementById('surahSelect').value;
+          const ayatSelect = document.getElementById('ayatSelect');
+          const surah = quranList.find(s => s.id == id);
+          
+          ayatSelect.innerHTML = '<option value="all">Semua Ayat</option>';
+          if(surah) {
+              for(let i=1; i<=surah.total; i++) {
+                  let opt = document.createElement('option');
+                  opt.value = i;
+                  opt.textContent = `Ayat ${i}`;
+                  ayatSelect.appendChild(opt);
+              }
+          }
+      }
+
+      function toggleZen() {
+          document.getElementById('appBody').classList.toggle('zen-active');
+      }
+
+      function resetAll() {
+          if(confirm("Reset semua parameter?")) {
+              document.getElementById('surahSelect').selectedIndex = 0;
+              document.getElementById('ayatSelect').innerHTML = '<option value="all">Semua Ayat</option>';
+              document.getElementById('outputContainer').innerHTML = '<div style="text-align:center; padding-top:200px; color:#1e293b; font-weight:800; letter-spacing:10px;">READY FOR ENGINE</div>';
+          }
+      }
+
+      async function generateViz() {
+          const sId = document.getElementById('surahSelect').value;
+          if(!sId) return alert("Pilih Surah Terlebih Dahulu");
+
+          const out = document.getElementById('outputContainer');
+          out.innerHTML = '<div style="text-align:center; padding:50px;">PROCESSING ENGINE...</div>';
+
+          try {
+              const response = await fetch(`https://equran.id/api/v2/surat/${sId}`);
+              const json = await response.json();
+              const data = json.data;
+              const aId = document.getElementById('ayatSelect').value;
+              const style = document.getElementById('styleSelect').value;
+
+              let contentHtml = '';
+              if(aId === 'all') {
+                  data.ayat.slice(0, 3).forEach(a => { // Limit 3 untuk preview
+                      contentHtml += `<div class="arabic-text">${a.teksArab}</div><div class="translation">${a.nomorAyat}. ${a.teksIndonesia}</div><hr style="border:0; border-top:1px solid #1e293b; margin:20px 0;"/>`;
+                  });
+              } else {
+                  const a = data.ayat.find(item => item.nomorAyat == aId);
+                  contentHtml = `<div class="arabic-text">${a.teksArab}</div><div class="translation">${a.nomorAyat}. ${a.teksIndonesia}</div>`;
+              }
+
+              // GENERATE JSON PROMPT FRAMEWORK
+              const promptObj = {
+                  engine: "QuranViz_v2",
+                  metadata: { surah: data.namaLatin, style: style },
+                  ai_prompt: `High-end Islamic Infographic, ${style} aesthetic, surah ${data.namaLatin}, museum quality lighting, 8k --ar 16:9`
+              };
+
+              out.innerHTML = `
+                  <div class="quran-card">
+                      <div style="font-size:0.7rem; color:var(--accent); font-weight:800; margin-bottom:10px;">SURAH ${data.namaLatin.toUpperCase()}</div>
+                      ${contentHtml}
+                      <pre>${JSON.stringify(promptObj, null, 2)}</pre>
+                  </div>
+              `;
+
+          } catch (e) {
+              out.innerHTML = "Error loading data.";
+          }
+      }
+
+      window.onload = initApp;
+      //]]>
+    </script>
+  </body>
+</html>
