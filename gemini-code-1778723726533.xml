@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultmessages='false' b:layouts='false' b:responsive='true' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/namespaces/blogger/template' xmlns:data='http://www.google.com/namespaces/blogger/data' xmlns:expr='http://www.google.com/namespaces/blogger/expr'>
+  <head>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <title>STICKER FORGE | MOTORCYCLE ENGINE 2026</title>
+    <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&amp;display=swap' rel='stylesheet'/>
+    <b:skin><![CDATA[
+      :root {
+          --bg: #050505;
+          --card: #0e0e0e;
+          --race: #ff4d00; /* Racing Orange */
+          --carbon: #222222;
+          --text: #ffffff;
+          --border: rgba(255, 77, 0, 0.15);
+      }
+
+      body { 
+          background: var(--bg); 
+          color: var(--text); 
+          font-family: 'Plus Jakarta Sans', sans-serif; 
+          margin: 0; 
+          padding: 20px; 
+          min-height: 100vh;
+      }
+
+      .container { max-width: 1300px; margin: 0 auto; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+      
+      /* Zen Focus Mode */
+      .zen-active .config-panel { opacity: 0; pointer-events: none; transform: translateX(-20px); display: none; }
+      .zen-active .main-grid { grid-template-columns: 1fr; }
+      .zen-active .container { max-width: 850px; }
+
+      header { 
+          display: flex; 
+          justify-content: space-between; 
+          align-items: center; 
+          border-bottom: 2px solid var(--carbon); 
+          padding-bottom: 25px; 
+          margin-bottom: 40px; 
+      }
+      .brand-group h1 { margin: 0; font-size: 1.6rem; letter-spacing: -1px; font-weight: 800; text-transform: uppercase; }
+      .brand-group h1 span { color: var(--race); }
+      .brand-group p { margin: 0; font-size: 0.6rem; font-weight: 900; color: #333; letter-spacing: 4px; text-transform: uppercase; }
+
+      .main-grid { display: grid; grid-template-columns: 380px 1fr; gap: 35px; }
+
+      .config-panel { 
+          background: var(--card); 
+          border-radius: 24px; 
+          padding: 35px; 
+          border: 1px solid var(--border); 
+          position: sticky; 
+          top: 20px; 
+          height: fit-content;
+          box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+      }
+
+      .zen-btn { 
+          background: transparent; 
+          color: var(--race); 
+          border: 1px solid var(--race); 
+          padding: 8px 22px; 
+          border-radius: 30px; 
+          font-size: 0.65rem; 
+          font-weight: 900; 
+          cursor: pointer; 
+          transition: 0.3s;
+      }
+      .zen-btn:hover { background: var(--race); color: #000; box-shadow: 0 0 20px rgba(255, 77, 0, 0.4); }
+
+      label { 
+          display: block; 
+          font-size: 0.6rem; 
+          font-weight: 800; 
+          color: #666; 
+          text-transform: uppercase; 
+          letter-spacing: 2px; 
+          margin: 20px 0 8px 0; 
+      }
+
+      input, select { 
+          width: 100%; 
+          background: #000; 
+          border: 1px solid var(--carbon); 
+          color: white; 
+          padding: 15px; 
+          border-radius: 12px; 
+          font-size: 0.85rem; 
+          box-sizing: border-box; 
+          outline: none;
+      }
+      input:focus { border-color: var(--race); }
+
+      .btn-forge { 
+          width: 100%; 
+          background: var(--race); 
+          color: #000; 
+          border: none; 
+          padding: 18px; 
+          border-radius: 12px; 
+          font-weight: 900; 
+          cursor: pointer; 
+          margin-top: 30px; 
+          text-transform: uppercase; 
+          letter-spacing: 1px;
+      }
+
+      .btn-reset {
+          width: 100%;
+          background: transparent;
+          color: #555;
+          border: 1px solid #333;
+          padding: 12px;
+          border-radius: 12px;
+          font-weight: 800;
+          font-size: 0.65rem;
+          cursor: pointer;
+          margin-top: 15px;
+          text-transform: uppercase;
+          transition: 0.3s;
+      }
+      .btn-reset:hover { border-color: #ef4444; color: #ef4444; }
+
+      .output-area { 
+          background: rgba(0,0,0,0.3); 
+          border-radius: 28px; 
+          padding: 40px; 
+          min-height: 800px; 
+          border: 1px solid var(--carbon); 
+      }
+
+      .placeholder-text { 
+          text-align: center; 
+          margin-top: 350px; 
+          color: #1a1a1a; 
+          font-weight: 900; 
+          letter-spacing: 12px; 
+          text-transform: uppercase; 
+          font-size: 1.5rem; 
+      }
+
+      .motor-card { 
+          background: #0a0a0a; 
+          padding: 30px; 
+          border-radius: 24px; 
+          margin-bottom: 30px; 
+          border-left: 4px solid var(--race); 
+          position: relative; 
+          animation: slideUp 0.5s ease-out;
+      }
+
+      @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+      .copy-btn { 
+          position: absolute; 
+          top: 25px; 
+          right: 25px; 
+          background: #000; 
+          color: var(--race); 
+          border: 1px solid var(--race); 
+          padding: 8px 16px; 
+          border-radius: 10px; 
+          font-size: 0.6rem; 
+          font-weight: 900; 
+          cursor: pointer; 
+      }
+
+      pre { font-family: 'Monaco', monospace; font-size: 0.8rem; color: #888; white-space: pre-wrap; margin: 15px 0 0 0; line-height: 1.6; }
+      .tag { color: var(--race); font-size: 0.6rem; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
+
+      footer { margin-top: 100px; padding: 50px; border-top: 1px solid var(--carbon); text-align: center; }
+      footer span { color: #1a1a1a; font-weight: 900; letter-spacing: 6px; font-size: 0.8rem; text-transform: uppercase; }
+    ]]></b:skin>
+  </head>
+  <body>
+    <div class='container' id='mainApp'>
+      <header>
+        <div class='brand-group'>
+          <h1>STICKER <span>FORGE</span></h1>
+          <p>MOTORCYCLE ENGINE 2026</p>
+        </div>
+        <button class='zen-btn' onclick='toggleZen()'>ZEN FOCUS</button>
+      </header>
+
+      <div class='main-grid'>
+        <div class='config-panel'>
+          <label>Motorcycle Model</label>
+          <input id='model' placeholder='e.g. Futurictic Superbike, Scrambler...' type='text'/>
+
+          <label>Visual Perspective</label>
+          <select id='view'>
+            <option value='Side Profile Studio View'>Side Profile</option>
+            <option value='Front 3/4 Dynamic View'>Front 3/4 Perspective</option>
+            <option value='Close-up Engine Detail'>Engine Detail</option>
+            <option value='Top-down Aerodynamic View'>Bird&#39;s Eye</option>
+          </select>
+
+          <label>Style &amp; Finish</label>
+          <select id='style'>
+            <option value='Hyper-Realistic Photographic, 85mm Lens'>Photorealistic</option>
+            <option value='Sleek Concept Art, Digital Paint'>Concept Art</option>
+            <option value='Streetwear Graphic Vector'>Streetwear Vector</option>
+            <option value='Industrial Blueprint Schematic'>Blueprint Style</option>
+          </select>
+
+          <label>Material Universe</label>
+          <select id='material'>
+            <option value='Matte Carbon Fiber &amp; Racing Orange Accent'>Carbon &amp; Orange</option>
+            <option value='Polished Chrome &amp; Deep Midnight Blue'>Chrome &amp; Blue</option>
+            <option value='Raw Brushed Metal &amp; Leather Detail'>Brushed Metal</option>
+            <option value='Neon Cyber-plating &amp; Gloss Black'>Neon Plating</option>
+          </select>
+
+          <button class='btn-forge' onclick='forgeMotor()'>FORGE MOTORCYCLE</button>
+          
+          <button class='btn-reset' onclick='resetSpecs()'>RESET ALL SPECS</button>
+          
+          <div style='text-align:center; margin-top:20px;'>
+            <span onclick='clearCanvas()' style='color:#333; font-size:0.6rem; cursor:pointer; font-weight:900; letter-spacing:1px;'>CLEAR CANVAS</span>
+          </div>
+        </div>
+
+        <div class='output-area' id='output'>
+          <div class='placeholder-text'>STICKER FORGE 2026</div>
+        </div>
+      </div>
+
+      <footer>
+        <span>STICKER FORGE 2026</span>
+      </footer>
+    </div>
+
+    <script type='text/javascript'>
+      //<![CDATA[
+      function toggleZen() {
+        document.body.classList.toggle('zen-active');
+      }
+
+      function resetSpecs() {
+        if(confirm("Hapus semua spesifikasi input?")) {
+          document.getElementById('model').value = "";
+          document.getElementById('view').selectedIndex = 0;
+          document.getElementById('style').selectedIndex = 0;
+          document.getElementById('material').selectedIndex = 0;
+        }
+      }
+
+      function clearCanvas() {
+        document.getElementById('output').innerHTML = '<div class="placeholder-text">STICKER FORGE 2026</div>';
+      }
+
+      function forgeMotor() {
+        const mdl = document.getElementById('model').value || "Prototype Superbike";
+        const view = document.getElementById('view').value;
+        const sty = document.getElementById('style').value;
+        const mat = document.getElementById('material').value;
+        const out = document.getElementById('output');
+
+        out.innerHTML = "";
+
+        const prompts = [
+          {
+            tag: "AUTOMOTIVE MASTER PROMPT",
+            text: `High-performance ${mdl}. \nPerspective: ${view}.\nStyle: ${sty}.\nMaterial: ${mat}.\n\nTechnical: Professional studio lighting, ARRI Alexa capture aesthetics, 8k resolution, photorealistic textures, sharp focus, cinematic color grading, automotive catalog quality. --v 6.1 --stylize 300`
+          },
+          {
+            tag: "COMMERCIAL STICKER DESIGN",
+            text: `A professional die-cut sticker design of ${mdl}. Style: ${sty}. Highlighted in ${mat}. Clean vector edges, white border, high-contrast, commercial apparel aesthetic, flat background.`
+          }
+        ];
+
+        prompts.forEach(p => {
+          let card = document.createElement('div');
+          card.className = 'motor-card';
+          
+          let tag = document.createElement('div');
+          tag.className = 'tag';
+          tag.innerText = p.tag;
+
+          let btn = document.createElement('button');
+          btn.className = 'copy-btn';
+          btn.innerText = 'COPY';
+          btn.onclick = () => {
+            navigator.clipboard.writeText(p.text);
+            btn.innerText = 'DONE';
+            setTimeout(() => { btn.innerText = 'COPY'; }, 1500);
+          };
+
+          let pre = document.createElement('pre');
+          pre.innerText = p.text;
+
+          card.appendChild(tag);
+          card.appendChild(btn);
+          card.appendChild(pre);
+          out.appendChild(card);
+        });
+      }
+      //]]>
+    </script>
+  </body>
+</html>
