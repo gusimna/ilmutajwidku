@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultmessages='false' b:layouts='false' b:responsive='true' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/namespaces/blogger/template' xmlns:data='http://www.google.com/namespaces/blogger/data' xmlns:expr='http://www.google.com/namespaces/blogger/expr'>
+  <head>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <title>STICKER FORGE | BACTERIA ENGINE 2026</title>
+    <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&amp;display=swap' rel='stylesheet'/>
+    <b:skin><![CDATA[
+      :root {
+          --bg: #040705;
+          --card: rgba(10, 15, 12, 0.95);
+          --bio-green: #22c55e;
+          --bio-blue: #3b82f6;
+          --text: #f0fdf4;
+          --border: rgba(34, 197, 94, 0.2);
+      }
+
+      body { 
+          background: var(--bg); 
+          background-image: radial-gradient(circle at 50% 50%, #061a12 0%, #040705 100%);
+          color: var(--text); 
+          font-family: 'Plus Jakarta Sans', sans-serif; 
+          margin: 0; 
+          padding: 20px; 
+          min-height: 100vh;
+          transition: 0.5s ease;
+      }
+
+      .container { max-width: 1300px; margin: 0 auto; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+      
+      /* Zen Focus Mode */
+      .zen-active .config-panel { opacity: 0; pointer-events: none; transform: scale(0.95); display: none; }
+      .zen-active .main-grid { grid-template-columns: 1fr; }
+      .zen-active .container { max-width: 850px; }
+
+      header { 
+          display: flex; 
+          justify-content: space-between; 
+          align-items: center; 
+          border-bottom: 1px solid var(--border); 
+          padding-bottom: 25px; 
+          margin-bottom: 40px; 
+      }
+      .brand-box h1 { margin: 0; font-size: 1.6rem; letter-spacing: -1px; font-weight: 800; text-transform: uppercase; }
+      .brand-box h1 span { color: var(--bio-green); }
+      .brand-box p { margin: 0; font-size: 0.6rem; font-weight: 900; color: #166534; letter-spacing: 4px; text-transform: uppercase; }
+
+      .main-grid { display: grid; grid-template-columns: 380px 1fr; gap: 35px; }
+
+      .config-panel { 
+          background: var(--card); 
+          backdrop-filter: blur(10px);
+          border-radius: 28px; 
+          padding: 35px; 
+          border: 1px solid var(--border); 
+          position: sticky; 
+          top: 20px; 
+          height: fit-content;
+          box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      }
+
+      .zen-btn { 
+          background: transparent; 
+          color: var(--bio-green); 
+          border: 1px solid var(--bio-green); 
+          padding: 8px 22px; 
+          border-radius: 30px; 
+          font-size: 0.65rem; 
+          font-weight: 900; 
+          cursor: pointer; 
+          transition: 0.3s;
+      }
+      .zen-btn:hover { background: var(--bio-green); color: #000; box-shadow: 0 0 15px rgba(34, 197, 94, 0.4); }
+
+      label { 
+          display: block; 
+          font-size: 0.6rem; 
+          font-weight: 800; 
+          color: #4ade80; 
+          text-transform: uppercase; 
+          letter-spacing: 2px; 
+          margin: 20px 0 8px 0; 
+      }
+
+      input, select { 
+          width: 100%; 
+          background: rgba(0,0,0,0.5); 
+          border: 1px solid #14532d; 
+          color: white; 
+          padding: 15px; 
+          border-radius: 12px; 
+          font-size: 0.85rem; 
+          box-sizing: border-box; 
+          outline: none;
+      }
+      input:focus { border-color: var(--bio-green); }
+
+      .btn-forge { 
+          width: 100%; 
+          background: var(--bio-green); 
+          color: #000; 
+          border: none; 
+          padding: 18px; 
+          border-radius: 14px; 
+          font-weight: 900; 
+          cursor: pointer; 
+          margin-top: 30px; 
+          text-transform: uppercase; 
+          letter-spacing: 1px;
+      }
+
+      .btn-reset-all {
+          width: 100%;
+          background: transparent;
+          color: #ef4444;
+          border: 1px solid #ef4444;
+          padding: 12px;
+          border-radius: 12px;
+          font-weight: 800;
+          font-size: 0.65rem;
+          cursor: pointer;
+          margin-top: 15px;
+          text-transform: uppercase;
+          transition: 0.3s;
+      }
+      .btn-reset-all:hover { background: #ef4444; color: white; }
+
+      .output-area { 
+          background: rgba(0,0,0,0.2); 
+          border-radius: 28px; 
+          padding: 40px; 
+          min-height: 800px; 
+          border: 1px solid var(--border); 
+      }
+
+      .empty-state { 
+          text-align: center; 
+          margin-top: 350px; 
+          color: #064e3b; 
+          font-weight: 900; 
+          letter-spacing: 12px; 
+          text-transform: uppercase; 
+          font-size: 1.5rem; 
+      }
+
+      .bio-card { 
+          background: #0a0f0d; 
+          padding: 30px; 
+          border-radius: 24px; 
+          margin-bottom: 30px; 
+          border-right: 4px solid var(--bio-green); 
+          position: relative; 
+          animation: slideUp 0.5s ease-out;
+      }
+
+      @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+      .copy-trigger { 
+          position: absolute; 
+          top: 25px; 
+          right: 25px; 
+          background: #000; 
+          color: var(--bio-green); 
+          border: 1px solid var(--bio-green); 
+          padding: 8px 16px; 
+          border-radius: 10px; 
+          font-size: 0.6rem; 
+          font-weight: 900; 
+          cursor: pointer; 
+      }
+
+      pre { font-family: 'Monaco', monospace; font-size: 0.8rem; color: #a7f3d0; white-space: pre-wrap; margin: 15px 0 0 0; line-height: 1.6; }
+      .tag { color: var(--bio-blue); font-size: 0.6rem; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
+
+      footer { margin-top: 100px; padding: 50px; border-top: 1px solid #064e3b; text-align: center; }
+      footer span { color: #064e3b; font-weight: 900; letter-spacing: 6px; font-size: 0.8rem; text-transform: uppercase; }
+    ]]></b:skin>
+  </head>
+  <body>
+    <div class='container' id='mainApp'>
+      <header>
+        <div class='brand-box'>
+          <h1>STICKER <span>FORGE</span></h1>
+          <p>MICRO-BIO ENGINE 2026</p>
+        </div>
+        <button class='zen-btn' onclick='toggleZen()'>ZEN FOCUS</button>
+      </header>
+
+      <div class='main-grid'>
+        <div class='config-panel'>
+          <label>Bacteria Type</label>
+          <input id='subject' placeholder='e.g. Bioluminescent Bacilli, Neon Coccus...' type='text'/>
+
+          <label>Microscopic View</label>
+          <select id='view'>
+            <option value='Scanning Electron Microscope (SEM) Texture'>SEM Photography</option>
+            <option value='Petri Dish Colony Composition'>Petri Dish Colony</option>
+            <option value='Macro Fluid Dynamics, Micro-world'>Macro Fluid View</option>
+            <option value='Abstract Molecular Structure'>Molecular Abstract</option>
+          </select>
+
+          <label>Bio-Luminescence Style</label>
+          <select id='style'>
+            <option value='Vibrant Neon Glow, Translucent Membranes'>Neon Translucent</option>
+            <option value='Organic Slime &amp; Fibrous Textures'>Organic Slime</option>
+            <option value='Iridescent Metallic Shells'>Iridescent Metal</option>
+            <option value='Crystalized Viral Structures'>Crystal Viral</option>
+          </select>
+
+          <label>Color Palette</label>
+          <select id='colors'>
+            <option value='Toxic Green, Cyan, and Deep Emerald'>Toxic Emerald</option>
+            <option value='Electric Purple and Bioluminescent Blue'>Electric Nebula</option>
+            <option value='Hot Amber and Volcanic Red'>Volcanic Heat</option>
+            <option value='High-Contrast Monochrome Silver'>Monochrome Silver</option>
+          </select>
+
+          <button class='btn-forge' onclick='forgeBio()'>FORGE BACTERIA</button>
+          
+          <button class='btn-reset-all' onclick='resetAllParams()'>RESET ALL SPECS</button>
+          
+          <div style='text-align:center; margin-top:20px;'>
+            <span onclick='clearCanvas()' style='color:#166534; font-size:0.6rem; cursor:pointer; font-weight:900; letter-spacing:1px;'>CLEAR OUTPUT CANVAS</span>
+          </div>
+        </div>
+
+        <div class='output-area' id='output'>
+          <div class='empty-state'>STICKER FORGE 2026</div>
+        </div>
+      </div>
+
+      <footer>
+        <span>STICKER FORGE 2026</span>
+      </footer>
+    </div>
+
+    <script type='text/javascript'>
+      //<![CDATA[
+      function toggleZen() {
+        document.body.classList.toggle('zen-active');
+      }
+
+      function resetAllParams() {
+        if(confirm("Hapus semua parameter input?")) {
+          document.getElementById('subject').value = "";
+          document.getElementById('view').selectedIndex = 0;
+          document.getElementById('style').selectedIndex = 0;
+          document.getElementById('colors').selectedIndex = 0;
+        }
+      }
+
+      function clearCanvas() {
+        document.getElementById('output').innerHTML = '<div class="empty-state">STICKER FORGE 2026</div>';
+      }
+
+      function forgeBio() {
+        const sub = document.getElementById('subject').value || "Bioluminescent Organism";
+        const view = document.getElementById('view').value;
+        const sty = document.getElementById('style').value;
+        const col = document.getElementById('colors').value;
+        const out = document.getElementById('output');
+
+        out.innerHTML = "";
+
+        const variants = [
+          {
+            tag: "MICROSCOPIC MASTER PROMPT",
+            content: `Masterpiece hyper-detailed 3D render of ${sub}. \nView: ${view}.\nAesthetic: ${sty}.\nPalette: ${col}.\n\nTechnical: Subsurface scattering, liquid dynamics, volumetric lighting, 8k resolution, cinematic biology photography, sharp macro focus, vibrant glowing details. --v 6.1 --stylize 300`
+          },
+          {
+            tag: "BIO-GRAPHIC DESIGN CONCEPT",
+            content: `A clean graphic design of a ${sub} sticker. Style: ${sty}. View: ${view}. Color Theme: ${col}. Vector-like precision, white border, high-contrast, professional scientific illustration aesthetic, flat background.`
+          }
+        ];
+
+        variants.forEach(v => {
+          let card = document.createElement('div');
+          card.className = 'bio-card';
+          
+          let tag = document.createElement('div');
+          tag.className = 'tag';
+          tag.innerText = v.tag;
+
+          let btn = document.createElement('button');
+          btn.className = 'copy-trigger';
+          btn.innerText = 'COPY';
+          btn.onclick = () => {
+            navigator.clipboard.writeText(v.content);
+            btn.innerText = 'DONE';
+            setTimeout(() => { btn.innerText = 'COPY'; }, 1500);
+          };
+
+          let pre = document.createElement('pre');
+          pre.innerText = v.content;
+
+          card.appendChild(tag);
+          card.appendChild(btn);
+          card.appendChild(pre);
+          out.appendChild(card);
+        });
+      }
+      //]]>
+    </script>
+  </body>
+</html>
