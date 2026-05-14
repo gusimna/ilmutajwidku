@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultmessages='false' b:layouts='false' b:responsive='true' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/namespaces/blogger/template' xmlns:data='http://www.google.com/namespaces/blogger/data' xmlns:expr='http://www.google.com/namespaces/blogger/expr'>
+  <head>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'/>
+    <title>QURANVIZ | NARROW ENGINE</title>
+    <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&amp;family=Amiri:wght@400;700&amp;display=swap' rel='stylesheet'/>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css' rel='stylesheet'/>
+    
+    <b:skin><![CDATA[
+      :root {
+          --bg: #05070a;
+          --card: #0f172a;
+          --accent: #10b981;
+          --gold: #eab308;
+          --text: #f8fafc;
+          --border: rgba(16, 185, 129, 0.1);
+      }
+
+      * { box-sizing: border-box; } /* Mencegah padding menambah lebar elemen */
+
+      body { 
+          background: var(--bg); 
+          color: var(--text); 
+          font-family: 'Plus Jakarta Sans', sans-serif; 
+          margin: 0; padding: 15px;
+          min-height: 100vh;
+          overflow-x: hidden; /* Hard limit untuk tepi layar */
+      }
+
+      .container { 
+          width: 100%;
+          max-width: 1100px; 
+          margin: 0 auto; 
+          transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+      }
+      
+      header { 
+          display: flex; justify-content: space-between; align-items: center;
+          padding-bottom: 20px; border-bottom: 1px solid var(--border); margin-bottom: 25px;
+      }
+
+      .brand h1 { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.5px; margin: 0; }
+      .brand h1 span { color: var(--accent); }
+
+      /* RESPONSIVE GRID SYSTEM */
+      .main-grid { 
+          display: flex; 
+          flex-wrap: wrap; /* Memungkinkan panel turun ke bawah jika sempit */
+          gap: 25px; 
+      }
+
+      .config-panel { 
+          flex: 1 1 320px; /* Lebar fleksibel, minimal 320px */
+          max-width: 100%;
+          background: var(--card); border-radius: 20px; padding: 25px;
+          border: 1px solid var(--border); height: fit-content;
+      }
+
+      .output-area { 
+          flex: 2 1 400px; /* Mengambil ruang sisa */
+          max-width: 100%; 
+          min-width: 0; /* Penting untuk mencegah overflow pada flex item */
+      }
+
+      /* ZEN MODE OVERRIDE */
+      .zen-active .config-panel { display: none; }
+      .zen-active .container { max-width: 750px; }
+
+      label { 
+          display: block; font-size: 0.6rem; font-weight: 800; color: #64748b;
+          text-transform: uppercase; letter-spacing: 1.5px; margin: 15px 0 6px 0;
+      }
+
+      select {
+          width: 100%; background: #020617; border: 1px solid #1e293b;
+          color: white; padding: 12px; border-radius: 10px; font-size: 0.85rem;
+          cursor: pointer;
+      }
+
+      .btn-primary {
+          width: 100%; background: var(--accent); color: #020617;
+          border: none; padding: 15px; border-radius: 10px; font-weight: 800;
+          cursor: pointer; margin-top: 20px; text-transform: uppercase; font-size: 0.8rem;
+      }
+
+      .btn-zen {
+          background: transparent; border: 1px solid var(--accent);
+          color: var(--accent); padding: 6px 14px; border-radius: 20px;
+          font-size: 0.65rem; font-weight: 800; cursor: pointer;
+      }
+
+      .quran-card {
+          background: #020617; border-radius: 24px; padding: 25px;
+          border: 1px solid var(--border); animation: fadeIn 0.4s ease;
+          overflow: hidden;
+      }
+
+      .arabic-text {
+          font-family: 'Amiri', serif; font-size: 1.8rem; text-align: right;
+          direction: rtl; line-height: 1.8; color: var(--gold); margin-bottom: 15px;
+          word-wrap: break-word; /* Mencegah teks Arab panjang keluar layar */
+      }
+
+      .translation { font-size: 0.95rem; line-height: 1.5; color: #94a3b8; }
+
+      /* PROMPT BOX & SAFE WRAPPING */
+      .prompt-wrapper { position: relative; margin-top: 20px; width: 100%; }
+      
+      pre {
+          background: #000; color: #10b981; padding: 20px; border-radius: 12px;
+          font-size: 0.75rem; border: 1px solid #1e293b;
+          font-family: 'Courier New', monospace;
+          white-space: pre-wrap;       /* Wrap teks JSON agar tidak meluber ke samping */
+          word-break: break-all;       /* Memotong baris jika perlu */
+          overflow-x: hidden;
+      }
+
+      .copy-btn {
+          position: absolute; top: 10px; right: 10px;
+          background: var(--accent); color: #000; border: none;
+          padding: 5px 10px; border-radius: 6px; font-size: 0.65rem;
+          font-weight: 800; cursor: pointer; z-index: 10;
+      }
+
+      @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+      /* Mobile Optimizations */
+      @media (max-width: 600px) {
+          body { padding: 10px; }
+          .quran-card { padding: 20px; }
+          .arabic-text { font-size: 1.5rem; }
+      }
+    ]]></b:skin>
+  </head>
+
+  <body>
+    <div class='container' id='appBody'>
+      <header>
+        <div class='brand'>
+          <h1>QURAN<span>VIZ</span> 2.0</h1>
+        </div>
+        <button class='btn-zen' onclick='toggleZen()'>ZEN FOCUS</button>
+      </header>
+
+      <div class='main-grid'>
+        <div class='config-panel'>
+          <label>Surah</label>
+          <select id='surahSelect' onchange='onSurahChange()'>
+            <option value=''>Memuat...</option>
+          </select>
+
+          <label>Ayat</label>
+          <select id='ayatSelect'>
+            <option value='all'>Semua Ayat</option>
+          </select>
+
+          <label>Gaya Visual</label>
+          <select id='styleSelect'>
+            <option value='Emerald Gold'>Emerald Gold</option>
+            <option value='Midnight Minimal'>Midnight Minimal</option>
+            <option value='Dark Velvet'>Dark Velvet</option>
+          </select>
+
+          <button class='btn-primary' onclick='generateViz()'>FORGE</button>
+          <button onclick='resetAll()' style='background:transparent; border:none; color:#475569; font-size:0.6rem; font-weight:800; margin-top:15px; cursor:pointer; width:100%;'>RESET ALL</button>
+        </div>
+
+        <div class='output-area' id='outputContainer'>
+          <div style='text-align:center; padding-top:100px; color:#1e293b; font-weight:800; letter-spacing:5px; font-size:0.8rem;'>
+            STANDBY FOR ENGINE
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type='text/javascript'>
+      //<![CDATA[
+      const quranList = [
+          {id: 1, name: "Al-Fatihah", total: 7},
+          {id: 18, name: "Al-Kahf", total: 110},
+          {id: 36, name: "Ya-Sin", total: 83},
+          {id: 67, name: "Al-Mulk", total: 30}
+      ];
+
+      function initApp() {
+          const select = document.getElementById('surahSelect');
+          select.innerHTML = '<option value="">-- PILIH --</option>';
+          quranList.forEach(s => {
+              let opt = document.createElement('option');
+              opt.value = s.id;
+              opt.textContent = `${s.id}. ${s.name}`;
+              select.appendChild(opt);
+          });
+      }
+
+      function onSurahChange() {
+          const id = document.getElementById('surahSelect').value;
+          const ayatSelect = document.getElementById('ayatSelect');
+          const surah = quranList.find(s => s.id == id);
+          ayatSelect.innerHTML = '<option value="all">Semua</option>';
+          if(surah) {
+              for(let i=1; i<=surah.total; i++) {
+                  let opt = document.createElement('option');
+                  opt.value = i;
+                  opt.textContent = `Ayat ${i}`;
+                  ayatSelect.appendChild(opt);
+              }
+          }
+      }
+
+      function toggleZen() {
+          document.getElementById('appBody').classList.toggle('zen-active');
+      }
+
+      function resetAll() {
+          document.getElementById('surahSelect').selectedIndex = 0;
+          document.getElementById('ayatSelect').innerHTML = '<option value="all">Semua</option>';
+          document.getElementById('outputContainer').innerHTML = '<div style="text-align:center; padding-top:100px; color:#1e293b; font-weight:800; letter-spacing:5px; font-size:0.8rem;">STANDBY</div>';
+      }
+
+      async function copyPrompt(btn) {
+          const pre = btn.nextElementSibling;
+          try {
+              await navigator.clipboard.writeText(pre.textContent);
+              const original = btn.innerHTML;
+              btn.innerHTML = 'COPIED!';
+              setTimeout(() => btn.innerHTML = original, 1500);
+          } catch (err) { console.error(err); }
+      }
+
+      async function generateViz() {
+          const sId = document.getElementById('surahSelect').value;
+          if(!sId) return;
+
+          const out = document.getElementById('outputContainer');
+          out.innerHTML = '<div style="text-align:center; padding:30px; font-size:0.7rem;">PROCESSING...</div>';
+
+          try {
+              const res = await fetch(`https://equran.id/api/v2/surat/${sId}`);
+              const json = await res.json();
+              const data = json.data;
+              const aId = document.getElementById('ayatSelect').value;
+              const style = document.getElementById('styleSelect').value;
+
+              let content = '';
+              let a = (aId === 'all') ? data.ayat : data.ayat.find(i => i.nomorAyat == aId);
+              content = `<div class="arabic-text">${a.teksArab}</div><div class="translation">${a.nomorAyat}. ${a.teksIndonesia}</div>`;
+
+              const promptObj = {
+                  creator: "@holy",
+                  spec: { surah: data.namaLatin, style: style },
+                  prompt: `Islamic Infographic, ${style} aesthetic, ${data.namaLatin}, 8k --ar 9:16`
+              };
+
+              out.innerHTML = `
+                  <div class="quran-card">
+                      ${content}
+                      <div class="prompt-wrapper">
+                          <button class="copy-btn" onclick="copyPrompt(this)">COPY</button>
+                          <pre>${JSON.stringify(promptObj, null, 2)}</pre>
+                      </div>
+                  </div>
+              `;
+          } catch (e) { out.innerHTML = "Engine Error."; }
+      }
+
+      window.onload = initApp;
+      //]]>
+    </script>
+  </body>
+</html>
