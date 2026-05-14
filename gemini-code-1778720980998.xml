@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultmessages='false' b:layouts='false' b:responsive='true' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/namespaces/blogger/template' xmlns:data='http://www.google.com/namespaces/blogger/data' xmlns:expr='http://www.google.com/namespaces/blogger/expr'>
+  <head>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <title>STICKER FORGE | T-SHIRT ENGINE 2026</title>
+    <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&amp;display=swap' rel='stylesheet'/>
+    <b:skin><![CDATA[
+      :root {
+          --bg: #0a0a0a;
+          --card: #111111;
+          --volt: #d4ff00;
+          --graphite: #2d2d2d;
+          --text: #ffffff;
+          --border: #1f1f1f;
+      }
+
+      body { 
+          background: var(--bg); 
+          color: var(--text); 
+          font-family: 'Plus Jakarta Sans', sans-serif; 
+          margin: 0; 
+          padding: 20px; 
+          transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
+      }
+
+      .container { max-width: 1200px; margin: 0 auto; transition: 0.5s; }
+      
+      /* Zen Focus Mode */
+      .zen-active .config-panel { opacity: 0; pointer-events: none; display: none; }
+      .zen-active .main-grid { grid-template-columns: 1fr; }
+      .zen-active .container { max-width: 850px; }
+
+      header { 
+          display: flex; 
+          justify-content: space-between; 
+          align-items: flex-end; 
+          border-bottom: 2px solid var(--graphite); 
+          padding-bottom: 25px; 
+          margin-bottom: 40px; 
+      }
+      .brand h1 { margin: 0; font-size: 1.6rem; letter-spacing: -1px; font-weight: 800; }
+      .brand h1 span { color: var(--volt); }
+      .brand p { margin: 0; font-size: 0.65rem; font-weight: 900; color: #444; letter-spacing: 3px; text-transform: uppercase; }
+
+      .main-grid { display: grid; grid-template-columns: 380px 1fr; gap: 35px; }
+
+      .config-panel { 
+          background: var(--card); 
+          border-radius: 24px; 
+          padding: 35px; 
+          border: 1px solid var(--border); 
+          position: sticky; 
+          top: 20px; 
+          height: fit-content;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      }
+
+      .zen-btn { 
+          background: transparent; 
+          color: var(--volt); 
+          border: 1px solid var(--volt); 
+          padding: 8px 22px; 
+          border-radius: 30px; 
+          font-size: 0.65rem; 
+          font-weight: 900; 
+          cursor: pointer; 
+          transition: 0.3s;
+      }
+      .zen-btn:hover { background: var(--volt); color: #000; }
+
+      label { 
+          display: block; 
+          font-size: 0.6rem; 
+          font-weight: 800; 
+          color: #888; 
+          text-transform: uppercase; 
+          letter-spacing: 2px; 
+          margin: 20px 0 8px 0; 
+      }
+
+      input, select { 
+          width: 100%; 
+          background: #000; 
+          border: 1px solid var(--border); 
+          color: white; 
+          padding: 15px; 
+          border-radius: 12px; 
+          font-size: 0.85rem; 
+          box-sizing: border-box; 
+          outline: none;
+      }
+
+      .btn-primary { 
+          width: 100%; 
+          background: var(--volt); 
+          color: #000; 
+          border: none; 
+          padding: 18px; 
+          border-radius: 12px; 
+          font-weight: 900; 
+          cursor: pointer; 
+          margin-top: 30px; 
+          text-transform: uppercase; 
+          letter-spacing: 1px;
+      }
+
+      .output-area { 
+          background: #050505; 
+          border-radius: 24px; 
+          padding: 35px; 
+          min-height: 750px; 
+          border: 1px solid var(--border); 
+      }
+
+      .result-card { 
+          background: #0f0f0f; 
+          padding: 30px; 
+          border-radius: 20px; 
+          margin-bottom: 30px; 
+          border-left: 4px solid var(--volt); 
+          position: relative; 
+          animation: slideIn 0.5s ease;
+      }
+
+      @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+      .copy-btn { 
+          position: absolute; 
+          top: 25px; 
+          right: 25px; 
+          background: #000; 
+          color: var(--volt); 
+          border: 1px solid var(--volt); 
+          padding: 8px 16px; 
+          border-radius: 8px; 
+          font-size: 0.6rem; 
+          font-weight: 900; 
+          cursor: pointer; 
+      }
+
+      pre { font-family: 'Monaco', monospace; font-size: 0.8rem; color: #aaa; white-space: pre-wrap; margin: 15px 0 0 0; line-height: 1.6; }
+      .tag { color: var(--volt); font-size: 0.6rem; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase; }
+
+      footer { margin-top: 100px; padding: 40px; border-top: 1px solid var(--graphite); text-align: center; }
+      footer span { color: #222; font-weight: 900; letter-spacing: 5px; font-size: 0.75rem; text-transform: uppercase; }
+    ]]></b:skin>
+  </head>
+  <body>
+    <div class='container' id='mainApp'>
+      <header>
+        <div class='brand'>
+          <h1>STICKER <span>FORGE</span></h1>
+          <p>T-SHIRT APPAREL ENGINE 2026</p>
+        </div>
+        <button class='zen-btn' onclick='toggleZen()'>ZEN FOCUS</button>
+      </header>
+
+      <div class='main-grid'>
+        <div class='config-panel'>
+          <label>Design Theme</label>
+          <input id='theme' placeholder='e.g. Cyberpunk Oni, Retrowave...' type='text'/>
+
+          <label>Graphic Style</label>
+          <select id='style'>
+            <option value='Streetwear Graffiti &amp; Gritty Textures'>Streetwear Graffiti</option>
+            <option value='Minimalist Typography &amp; Vector'>Minimalist Tech</option>
+            <option value='Vintage 90s Bootleg Rap Tee'>90s Bootleg</option>
+            <option value='Clean Fineline Illustration'>Clean Fineline</option>
+          </select>
+
+          <label>Print Placement</label>
+          <select id='placement'>
+            <option value='Large Center Chest Graphic'>Center Chest</option>
+            <option value='Small Minimalist Left Chest Pocket'>Pocket Logo</option>
+            <option value='Oversized Full Back Print'>Full Back</option>
+          </select>
+
+          <label>Color Universe</label>
+          <select id='colors'>
+            <option value='Electric Volt &amp; Charcoal'>Electric Volt</option>
+            <option value='Monochrome Black &amp; White'>Monochrome</option>
+            <option value='High-Contrast Neon &amp; Dark Navy'>Neon Cyber</option>
+          </select>
+
+          <button class='btn-primary' onclick='forgeTee()'>FORGE APPAREL</button>
+        </div>
+
+        <div class='output-area' id='output'>
+          <div style='text-align:center; margin-top:320px; color:#111; font-weight:900; letter-spacing:12px; text-transform:uppercase;'>STICKER FORGE 2026</div>
+        </div>
+      </div>
+
+      <footer>
+        <span>STICKER FORGE 2026</span>
+      </footer>
+    </div>
+
+    <script type='text/javascript'>
+      //<![CDATA[
+      function toggleZen() {
+        document.body.classList.toggle('zen-active');
+      }
+
+      function forgeTee() {
+        const theme = document.getElementById('theme').value || "Urban Spirit";
+        const sty = document.getElementById('style').value;
+        const place = document.getElementById('placement').value;
+        const col = document.getElementById('colors').value;
+        const out = document.getElementById('output');
+
+        out.innerHTML = "";
+
+        // Array 'prompts' ini yang menentukan jumlah prompt yang dibuat (saat ini ada 2)
+        const prompts = [
+          {
+            tag: "APPAREL GRAPHIC PROMPT",
+            text: `Professional t-shirt design graphic for "${theme}". \nStyle: ${sty}.\nPlacement: ${place}.\nColors: ${col}.\n\nTechnical: Vector-ready, screen-print compatible, high contrast, professional streetwear aesthetic, 8k resolution, flat background. --v 6.1`
+          },
+          {
+            tag: "LIFESTYLE MOCKUP CONCEPT",
+            text: `Streetwear mockup of a cotton t-shirt featuring ${theme} design in ${sty} style. Positioned as ${place}. Color palette: ${col}. Soft studio lighting, realistic fabric textures, editorial fashion photography.`
+          }
+        ];
+
+        // Loop forEach yang merender setiap prompt ke layar
+        prompts.forEach(p => {
+          let card = document.createElement('div');
+          card.className = 'result-card';
+          
+          let tag = document.createElement('div');
+          tag.className = 'tag';
+          tag.innerText = p.tag;
+
+          let btn = document.createElement('button');
+          btn.className = 'copy-btn';
+          btn.innerText = 'COPY';
+          btn.onclick = () => {
+            navigator.clipboard.writeText(p.text);
+            btn.innerText = 'DONE';
+            setTimeout(() => { btn.innerText = 'COPY'; }, 1500);
+          };
+
+          let pre = document.createElement('pre');
+          pre.innerText = p.text;
+
+          card.appendChild(tag);
+          card.appendChild(btn);
+          card.appendChild(pre);
+          out.appendChild(card);
+        });
+      }
+      //]]>
+    </script>
+  </body>
+</html>
