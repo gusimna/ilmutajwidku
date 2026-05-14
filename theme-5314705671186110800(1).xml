@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+  <head>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <b:include data='blog' name='all-head-content'/>
+    <title><data:blog.title/></title>
+    <b:skin><![CDATA[
+      /* Tema Kosong Minimalis */
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+      }
+    ]]></b:skin>
+  </head>
+  <body>
+    <b:section id='main' showaddelement='yes'/>
+  </body>
+</html>
