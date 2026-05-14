@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+  <b:include data='blog' name='all-head-content'/>
+  <title><data:blog.pageTitle/></title>
+
+  <b:skin><![CDATA[
+    /* ==================== VARIABEL PREFERENSI ==================== */
+    /* Warna utama menggunakan Emerald Green sesuai tema QuranViz [cite: 314] */
+    <Variable name="primaryColor" description="Warna Utama" type="color" default="#10b981" value="#10b981"/>
+    <Variable name="secondaryColor" description="Warna Emas" type="color" default="#eab308" value="#eab308"/>
+    <Variable name="bodyBg" description="Background" type="color" default="#f8fafc" value="#f8fafc"/>
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif; [cite: 316]
+      background: $(bodyBg);
+      color: #334155; [cite: 317]
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* Layout Container [cite: 318, 319] */
+    .container {
+      max-width: 680px;
+      margin: 40px auto;
+      padding: 40px 35px;
+      background: #ffffff;
+      border-radius: 28px;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+      border: 1px solid #d1fae5;
+    }
+
+    /* Gaya Card Ayat [cite: 331, 332] */
+    .quran-card {
+      background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+      padding: 30px;
+      border-radius: 20px;
+      border-left: 6px solid $(primaryColor);
+    }
+
+    .verse {
+      background: #ffffff;
+      margin-bottom: 25px;
+      padding: 22px;
+      border-radius: 16px;
+      border-left: 5px solid $(primaryColor); [cite: 333]
+    }
+
+    .arabic {
+      font-size: 1.65rem;
+      line-height: 2.5;
+      text-align: right;
+      direction: rtl;
+      color: #1e3a8a; [cite: 334]
+    }
+  ]]></b:skin>
+</head>
+
+<body>
+  <header class='blog-header'>
+    <b:section id='header-section' maxwidgets='1' showaddelement='yes'/>
+  </header>
+
+  <main class='blog-content'>
+    <div class='container'>
+      <b:section id='main-content' name='Main Content' showaddelement='yes'>
+        
+        <b:widget id='HTML_QuranViz' locked='false' title='Quran Infographic' type='HTML'>
+          <b:widget-settings>
+            <b:widget-setting name='content'>
+              <![CDATA[
+                <div class="header">
+                    <h1>📄 Al-Quran Infographic Generator</h1>
+                    <p class="subtitle">Pilih Surah • Ayat • Gaya • Generate Prompt AI</p>
+                </div>
+                <div class="form-group">
+                    <label>PILIH SURAH</label>
+                    <select id="surahSelect" onchange="onSurahChange()"></select>
+                </div>
+                <div class="form-group" id="ayatGroup" style="display: none;">
+                    <label>PILIH AYAT</label>
+                    <select id="ayatSelect" onchange="showSelectedAyat()"></select>
+                </div>
+                <div id="resultArea" class="result-area"></div>
+              ]]>
+            </b:widget-setting>
+          </b:widget-settings>
+        </b:widget>
+
+        <b:widget id='Blog1' locked='false' title='Blog Posts' type='Blog'/>
+
+      </b:section>
+    </div>
+  </main>
+
+  <script type='text/javascript'>
+    // JavaScript untuk memproses API Al-Quran tetap sama seperti di file Anda
+    // Mencakup fungsi onSurahChange(), fetchSurah(), dan generatePrompt()
+  </script>
+
+</body>
+</html>
