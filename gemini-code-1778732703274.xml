@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+  <head>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <b:include data='blog' name='all-head-content'/>
+    
+    <b:if cond='data:blog.pageType == &quot;index&quot;'>
+      <title><data:blog.title/></title>
+    <b:else/>
+      <title><data:blog.pageName/> - <data:blog.title/></title>
+    </b:if>
+
+    <b:skin><![CDATA[
+    /* -----------------------------------------------
+    Premium Blogger Theme - Modern Layout
+    Designer : Gemini AI
+    ----------------------------------------------- 
+    */
+
+    /* Reset & Dasar */
+    body { background: #f4f7f6; color: #333; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; }
+    a { color: #2c3e50; text-decoration: none; transition: 0.3s; }
+    a:hover { color: #3498db; }
+
+    /* Container Utama */
+    .outer-wrapper { max-width: 1100px; margin: 0 auto; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+
+    /* Header Premium */
+    header#header-wrapper { padding: 40px 20px; text-align: center; border-bottom: 1px solid #eee; background: #fff; }
+    header h1 { font-size: 32px; font-weight: 800; letter-spacing: -1px; text-transform: uppercase; }
+
+    /* Navigasi */
+    #nav-menu { background: #2c3e50; color: #fff; display: flex; justify-content: center; position: sticky; top: 0; z-index: 100; }
+    #nav-menu ul { list-style: none; padding: 0; margin: 0; display: flex; }
+    #nav-menu li a { color: #fff; padding: 15px 25px; display: block; font-weight: 600; font-size: 14px; }
+    #nav-menu li a:hover { background: #3498db; }
+
+    /* Main Content */
+    .main-wrapper { display: flex; flex-wrap: wrap; padding: 20px; }
+    #main-content { flex: 2; min-width: 300px; padding: 10px; }
+    #sidebar-wrapper { flex: 1; min-width: 250px; padding: 10px; }
+
+    /* Post Style */
+    .post { margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid #f0f0f0; }
+    .post-title { font-size: 26px; margin: 10px 0; font-weight: 700; }
+    
+    /* Premium Widgets */
+    .abc-container { background: #ecf0f1; padding: 40px 20px; text-align: center; margin-top: 20px; border-radius: 8px; }
+    .abc h2 { color: #2c3e50; font-weight: 700; }
+
+    /* Footer */
+    footer#footer-wrapper { background: #2c3e50; color: #bdc3c7; padding: 40px 20px; text-align: center; font-size: 13px; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .main-wrapper { flex-direction: column; }
+      #nav-menu ul { flex-direction: column; width: 100%; text-align: center; }
+    }
+    ]]></b:skin>
+  </head>
+
+  <body>
+    <div class='outer-wrapper'>
+      
+      <header id='header-wrapper'>
+        <b:section id='header' maxwidgets='1' showaddelement='no'>
+          <b:widget id='Header1' locked='true' title='Header Data' type='Header'>
+            <b:includable id='main'>
+              <h1><data:title/></h1>
+              <p><data:description/></p>
+            </b:includable>
+          </b:widget>
+        </b:section>
+      </header>
+
+      <nav id='nav-menu'>
+        <b:section id='navbar' maxwidgets='1' showaddelement='yes'>
+          <b:widget id='LinkList1' locked='false' title='Top Menu' type='LinkList'>
+            <b:includable id='main'>
+              <ul>
+                <b:loop values='data:links' var='link'>
+                  <li><a expr:href='data:link.href'><data:link.title/></a></li>
+                </b:loop>
+              </ul>
+            </b:includable>
+          </b:widget>
+        </b:section>
+      </nav>
+
+      <div class='main-wrapper'>
+        <div id='main-content'>
+          <b:section id='main' showaddelement='no'>
+            <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog'/>
+          </b:section>
+        </div>
+
+        <aside id='sidebar-wrapper'>
+          <b:section id='sidebar' showaddelement='yes'>
+            <b:widget id='PopularPosts1' locked='false' title='Trending Now' type='PopularPosts'/>
+            <b:widget id='Label1' locked='false' title='Categories' type='Label'/>
+          </b:section>
+        </aside>
+      </div>
+
+      <div class='abc-container'>
+        <section class='abc'>
+          <b:section id='abc' maxwidgets='5' name='Premium Showcase' showaddelement='yes'/>
+        </section>
+      </div>
+
+      <footer id='footer-wrapper'>
+        <b:section id='footer-sec' showaddelement='yes'/>
+        <div class='copyright'>
+          &copy; <span id='year'/><script>document.getElementById(&apos;year&apos;).innerHTML = new Date().getFullYear();</script> 
+          <data:blog.title/>. All Rights Reserved.
+        </div>
+      </footer>
+
+    </div>
+  </body>
+</html>
