@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultmessages='false' b:layouts='false' b:responsive='true' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+  <head>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'/>
+    <title>QURANVIZ | PRECISION ENGINE</title>
+    <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&amp;family=Amiri:wght@400;700&amp;display=swap' rel='stylesheet'/>
+    
+    <b:skin><![CDATA[
+      :root {
+          --bg: #05070a;
+          --card: #0f172a;
+          --accent: #10b981;
+          --gold: #eab308;
+          --text: #f8fafc;
+          --border: rgba(16, 185, 129, 0.1);
+      }
+
+      * { box-sizing: border-box; }
+
+      body { 
+          background: var(--bg); 
+          color: var(--text); 
+          font-family: 'Plus Jakarta Sans', sans-serif; 
+          margin: 0; padding: 15px;
+          min-height: 100vh;
+          overflow-x: hidden;
+      }
+
+      .container { 
+          width: 100%;
+          max-width: 1100px; 
+          margin: 0 auto; 
+          transition: 0.4s ease; 
+      }
+      
+      header { 
+          display: flex; justify-content: space-between; align-items: center;
+          padding-bottom: 20px; border-bottom: 1px solid var(--border); margin-bottom: 25px;
+      }
+
+      .brand h1 { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.5px; margin: 0; }
+      .brand h1 span { color: var(--accent); }
+
+      .main-grid { 
+          display: flex; 
+          flex-wrap: wrap; 
+          gap: 25px; 
+      }
+
+      .config-panel { 
+          flex: 1 1 320px;
+          max-width: 100%;
+          background: var(--card); border-radius: 20px; padding: 25px;
+          border: 1px solid var(--border); height: fit-content;
+      }
+
+      .output-area { 
+          flex: 2 1 400px;
+          max-width: 100%; 
+          min-width: 0;
+      }
+
+      .zen-active .config-panel { display: none; }
+      .zen-active .container { max-width: 750px; }
+
+      label { 
+          display: block; font-size: 0.6rem; font-weight: 800; color: #64748b;
+          text-transform: uppercase; letter-spacing: 1.5px; margin: 15px 0 6px 0;
+      }
+
+      select {
+          width: 100%; background: #020617; border: 1px solid #1e293b;
+          color: white; padding: 12px; border-radius: 10px; font-size: 0.85rem;
+      }
+
+      .btn-primary {
+          width: 100%; background: var(--accent); color: #020617;
+          border: none; padding: 15px; border-radius: 10px; font-weight: 800;
+          cursor: pointer; margin-top: 20px; text-transform: uppercase; font-size: 0.8rem;
+      }
+
+      .btn-zen {
+          background: transparent; border: 1px solid var(--accent);
+          color: var(--accent); padding: 6px 14px; border-radius: 20px;
+          font-size: 0.65rem; font-weight: 800; cursor: pointer;
+      }
+
+      .quran-card {
+          background: #020617; border-radius: 24px; padding: 25px;
+          border: 1px solid var(--border); animation: fadeIn 0.4s ease;
+          overflow: hidden;
+      }
+
+      .arabic-text {
+          font-family: 'Amiri', serif; font-size: 1.8rem; text-align: right;
+          direction: rtl; line-height: 1.8; color: var(--gold); margin-bottom: 15px;
+          word-wrap: break-word;
+      }
+
+      .translation { font-size: 0.95rem; line-height: 1.5; color: #94a3b8; }
+
+      .prompt-wrapper { position: relative; margin-top: 20px; width: 100%; }
+      
+      pre {
+          background: #000; color: #10b981; padding: 20px; border-radius: 12px;
+          font-size: 0.75rem; border: 1px solid #1e293b;
+          font-family: 'Courier New', monospace;
+          white-space: pre-wrap;
+          word-break: break-all;
+          overflow-x: hidden;
+      }
+
+      .copy-btn {
+          position: absolute; top: 10px; right: 10px;
+          background: var(--accent); color: #000; border: none;
+          padding: 5px 10px; border-radius: 6px; font-size: 0.65rem;
+          font-weight: 800; cursor: pointer; z-index: 10;
+      }
+
+      @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    ]]></b:skin>
+  </head>
+
+  <body>
+    <div class='container' id='appBody'>
+      <header>
+        <div class='brand'>
+          <h1>QURAN<span>VIZ</span> 2.0</h1>
+        </div>
+        <button class='btn-zen' onclick='toggleZen()'>ZEN FOCUS</button>
+      </header>
+
+      <div class='main-grid'>
+        <div class='config-panel'>
+          <label>Surah</label>
+          <select id='surahSelect' onchange='onSurahChange()'>
+            <option value=''>Memuat...</option>
+          </select>
+
+          <label>Ayat</label>
+          <select id='ayatSelect'>
+            <option value='all'>Semua Ayat</option>
+          </select>
+
+          <label>Gaya Visual</label>
+          <select id='styleSelect'>
+<option value=''>-- Pilih Kombinasi Khat + Latar --</option>
+    
+    <optgroup label='📖 KHAT NASKH (Paling Direkomendasikan)'>
+        <option value='naskh-illumination'>Naskh + Illumination Klasik Emas</option>
+        <option value='naskh-arabesque'>Naskh + Arabesque Persia</option>
+        <option value='naskh-geometric'>Naskh + Islamic Geometric Pattern</option>
+        <option value='naskh-minimalist'>Naskh + Minimalist Putih Bersih</option>
+        <option value='naskh-ivory'>Naskh + Latar Ivory/Krem Elegan</option>
+        <option value='naskh-dark-gold'>Naskh + Dark Mode Emas</option>
+        <option value='naskh-luxury'>Naskh + Luxury Maroon - Gold</option>
+        <option value='naskh-safari'>Naskh + Safari Green - Gold</option>
+        <option value='naskh-watercolor'>Naskh + Watercolor Subtle</option>
+    </optgroup>
+
+    <optgroup label='🕌 KHAT THULUTH (Elegan - Artistik)'>
+        <option value='thuluth-illumination'>Thuluth + Illumination Ottoman</option>
+        <option value='thuluth-gold-royal'>Thuluth + Royal Gold - Biru Safir</option>
+        <option value='thuluth-arabesque'>Thuluth + Motif Arabesque Mewah</option>
+        <option value='thuluth-geometric'>Thuluth + Geometric Pattern</option>
+        <option value='thuluth-dark'>Thuluth + Dark Elegant</option>
+    </optgroup>
+
+    <optgroup label='🔷 KHAT KUFI (Modern - Kuat)'>
+        <option value='kufi-geometric'>Kufi + Islamic Geometric Pattern</option>
+        <option value='kufi-minimal'>Kufi + Minimalist Modern</option>
+        <option value='kufi-black-gold'>Kufi + Black - Gold Luxury</option>
+        <option value='kufi-illumination'>Kufi + Illumination Modern</option>
+        <option value='kufi-dark'>Kufi + Dark Mode Futuristik</option>
+    </optgroup>
+
+    <optgroup label='🌿 KHAT DIWANI - RUQ&apos;AH'>
+        <option value='diwani-luxury'>Diwani + Luxury Illuminated</option>
+        <option value='diwani-arabesque'>Diwani + Arabesque Klasik</option>
+        <option value='ruqah-minimal'>Ruq&#39;ah + Minimalist Harian</option>
+        <option value='ruqah-ivory'>Ruq&#39;ah + Latar Ivory Natural</option>
+    </optgroup>
+
+    <optgroup label='✨ KOMBINASI PREMIUM - SENI'>
+        <option value='naskh-premium-illumination'>Naskh Premium + Full Illumination Mughal</option>
+        <option value='thuluth-premium'>Thuluth Premium + Gold Foil</option>
+        <option value='kufi-seni'>Kufi + Seni Geometric Kontemporer</option>
+        <option value='mixed-typographic'>Mixed Khat + Typographic Art</option>
+        <option value='illumination-masterpiece'>Illumination Masterpiece (Full Art)</option>
+    </optgroup>
+
+    <optgroup label='📱 UNTUK DIGITAL - MEDIA'>
+        <option value='minimal-dark'>Minimalist Dark + Naskh</option>
+        <option value='minimal-light'>Minimalist Light + Naskh</option>
+        <option value='geometric-dark'>Geometric Pattern + Dark Mode</option>
+        <option value='sosmed-gold'>Media Sosial Style + Gold Accent</option>
+        <option value='app-clean'>Clean App Style + Naskh</option>
+    </optgroup>
+
+    <optgroup label='🌟 Gaya Lainnya'>
+        <option value='naskh-pearl'>Naskh + Pearl White - Soft Gold</option>
+        <option value='thuluth-emerald'>Thuluth + Emerald Green - Gold</option>
+        <option value='kufi-rose-gold'>Kufi + Rose Gold Modern</option>
+        <option value='vintage-persia'>Vintage Persia Style (Naskh + Illuminated)</option>
+        <option value='modern-luxury'>Modern Luxury (Kufi + Dark Marble)</option>
+    </optgroup>
+          </select>
+
+          <button class='btn-primary' onclick='generateViz()'>FORGE</button>
+          <button onclick='resetAll()' style='background:transparent; border:none; color:#475569; font-size:0.6rem; font-weight:800; margin-top:15px; cursor:pointer; width:100%;'>RESET ALL</button>
+        </div>
+
+        <div class='output-area' id='outputContainer'>
+          <div style='text-align:center; padding-top:100px; color:#1e293b; font-weight:800; letter-spacing:5px; font-size:0.8rem;'>
+            STANDBY FOR ENGINE
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type='text/javascript'>
+      //<![CDATA[
+const quranList = [
+  {id: 1, name: "Al-Fatihah", total: 7},
+  {id: 2, name: "Al-Baqarah", total: 286},
+  {id: 3, name: "Ali Imran", total: 200},
+  {id: 4, name: "An-Nisa", total: 176},
+  {id: 5, name: "Al-Ma'idah", total: 120},
+  {id: 6, name: "Al-An'am", total: 165},
+  {id: 7, name: "Al-A'raf", total: 206},
+  {id: 8, name: "Al-Anfal", total: 75},
+  {id: 9, name: "At-Taubah", total: 129},
+  {id: 10, name: "Yunus", total: 109},
+  {id: 11, name: "Hud", total: 123},
+  {id: 12, name: "Yusuf", total: 111},
+  {id: 13, name: "Ar-Ra'd", total: 43},
+  {id: 14, name: "Ibrahim", total: 52},
+  {id: 15, name: "Al-Hijr", total: 99},
+  {id: 16, name: "An-Nahl", total: 128},
+  {id: 17, name: "Al-Isra", total: 111},
+  {id: 18, name: "Al-Kahf", total: 110},
+  {id: 19, name: "Maryam", total: 98},
+  {id: 20, name: "Ta-Ha", total: 135},
+  {id: 21, name: "Al-Anbiya", total: 112},
+  {id: 22, name: "Al-Hajj", total: 78},
+  {id: 23, name: "Al-Mu'minun", total: 118},
+  {id: 24, name: "An-Nur", total: 64},
+  {id: 25, name: "Al-Furqan", total: 77},
+  {id: 26, name: "Asy-Syu'ara", total: 227},
+  {id: 27, name: "An-Naml", total: 93},
+  {id: 28, name: "Al-Qasas", total: 88},
+  {id: 29, name: "Al-Ankabut", total: 69},
+  {id: 30, name: "Ar-Rum", total: 60},
+  {id: 31, name: "Luqman", total: 34},
+  {id: 32, name: "As-Sajdah", total: 30},
+  {id: 33, name: "Al-Ahzab", total: 73},
+  {id: 34, name: "Saba", total: 54},
+  {id: 35, name: "Fatir", total: 45},
+  {id: 36, name: "Ya-Sin", total: 83},
+  {id: 37, name: "As-Saffat", total: 182},
+  {id: 38, name: "Sad", total: 88},
+  {id: 39, name: "Az-Zumar", total: 75},
+  {id: 40, name: "Ghafir", total: 85},
+  {id: 41, name: "Fussilat", total: 54},
+  {id: 42, name: "Asy-Syura", total: 53},
+  {id: 43, name: "Az-Zukhruf", total: 89},
+  {id: 44, name: "Ad-Dukhan", total: 59},
+  {id: 45, name: "Al-Jathiyah", total: 37},
+  {id: 46, name: "Al-Ahqaf", total: 45},
+  {id: 47, name: "Muhammad", total: 38},
+  {id: 48, name: "Al-Fath", total: 29},
+  {id: 49, name: "Al-Hujurat", total: 18},
+  {id: 50, name: "Qaf", total: 45},
+  {id: 51, name: "Az-Zariyat", total: 60},
+  {id: 52, name: "At-Tur", total: 49},
+  {id: 53, name: "An-Najm", total: 62},
+  {id: 54, name: "Al-Qamar", total: 55},
+  {id: 55, name: "Ar-Rahman", total: 78},
+  {id: 56, name: "Al-Waqi'ah", total: 96},
+  {id: 57, name: "Al-Hadid", total: 29},
+  {id: 58, name: "Al-Mujadilah", total: 22},
+  {id: 59, name: "Al-Hasyr", total: 24},
+  {id: 60, name: "Al-Mumtahanah", total: 13},
+  {id: 61, name: "As-Saff", total: 14},
+  {id: 62, name: "Al-Jumu'ah", total: 11},
+  {id: 63, name: "Al-Munafiqun", total: 11},
+  {id: 64, name: "At-Taghabun", total: 18},
+  {id: 65, name: "At-Talaq", total: 12},
+  {id: 66, name: "At-Tahrim", total: 12},
+  {id: 67, name: "Al-Mulk", total: 30},
+  {id: 68, name: "Al-Qalam", total: 52},
+  {id: 69, name: "Al-Haqqah", total: 52},
+  {id: 70, name: "Al-Ma'arij", total: 44},
+  {id: 71, name: "Nuh", total: 28},
+  {id: 72, name: "Al-Jinn", total: 28},
+  {id: 73, name: "Al-Muzzammil", total: 20},
+  {id: 74, name: "Al-Muddaththir", total: 56},
+  {id: 75, name: "Al-Qiyamah", total: 40},
+  {id: 76, name: "Al-Insan", total: 31},
+  {id: 77, name: "Al-Mursalat", total: 50},
+  {id: 78, name: "An-Naba", total: 40},
+  {id: 79, name: "An-Nazi'at", total: 46},
+  {id: 80, name: "Abasa", total: 42},
+  {id: 81, name: "At-Takwir", total: 29},
+  {id: 82, name: "Al-Infitar", total: 19},
+  {id: 83, name: "Al-Mutaffifin", total: 36},
+  {id: 84, name: "Al-Insyiqaq", total: 25},
+  {id: 85, name: "Al-Buruj", total: 22},
+  {id: 86, name: "At-Tariq", total: 17},
+  {id: 87, name: "Al-A'la", total: 19},
+  {id: 88, name: "Al-Ghasyiyah", total: 26},
+  {id: 89, name: "Al-Fajr", total: 30},
+  {id: 90, name: "Al-Balad", total: 20},
+  {id: 91, name: "Asy-Syams", total: 15},
+  {id: 92, name: "Al-Lail", total: 21},
+  {id: 93, name: "Ad-Duha", total: 11},
+  {id: 94, name: "Al-Insyirah", total: 8},
+  {id: 95, name: "At-Tin", total: 8},
+  {id: 96, name: "Al-Alaq", total: 19},
+  {id: 97, name: "Al-Qadr", total: 5},
+  {id: 98, name: "Al-Bayyinah", total: 8},
+  {id: 99, name: "Az-Zalzalah", total: 8},
+  {id: 100, name: "Al-Adiyat", total: 11},
+  {id: 101, name: "Al-Qari'ah", total: 11},
+  {id: 102, name: "At-Takathur", total: 8},
+  {id: 103, name: "Al-Asr", total: 3},
+  {id: 104, name: "Al-Humazah", total: 9},
+  {id: 105, name: "Al-Fil", total: 5},
+  {id: 106, name: "Quraisy", total: 4},
+  {id: 107, name: "Al-Ma'un", total: 7},
+  {id: 108, name: "Al-Kautsar", total: 3},
+  {id: 109, name: "Al-Kafirun", total: 6},
+  {id: 110, name: "An-Nasr", total: 3},
+  {id: 111, name: "Al-Lahab", total: 5},
+  {id: 112, name: "Al-Ikhlas", total: 4},
+  {id: 113, name: "Al-Falaq", total: 5},
+  {id: 114, name: "An-Nas", total: 6}
+];
+      function initApp() {
+          const select = document.getElementById('surahSelect');
+          select.innerHTML = '<option value="">-- PILIH --</option>';
+          quranList.forEach(s => {
+              let opt = document.createElement('option');
+              opt.value = s.id;
+              opt.textContent = `${s.id}. ${s.name}`;
+              select.appendChild(opt);
+          });
+      }
+
+      function onSurahChange() {
+          const id = document.getElementById('surahSelect').value;
+          const ayatSelect = document.getElementById('ayatSelect');
+          const surah = quranList.find(s => s.id == id);
+          ayatSelect.innerHTML = '<option value="all">Semua</option>';
+          if(surah) {
+              for(let i=1; i<=surah.total; i++) {
+                  let opt = document.createElement('option');
+                  opt.value = i;
+                  opt.textContent = `Ayat ${i}`;
+                  ayatSelect.appendChild(opt);
+              }
+          }
+      }
+
+      function toggleZen() {
+          document.getElementById('appBody').classList.toggle('zen-active');
+      }
+
+      function resetAll() {
+          document.getElementById('surahSelect').selectedIndex = 0;
+          document.getElementById('ayatSelect').innerHTML = '<option value="all">Semua</option>';
+          document.getElementById('outputContainer').innerHTML = '<div style="text-align:center; padding-top:100px; color:#1e293b; font-weight:800; letter-spacing:5px; font-size:0.8rem;">STANDBY</div>';
+      }
+
+      async function copyPrompt(btn) {
+          const pre = btn.nextElementSibling;
+          try {
+              await navigator.clipboard.writeText(pre.textContent);
+              const original = btn.innerHTML;
+              btn.innerHTML = 'COPIED!';
+              setTimeout(() => btn.innerHTML = original, 1500);
+          } catch (err) { console.error(err); }
+      }
+
+      async function generateViz() {
+          const sId = document.getElementById('surahSelect').value;
+          if(!sId) return;
+
+          const out = document.getElementById('outputContainer');
+          out.innerHTML = '<div style="text-align:center; padding:30px; font-size:0.7rem;">PROCESSING...</div>';
+
+          try {
+              const res = await fetch(`https://equran.id/api/v2/surat/${sId}`);
+              const json = await res.json();
+              const data = json.data;
+              const aId = document.getElementById('ayatSelect').value;
+              const style = document.getElementById('styleSelect').value;
+
+              let content = '';
+              let selectedAyatText = (aId === 'all') ? "1" : aId;
+              let a = (aId === 'all') ? data.ayat : data.ayat.find(i => i.nomorAyat == aId);
+              
+              content = `<div class="arabic-text">${a.teksArab}</div><div class="translation">${a.nomorAyat}. ${a.teksIndonesia}</div>`;
+
+              const promptObj = {
+                  creator: "@holyquran",
+                  spec: { 
+                      surah: data.namaLatin, 
+                      ayat_number: a.nomorAyat, 
+                      style: style 
+                  },
+                  prompt: `Islamic Infographic, ${style} aesthetic, Surah ${data.namaLatin} Ayat ${a.nomorAyat}, high-end cinematic lighting, premium typography, 8k --ar 9:16`
+              };
+
+              out.innerHTML = `
+                  <div class="quran-card">
+                      ${content}
+                      <div class="prompt-wrapper">
+                          <button class="copy-btn" onclick="copyPrompt(this)">COPY</button>
+                          <pre>${JSON.stringify(promptObj, null, 2)}</pre>
+                      </div>
+                  </div>
+              `;
+          } catch (e) { out.innerHTML = "Engine Error."; }
+      }
+
+      window.onload = initApp;
+      //]]>
+    </script>
+    
+    
+    
+    
+        
+<div class='abc-container'>
+      <section class='abc'>
+        <b:section id='abc' maxwidgets='1' showaddelement='yes'/>
+      </section>
+    </div>
+
+    
+    
+  </body>
+</html>
