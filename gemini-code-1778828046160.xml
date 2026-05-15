@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultmessages='false' b:layouts='false' b:responsive='true' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/namespaces/blogger/template' xmlns:data='http://www.google.com/namespaces/blogger/data' xmlns:expr='http://www.google.com/namespaces/blogger/expr'>
+  <head>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'/>
+    <title>SIGNATURE ARCHITECT PRO v7.1 | @HOLY</title>
+    <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&amp;display=swap' rel='stylesheet'/>
+    
+    <b:skin><![CDATA[
+      :root {
+          --bg: #030406;
+          --card: #0a0d14;
+          --accent: #10b981;
+          --gold: #d4af37;
+          --text: #f3f4f6;
+          --border: rgba(212, 175, 55, 0.15);
+      }
+
+      * { box-sizing: border-box; scroll-behavior: smooth; }
+      body { 
+          background: var(--bg); color: var(--text); 
+          font-family: 'Plus Jakarta Sans', sans-serif; 
+          margin: 0; padding: 15px; min-height: 100vh;
+      }
+
+      .container { width: 100%; max-width: 1200px; margin: 0 auto; transition: 0.5s ease; }
+      .zen-active .side-panel { display: none; }
+      .zen-active .container { max-width: 900px; }
+
+      header { 
+          display: flex; justify-content: space-between; align-items: center;
+          padding-bottom: 20px; border-bottom: 1px solid var(--border); margin-bottom: 30px;
+      }
+      .brand h1 { font-size: 1rem; font-weight: 800; letter-spacing: 2px; margin: 0; color: var(--gold); text-transform: uppercase; }
+
+      .main-grid { display: flex; flex-wrap: wrap; gap: 25px; }
+      .side-panel { flex: 1 1 350px; background: var(--card); border-radius: 24px; padding: 25px; border: 1px solid var(--border); height: fit-content; position: sticky; top: 20px; }
+      .display-area { flex: 2 1 500px; min-width: 0; }
+
+      label { display: block; font-size: 0.65rem; font-weight: 800; color: #4b5563; text-transform: uppercase; letter-spacing: 2px; margin: 15px 0 6px 0; }
+      select, input, textarea { width: 100%; background: #000; border: 1px solid #1f2937; color: white; padding: 12px; border-radius: 12px; font-size: 0.85rem; outline: none; transition: 0.3s; }
+      select:focus, input:focus, textarea:focus { border-color: var(--gold); box-shadow: 0 0 10px rgba(212,175,55,0.1); }
+
+      .btn-forge { width: 100%; background: var(--gold); color: #000; border: none; padding: 18px; border-radius: 14px; font-weight: 800; cursor: pointer; margin-top: 25px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+      .btn-reset { width: 100%; background: transparent; border: 1px solid #ef4444; color: #ef4444; padding: 12px; border-radius: 12px; font-weight: 800; cursor: pointer; margin-top: 10px; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px; }
+      .btn-zen { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 7px 18px; border-radius: 25px; font-size: 0.65rem; font-weight: 800; cursor: pointer; }
+
+      .artifact-list { display: flex; flex-direction: column; gap: 20px; }
+      .artifact-card { background: #000; border-radius: 24px; padding: 20px; border: 1px solid var(--border); animation: slideUp 0.4s ease forwards; }
+      .artifact-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+      .artifact-tag { font-size: 0.6rem; color: var(--gold); font-weight: 800; letter-spacing: 2px; text-transform: uppercase; }
+      
+      .prompt-box { position: relative; }
+      pre { background: #050505; color: var(--accent); padding: 18px; border-radius: 14px; font-size: 0.75rem; border: 1px solid #111827; font-family: 'Courier New', monospace; white-space: pre-wrap; word-break: break-all; margin: 0; }
+      .copy-btn { background: var(--accent); color: #000; border: none; padding: 6px 14px; border-radius: 8px; font-size: 0.6rem; font-weight: 800; cursor: pointer; transition: 0.2s; }
+
+      @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    ]]></b:skin>
+  </head>
+
+  <body>
+    <div class='container' id='mainApp'>
+      <header>
+        <div class='brand'><h1>SIGNATURE<span>ARCHITECT</span> PRO</h1></div>
+        <button class='btn-zen' onclick='toggleZen()'>ZEN MODE</button>
+      </header>
+
+      <div class='main-grid'>
+        <div class='side-panel'>
+          <label>Identity / Brand Name</label>
+          <input id='inputName' placeholder='e.g. Holy' type='text'/>
+
+          <label>Atmospheric Detail (Optional)</label>
+          <textarea id='inputNotes' placeholder='e.g. Sharp edges, golden foil, debossed, ink splatter...' rows='3'></textarea>
+
+          <label>Primary Design Path</label>
+          <select id='inputStyle'>
+            <option value='Minimalist Signature, elegant cursive, thin lines'>1. Elegant Cursive</option>
+            <option value='Luxury Calligraphy, ornate flourishes, high contrast stokes'>2. Luxury Calligraphy</option>
+            <option value='Monoline Script, modern handwriting, consistent weight'>3. Modern Monoline</option>
+            <option value='Hand-drawn Wedding Script, romantic, soft edges'>4. Romantic Wedding</option>
+            <option value='Quick Executive Scribble, professional, authoritative'>5. Executive Scribble</option>
+            <option value='Futuristic Tech Logo, geometric font, sharp angles'>6. Cyber-Tech Font</option>
+            <option value='Grid-based Minimalist Initials, architectural, balanced'>7. Architectural Grid</option>
+            <option value='Digital Glitch Typography, distorted, high-tech'>8. Glitch Tech</option>
+            <option value='Space-age Sans, wide tracking, NASA aesthetic'>9. NASA-Space Style</option>
+            <option value='Binary-inspired Monospaced logo, coder aesthetic'>10. Dev-Coder Style</option>
+            <option value='Matte Metallic Silver, debossed on dark paper'>11. Metallic Silver Deboss</option>
+            <option value='Holographic Foil Stamp, rainbow reflection, 3D effect'>12. Holographic Foil</option>
+            <option value='Golden Wax Seal Emblem, 3D embossed, realistic wax'>13. Golden Wax Seal</option>
+            <option value='Rose Gold Metallic, glowing edges, luxury texture'>14. Rose Gold Luxury</option>
+            <option value='Invisible UV Watermark, glowing under blacklight'>15. UV Glow Watermark</option>
+            <option value='Japanese Sumi-e Ink Brush, zen strokes, splatter'>16. Zen Ink Brush</option>
+            <option value='Graffiti Tag Style, street art, dripping ink'>17. Street Graffiti</option>
+            <option value='Watercolor Typography, bleeding edges, artistic'>18. Artistic Watercolor</option>
+            <option value='Neon Tubing Sign, glowing gas, nocturnal vibe'>19. Neon Light Tube</option>
+            <option value='Vintage Letterpress, ink bleed, rough paper texture'>20. Vintage Letterpress</option>
+            <option value='Swiss International Style, Helvetica-based, clean'>21. Swiss Minimalist</option>
+            <option value='Bauhaus Inspired, primary colors, circle/square geometry'>22. Bauhaus Abstract</option>
+            <option value='Art Deco Monogram, 1920s Gatsby style, gold/black'>23. Art Deco Luxury</option>
+            <option value='Brutalist Typography, heavy weight, raw aesthetic'>24. Brutalist Heavy</option>
+            <option value='Signature with Underline Swoosh, dynamic movement'>25. Dynamic Swoosh</option>
+            <option value='Arabic Calligraphy Style, flowing curves, traditional'>26. Arabic Flow Style</option>
+            <option value='Engraved Stone Logo, chiseled edges, 3D depth'>27. Stone Engraving</option>
+            <option value='Liquid Chrome, molten metal effect, reflective'>28. Liquid Chrome</option>
+            <option value='Organic Branch Lettering, nature-inspired, wooden'>29. Organic Nature</option>
+            <option value='Cyberpunk Neon Kanji-fusion, futuristic'>30. Cyber-Fusion</option>
+          </select>
+
+          <button class='btn-forge' onclick='forgePrompts()'>GENERATE 10 ARTIFACTS</button>
+          <button class='btn-reset' onclick='resetEngine()'>RESET ENGINE</button>
+        </div>
+
+        <div class='display-area' id='outputArea'>
+            <div style='text-align:center; padding-top:100px; color:#111827; font-weight:800; letter-spacing:5px; font-size:0.7rem;'>
+                ENGINE STANDBY
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <script type='text/javascript'>
+      //<![CDATA[
+      function toggleZen() { document.getElementById('mainApp').classList.toggle('zen-active'); }
+
+      function resetEngine() {
+          document.getElementById('inputName').value = '';
+          document.getElementById('inputNotes').value = '';
+          document.getElementById('outputArea').innerHTML = '<div style="text-align:center; padding-top:100px; color:#111827; font-weight:800; letter-spacing:5px; font-size:0.7rem;">ENGINE STANDBY</div>';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      async function copyIndividual(btn) {
+          const text = btn.getAttribute('data-content');
+          try {
+              await navigator.clipboard.writeText(text);
+              const originalText = btn.innerHTML;
+              btn.innerHTML = 'COPIED!';
+              btn.style.background = '#fff';
+              setTimeout(() => { 
+                  btn.innerHTML = originalText; 
+                  btn.style.background = 'var(--accent)';
+              }, 1000);
+          } catch (e) { console.error(e); }
+      }
+
+      function forgePrompts() {
+          const name = document.getElementById('inputName').value || "Holy";
+          const style = document.getElementById('inputStyle').value;
+          const notes = document.getElementById('inputNotes').value || "Professional, clean, sharp focus.";
+          const out = document.getElementById('outputArea');
+          out.innerHTML = '<div class="artifact-list"></div>';
+          const list = out.querySelector('.artifact-list');
+
+          for (let i = 1; i <= 10; i++) {
+              const artifact = {
+                  id: `SIGN-V7-0${i}`,
+                  creator: "@holy",
+                  brand: "@circlemonth",
+                  config: {
+                      text: name,
+                      style: style,
+                      additional_notes: notes
+                  },
+                  master_prompt: `Premium digital asset: Signature logo for "${name}". Style: ${style}. Details: ${notes}. Variation #${i}: Unique stroke balance, vector precision, high contrast, 8k resolution, suitable for watermark, isolated on transparent background --v 6.1`
+              };
+
+              const jsonStr = JSON.stringify(artifact, null, 4);
+              
+              const card = document.createElement('div');
+              card.className = 'artifact-card';
+              card.innerHTML = `
+                  <div class="artifact-header">
+                      <div class="artifact-tag">FORGED ARTIFACT 0${i}</div>
+                      <button class="copy-btn" onclick="copyIndividual(this)" data-content='${jsonStr.replace(/'/g, "&apos;")}'>COPY JSON</button>
+                  </div>
+                  <div class="prompt-box">
+                      <pre>${jsonStr}</pre>
+                  </div>
+              `;
+              list.appendChild(card);
+          }
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      //]]>
+    </script>
+  </body>
+</html>

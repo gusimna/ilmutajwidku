@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultmessages='false' b:layouts='false' b:responsive='true' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/namespaces/blogger/template' xmlns:data='http://www.google.com/namespaces/blogger/data' xmlns:expr='http://www.google.com/namespaces/blogger/expr'>
+  <head>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'/>
+    <title>SIGNATURE ARCHITECT v7.5 | @HOLY</title>
+    <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&amp;display=swap' rel='stylesheet'/>
+    
+    <b:skin><![CDATA[
+      :root {
+          --bg: #030406;
+          --card: #0a0d14;
+          --accent: #10b981;
+          --gold: #d4af37;
+          --text: #f3f4f6;
+          --border: rgba(212, 175, 55, 0.15);
+      }
+
+      * { box-sizing: border-box; scroll-behavior: smooth; }
+      body { background: var(--bg); color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; padding: 15px; min-height: 100vh; }
+
+      .container { width: 100%; max-width: 1200px; margin: 0 auto; transition: 0.4s ease; }
+      .zen-active .side-panel { display: none; }
+      .zen-active .display-area { flex: 1; }
+      .zen-active .container { max-width: 850px; }
+
+      header { 
+          display: flex; justify-content: space-between; align-items: center;
+          padding-bottom: 20px; border-bottom: 1px solid var(--border); margin-bottom: 30px;
+          position: sticky; top: 0; background: var(--bg); z-index: 100;
+      }
+      .brand h1 { font-size: 0.9rem; font-weight: 800; letter-spacing: 2px; margin: 0; color: var(--gold); text-transform: uppercase; }
+
+      .main-grid { display: flex; flex-wrap: wrap; gap: 25px; }
+      .side-panel { flex: 1 1 350px; background: var(--card); border-radius: 24px; padding: 25px; border: 1px solid var(--border); height: fit-content; }
+      .display-area { flex: 2 1 500px; min-width: 0; }
+
+      label { display: block; font-size: 0.65rem; font-weight: 800; color: #4b5563; text-transform: uppercase; letter-spacing: 2px; margin: 15px 0 6px 0; }
+      input, select, textarea { width: 100%; background: #000; border: 1px solid #1f2937; color: white; padding: 12px; border-radius: 12px; font-size: 0.85rem; outline: none; }
+      input:focus, select:focus, textarea:focus { border-color: var(--gold); }
+
+      .btn-forge { width: 100%; background: var(--gold); color: #000; border: none; padding: 18px; border-radius: 14px; font-weight: 800; cursor: pointer; margin-top: 25px; text-transform: uppercase; font-size: 0.8rem; }
+      .btn-reset { width: 100%; background: transparent; border: 1px solid #ef4444; color: #ef4444; padding: 12px; border-radius: 12px; font-weight: 800; cursor: pointer; margin-top: 10px; font-size: 0.7rem; }
+      
+      .btn-zen { background: var(--gold); border: none; color: #000; padding: 8px 18px; border-radius: 25px; font-size: 0.65rem; font-weight: 800; cursor: pointer; }
+      .zen-active .btn-zen { background: #ef4444; color: #fff; }
+
+      .artifact-card { background: #000; border-radius: 24px; padding: 20px; border: 1px solid var(--border); margin-bottom: 20px; animation: slideUp 0.4s ease; }
+      .artifact-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+      .artifact-tag { font-size: 0.6rem; color: var(--gold); font-weight: 800; letter-spacing: 2px; }
+      
+      pre { background: #050505; color: var(--accent); padding: 18px; border-radius: 14px; font-size: 0.75rem; border: 1px solid #111827; font-family: 'Courier New', monospace; white-space: pre-wrap; word-break: break-all; margin: 0; }
+      .copy-btn { background: var(--accent); color: #000; border: none; padding: 6px 14px; border-radius: 8px; font-size: 0.6rem; font-weight: 800; cursor: pointer; }
+
+      @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    ]]></b:skin>
+  </head>
+
+  <body>
+    <div class='container' id='mainApp'>
+      <header>
+        <div class='brand'><h1>SIGNATURE<span>ARCHITECT</span> v7.5</h1></div>
+        <button class='btn-zen' id='zenToggle' onclick='toggleZen()'>ZEN MODE: OFF</button>
+      </header>
+
+      <div class='main-grid'>
+        <div class='side-panel'>
+          <label>1. Identity Name</label>
+          <input id='inputName' placeholder='e.g. Holy' type='text'/>
+
+          <label>2. Signature Emoji / Icon</label>
+          <input id='inputEmoji' placeholder='e.g. ✨' type='text'/>
+
+          <label>3. Underline Decoration Style</label>
+          <select id='inputUnderline'>
+            <option value='Dynamic artistic swoosh underline'>Dynamic Swoosh</option>
+            <option value='Sharp calligraphic underline with ink splatter'>Calligraphy Ink Splatter</option>
+            <option value='Minimalist straight thin bar'>Minimalist Bar</option>
+            <option value='Elegant double-line flourish'>Elegant Double Flourish</option>
+            <option value='Futuristic geometric segmented line'>Futuristic Segmented</option>
+            <option value='Natural organic vine-like underline'>Organic Vine</option>
+            <option value='None'>No Underline</option>
+          </select>
+
+          <label>4. Technical Details</label>
+          <textarea id='inputNotes' placeholder='e.g. Matte silver, 3D embossed...' rows='2'></textarea>
+
+          <label>5. Design Style Path</label>
+          <select id='inputStyle'>
+            <option value='Minimalist Signature, elegant cursive'>1. Elegant Cursive</option>
+            <option value='Luxury Calligraphy, ornate flourishes'>2. Luxury Calligraphy</option>
+            <option value='Futuristic Tech, geometric sharp angles'>3. Cyber-Tech</option>
+            <option value='Holographic Foil Stamp, rainbow reflection'>4. Holographic Foil</option>
+            <option value='Matte Metallic Silver, debossed'>5. Metallic Silver</option>
+            <option value='Japanese Sumi-e Ink Brush, zen strokes'>6. Zen Ink Brush</option>
+            <option value='Arabic Calligraphy Style, flowing curves'>7. Arabic Flow</option>
+            <option value='Liquid Chrome, molten metal reflection'>8. Liquid Chrome</option>
+          </select>
+
+          <button class='btn-forge' onclick='forgePrompts()'>GENERATE 10 PROMPTS</button>
+          <button class='btn-reset' onclick='resetEngine()'>RESET ENGINE</button>
+        </div>
+
+        <div class='display-area' id='outputArea'>
+            <div style='text-align:center; padding-top:100px; color:#111827; font-weight:800; letter-spacing:5px; font-size:0.7rem;'>READY TO FORGE</div>
+        </div>
+      </div>
+    </div>
+
+    <script type='text/javascript'>
+      //<![CDATA[
+      function toggleZen() { 
+          const app = document.getElementById('mainApp');
+          const btn = document.getElementById('zenToggle');
+          app.classList.toggle('zen-active');
+          btn.innerHTML = app.classList.contains('zen-active') ? 'ZEN MODE: ON' : 'ZEN MODE: OFF';
+      }
+
+      function resetEngine() {
+          ['inputName', 'inputEmoji', 'inputNotes'].forEach(id => document.getElementById(id).value = '');
+          document.getElementById('inputUnderline').selectedIndex = 0;
+          document.getElementById('outputArea').innerHTML = '<div style="text-align:center; padding-top:100px; color:#111827; font-weight:800; letter-spacing:5px; font-size:0.7rem;">READY TO FORGE</div>';
+          if(document.getElementById('mainApp').classList.contains('zen-active')) toggleZen();
+      }
+
+      async function copyIndividual(btn) {
+          try {
+              await navigator.clipboard.writeText(btn.getAttribute('data-content'));
+              const old = btn.innerHTML;
+              btn.innerHTML = 'COPIED!';
+              setTimeout(() => { btn.innerHTML = old; }, 1000);
+          } catch (e) {}
+      }
+
+      function forgePrompts() {
+          const name = document.getElementById('inputName').value || "Holy";
+          const emoji = document.getElementById('inputEmoji').value || "";
+          const underline = document.getElementById('inputUnderline').value;
+          const style = document.getElementById('inputStyle').value;
+          const notes = document.getElementById('inputNotes').value || "Professional polish.";
+          const out = document.getElementById('outputArea');
+          out.innerHTML = '';
+
+          for (let i = 1; i <= 10; i++) {
+              const artifact = {
+                  id: `ARCH-V7.5-0${i}`,
+                  brand_meta: { creator: "@holy", handle: "@circlemonth" },
+                  structure: { 
+                      text: name, 
+                      symbol: emoji, 
+                      decoration: underline,
+                      aesthetic: style 
+                  },
+                  master_prompt: `High-end digital signature asset: "${name}" ${emoji}. Decoration: ${underline} placed elegantly beneath the name. Style: ${style}. Details: ${notes}. #${i}: Ensure the ${underline} flows naturally with the cursive strokes of "${name}", creating a balanced professional logo. 8k resolution, vector clarity, isolated --v 6.1`
+              };
+
+              const jsonStr = JSON.stringify(artifact, null, 4);
+              const card = document.createElement('div');
+              card.className = 'artifact-card';
+              card.innerHTML = `
+                  <div class="artifact-header">
+                      <div class="artifact-tag">FORGED ARTIFACT 0${i}</div>
+                      <button class="copy-btn" onclick="copyIndividual(this)" data-content='${jsonStr.replace(/'/g, "&apos;")}'>COPY JSON</button>
+                  </div>
+                  <pre>${jsonStr}</pre>
+              `;
+              out.appendChild(card);
+          }
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      //]]>
+    </script>
+  </body>
+</html>
