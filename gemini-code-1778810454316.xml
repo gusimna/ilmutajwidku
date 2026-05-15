@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsversion='3' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/charts/static/chi/gviz/1.0/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <meta charset='UTF-8'/>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <title><data:blog.pageTitle/></title>
+    <b:skin><![CDATA[
+        /* 
+        THEME: Academic Blueprint (Navy & Chalk)
+        SYSTEM: Indonesia National English Curriculum Framework
+        */
+        :root {
+            --edu-navy: #1e3a8a;
+            --edu-sky: #3b82f6;
+            --chalk-white: #ffffff;
+            --paper-edge: #e2e8f0;
+            --sidebar-gold: #f59e0b;
+        }
+        body {
+            background-color: #f8fafc;
+            color: #334155;
+            font-family: 'Inter', sans-serif;
+            margin: 0; padding: 0;
+        }
+        .header-wrap {
+            background: var(--edu-navy);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            border-bottom: 6px solid var(--edu-sky);
+        }
+        .header-wrap h1 { font-weight: 900; letter-spacing: 1px; margin: 0; }
+        .main-container {
+            max-width: 950px;
+            margin: -30px auto 60px;
+            padding: 20px;
+        }
+        .edu-card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            border: 1px solid var(--paper-edge);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .input-group { margin-bottom: 25px; }
+        .input-group label {
+            display: block;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: var(--edu-navy);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .input-group input, .input-group textarea, .input-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--paper-edge);
+            border-radius: 8px;
+            font-family: inherit;
+            box-sizing: border-box;
+            background: #fff;
+            font-size: 14px;
+        }
+        .input-group select { border-left: 6px solid var(--edu-sky); cursor: pointer; }
+
+        .flex-row { display: flex; gap: 15px; flex-wrap: wrap; }
+        .flex-item { flex: 1; min-width: 200px; }
+
+        h2 { border-left: 5px solid var(--sidebar-gold); padding-left: 15px; font-size: 20px; color: var(--edu-navy); }
+        
+        .copy-btn {
+            background: var(--edu-navy);
+            color: white;
+            border: none;
+            padding: 20px;
+            cursor: pointer;
+            font-weight: 800;
+            width: 100%;
+            border-radius: 8px;
+            transition: 0.3s;
+            font-size: 15px;
+            text-transform: uppercase;
+        }
+        .copy-btn:hover { background: var(--edu-sky); }
+        footer { text-align: center; color: #94a3b8; padding: 40px; font-size: 11px; text-transform: uppercase; }
+    ]]></b:skin>
+</head>
+
+<body>
+    <div class='header-wrap'>
+        <h1>ENGLISH CURRICULUM ARCHITECT</h1>
+        <p>K-12 &amp; Higher Education Pedagogy System</p>
+    </div>
+
+    <div class='main-container'>
+        <div class='edu-card'>
+            <h2>Pedagogical Settings</h2>
+            
+            <div class='flex-row'>
+                <div class='input-group flex-item'>
+                    <label>Jenjang Pendidikan:</label>
+                    <select id='inputLevel'>
+                        <option value='SD (Elementary School) - Basic vocabulary &amp; simple sentences'>SD (Elementary)</option>
+                        <option value='SMP (Junior High School) - Functional texts &amp; daily interaction'>SMP (Junior High)</option>
+                        <option value='SMA (Senior High School) - Analytical exposition &amp; academic prep'>SMA (Senior High)</option>
+                        <option value='Perguruan Tinggi (University) - EAP (English for Academic Purposes)'>Perguruan Tinggi (University)</option>
+                    </select>
+                </div>
+                <div class='input-group flex-item'>
+                    <label>Tipe Output:</label>
+                    <select id='inputFormat'>
+                        <option value='Lesson Plan (RPP) lengkap dengan materi &amp; latihan'>Lesson Plan (RPP)</option>
+                        <option value='Ujian Semester (Pilihan Ganda &amp; Essay)'>Soal Ujian (Examination)</option>
+                        <option value='Materi Diskusi &amp; Speaking Activity'>Materi Speaking/Debate</option>
+                        <option value='Tugas Menulis (Genre-based Writing)'>Writing Task</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class='input-group'>
+                <label>Topik / Kompetensi Dasar (KD):</label>
+                <input id='inputTopic' placeholder='Contoh: Narrative Text, Passive Voice, Introduction, Research Paper Writing...' type='text'/>
+            </div>
+            
+            <div class='input-group'>
+                <label>Kebutuhan Khusus / Instruksi Tambahan:</label>
+                <textarea id='inputNotes' placeholder='Misal: Masukkan nilai karakter pancasila, buat soal HOTS (High Order Thinking Skills), atau gunakan konteks lokal budaya Indonesia...'/>
+            </div>
+
+            <button class='copy-btn' onclick='copyPrompt()'>GENERATE PEDAGOGY PROMPT 🍎</button>
+            
+            <div style='display:none'>
+                <pre id='templateID'>
+&lt;prompt_engine name="EnglishEdu_Architect"&gt;
+    &lt;identity_context&gt;
+        Expert English Educator &amp; Curriculum Developer. Pakar dalam metodologi pengajaran bahasa (TESOL/TEFL) dengan pemahaman mendalam tentang kurikulum nasional Indonesia dan standar CEFR.
+    &lt;/identity_context&gt;
+    &lt;curriculum_alignment&gt;
+        - Jenjang: [USER_LEVEL]
+        - Fokus Utama: [USER_TOPIC]
+        - Standar: Merancang materi yang sesuai dengan tingkat kognitif siswa jenjang [USER_LEVEL].
+        - Metodologi: Gunakan pendekatan komunikatif dan genre-based approach.
+    &lt;/curriculum_alignment&gt;
+    &lt;execution&gt;
+        Buatlah [USER_FORMAT] yang komprehensif mengenai [USER_TOPIC].
+        Konten harus mencakup:
+        1. **Learning Objectives**: Apa yang diharapkan dicapai siswa.
+        2. **Core Material**: Penjelasan konsep yang mudah dimengerti sesuai jenjang.
+        3. **Guided Practice**: Contoh soal atau aktivitas terbimbing.
+        4. **Assessment**: Bagian ujian/tugas (Sertakan kunci jawaban dan kriteria penilaian/rubrik).
+        5. **HOTS Integration**: Pastikan ada elemen berpikir kritis.
+        
+        Kebutuhan Tambahan: [USER_NOTES]
+        Gunakan Bahasa Indonesia untuk instruksi guru dan Bahasa Inggris untuk materi/soal.
+    &lt;/execution&gt;
+&lt;/prompt_engine&gt;
+                </pre>
+            </div>
+        </div>
+
+        <b:section id='main' showaddelement='yes'>
+            <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog'>
+                <b:includable id='main'>
+                    <b:loop values='data:posts' var='post'>
+                        <div class='edu-card'>
+                            <h2><a expr:href='data:post.url'><data:post.title/></a></h2>
+                            <div class='post-body'>
+                                <data:post.body/>
+                            </div>
+                        </div>
+                    </b:loop>
+                </b:includable>
+            </b:widget>
+        </b:section>
+    </div>
+
+    <footer>
+        &bull; NECA: National English Curriculum Architect &bull; 2026 &bull; Signed by Heaven &bull; @circlemonth
+    </footer>
+
+    <script type='text/javascript'>
+        function copyPrompt() {
+            var topic = document.getElementById("inputTopic").value || "English Basics";
+            var notes = document.getElementById("inputNotes").value || "Focus on clarity and student engagement.";
+            var level = document.getElementById("inputLevel").value;
+            var format = document.getElementById("inputFormat").value;
+            
+            var template = document.getElementById("templateID").innerText;
+            
+            var finalPrompt = template
+                .replace("[USER_TOPIC]", topic)
+                .replace("[USER_NOTES]", notes)
+                .replace(/\[USER_LEVEL\]/g, level)
+                .replace(/\[USER_FORMAT\]/g, format);
+            
+            var tempElem = document.createElement("textarea");
+            tempElem.value = finalPrompt;
+            document.body.appendChild(tempElem);
+            tempElem.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempElem);
+            
+            alert("🍎 Education Prompt Copied! [Level: " + level.split('(')[0] + "]");
+        }
+    </script>
+</body>
+</html>

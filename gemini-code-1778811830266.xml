@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsversion='3' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/charts/static/chi/gviz/1.0/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <meta charset='UTF-8'/>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <title><data:blog.pageTitle/></title>
+    <b:skin><![CDATA[
+        /* 
+        THEME: Arabic Curriculum Master (Desert Oasis)
+        SYSTEM: National Arabic Pedagogy & Exam Framework
+        */
+        :root {
+            --olive-dark: #365314;
+            --olive-light: #65a30d;
+            --sand-bg: #fefce8;
+            --gold-border: #ca8a04;
+            --paper-white: #ffffff;
+        }
+        body {
+            background-color: var(--sand-bg);
+            color: #1a2e05;
+            font-family: 'Inter', 'Traditional Arabic', serif;
+            margin: 0; padding: 0;
+            background-image: radial-gradient(#eab308 0.5px, transparent 0.5px);
+            background-size: 40px 40px;
+        }
+        .header-wrap {
+            background: var(--olive-dark);
+            color: #fef9c3;
+            padding: 50px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--gold-border);
+        }
+        .header-wrap h1 { font-weight: 900; letter-spacing: 2px; margin: 0; font-size: 28px; }
+        .main-container {
+            max-width: 950px;
+            margin: -30px auto 60px;
+            padding: 20px;
+        }
+        .arabic-card {
+            background: var(--paper-white);
+            border-radius: 15px;
+            padding: 40px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .input-group { margin-bottom: 25px; }
+        .input-group label {
+            display: block;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: var(--olive-dark);
+            font-size: 11px;
+            text-transform: uppercase;
+            border-right: 4px solid var(--gold-border);
+            padding-right: 10px;
+            text-align: right;
+        }
+        .input-group input, .input-group textarea, .input-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #f1f5f9;
+            border-radius: 8px;
+            font-family: inherit;
+            box-sizing: border-box;
+            background: #fff;
+            font-size: 15px;
+            color: #000;
+            transition: 0.3s;
+        }
+        .input-group select { border-left: 6px solid var(--olive-light); cursor: pointer; }
+        .input-group input:focus { border-color: var(--gold-border); outline: none; }
+
+        .flex-row { display: flex; gap: 15px; flex-wrap: wrap; }
+        .flex-item { flex: 1; min-width: 200px; }
+
+        h2 { font-weight: 800; font-size: 20px; color: var(--olive-dark); text-align: center; margin-bottom: 30px; }
+        
+        .copy-btn {
+            background: var(--olive-dark);
+            color: #fff;
+            border: none;
+            padding: 20px;
+            cursor: pointer;
+            font-weight: 800;
+            width: 100%;
+            border-radius: 8px;
+            transition: 0.3s;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .copy-btn:hover { background: var(--olive-light); transform: translateY(-2px); }
+        footer { text-align: center; color: var(--olive-dark); padding: 40px; font-size: 12px; font-weight: bold; }
+    ]]></b:skin>
+</head>
+
+<body>
+    <div class='header-wrap'>
+        <h1>ARABIC CURRICULUM MASTER</h1>
+        <p>National Education Standard &bull; SD - SMP - SMA - PT</p>
+    </div>
+
+    <div class='main-container'>
+        <div class='arabic-card'>
+            <h2>I'dad Al-Manhaj (Curriculum Setup)</h2>
+            
+            <div class='flex-row'>
+                <div class='input-group flex-item'>
+                    <label>Level Pendidikan:</label>
+                    <select id='inputLevel'>
+                        <option value='SD/MI (Elementary) - Mufradat dasar &amp; Hiwar sederhana'>SD/MI (Dasar)</option>
+                        <option value='SMP/MTs (Junior High) - Qawaid dasar &amp; Qira&apos;ah'>SMP/MTs (Menengah)</option>
+                        <option value='SMA/MA (Senior High) - Nahwu, Sarf &amp; Balaghah'>SMA/MA (Lanjut)</option>
+                        <option value='Perguruan Tinggi (University) - Lughah, Adab &amp; Akademik'>Perguruan Tinggi (Akademik)</option>
+                    </select>
+                </div>
+                <div class='input-group flex-item'>
+                    <label>Format Materi/Ujian:</label>
+                    <select id='inputFormat'>
+                        <option value='Materi Pelajaran (RPP &amp; Modul)'>Modul Pelajaran</option>
+                        <option value='Ujian Standar Nasional (HOTS Pilihan Ganda &amp; Essay)'>Persiapan Ujian Nasional</option>
+                        <option value='Latihan Qawaid (Nahwu &amp; Sarf)'>Latihan Nahwu &amp; Sarf</option>
+                        <option value='Maharah Istima&apos; &amp; Kalam (Listening &amp; Speaking)'>Maharah (Skill) Fokus</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class='input-group'>
+                <label>Topik / Kompetensi (Maudu&apos;):</label>
+                <input id='inputTopic' placeholder='Contoh: Perkenalan (Ta&apos;aruf), Jam (As-Sa&apos;ah), Masa Lalu (Fi&apos;il Madhi)...' type='text'/>
+            </div>
+            
+            <div class='input-group'>
+                <label>Instruksi Khusus (KMA/Kurikulum Merdeka):</label>
+                <textarea id='inputNotes' placeholder='Misal: Fokus pada Tarkib tertentu, gunakan konteks kehidupan di pesantren, atau buat soal analisis teks berita...'/>
+            </div>
+
+            <button class='copy-btn' onclick='copyPrompt()'>GENERATE ARABIC PROMPT 🕌</button>
+            
+            <div style='display:none'>
+                <pre id='templateID'>
+&lt;prompt_engine name="ArabicMaster_Architect"&gt;
+    &lt;identity_context&gt;
+        Pakar Pendidikan Bahasa Arab (Master of Arabic Pedagogy). Ahli dalam kurikulum nasional Indonesia (KMA Kemenag &amp; Kurikulum Merdeka) serta standar internasional (TOAFL).
+    &lt;/identity_context&gt;
+    &lt;curriculum_framework&gt;
+        - Target: [USER_LEVEL]
+        - Materi Utama: [USER_TOPIC]
+        - Format: [USER_FORMAT]
+        - Kaidah: Sesuaikan dengan standar Nahwu, Sarf, dan Balaghah untuk jenjang [USER_LEVEL].
+    &lt;/curriculum_framework&gt;
+    &lt;execution&gt;
+        Rancanglah [USER_FORMAT] bahasa Arab lengkap tentang [USER_TOPIC].
+        Struktur output wajib mencakup:
+        1. **Al-Mufardat (Kosakata)**: Daftar kata kunci sesuai tema.
+        2. **Al-Qawaid/At-Tarkib**: Penjelasan tata bahasa yang disederhanakan.
+        3. **Al-Qira&apos;ah (Reading)**: Teks bacaan berharakat (untuk sekolah) atau tanpa harakat (untuk perguruan tinggi).
+        4. **Al-As&apos;ilah (Soal)**: Minimal 10 soal (Pilihan Ganda/Essay) dengan tingkat kesulitan HOTS (Higher Order Thinking Skills).
+        5. **Kunci Jawaban &amp; Pembahasan**: Penjelasan mendalam mengenai jawaban yang benar.
+        
+        Tambahan: [USER_NOTES].
+        Gunakan instruksi dalam Bahasa Indonesia, namun konten pelajaran/soal wajib dalam Bahasa Arab yang fasih.
+    &lt;/execution&gt;
+&lt;/prompt_engine&gt;
+                </pre>
+            </div>
+        </div>
+
+        <b:section id='main' showaddelement='yes'>
+            <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog'>
+                <b:includable id='main'>
+                    <b:loop values='data:posts' var='post'>
+                        <div class='arabic-card'>
+                            <h2><a expr:href='data:post.url'><data:post.title/></a></h2>
+                            <div class='post-body'>
+                                <data:post.body/>
+                            </div>
+                        </div>
+                    </b:loop>
+                </b:includable>
+            </b:widget>
+        </b:section>
+    </div>
+
+    <footer>
+        &bull; Arabic Pedagogy Framework &bull; 2026 &bull; Signed by Heaven &bull; @circlemonth
+    </footer>
+
+    <script type='text/javascript'>
+        function copyPrompt() {
+            var topic = document.getElementById("inputTopic").value || "Ad-Darsul Awwal";
+            var notes = document.getElementById("inputNotes").value || "Fokus pada pemahaman konteks.";
+            var level = document.getElementById("inputLevel").value;
+            var format = document.getElementById("inputFormat").value;
+            
+            var template = document.getElementById("templateID").innerText;
+            
+            var finalPrompt = template
+                .replace("[USER_TOPIC]", topic)
+                .replace("[USER_NOTES]", notes)
+                .replace(/\[USER_LEVEL\]/g, level)
+                .replace(/\[USER_FORMAT\]/g, format);
+            
+            var tempElem = document.createElement("textarea");
+            tempElem.value = finalPrompt;
+            document.body.appendChild(tempElem);
+            tempElem.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempElem);
+            
+            alert("🕌 Arabic Prompt Copied! [Level: " + level.split('(')[0] + "]");
+        }
+    </script>
+</body>
+</html>
