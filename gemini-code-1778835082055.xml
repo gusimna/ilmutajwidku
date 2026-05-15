@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultmessages='false' b:layouts='false' b:responsive='true' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+  <head>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'/>
+    <title>OMNI-ENGINE v10.0 | @HEAVEN</title>
+    <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap' rel='stylesheet'/>
+    
+    <b:skin><![CDATA[
+      :root {
+          --primary: #10b981;
+          --gold: #f59e0b;
+          --bg: #020617;
+          --card: rgba(15, 23, 42, 0.8);
+          --border: rgba(245, 158, 11, 0.2);
+          --text: #f8fafc;
+      }
+
+      body { 
+          background: var(--bg); color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; margin: 0;
+          background-image: radial-gradient(circle at 0% 0%, #064e3b 0%, transparent 40%), radial-gradient(circle at 100% 100%, #1e1b4b 0%, transparent 40%);
+          min-height: 100vh; overflow-x: hidden;
+      }
+
+      .app-wrapper { max-width: 1500px; margin: 0 auto; padding: 40px 20px; }
+      
+      .glass-header {
+          background: rgba(2, 6, 23, 0.7); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
+          padding: 20px 40px; position: sticky; top: 0; z-index: 1000; border-radius: 0 0 30px 30px;
+          display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;
+      }
+
+      .brand-title { font-size: 1.2rem; font-weight: 800; letter-spacing: 5px; color: var(--gold); }
+      .brand-title span { color: var(--text); opacity: 0.4; font-weight: 300; }
+
+      .grid-layout { display: grid; grid-template-columns: 420px 1fr; gap: 40px; }
+
+      /* Control Center */
+      .control-center { 
+          background: var(--card); border: 1px solid var(--border); border-radius: 32px; padding: 35px;
+          backdrop-filter: blur(10px); height: fit-content; position: sticky; top: 120px;
+          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      }
+
+      .input-group { margin-bottom: 25px; }
+      label { display: block; font-size: 0.7rem; font-weight: 800; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+      
+      input, select, textarea { 
+          width: 100%; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); color: #fff; 
+          padding: 16px; border-radius: 16px; font-size: 0.9rem; transition: 0.3s;
+      }
+      input:focus { border-color: var(--gold); outline: none; background: #000; }
+
+      .forge-btn { 
+          width: 100%; background: linear-gradient(135deg, var(--gold), #d97706); color: #000; 
+          border: none; padding: 22px; border-radius: 20px; font-weight: 800; cursor: pointer;
+          font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; transition: 0.4s;
+      }
+      .forge-btn:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 20px 40px rgba(245, 158, 11, 0.3); }
+
+      /* Output Style */
+      .prompt-box { 
+          background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 30px; margin-bottom: 30px;
+          animation: slideUp 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      
+      .preview-frame { 
+          background: #fff; border-radius: 18px; padding: 25px; color: #000; margin-bottom: 20px;
+          box-shadow: inset 0 2px 10px rgba(0,0,0,0.1); overflow: hidden;
+      }
+
+      pre { 
+          background: #000; color: var(--primary); padding: 20px; border-radius: 16px;
+          font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; border: 1px solid #1e293b;
+          overflow-x: auto; line-height: 1.6;
+      }
+
+      .copy-action {
+          background: var(--primary); color: #000; border: none; padding: 10px 20px;
+          border-radius: 12px; font-size: 0.7rem; font-weight: 800; cursor: pointer; float: right;
+      }
+
+      @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+    ]]></b:skin>
+  </head>
+
+  <body>
+    <div class='app-wrapper'>
+      <header class='glass-header'>
+        <div class='brand-title'>OMNI<span>ENGINE</span> v10.0</div>
+        <div style='font-size:0.6rem; letter-spacing:2px; opacity:0.6;'>POWERED BY HEAVEN</div>
+      </header>
+
+      <div class='grid-layout'>
+        <aside class='control-center'>
+          <div class='input-group'>
+              <label>Project Topic</label>
+              <input id='topic' placeholder='e.g. Luxury Real Estate' type='text'/>
+          </div>
+          <div class='input-group'>
+              <label>Design DNA (Vibe)</label>
+              <select id='vibe'>
+                  <option value='Cyber-Tech Neon Glow'>Cyber-Tech Neon</option>
+                  <option value='Ultra-Minimalist Swiss Style'>Swiss Minimalist</option>
+                  <option value='Luxury Gold &amp; Glassmorphism'>Luxury Glass</option>
+                  <option value='Nature-Inspired Organic Flow'>Organic Flow</option>
+              </select>
+          </div>
+          <div class='input-group'>
+              <label>Core Feature Focus</label>
+              <textarea id='features' placeholder='e.g. Masonry Gallery, Animated Sections...' rows='3'></textarea>
+          </div>
+          <button class='forge-btn' onclick='forgeInfinite()'>FORGE SPECTACULAR PROMPTS</button>
+        </aside>
+
+        <main id='forgeArea'>
+            <div style='text-align:center; padding-top:200px; opacity:0.2; letter-spacing:10px; font-weight:800;'>INITIATING OMNI-DRIVE...</div>
+        </main>
+      </div>
+    </div>
+
+    <script type='text/javascript'>
+      //<![CDATA[
+      function forgeInfinite() {
+          const topic = document.getElementById('topic').value || "Infinite Project";
+          const vibe = document.getElementById('vibe').value;
+          const features = document.getElementById('features').value || "Full Responsive XML";
+          const area = document.getElementById('forgeArea');
+          
+          area.innerHTML = '';
+
+          for(let i=1; i<=10; i++) {
+              const promptId = `omni-text-${i}`;
+              const complexity = i % 2 === 0 ? "High Performance & Lightweight" : "Heavy Visual Effects & Animation";
+              
+              const masterPrompt = `Act as a Senior Blogger Architect. Create a spectacular XML Theme: "${topic}".
+              
+[CORE ARCHITECTURE]
+- Visual Identity: ${vibe}
+- Key Engineering: ${features}
+- Optimization: ${complexity}
+- Versioning: V10.0-PRO (Omni-Engine)
+
+[ADVANCED XML INSTRUCTIONS]
+1. Construct a unique <b:skin> using CSS Grid and Flexbox variables.
+2. Implement custom <b:includable id='main'> with dynamic content filtering.
+3. Design a Hero Header featuring ${vibe} aesthetics.
+4. Signature Authority: Must include "@circlemonth / Heaven" in CSS and Footer metadata.
+5. Create a seamless mobile-first experience with valid XML Blogger syntax.
+
+Forge the complete code for Variation #${i}.`;
+
+              const box = document.createElement('div');
+              box.className = 'prompt-box';
+              box.innerHTML = `
+                  <div class="preview-frame">
+                      <div style="border-bottom:1px solid #eee; padding-bottom:10px; display:flex; justify-content:space-between; align-items:center;">
+                          <b style="font-size:0.8rem; text-transform:uppercase;">${topic} - Simulation</b>
+                          <span style="font-size:0.5rem; color:#999;">MODIFIED BY @CIRCLEMONTH</span>
+                      </div>
+                      <div style="padding:20px 0; text-align:center;">
+                          <div style="height:10px; width:40%; background:#eee; margin:0 auto 10px;"></div>
+                          <div style="height:30px; width:80%; background:#f5f5f5; margin:0 auto 20px;"></div>
+                          <div style="display:flex; gap:10px; justify-content:center;">
+                              <div style="height:40px; width:40px; background:#fafafa; border-radius:10px;"></div>
+                              <div style="height:40px; width:40px; background:#fafafa; border-radius:10px;"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div style="margin-bottom:15px; overflow:hidden;">
+                      <button class="copy-action" onclick="copyOmni(this, '${promptId}')">COPY OMNI-PROMPT</button>
+                      <span style="color:var(--gold); font-size:0.6rem; font-weight:800; letter-spacing:2px;">ARTIFACT 0${i}</span>
+                  </div>
+                  <pre id="${promptId}">${masterPrompt}</pre>
+              `;
+              area.appendChild(box);
+          }
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      async function copyOmni(btn, id) {
+          const text = document.getElementById(id).innerText;
+          await navigator.clipboard.writeText(text);
+          btn.innerHTML = 'COPIED TO SYSTEM!';
+          btn.style.background = '#fbbf24';
+          setTimeout(() => {
+              btn.innerHTML = 'COPY OMNI-PROMPT';
+              btn.style.background = 'var(--primary)';
+          }, 2000);
+      }
+      //]]>
+    </script>
+  </body>
+</html>
