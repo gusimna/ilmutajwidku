@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsversion='3' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/charts/static/chi/gviz/1.0/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <meta charset='UTF-8'/>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <title><data:blog.pageTitle/></title>
+    <b:skin><![CDATA[
+        /* 
+        THEME: Al-Mufassir Pro (Emerald & Gold)
+        SYSTEM: Deep Qur'anic Analytic Framework
+        */
+        :root {
+            --emerald-deep: #064e3b;
+            --emerald-light: #065f46;
+            --gold-leaf: #d4af37;
+            --parchment: #fdfbf7;
+            --text-dark: #1a2e25;
+        }
+        body {
+            background-color: #f3f4f6;
+            color: var(--text-dark);
+            font-family: 'Amiri', 'Traditional Arabic', 'Inter', serif;
+            margin: 0; padding: 0;
+            background-image: radial-gradient(var(--emerald-light) 0.5px, transparent 0.5px);
+            background-size: 30px 30px;
+        }
+        .header-wrap {
+            background: var(--emerald-deep);
+            color: var(--gold-leaf);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--gold-leaf);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        .header-wrap h1 { 
+            font-size: 32px; 
+            font-weight: 900; 
+            letter-spacing: 1px;
+            margin: 0;
+            text-transform: uppercase;
+        }
+        .main-container {
+            max-width: 900px;
+            margin: -30px auto 60px;
+            padding: 20px;
+        }
+        .quran-card {
+            background: var(--parchment);
+            border-radius: 12px;
+            padding: 45px;
+            border: 1px solid var(--gold-leaf);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .quran-card::before {
+            content: "﷽";
+            position: absolute;
+            top: 20px; left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: var(--emerald-deep);
+        }
+
+        .input-group { margin-bottom: 25px; }
+        .input-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--emerald-deep);
+            font-size: 13px;
+            text-transform: uppercase;
+            border-right: 3px solid var(--gold-leaf);
+            padding-right: 10px;
+            text-align: right;
+        }
+        .input-group input, .input-group textarea, .input-group select {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-family: inherit;
+            box-sizing: border-box;
+            background: #fff;
+            font-size: 16px;
+            color: var(--text-dark);
+        }
+        .input-group select { cursor: pointer; border-bottom: 3px solid var(--emerald-deep); }
+
+        .flex-row { display: flex; gap: 20px; flex-wrap: wrap; }
+        .flex-item { flex: 1; min-width: 280px; }
+
+        h2 { color: var(--emerald-deep); font-weight: 800; font-size: 20px; margin-bottom: 30px; text-align: center; }
+        
+        .copy-btn {
+            background: var(--emerald-deep);
+            color: var(--gold-leaf);
+            border: 2px solid var(--gold-leaf);
+            padding: 20px;
+            cursor: pointer;
+            font-weight: 900;
+            width: 100%;
+            border-radius: 8px;
+            transition: 0.3s;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .copy-btn:hover { background: var(--gold-leaf); color: var(--emerald-deep); }
+        footer { text-align: center; color: var(--emerald-deep); padding: 40px; font-size: 12px; font-weight: bold; }
+    ]]></b:skin>
+</head>
+
+<body>
+    <div class='header-wrap'>
+        <h1>AL-MUFASSIR ANALYTIC ENGINE</h1>
+        <p>Comprehensive Deep Research of Al-Qur'an Al-Karim</p>
+    </div>
+
+    <div class='main-container'>
+        <div class='quran-card'>
+            <h2>Manhaj Tahqiq (Research Configuration)</h2>
+            
+            <div class='flex-row'>
+                <div class='input-group flex-item'>
+                    <label>Metodologi Tafsir:</label>
+                    <select id='inputMethod'>
+                        <option value='Tafsir bi al-Ma&apos;thur (Riwayat/Hadits)'>Tafsir bi al-Ma'thur</option>
+                        <option value='Tafsir bi al-Ra&apos;yi (Analisis Rasional Alim)'>Tafsir bi al-Ra'yi</option>
+                        <option value='Analisis Linguistik &amp; I&apos;rab (Kebahasaan)'>Linguistik &amp; I'rab</option>
+                        <option value='Tafsir Isyari (Kedalaman Spiritual/Tasawuf)'>Tafsir Isyari</option>
+                        <option value='Komprehensif (Tahlili - Semua Aspek)'>Tahlili (Komprehensif)</option>
+                    </select>
+                </div>
+                <div class='input-group flex-item'>
+                    <label>Fokus Kedalaman:</label>
+                    <select id='inputDepth'>
+                        <option value='Akademis &amp; Perbandingan Madzhab'>Akademis &amp; Madzhab</option>
+                        <option value='Tadabbur &amp; Implementasi Kontemporer'>Tadabbur &amp; Praktis</option>
+                        <option value='Kemu&apos;jizatan Ilmiah (Scientific Miracles)'>Scientific Miracles</option>
+                        <option value='Balaghah (Sastra &amp; Retorika)'>Balaghah &amp; Sastra</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class='input-group'>
+                <label>Nama Surah / Nomor Ayat:</label>
+                <input id='inputVerse' placeholder='Misal: Al-Baqarah 183-185, atau Juz 30...' type='text'/>
+            </div>
+            
+            <div class='input-group'>
+                <label>Konteks Masalah / Pertanyaan Spesifik:</label>
+                <textarea id='inputNotes' placeholder='Misal: Hubungan ayat ini dengan sains modern, atau perincian hukum fiqih di dalamnya...'/>
+            </div>
+
+            <button class='copy-btn' onclick='copyPrompt()'>GENERATE ANALYTIC PROMPT 📖</button>
+            
+            <div style='display:none'>
+                <pre id='templateID'>
+&lt;prompt_engine name="AlMufassir_Pro"&gt;
+    &lt;identity_context&gt;
+        Ahli Ilmu Al-Qur'an (Mufassir) dengan spesialisasi dalam Ulumul Qur'an, Bahasa Arab Klasik, dan Sejarah Islam. Mampu mensintesis pendapat ulama salaf dan khalaf dengan objektif.
+    &lt;/identity_context&gt;
+    &lt;methodology_compliance&gt;
+        Lakukan bedah mendalam untuk [USER_VERSE] menggunakan Manhaj [USER_METHOD]. Analisis harus mencakup:
+        1. **I&apos;rab &amp; Lughah**: Analisis morfologi dan sintaksis kata kunci.
+        2. **Asbabun Nuzul**: Latar belakang turunnya ayat (jika ada riwayat shahih).
+        3. **Munasabah**: Hubungan ayat ini dengan ayat sebelum/sesudahnya serta tema besar surah.
+        4. **Qira&apos;at**: Pengaruh perbedaan bacaan terhadap makna (jika relevan).
+        5. **Istinbath Hukum/Hikmah**: Penggalian hukum fiqih atau hikmah pendidikan.
+        6. **Tadabbur Kontemporer**: Relevansi ayat terhadap [USER_NOTES] di masa kini.
+    &lt;/methodology_compliance&gt;
+    &lt;execution&gt;
+        Tuliskan laporan tafsir mendalam untuk [USER_VERSE] dengan gaya [USER_DEPTH]. 
+        Gunakan rujukan muktabar (seperti Ibnu Kathir, Al-Qurtubi, As-Sa&apos;di, atau Al-Misbah).
+        Konteks tambahan: [USER_NOTES].
+        Bahasa: Bahasa Indonesia yang baku dan penuh hormat (ta&apos;dzim).
+    &lt;/execution&gt;
+&lt;/prompt_engine&gt;
+                </pre>
+            </div>
+        </div>
+
+        <b:section id='main' showaddelement='yes'>
+            <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog'>
+                <b:includable id='main'>
+                    <b:loop values='data:posts' var='post'>
+                        <div class='quran-card'>
+                            <h2><a expr:href='data:post.url'><data:post.title/></a></h2>
+                            <div class='post-body'>
+                                <data:post.body/>
+                            </div>
+                        </div>
+                    </b:loop>
+                </b:includable>
+            </b:widget>
+        </b:section>
+    </div>
+
+    <footer>
+        &bull; Al-Qur'an Deep Research Framework &bull; 2026 &bull; Signed by Heaven &bull; @circlemonth
+    </footer>
+
+    <script type='text/javascript'>
+        function copyPrompt() {
+            var verse = document.getElementById("inputVerse").value || "Al-Fatihah";
+            var notes = document.getElementById("inputNotes").value || "Analisis umum dan tadabbur.";
+            var method = document.getElementById("inputMethod").value;
+            var depth = document.getElementById("inputDepth").value;
+            
+            var template = document.getElementById("templateID").innerText;
+            
+            var finalPrompt = template
+                .replace("[USER_VERSE]", verse)
+                .replace("[USER_NOTES]", notes)
+                .replace(/\[USER_METHOD\]/g, method)
+                .replace(/\[USER_DEPTH\]/g, depth);
+            
+            var tempElem = document.createElement("textarea");
+            tempElem.value = finalPrompt;
+            document.body.appendChild(tempElem);
+            tempElem.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempElem);
+            
+            alert("📖 Qur'anic Research Prompt Copied! [Verse: " + verse + "]");
+        }
+    </script>
+</body>
+</html>

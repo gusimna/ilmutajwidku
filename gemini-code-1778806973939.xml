@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsversion='3' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/charts/static/chi/gviz/1.0/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <meta charset='UTF-8'/>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <title><data:blog.pageTitle/></title>
+    <b:skin><![CDATA[
+        /* 
+        THEME: TOEFL Mastery (Academic Slate & Ivory)
+        SYSTEM: Standardized English Assessment Framework
+        */
+        :root {
+            --ets-blue: #004a99;
+            --academic-gray: #475569;
+            --paper-ivory: #fcfcf9;
+            --border-slate: #cbd5e1;
+            --success-green: #10b981;
+        }
+        body {
+            background-color: #f1f5f9;
+            color: #1e293b;
+            font-family: 'Georgia', serif; /* Classic Academic Font */
+            margin: 0; padding: 0;
+        }
+        .header-wrap {
+            background: var(--ets-blue);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            border-bottom: 5px solid #003366;
+        }
+        .header-wrap h1 { 
+            font-family: 'Inter', sans-serif;
+            font-size: 28px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            margin: 0;
+        }
+        .main-container {
+            max-width: 850px;
+            margin: -30px auto 60px;
+            padding: 20px;
+        }
+        .exam-card {
+            background: var(--paper-ivory);
+            border-radius: 8px;
+            padding: 40px;
+            border: 1px solid var(--border-slate);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        .input-group { margin-bottom: 25px; }
+        .input-group label {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--ets-blue);
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+        .input-group input, .input-group textarea, .input-group select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--border-slate);
+            border-radius: 4px;
+            font-family: 'Georgia', serif;
+            box-sizing: border-box;
+            background: #fff;
+            font-size: 15px;
+        }
+        .input-group select { cursor: pointer; border-left: 4px solid var(--ets-blue); }
+
+        .flex-row { display: flex; gap: 20px; flex-wrap: wrap; }
+        .flex-item { flex: 1; min-width: 250px; }
+
+        h2 { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 18px; margin-bottom: 25px; color: var(--academic-gray); }
+        
+        .copy-btn {
+            background: var(--ets-blue);
+            color: white;
+            border: none;
+            padding: 18px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            width: 100%;
+            border-radius: 4px;
+            transition: 0.2s;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .copy-btn:hover { background: #003366; }
+        footer { text-align: center; color: #94a3b8; padding: 40px; font-size: 11px; font-family: 'Inter', sans-serif; }
+    ]]></b:skin>
+</head>
+
+<body>
+    <div class='header-wrap'>
+        <h1>TOEFL iBT PROMPT GENERATOR</h1>
+        <p>Standardized North American English Assessment System</p>
+    </div>
+
+    <div class='main-container'>
+        <div class='exam-card'>
+            <h2>Test Configuration</h2>
+            
+            <div class='flex-row'>
+                <div class='input-group flex-item'>
+                    <label>Test Section:</label>
+                    <select id='inputSection'>
+                        <option value='Reading: Academic Passage with 10 Multiple Choice Questions'>Reading Section</option>
+                        <option value='Listening: Academic Lecture with North American Accent'>Listening (Lecture)</option>
+                        <option value='Listening: Campus Conversation (Casual but Formal)'>Listening (Conversation)</option>
+                        <option value='Speaking: Independent Task (Personal Opinion)'>Speaking (Independent)</option>
+                        <option value='Speaking: Integrated Task (Reading + Lecture)'>Speaking (Integrated)</option>
+                        <option value='Writing: Academic Discussion (New iBT Format)'>Writing (Academic Discussion)</option>
+                        <option value='Writing: Integrated Task (Summarizing Lecture vs Reading)'>Writing (Integrated)</option>
+                    </select>
+                </div>
+                <div class='input-group flex-item'>
+                    <label>Complexity Level:</label>
+                    <select id='inputLevel'>
+                        <option value='Intermediate (Target Score 60-80)'>Intermediate</option>
+                        <option value='Advanced (Target Score 80-100)'>Advanced</option>
+                        <option value='Expert/Native-like (Target Score 100-120)'>Expert / High Scorer</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class='input-group'>
+                <label>Specific Topic / Subject Area:</label>
+                <input id='inputTopic' placeholder='Contoh: Marine Biology, Industrial Revolution, Campus Housing...' type='text'/>
+            </div>
+            
+            <div class='input-group'>
+                <label>Custom Instructions / Specific Vocabulary:</label>
+                <textarea id='inputNotes' placeholder='Misal: Fokus pada Vocabulary "Inference", gunakan istilah astronomi, atau buat teks yang membandingkan dua teori...'/>
+            </div>
+
+            <button class='copy-btn' onclick='copyPrompt()'>GENERATE ASSESSMENT PROMPT 📝</button>
+            
+            <div style='display:none'>
+                <pre id='templateID'>
+&lt;prompt_engine name="TOEFL_Mastery"&gt;
+    &lt;identity_context&gt;
+        ETS Senior Test Developer &amp; Linguistic Expert. Specialist in the TOEFL iBT North American English standard. 
+    &lt;/identity_context&gt;
+    &lt;assessment_framework&gt;
+        - Section: [USER_SECTION]
+        - Complexity: [USER_LEVEL]
+        - Topic: [USER_TOPIC]
+        - Accent: Strict North American English.
+        - Nuance: Include academic transitions (Furthermore, Consequently, In contrast) and high-level vocabulary.
+    &lt;/assessment_framework&gt;
+    &lt;execution&gt;
+        Create a full TOEFL-style [USER_SECTION] about [USER_TOPIC]. 
+        Ensure the difficulty level is [USER_LEVEL].
+        Additional Constraints: [USER_NOTES].
+        Include:
+        1. The Passage or Script (written in high-level academic English).
+        2. Questions that mimic the real TOEFL iBT (Inference, Vocabulary-in-context, Purpose, and Detail questions).
+        3. An Answer Key with brief explanations of why the distractors are wrong.
+    &lt;/execution&gt;
+&lt;/prompt_engine&gt;
+                </pre>
+            </div>
+        </div>
+
+        <b:section id='main' showaddelement='yes'>
+            <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog'>
+                <b:includable id='main'>
+                    <b:loop values='data:posts' var='post'>
+                        <div class='exam-card'>
+                            <h2><a expr:href='data:post.url'><data:post.title/></a></h2>
+                            <div class='post-body'>
+                                <data:post.body/>
+                            </div>
+                        </div>
+                    </b:loop>
+                </b:includable>
+            </b:widget>
+        </b:section>
+    </div>
+
+    <footer>
+        &bull; Standardized Testing Framework &bull; 2026 &bull; Signed by Heaven &bull; @circlemonth
+    </footer>
+
+    <script type='text/javascript'>
+        function copyPrompt() {
+            var topic = document.getElementById("inputTopic").value || "General Academic Topic";
+            var notes = document.getElementById("inputNotes").value || "Focus on academic vocabulary and natural flow.";
+            var section = document.getElementById("inputSection").value;
+            var level = document.getElementById("inputLevel").value;
+            
+            var template = document.getElementById("templateID").innerText;
+            
+            var finalPrompt = template
+                .replace("[USER_TOPIC]", topic)
+                .replace("[USER_NOTES]", notes)
+                .replace(/\[USER_SECTION\]/g, section)
+                .replace(/\[USER_LEVEL\]/g, level);
+            
+            var tempElem = document.createElement("textarea");
+            tempElem.value = finalPrompt;
+            document.body.appendChild(tempElem);
+            tempElem.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempElem);
+            
+            alert("📝 TOEFL Assessment Prompt Copied! [Section: " + section.split(':')[0] + "]");
+        }
+    </script>
+</body>
+</html>
