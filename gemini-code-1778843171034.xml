@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultmessages='false' b:layouts='false' b:responsive='true' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+  <head>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'/>
+    <title>INFOGRAPHIC SYNAPSE v15.0 | @HEAVEN</title>
+    <link href='https://fonts.googleapis.com/css2?family=Unbounded:wght@400;900&amp;family=Space+Mono:wght@400;700&amp;display=swap' rel='stylesheet'/>
+    
+    <b:skin><![CDATA[
+      :root {
+          --synapse-neon: #39ff14;
+          --synapse-pink: #ff00ff;
+          --deep-void: #020202;
+          --panel-glass: rgba(15, 15, 25, 0.95);
+          --border-electric: rgba(57, 255, 20, 0.3);
+      }
+
+      body { 
+          background: var(--deep-void); color: #fff; font-family: 'Unbounded', sans-serif; margin: 0;
+          background-image: 
+            linear-gradient(rgba(57, 255, 20, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(57, 255, 20, 0.05) 1px, transparent 1px);
+          background-size: 30px 30px;
+      }
+
+      .synapse-wrapper { max-width: 1750px; margin: 0 auto; padding: 40px; }
+
+      /* Cyber Header */
+      .synapse-header {
+          display: flex; justify-content: space-between; align-items: center;
+          padding: 30px 50px; background: var(--panel-glass); border-radius: 20px;
+          border: 1px solid var(--border-electric); margin-bottom: 50px;
+          box-shadow: 0 0 40px rgba(57, 255, 20, 0.1);
+      }
+
+      .interface-grid { 
+          display: grid; grid-template-columns: 420px 1fr 380px; gap: 40px; 
+      }
+
+      .side-deck {
+          background: var(--panel-glass); border: 1px solid var(--border-electric);
+          padding: 40px; border-radius: 40px; position: sticky; top: 40px;
+          backdrop-filter: blur(30px);
+      }
+
+      /* Control Elements */
+      .input-tag { font-size: 0.6rem; color: var(--synapse-neon); letter-spacing: 5px; font-weight: 800; margin-bottom: 25px; display: block; text-transform: uppercase; }
+
+      input, select, textarea { 
+          width: 100%; background: #000; border: 1px solid #1a1a1a; color: #fff; 
+          padding: 20px; border-radius: 15px; font-size: 0.9rem; margin-bottom: 25px; transition: 0.3s;
+          font-family: 'Space Mono', monospace;
+      }
+      input:focus { border-color: var(--synapse-pink); box-shadow: 0 0 15px rgba(255, 0, 255, 0.2); outline: none; }
+
+      .forge-btn { 
+          width: 100%; background: var(--synapse-neon); color: #000; 
+          border: none; padding: 25px; border-radius: 15px; font-weight: 900;
+          cursor: pointer; text-transform: uppercase; letter-spacing: 3px; transition: 0.4s;
+      }
+      .forge-btn:hover { background: var(--synapse-pink); transform: scale(1.02); color: #fff; }
+
+      /* Infographic Result Cards */
+      .result-card { 
+          background: rgba(10, 10, 15, 0.8); border: 1px solid #1a1a1a;
+          padding: 45px; border-radius: 50px; margin-bottom: 50px; position: relative;
+      }
+
+      pre { 
+          background: #000; color: #39ff14; padding: 30px; border-radius: 25px;
+          font-family: 'Space Mono', monospace; font-size: 0.8rem; line-height: 1.8;
+          border: 1px solid #111; white-space: pre-wrap;
+      }
+
+      .copy-action {
+          position: absolute; top: 40px; right: 40px; background: transparent;
+          color: var(--synapse-neon); border: 2px solid var(--synapse-neon);
+          padding: 12px 25px; border-radius: 30px; font-size: 0.7rem; font-weight: 900; cursor: pointer;
+      }
+
+      /* Manual Center */
+      .guide-text { font-size: 0.85rem; line-height: 1.9; color: #aaa; font-family: 'Space Mono', monospace; }
+      .guide-text b { color: var(--synapse-neon); }
+      .node { margin-bottom: 30px; padding-left: 20px; border-left: 1px dashed var(--synapse-neon); }
+    ]]></b:skin>
+  </head>
+
+  <body>
+    <div class='synapse-wrapper'>
+      <header class='synapse-header'>
+        <div style='font-size: 1.2rem; font-weight: 900; letter-spacing: -1px;'>INFOGRAPHIC<span>SYNAPSE v15.0</span></div>
+        <div style='font-size:0.6rem; opacity:0.5; text-align:right;'>SIGNATURE: @HEAVEN / @CIRCLEMONTH</div>
+      </header>
+
+      <div class='interface-grid'>
+        <aside class='side-deck'>
+          <span class='input-tag'>DATA PARAMETERS</span>
+          <label style='font-size:0.7rem; color:#555;'>INFOGRAPHIC TOPIC</label>
+          <input id='topic' placeholder='e.g. Benefits of Palliative Care' type='text'/>
+          
+          <label style='font-size:0.7rem; color:#555;'>VISUAL ARCHETYPE</label>
+          <select id='archetype'>
+              <option value='Dopamine Maximalist (Vibrant)'>Dopamine Maximalist</option>
+              <option value='Neo-Corporate (Professional)'>Neo-Corporate</option>
+              <option value='Bauhaus Minimal (Geometric)'>Bauhaus Minimal</option>
+              <option value='Dark Tech Cyberpunk'>Dark Tech</option>
+          </select>
+
+          <label style='font-size:0.7rem; color:#555;'>DATA COMPLEXITY</label>
+          <select id='complexity'>
+              <option value='Step-by-Step Process'>Process Flow</option>
+              <option value='Comparison/Versus'>Versus Grid</option>
+              <option value='The "Rule of 5" List'>Listicle 5 Points</option>
+              <option value='Statistical Dashboard'>Statistics Hub</option>
+          </select>
+          
+          <button class='forge-btn' onclick='forgeSynapse()'>FORGE INFOGRAPHIC PROMPTS</button>
+        </aside>
+
+        <main id='stream'>
+            <div style='text-align:center; padding-top:200px; opacity:0.05; font-size:5rem; font-weight:900;'>SYNAPSE_IDLE</div>
+        </main>
+
+        <aside class='side-deck'>
+          <span class='input-tag'>OPERATOR GUIDANCE</span>
+          <div class='guide-text'>
+            <div class='node'>
+                <b>01. Visual Archetype:</b> Menentukan gaya estetika. AI akan mengatur palet warna yang memicu emosi tertentu (misal: Hijau untuk kesehatan, Neon untuk teknologi).
+            </div>
+            <div class='node'>
+                <b>02. Data Complexity:</b> Memaksa AI untuk menyusun struktur data. Apakah dalam bentuk tangga (proses) atau perbandingan sisi-demi-sisi.
+            </div>
+            <div class='node'>
+                <b>03. The Infographic Prompt:</b> Prompt yang dihasilkan berisi instruksi komposisi (layout), pemilihan ikon, hingga rasio teks-ke-visual 30:70 untuk keterbacaan maksimal.
+            </div>
+            <p style='margin-top:40px; font-size:0.6rem; border-top:1px solid #333; padding-top:20px;'>
+                Copyright © 2026 <b>@circlemonth / Heaven</b>. Semua prompt dilindungi protokol orisinalitas tinggi.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <script type='text/javascript'>
+      //<![CDATA[
+      function forgeSynapse() {
+          const topic = document.getElementById('topic').value || "Global Health Trends";
+          const archetype = document.getElementById('archetype').value;
+          const complexity = document.getElementById('complexity').value;
+          const stream = document.getElementById('stream');
+          stream.innerHTML = '';
+
+          for(let i=1; i<=10; i++) {
+              const pId = `syn-${i}`;
+              const masterPrompt = `[INFOGRAPHIC SYNAPSE PROTOCOL v15.0]
+Act as an Award-Winning Information Designer. 
+Create a spectaculer infographic prompt for: "${topic}".
+
+[VISUAL ARCHITECTURE]
+- Archetype Style: ${archetype}
+- Data Structure: ${complexity}
+- Layout Composition: Golden Ratio Balanced
+- Signature Brand: @circlemonth / Heaven
+
+[STORYTELLING INSTRUCTIONS]
+1. BREAKDOWN: Divide the topic "${topic}" into key visual segments based on ${complexity}.
+2. ICONOGRAPHY: Use high-end 3D isometric icons or clean minimalist vectors.
+3. TYPOGRAPHY: Headlines in Bold Sans-Serif, body text in readable monospace.
+4. COLORS: Apply the ${archetype} color palette with high-contrast accent points.
+5. FINAL TOUCH: Add a professional footer "Created by @circlemonth" with a QR-code placeholder.
+
+Variation #${i}: Create a unique visual narrative focused on ${i % 2 === 0 ? 'Depth & Texture' : 'Flat & Clean Geometry'}. 
+Deliver this as a prompt for Midjourney/DALL-E or as a structural XML layout for a Blogger infographic post.`;
+
+              const card = document.createElement('div');
+              card.className = 'result-card';
+              card.innerHTML = `
+                  <button class="copy-action" onclick="copySyn(this, '${pId}')">COPY PROMPT</button>
+                  <div style="font-size:0.7rem; color:var(--synapse-pink); font-weight:900; margin-bottom:25px; letter-spacing:2px;">SYNAPTIC_ARTIFACT_0${i}</div>
+                  <pre id="${pId}">${masterPrompt}</pre>
+              `;
+              stream.appendChild(card);
+          }
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      function copySyn(btn, id) {
+          navigator.clipboard.writeText(document.getElementById(id).innerText);
+          btn.innerHTML = 'DATA LINKED';
+          btn.style.background = 'var(--synapse-neon)';
+          btn.style.color = '#000';
+          setTimeout(() => {
+              btn.innerHTML = 'COPY PROMPT';
+              btn.style.background = 'transparent';
+              btn.style.color = 'var(--synapse-neon)';
+          }, 1500);
+      }
+      //]]>
+    </script>
+  </body>
+</html>

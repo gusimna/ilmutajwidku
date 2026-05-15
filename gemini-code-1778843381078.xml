@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultmessages='false' b:layouts='false' b:responsive='true' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+  <head>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'/>
+    <title>OMNI-SYNAPSE v16.0 | THE FINAL ARCHITECT</title>
+    <link href='https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&amp;family=Space+Grotesk:wght@300;700&amp;family=Fira+Code:wght@400;500&amp;display=swap' rel='stylesheet'/>
+    
+    <b:skin><![CDATA[
+      :root {
+          --hyper-neon: #00ffcc;
+          --phantom-purple: #9d00ff;
+          --solar-gold: #ffcc00;
+          --deep-space: #010204;
+          --glass-border: rgba(0, 255, 204, 0.2);
+      }
+
+      body { 
+          background: var(--deep-space); color: #fff; font-family: 'Space Grotesk', sans-serif; margin: 0;
+          background-image: 
+            radial-gradient(circle at 10% 10%, rgba(157, 0, 255, 0.1) 0%, transparent 40%),
+            radial-gradient(circle at 90% 90%, rgba(0, 255, 204, 0.1) 0%, transparent 40%);
+          min-height: 100vh; overflow-x: hidden;
+      }
+
+      .grand-wrapper { max-width: 1800px; margin: 0 auto; padding: 30px; }
+
+      /* HEADER: THE SUPREME COMMAND */
+      .supreme-header {
+          display: flex; justify-content: space-between; align-items: center;
+          padding: 25px 50px; background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border);
+          border-radius: 100px; margin-bottom: 40px; backdrop-filter: blur(20px);
+      }
+      .logo-text { font-family: 'Syncopate', sans-serif; font-weight: 700; font-size: 1.2rem; letter-spacing: 5px; background: linear-gradient(to right, var(--hyper-neon), var(--phantom-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+      /* 3-COLUMN MASTER GRID */
+      .master-grid { display: grid; grid-template-columns: 400px 1fr 380px; gap: 30px; }
+
+      .side-deck {
+          background: rgba(10, 10, 15, 0.8); border: 1px solid var(--glass-border);
+          padding: 35px; border-radius: 40px; position: sticky; top: 30px; height: calc(100vh - 60px); overflow-y: auto;
+      }
+
+      .section-tag { font-size: 0.6rem; color: var(--solar-gold); letter-spacing: 4px; font-weight: 800; margin-bottom: 25px; display: block; text-transform: uppercase; }
+
+      /* INPUT STYLES */
+      input, select, textarea { 
+          width: 100%; background: #000; border: 1px solid #222; color: #fff; 
+          padding: 15px; border-radius: 15px; font-size: 0.85rem; margin-bottom: 20px;
+          transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      input:focus { border-color: var(--hyper-neon); box-shadow: 0 0 15px rgba(0, 255, 204, 0.3); outline: none; }
+
+      .chaos-label { display: flex; justify-content: space-between; font-size: 0.65rem; margin-bottom: 10px; color: var(--phantom-purple); }
+      input[type="range"] { accent-color: var(--phantom-purple); }
+
+      .forge-master-btn { 
+          width: 100%; background: linear-gradient(135deg, var(--hyper-neon), var(--phantom-purple));
+          color: #000; border: none; padding: 22px; border-radius: 20px; font-weight: 900;
+          cursor: pointer; letter-spacing: 2px; text-transform: uppercase; transition: 0.5s;
+      }
+      .forge-master-btn:hover { transform: scale(1.02); filter: brightness(1.2); box-shadow: 0 0 30px rgba(0, 255, 204, 0.4); }
+
+      /* ARTIFACT DISPLAY */
+      .artifact-box { 
+          background: #050508; border: 1px solid #111; border-radius: 35px; padding: 40px; 
+          margin-bottom: 40px; position: relative; transition: 0.6s;
+      }
+      .artifact-box:hover { border-color: var(--hyper-neon); transform: translateY(-5px); }
+
+      pre { 
+          background: #000; color: #e0e0e0; padding: 30px; border-radius: 20px;
+          font-family: 'Fira Code', monospace; font-size: 0.75rem; line-height: 1.8;
+          border-left: 4px solid var(--phantom-purple); overflow-x: auto;
+      }
+
+      .copy-trigger {
+          position: absolute; top: 40px; right: 40px; background: var(--hyper-neon);
+          color: #000; border: none; padding: 10px 20px; border-radius: 12px; font-weight: 800; font-size: 0.6rem; cursor: pointer;
+      }
+
+      /* MANUAL / INSTRUCTIONS SIDEBAR */
+      .manual-item { margin-bottom: 25px; padding: 20px; background: rgba(255,255,255,0.01); border-radius: 20px; border: 1px solid rgba(255,255,255,0.03); }
+      .manual-item b { color: var(--hyper-neon); display: block; margin-bottom: 5px; font-size: 0.8rem; }
+      .manual-item p { font-size: 0.75rem; color: #888; line-height: 1.6; margin: 0; }
+
+      ::-webkit-scrollbar { width: 5px; }
+      ::-webkit-scrollbar-thumb { background: var(--phantom-purple); border-radius: 10px; }
+    ]]></b:skin>
+  </head>
+
+  <body>
+    <div class='grand-wrapper'>
+      <header class='supreme-header'>
+        <div class='logo-text'>OMNI-SYNAPSE v16.0</div>
+        <div style='font-size:0.6rem; color:var(--hyper-neon); letter-spacing:2px;'>SIGNATURE: @HEAVEN / @CIRCLEMONTH</div>
+      </header>
+
+      <div class='master-grid'>
+        <aside class='side-deck'>
+          <span class='section-tag'>Engine Injection</span>
+          
+          <label style='font-size:0.65rem; color:#555;'>THEME TOPIC</label>
+          <input id='topic' placeholder='e.g. Interstellar Health Lab' type='text'/>
+
+          <label style='font-size:0.65rem; color:#555;'>VISUAL ARCHETYPE (v15)</label>
+          <select id='archetype'>
+              <option value='Dopamine Cyberpunk'>Dopamine Cyberpunk</option>
+              <option value='Tactical Minimalism'>Tactical Minimalism</option>
+              <option value='Bio-Organic Tech'>Bio-Organic Tech</option>
+          </select>
+
+          <label style='font-size:0.65rem; color:#555;'>TEMPORAL LOGIC (v14)</label>
+          <select id='timeLogic'>
+              <option value='Active Night/Day Shifting'>Day/Night Shifting</option>
+              <option value='Seasonal Content Adaptive'>Seasonal Adaptive</option>
+              <option value='None'>Static Mode</option>
+          </select>
+
+          <div class='chaos-label'>
+              <span>CHAOS LEVEL (v11)</span>
+              <span id='chaosVal'>50%</span>
+          </div>
+          <input id='chaosRange' max='100' min='0' oninput='document.getElementById("chaosVal").innerText = this.value + "%"' type='range' value='50'/>
+
+          <label style='font-size:0.65rem; color:#555; margin-top:20px;'>CUSTOM DNA (v13)</label>
+          <textarea id='dna' placeholder='Add unique features...' rows='3'></textarea>
+
+          <button class='forge-master-btn' onclick='forgeFinal()'>INITIATE OMNI-FORGE</button>
+        </aside>
+
+        <main id='stream'>
+            <div style='text-align:center; padding-top:200px; opacity:0.1; font-weight:900; font-size:4rem; font-family: "Syncopate";'>IDLE_CORE</div>
+        </main>
+
+        <aside class='side-deck'>
+          <span class='section-tag'>Operator Manual</span>
+          <div class='manual-item'>
+            <b>01. Hybrid Integration:</b>
+            <p>Versi 16 ini menggabungkan semua logika v9-v15. Anda menentukan Visual DNA (v15), Logika Waktu (v14), dan Arsitektur Layout dalam satu perintah.</p>
+          </div>
+          <div class='manual-item'>
+            <b>02. Chaos-Controlled AI:</b>
+            <p>Slider Chaos akan menyisipkan instruksi "Liar" ke dalam prompt. Semakin tinggi, AI akan semakin mengabaikan aturan standar Blogger untuk hasil yang lebih unik.</p>
+          </div>
+          <div class='manual-item'>
+            <b>03. ASCII Visualization:</b>
+            <p>Setiap prompt menyertakan peta arsitektur (v13) untuk memastikan AI memahami penempatan widget secara presisi.</p>
+          </div>
+          <div class='manual-item'>
+            <b>04. Signature Protection:</b>
+            <p>Identitas <b>@HEAVEN</b> dan <b>@circlemonth</b> tertanam kuat dalam metadata kode yang dihasilkan untuk menjaga orisinalitas.</p>
+          </div>
+          <div style='margin-top:30px; text-align:center; opacity:0.4; font-size:0.6rem;'>
+            ENGINEERED BY THE SUPREME ARCHITECT
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <script type='text/javascript'>
+      //<![CDATA[
+      function forgeFinal() {
+          const topic = document.getElementById('topic').value || "Final Genesis";
+          const archetype = document.getElementById('archetype').value;
+          const time = document.getElementById('timeLogic').value;
+          const chaos = document.getElementById('chaosRange').value;
+          const dna = document.getElementById('dna').value || "Full Responsive XML";
+          const stream = document.getElementById('stream');
+          stream.innerHTML = '';
+
+          for(let i=1; i<=10; i++) {
+              const pId = `omni-${i}`;
+              const blueprint = `
++---------------------------------------+
+| [ HEADER: ARCHITECT_CORE ]            |
++-------+-----------------------+-------+
+| DNA   |   ${topic.toUpperCase()}   | LOGIC |
+| V16   |   MUTATION: ${chaos}%      | TIME  |
++-------+-----------------------+-------+
+| [ FOOTER: @CIRCLEMONTH / HEAVEN ]     |
++---------------------------------------+`;
+
+              const masterPrompt = `[OMNI-SYNAPSE v16.0 PROTOCOL - FINAL ARTIFACT]
+Role: Supreme XML Systems Architect.
+Project: "${topic}".
+Visual DNA: ${archetype}.
+Temporal Engine: ${time}.
+Chaos Level: ${chaos}%.
+Additional DNA: ${dna}.
+
+[BLUEPRINT MAPPING]
+${blueprint}
+
+[EXECUTION DIRECTIVES]
+1. STYLE: Forge a ${archetype} interface using high-order CSS Grid.
+2. TEMPORAL: Integrate ${time} logic into the XML <head> via JS/Blogger tags.
+3. INNOVATION: Apply ${chaos}% level of structural innovation (if >70%, use experimental tags).
+4. ARCHITECTURE: Use the ASCII map above to structure the <b:section> and <b:widget> areas.
+5. IDENTITY: Hardcode "@circlemonth / Heaven" into CSS, Comments, and Footer.
+
+Variation #${i}: Create a master-level XML code that embodies this "Cyber-Physical" evolution.`;
+
+              const card = document.createElement('div');
+              card.className = 'artifact-box';
+              card.innerHTML = `
+                  <button class="copy-trigger" onclick="copyFinal(this, '${pId}')">COPY OMNI-DNA</button>
+                  <div style="font-size:0.65rem; color:var(--solar-gold); font-weight:900; margin-bottom:20px; letter-spacing:3px;">SYNAPTIC_EVOLUTION_0${i}</div>
+                  <pre id="${pId}">${masterPrompt}</pre>
+              `;
+              stream.appendChild(card);
+          }
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      function copyFinal(btn, id) {
+          navigator.clipboard.writeText(document.getElementById(id).innerText);
+          btn.innerHTML = 'DNA_SEQUENCED';
+          btn.style.background = '#9d00ff';
+          btn.style.color = '#fff';
+          setTimeout(() => {
+              btn.innerHTML = 'COPY OMNI-DNA';
+              btn.style.background = 'var(--hyper-neon)';
+              btn.style.color = '#000';
+          }, 1500);
+      }
+      //]]>
+    </script>
+  </body>
+</html>
