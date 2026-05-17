@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://google.com/2000/svg' xmlns:data='http://www.google.com/2005/gml' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+  <meta charset='utf-8'/>
+  <meta content='width=device-width, initial-scale=1' name='viewport'/>
+  <title>OmniStudio Multiverse AI Prompt Generator (Expansion Pack: Modes 51-100)</title>
+  
+  <!-- Tailwind CSS Play CDN -->
+  <script src='https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4'></script>
+  
+  <!-- Google Fonts XML Safe -->
+  <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700;800&amp;display=swap' rel='stylesheet'/>
+
+  <style type='text/css'>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.1);
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #4338ca;
+      border-radius: 8px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb:hover {
+      background: #4f46e5;
+    }
+  </style>
+
+  <b:skin><![CDATA[
+    body { margin: 0; padding: 0; }
+    .navbar, .header-outer, .sidebar-outer, .footer-outer { display: none !important; }
+    .feed-links, .blog-feeds, #blog-pager, .status-msg-wrap { display: none !important; }
+  ]]></b:skin>
+</head>
+<body class='overflow-hidden text-slate-200 antialiased bg-[#05050a]' id='studioBody'>
+
+  <!-- Struktur Inti Wajib Blogger -->
+  <b:section id='main_content' showaddelement='yes'>
+    <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' visible='false'/>
+  </b:section>
+
+  <!-- MULTIVERSE APP HEADER -->
+  <header class='h-20 bg-slate-950/80 backdrop-blur-md border-b border-indigo-950 px-8 flex items-center justify-between z-20 relative' id='studioHeader'>
+    <div class='flex items-center gap-3.5'>
+      <div class='h-10 w-10 rounded-xl bg-gradient-to-tr from-indigo-500 via-purple-600 to-rose-500 flex items-center justify-center shadow-lg shadow-indigo-500/20' id='logoBox'>
+        <span class='text-lg font-black text-white tracking-wider' id='logoText'>🚀</span>
+      </div>
+      <div>
+        <h1 class='text-md font-extrabold tracking-tight text-white sm:text-lg flex items-center gap-2'>
+          OmniStudio Multiverse <span class='text-xs font-black uppercase tracking-widest px-2 py-0.5 rounded-md border bg-indigo-500/10 text-indigo-400 border-indigo-500/20' id='badgeMode'>EXPANSION MATRIX (51-100)</span>
+        </h1>
+        <p class='text-[11px] text-slate-400 tracking-wide hidden sm:block' id='subHeaderTitle'>Loading Cinematic, Dynamic, and Abstract Concept Nodes</p>
+      </div>
+    </div>
+    
+    <!-- Controls -->
+    <div class='flex items-center gap-3'>
+      <button class='bg-slate-900 border border-slate-800 hover:bg-slate-800 text-indigo-400 text-xs font-black py-2.5 px-4 rounded-xl shadow-sm transition cursor-pointer' onclick='toggleSourceModal(true)'>
+        📦 Show Source Code
+      </button>
+      <button class='hidden bg-slate-800 text-white text-xs font-bold py-2.5 px-5 rounded-xl shadow-md transition cursor-pointer' id='btnDefaultView' onclick='toggleZenMode(false)'>
+        🖥️ Default Layout
+      </button>
+      <button class='bg-slate-900 border border-slate-800 text-slate-300 text-xs font-bold py-2.5 px-5 rounded-xl shadow-sm transition cursor-pointer' id='btnZenMode' onclick='toggleZenMode(true)'>
+        🧘 Zen Mode
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN STUDIOS WORKSPACE -->
+  <main class='flex h-[calc(100vh-5rem)] overflow-hidden relative w-full'>
+    
+    <!-- SIDEBAR CONTROL DECK -->
+    <section class='w-full md:w-[420px] bg-slate-950 border-r border-indigo-950/40 p-8 flex flex-col justify-between overflow-y-auto custom-scroll' id='leftMenuPanel'>
+      <div class='space-y-6'>
+        
+        <!-- MODE SELECTOR DOCK -->
+        <div class='bg-slate-900/40 p-4 rounded-2xl border border-slate-900 space-y-2.5'>
+          <label class='block text-[10px] font-black uppercase tracking-widest text-indigo-400'>Expansion Universe Selector</label>
+          <select class='w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-sm font-bold text-white transition cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500' id='engineMode' onchange='switchEngineMode()'>
+            <!-- Injected by JS Engine -->
+          </select>
+        </div>
+
+        <div class='border-b border-slate-900 pb-2'>
+          <h2 class='text-[10px] font-black uppercase tracking-widest text-slate-400'>Quantum Control Deck v2</h2>
+          <p class='text-xs text-slate-500 mt-1' id='controlCenterDesc'>Formulate expanded prompt parameters dynamically.</p>
+        </div>
+
+        <!-- Input Field -->
+        <div class='space-y-2'>
+          <label class='block text-[11px] font-bold text-slate-400 uppercase tracking-wider' id='lblSubject'>Core Target Idea <span class='text-indigo-500'>*</span></label>
+          <input class='w-full px-4 py-3 bg-slate-900/30 border border-slate-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm text-white placeholder-slate-700' id='subject' type='text'/>
+        </div>
+
+        <!-- Optional Reference -->
+        <div class='space-y-2'>
+          <label class='block text-[11px] font-bold text-slate-400 uppercase tracking-wider'>Image Reference Anchor (Optional)</label>
+          <input class='w-full px-4 py-3 bg-slate-900/30 border border-slate-800 rounded-xl text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-slate-700' id='imgUrl' placeholder='https://...' type='url'/>
+        </div>
+
+        <!-- Negative Tuning -->
+        <div class='space-y-2'>
+          <label class='block text-[11px] font-bold text-slate-400 uppercase tracking-wider'>Exclusion Parameters (Negative)</label>
+          <input class='w-full px-4 py-3 bg-slate-900/30 border border-slate-800 rounded-xl text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-slate-700' id='negativePrompt' placeholder='--no blur, deformed, text' type='text'/>
+        </div>
+
+        <!-- Aspect Ratios -->
+        <div class='space-y-2'>
+          <label class='block text-[11px] font-bold text-slate-400 tracking-wider text-slate-400 uppercase'>Aspect Ratio Matrix</label>
+          <select class='w-full px-4 py-3 bg-slate-900/30 border border-slate-800 rounded-xl text-sm text-slate-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500' id='aspectRatio'>
+            <!-- Injected by JS -->
+          </select>
+        </div>
+
+        <!-- Compile Actions -->
+        <div class='pt-2 space-y-3'>
+          <button class='w-full bg-slate-900 hover:bg-slate-800 border border-slate-800 text-white text-xs font-bold py-3.5 px-4 rounded-xl transition cursor-pointer tracking-wide' id='btnCompile' onclick='generatePrompt(false)'>
+            ⚙️ Compile Engineered Template
+          </button>
+          <button class='w-full text-white text-xs font-extrabold py-3.5 px-4 rounded-xl shadow-lg transition cursor-pointer tracking-wide bg-gradient-to-r from-indigo-600 via-purple-600 to-rose-600 shadow-indigo-600/20 hover:opacity-90' id='btnRandom' onclick='generatePrompt(true)'>
+            ✨ Chaos Spectacular Randomizer
+          </button>
+        </div>
+      </div>
+
+      <!-- Footer Metadata -->
+      <div class='pt-6 border-t border-slate-900 mt-8 space-y-4'>
+        <button class='w-full bg-rose-950/20 hover:bg-rose-950/40 border border-rose-900/30 text-rose-400 text-xs font-bold py-3 px-4 rounded-xl transition cursor-pointer' onclick='resetDashboard()'>
+          🗑️ Flush Expansion Cache
+        </button>
+        <div class='text-center text-[9px] text-slate-500 font-bold tracking-widest uppercase'>
+          MULTIVERSE EXPANSION DECK • <span class='text-indigo-400' id='footerWatermark'>@circlemonth</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN DISPLAY OUTPUT TERMINAL -->
+    <section class='flex-1 bg-[#020205] p-8 flex flex-col overflow-hidden'>
+      <div class='flex items-center justify-between mb-6 bg-slate-950 border border-indigo-950/50 px-5 py-4 rounded-xl shadow-sm'>
+        <div class='flex items-center gap-3'>
+          <span class='flex h-2.5 w-2.5 rounded-full animate-pulse bg-indigo-500'></span>
+          <span class='text-xs font-black text-slate-400 uppercase tracking-widest'>Expansion Feed Output Terminal</span>
+        </div>
+        <div class='text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full text-indigo-400 bg-indigo-500/10 border border-indigo-500/20' id='promptCounter'>
+          0 Logs Transmitted
+        </div>
+      </div>
+
+      <!-- Log Stack -->
+      <div class='flex-1 overflow-y-auto space-y-5 pr-1 custom-scroll' id='promptLogContainer'>
+        <div class='h-full flex flex-col items-center justify-center text-center p-8' id='emptyState'></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- OVERLAY SOURCE CODE EXAMINER MODAL -->
+  <div class='fixed inset-0 bg-slate-950/90 backdrop-blur-lg z-50 flex items-center justify-center p-4 md:p-12 transition-all duration-300 hidden opacity-0' id='sourceModal'>
+    <div class='bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-5xl h-full max-h-[85vh] flex flex-col overflow-hidden shadow-2xl scale-95 transition-all duration-300' id='modalBox'>
+      <div class='px-6 py-5 bg-slate-950 border-b border-slate-800 flex items-center justify-between shrink-0'>
+        <div class='flex items-center gap-3'>
+          <div class='h-9 w-9 bg-indigo-500/10 border border-indigo-500/20 rounded-xl flex items-center justify-center text-md'>📦</div>
+          <div>
+            <h3 class='text-sm font-black text-white uppercase tracking-wider'>Blogger Theme Manifest Expansion XML</h3>
+            <p class='text-[10px] text-slate-500 font-medium mt-0.5'>Copy this source code to host modes 51-100 on Blogger.</p>
+          </div>
+        </div>
+        <button class='bg-slate-900 text-slate-400 text-xs font-extrabold px-4 py-2 rounded-xl border border-slate-800 cursor-pointer' onclick='toggleSourceModal(false)'>✕ Close</button>
+      </div>
+      <div class='flex-1 p-6 overflow-hidden bg-slate-950/40'>
+        <textarea class='w-full h-full bg-slate-950 border border-slate-800 rounded-2xl p-5 text-xs text-slate-300 font-mono focus:outline-none resize-none overflow-auto custom-scroll select-all' id='themeSourceArea' readonly='readonly'></textarea>
+      </div>
+      <div class='px-6 py-4 bg-slate-950 border-t border-slate-800 flex items-center justify-between shrink-0'>
+        <span class='text-[10px] font-black tracking-widest text-slate-600 uppercase'>Expansion Engine V2.0</span>
+        <button class='bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-xs font-black px-6 py-3 rounded-xl cursor-pointer shadow-lg' onclick='copyWholeThemeSourcePayload(this)'>
+          📋 Copy Entire Theme Code
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RUNTIME CORE ENGINE -->
+  <script type='text/javascript'>
+    //<![CDATA[
+    
+    const EXPANSION_CLUSTER_CONFIG = {
+      boosters: [
+        "shot on 75mm lens, hyperdetailed photorealistic texture mapping, sub-surface scatter, cinematic environment lighting, 8k render --v 6.0",
+        "intricate cybernetic geometry accents, ethereal glowing sub-layers, micro-shadow contrast depth --style raw --v 6.0",
+        "surreal maximalist composition, impeccable asset design definition, hyper-fidelity finish --v 6.0"
+      ],
+      ratios: [
+        {text:"Cinematic Widescreen (16:9)", val:"--ar 16:9"},
+        {text:"Vertical Master (9:16)", val:"--ar 9:16"},
+        {text:"Standard Master Square (1:1)", val:"--ar 1:1"}
+      ]
+    };
+
+    const VOCABULARY_CORPUS = {
+      subjects: [
+        "an ancient mechanical guardian head floating over neon dunes",
+        "a surreal cosmic library where book pages turn into nebulae",
+        "a cyberpunk Javanese shadow puppet (Wayang Kulit) made of glowing glassfiber",
+        "a high-fashion avant-garde dress woven entirely from liquid crystal light strands",
+        "an overgrown botanical bio-dome capsule floating inside deep dark space"
+      ],
+      styles: ["An extraordinary visual masterpiece visualization", "A magnificent groundbreaking conceptual rendering profile", "A breathtaking premier high-fidelity production display"],
+      adjectives: ["with staggering complex architectural elements", "featuring unbelievable depth orchestration and flawless values", "with absolute pristine rendering layout and micro-surface focus"],
+      vibes: ["radiating a hauntingly beautiful timeless aura", "pulsing with intense hyper-tech cosmic energy signatures", "submerged in deep mysterious dark ambient tone textures"],
+      colors: ["cinematic hyper-saturated chromatic neon spectrum paths", "moody dark metallic graphite accents with vibrant sapphire undertones", "dreamy surrealist pastel infrared color shifts"]
+    };
+
+    // MATRIX MODE 51 - 100 CONFIGURATION DOCK
+    // SAYA SUDAH MENANAMKAN MODE 51 SAMPAI 60. ANDA BISA MENERUSKAN DI SLOT YANG DISEDIAKAN!
+    const OMNI_ENGINE_MODES = [
+      { id: "cyber_indonesia", name: "🎭 Mode 51: Cyber-Indonesian Folklore", sub: "Futuristic Wayang & Mythical Archipelago Cyber Heritage Tech", emoji: "🎭", phrase: "A breathtaking cyber-futuristic Indonesian folklore rendering of" },
+      { id: "bioluminescent", name: "🧬 Mode 52: Bioluminescent Deep Sea Eco", sub: "Neon Organisms & Glowing Subaquatic Micro Ecosystem Nodes", emoji: "🧬", phrase: "A stunning high-fidelity 3D bioluminescent deep-sea asset of" },
+      { id: "brutalist_space", name: "🪐 Mode 53: Brutalist Space Architecture", sub: "Monolithic Concrete Structures & Dark Imposing Cosmic Horizons", emoji: "🪐", phrase: "A massive cinematic brutalist monolithic space structures depicting" },
+      { id: "liquid_chrome", name: "💧 Mode 54: Liquid Chrome Surrealism", sub: "Mercurial Fluid Assets & Hyper-Reflective Floating Metallic Mirrors", emoji: "💧", phrase: "A surreal avant-garde liquid chrome reflective abstract artwork of" },
+      { id: "dark_synthwave", name: "🌃 Mode 55: Dark Synthwave Grimdark", sub: "80s Heavy Distorted Neons & Rain-Slicked Dystopian Cyber-Alleys", emoji: "🌃", phrase: "A gritty dark synthwave dystopian hyper-detailed viewport showing" },
+      { id: "glass_botany", name: "🌱 Mode 56: Frosted Glass Bio-Botany", sub: "Translucent Greenhouse Nodes & Glowing Internal Plant Veins", emoji: "🌱", phrase: "An exquisite premium frosted glass botany plant asset modeling" },
+      { id: "mythic_mech", name: "🤖 Mode 57: Mythological Mecha Titan", sub: "Ancient Deity Armor Plates Fused with Advanced Combat Hydraulics", emoji: "🤖", phrase: "An imposing mythological celestial mecha robot unit concept of" },
+      { id: "psychedelic", name: "🍄 Mode 58: Psychedelic Dopamine Astral", sub: "Maximalist Infinite Fractures & Explosive Color Pattern Rushes", emoji: "🍄", phrase: "An explosive dopamine maximalist psychedelic astral scene of" },
+      { id: "steampunk_flying", name: "⚓ Mode 59: Steampunk Airship Armada", sub: "Polished Heavy Brass Gears, Canvas Sails, and Dense Cloud Layers", emoji: "⚓", phrase: "An intricate Victorian steampunk flying naval vehicle architecture of" },
+      { id: "hologram_ui", name: "🌐 Mode 60: Holographic Interface Display", sub: "Floating Data Graphs, Cyber Blue Matrices, and Vector Grid Lines", emoji: "🌐", phrase: "A futuristic holographic 3D diagnostic heads-up user interface of" },
+
+      /* =========================================================================
+         🚀 SLOT INJEKSI MANDIRI ANDA (MODE 61 SAMPAI 100)
+         Silakan tambahkan baris baru di bawah ini mengikuti format objek di atas!
+         Contoh:
+         { id: "mode61", name: "🌌 Mode 61: Nama Mode Anda", sub: "Sub Deskripsi", emoji: "🌌", phrase: "Kalimat Awalan Prompt" },
+         ========================================================================= */
+
+    ];
+
+    let counter = 0;
+    let currentMode = 'cyber_indonesia';
+
+    function initializeMultiverseSystemEngine() {
+      const dropdown = document.getElementById('engineMode');
+      dropdown.innerHTML = '';
+      
+      OMNI_ENGINE_MODES.forEach(function(engine) {
+        let opt = document.createElement('option');
+        opt.value = engine.id;
+        opt.innerText = engine.name;
+        dropdown.appendChild(opt);
+      });
+
+      document.getElementById('themeSourceArea').value = document.documentElement.outerHTML;
+      switchEngineMode();
+    }
+
+    function drawRandomAsset(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function switchEngineMode() {
+      currentMode = document.getElementById('engineMode').value;
+      const modeConfig = OMNI_ENGINE_MODES.find(m => m.id === currentMode);
+      if (!modeConfig) return;
+
+      document.getElementById('logoText').innerText = modeConfig.emoji;
+      document.getElementById('badgeMode').innerText = modeConfig.name.split(": ")[1].toUpperCase();
+      document.getElementById('subHeaderTitle').innerText = modeConfig.sub;
+      document.getElementById('btnCompile').innerText = "⚙️ Compile " + modeConfig.name.split(": ")[1];
+      document.getElementById('lblSubject').innerHTML = modeConfig.name.split(": ")[1] + " Core Blueprint Input <span class='text-indigo-500'>*</span>";
+      document.getElementById('subject').placeholder = "Input attributes for " + modeConfig.name.split(": ")[1] + "...";
+      document.getElementById('subject').value = '';
+
+      // Inject Ratios
+      const selectRatio = document.getElementById('aspectRatio');
+      selectRatio.innerHTML = '';
+      EXPANSION_CLUSTER_CONFIG.ratios.forEach(r => {
+        let opt = document.createElement('option');
+        opt.value = r.val; opt.innerText = r.text; selectRatio.appendChild(opt);
+      });
+
+      triggerMultiverseEmptyFeedState(modeConfig.emoji, modeConfig.name + " Bound Successfully", "System ready to process expansion cluster prompt matrices.");
+      counter = 0;
+      document.getElementById('promptCounter').innerText = "0 Logs Transmitted";
+    }
+
+    window.switchPromptCardTab = function(tabInstance, logId, targetType) {
+      const parentCard = document.getElementById('promptCard_' + logId);
+      const allTabs = parentCard.querySelectorAll('.tab-trigger');
+      const textBlock = document.getElementById('text_' + logId);
+      const jsonBlock = document.getElementById('json_' + logId);
+      const btnCopy = parentCard.querySelector('.btn-copy-action');
+
+      allTabs.forEach(tab => { tab.classList.remove('text-white', 'border-b-2', 'border-indigo-500'); tab.classList.add('text-slate-500'); });
+      tabInstance.classList.add('text-white', 'border-b-2', 'border-indigo-500');
+      tabInstance.classList.remove('text-slate-500');
+
+      if (targetType === 'string') {
+        textBlock.classList.remove('hidden'); jsonBlock.classList.add('hidden');
+        btnCopy.setAttribute('onclick', `copyEnginePromptStringPayload(this, ${logId}, 'string')`);
+        btnCopy.innerText = "📋 Copy Manifest String Data";
+      } else {
+        textBlock.classList.add('hidden'); jsonBlock.classList.remove('hidden');
+        btnCopy.setAttribute('onclick', `copyEnginePromptStringPayload(this, ${logId}, 'json')`);
+        btnCopy.innerText = "⚡ Copy JSON Prompt";
+      }
+    }
+
+    function triggerMultiverseEmptyFeedState(emoji, title, narrative) {
+      document.getElementById('promptLogContainer').innerHTML = "\
+        <div class='h-full flex flex-col items-center justify-center text-center p-8' id='emptyState'>\
+          <div class='h-16 w-16 bg-slate-950 border border-indigo-950 rounded-2xl flex items-center justify-center text-2xl shadow-inner mb-4 animate-pulse'>" + emoji + "</div>\
+          <h3 class='text-xs font-black text-slate-400 uppercase tracking-widest'>" + title + "</h3>\
+          <p class='text-xs text-slate-500 mt-2 max-w-xs leading-relaxed font-medium'>" + narrative + "</p>\
+        </div>\
+      ";
+    }
+
+    function generatePrompt(activateChaosRandomizer) {
+      let subjectValue = document.getElementById('subject').value.trim();
+      const imageRefUrl = document.getElementById('imgUrl').value.trim();
+      const customNegativeParam = document.getElementById('negativePrompt').value.trim();
+      const selectedAspectRatioSpec = document.getElementById('aspectRatio').value;
+
+      const targetModeObj = OMNI_ENGINE_MODES.find(m => m.id === currentMode);
+      if (!targetModeObj) return;
+
+      if (activateChaosRandomizer) {
+        subjectValue = drawRandomAsset(VOCABULARY_CORPUS.subjects);
+        document.getElementById('subject').value = subjectValue;
+      } else if (!subjectValue) {
+        alert("Attention: Target conceptual subject parameters required!");
+        return;
+      }
+
+      const randomizedStyle = drawRandomAsset(VOCABULARY_CORPUS.styles);
+      const randomizedAdjective = drawRandomAsset(VOCABULARY_CORPUS.adjectives);
+      const randomizedVibe = drawRandomAsset(VOCABULARY_CORPUS.vibes);
+      const randomizedColorGrade = drawRandomAsset(VOCABULARY_CORPUS.colors);
+      const secondaryBoosterPack = drawRandomAsset(EXPANSION_CLUSTER_CONFIG.boosters);
+
+      let engineeredPromptResultString = "";
+      if (imageRefUrl) engineeredPromptResultString += imageRefUrl + " ";
+      engineeredPromptResultString += targetModeObj.phrase + " " + subjectValue + ", " + randomizedStyle + ", " + randomizedAdjective + ", " + randomizedVibe + ", " + randomizedColorGrade + ", " + secondaryBoosterPack + " " + selectedAspectRatioSpec;
+      if (customNegativeParam) engineeredPromptResultString += " " + customNegativeParam;
+
+      const jsonOutputPayload = {
+        meta: { engine_version: "OmniStudio Expansion V2.0", active_mode: targetModeObj.id.toUpperCase(), timestamp: new Date().toISOString() },
+        prompt: { core_concept: subjectValue, modifier_chain: [randomizedStyle, randomizedAdjective, randomizedVibe, randomizedColorGrade], engine_boosters: secondaryBoosterPack },
+        compiled_raw: engineeredPromptResultString
+      };
+
+      const formattedJsonString = JSON.stringify(jsonOutputPayload, null, 2);
+      const emptyState = document.getElementById('emptyState');
+      if (emptyState) emptyState.remove();
+
+      counter++;
+      document.getElementById('promptCounter').innerText = counter + " Logs Transmitted";
+
+      let structuralImageLinkAttachmentBadgeElement = imageRefUrl ? "<span class='bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-[9px] font-black px-2.5 py-1 rounded-md tracking-wider uppercase'>🔗 REFERENCE DATA</span>" : "";
+
+      const rawRowLogCardTemplateHtmlMarkup = "\
+        <div class='bg-slate-900/40 p-5 rounded-2xl border border-slate-900 shadow-md flex flex-col justify-between gap-4 transition duration-300 group hover:border-indigo-500/30' id='promptCard_" + counter + "'>\
+          <div class='flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-900/80 pb-3'>\
+            <div class='flex items-center gap-2 shrink-0'>\
+              <span class='text-[9px] font-black px-2.5 py-1 rounded-md tracking-wider uppercase bg-indigo-500/10 text-indigo-400 border border-indigo-500/20'>\
+                " + targetModeObj.id.toUpperCase() + " LOG #" + counter + "\
+              </span>\
+              " + structuralImageLinkAttachmentBadgeElement + "\
+            </div>\
+            <div class='flex items-center gap-4 text-xs font-bold bg-slate-950 px-3 py-1.5 rounded-xl border border-slate-900/60'>\
+              <button class='tab-trigger text-white border-b-2 border-indigo-500 pb-0.5 cursor-pointer transition' onclick='switchPromptCardTab(this, " + counter + ", \"string\")'>📝 Raw Text</button>\
+              <button class='tab-trigger text-slate-500 pb-0.5 cursor-pointer transition' onclick='switchPromptCardTab(this, " + counter + ", \"json\")'>⚡ JSON Prompt</button>\
+            </div>\
+            <button class='btn-copy-action text-xs bg-slate-950 border border-slate-800 text-slate-300 font-extrabold py-1.5 px-4 rounded-xl transition duration-200 cursor-pointer shadow-sm hover:bg-indigo-500/20 hover:text-white' onclick='copyEnginePromptStringPayload(this, " + counter + ", \"string\")'>\
+              📋 Copy Manifest String Data\
+            </button>\
+          </div>\
+          <p class='text-sm font-medium text-slate-300 leading-relaxed break-words font-mono tracking-tight bg-slate-950/80 p-4 rounded-xl border border-slate-950' id='text_" + counter + "'>" + engineeredPromptResultString + "</p>\
+          <pre class='hidden text-xs font-mono text-indigo-400 overflow-x-auto custom-scroll bg-slate-950/90 p-4 rounded-xl border border-slate-950 whitespace-pre' id='json_" + counter + "'>" + formattedJsonString + "</pre>\
+        </div>\
+      ";
+
+      document.getElementById('promptLogContainer').insertAdjacentHTML('afterbegin', rawRowLogCardTemplateHtmlMarkup);
+    }
+
+    function copyEnginePromptStringPayload(targetButtonDomElement, uniqueLogCardId, currentActiveType) {
+      const elementTargetId = currentActiveType === 'string' ? "text_" + uniqueLogCardId : "json_" + uniqueLogCardId;
+      const targetedTextStringSourcePayload = document.getElementById(elementTargetId).innerText;
+      
+      navigator.clipboard.writeText(targetedTextStringSourcePayload).then(function() {
+        const defaultLabel = currentActiveType === 'string' ? "📋 Copy Manifest String Data" : "⚡ Copy JSON Prompt";
+        targetButtonDomElement.innerText = "✨ Copied Successfully!";
+        targetButtonDomElement.style.backgroundColor = "rgba(79, 70, 229, 0.2)";
+        targetButtonDomElement.style.color = "#818cf8";
+        
+        setTimeout(function() {
+          targetButtonDomElement.innerText = defaultLabel;
+          targetButtonDomElement.style.backgroundColor = "";
+          targetButtonDomElement.style.color = "";
+        }, 1200);
+      });
+    }
+
+    function toggleSourceModal(shouldShowModal) {
+      const modalOverlay = document.getElementById('sourceModal');
+      const modalInnerBox = document.getElementById('modalBox');
+      if (shouldShowModal) {
+        document.getElementById('themeSourceArea').value = document.documentElement.outerHTML;
+        modalOverlay.classList.remove('hidden');
+        setTimeout(() => { modalOverlay.classList.remove('opacity-0'); modalInnerBox.classList.remove('scale-95'); }, 30);
+      } else {
+        modalOverlay.classList.add('opacity-0'); modalInnerBox.classList.add('scale-95');
+        setTimeout(() => modalOverlay.classList.add('hidden'), 300);
+      }
+    }
+
+    function copyWholeThemeSourcePayload(buttonInstance) {
+      navigator.clipboard.writeText(document.getElementById('themeSourceArea').value).then(function() {
+        buttonInstance.innerText = "⚡ XML Expansion Code Copied!";
+        buttonInstance.style.backgroundColor = "#10b981";
+        setTimeout(() => { buttonInstance.innerText = "📋 Copy Entire Theme Code"; buttonInstance.style.backgroundColor = ""; }, 1500);
+      });
+    }
+
+    function resetDashboard() {
+      if (confirm('Flush current dashboard configuration memory?')) {
+        document.getElementById('subject').value = '';
+        document.getElementById('imgUrl').value = '';
+        document.getElementById('negativePrompt').value = '';
+        switchEngineMode();
+      }
+    }
+
+    function toggleZenMode(activateZenLayoutState) {
+      if (activateZenLayoutState) {
+        document.getElementById('leftMenuPanel').classList.add('hidden');
+        document.getElementById('btnZenMode').classList.add('hidden');
+        document.getElementById('btnDefaultView').classList.remove('hidden');
+      } else {
+        document.getElementById('leftMenuPanel').classList.remove('hidden');
+        document.getElementById('btnZenMode').classList.remove('hidden');
+        document.getElementById('btnDefaultView').classList.add('hidden');
+      }
+    }
+
+    window.onload = function() { initializeMultiverseSystemEngine(); };
+    //]]>
+  </script>
+
+</body>
+</html>
