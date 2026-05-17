@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://google.com/2000/svg' xmlns:data='http://www.google.com/2005/gml' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+  <meta charset='utf-8'/>
+  <meta content='width=device-width, initial-scale=1' name='viewport'/>
+  <title>OmniStudio Multiverse AI Prompt Generator (50 Core Modes)</title>
+  
+  <!-- Tailwind CSS Play CDN -->
+  <script src='https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4'></script>
+  
+  <!-- Google Fonts XML Safe -->
+  <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap' rel='stylesheet'/>
+
+  <style type='text/css'>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.1);
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 8px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+  </style>
+
+  <b:skin><![CDATA[
+    body { margin: 0; padding: 0; }
+    .navbar, .header-outer, .sidebar-outer, .footer-outer { display: none !important; }
+    .feed-links, .blog-feeds, #blog-pager, .status-msg-wrap { display: none !important; }
+  ]]></b:skin>
+</head>
+<body class='overflow-hidden text-slate-200 antialiased bg-[#070a12]' id='studioBody'>
+
+  <!-- Struktur Inti Wajib Blogger -->
+  <b:section id='main_content' showaddelement='yes'>
+    <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' visible='false'/>
+  </b:section>
+
+  <!-- MULTIVERSE APP HEADER -->
+  <header class='h-20 bg-slate-950/80 backdrop-blur-md border-b border-slate-900 px-8 flex items-center justify-between z-20 relative' id='studioHeader'>
+    <div class='flex items-center gap-3.5'>
+      <div class='h-10 w-10 rounded-xl bg-gradient-to-tr from-pink-500 via-amber-500 to-emerald-500 flex items-center justify-center shadow-lg transition-all duration-500' id='logoBox'>
+        <span class='text-lg font-black text-white tracking-wider' id='logoText'>🌌</span>
+      </div>
+      <div>
+        <h1 class='text-md font-extrabold tracking-tight text-white sm:text-lg flex items-center gap-2'>
+          OmniStudio Multiverse <span class='text-xs font-black uppercase tracking-widest px-2 py-0.5 rounded-md border transition-all duration-500' id='badgeMode'>CORE MATRIX</span>
+        </h1>
+        <p class='text-[11px] text-slate-400 tracking-wide hidden sm:block' id='subHeaderTitle'>Infinite Generative Art Architecture &amp; Prompt Engineering Terminal</p>
+      </div>
+    </div>
+    
+    <!-- View Switcher & Source Code Controls -->
+    <div class='flex items-center gap-3'>
+      <button class='bg-slate-900 border border-slate-800 hover:bg-slate-800 text-cyan-400 text-xs font-black py-2.5 px-4 rounded-xl shadow-sm transition-all duration-200 cursor-pointer flex items-center gap-2' id='btnGetCode' onclick='toggleSourceModal(true)'>
+        📦 Get Theme XML
+      </button>
+      <button class='hidden bg-gradient-to-r from-slate-800 to-slate-700 hover:from-slate-700 hover:to-slate-600 border border-slate-600/50 text-white text-xs font-bold py-2.5 px-5 rounded-xl shadow-md transition-all duration-200 cursor-pointer flex items-center gap-2' id='btnDefaultView' onclick='toggleZenMode(false)'>
+        🖥️ Default Layout
+      </button>
+      <button class='bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-300 text-xs font-bold py-2.5 px-5 rounded-xl shadow-sm transition-all duration-200 cursor-pointer flex items-center gap-2' id='btnZenMode' onclick='toggleZenMode(true)'>
+        🧘 Zen Mode
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN MULTIVERSE STUDIO INTERFACE -->
+  <main class='flex h-[calc(100vh-5rem)] overflow-hidden relative w-full'>
+    
+    <!-- SIDEBAR DOCK: CONFIGURATION PANEL -->
+    <section class='w-full md:w-[420px] bg-slate-950 border-r border-slate-900 p-8 flex flex-col justify-between overflow-y-auto transition-all duration-300 custom-scroll' id='leftMenuPanel'>
+      <div class='space-y-6'>
+        
+        <!-- FLUID MODE SELECTOR -->
+        <div class='bg-slate-900/40 p-4 rounded-2xl border border-slate-900 space-y-2.5'>
+          <label class='block text-[10px] font-black uppercase tracking-widest text-slate-400' id='lblEngineSwitch'>Active Visual Universe Core</label>
+          <select class='w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:outline-none focus:ring-2 text-sm font-bold text-white transition cursor-pointer' id='engineMode' onchange='switchEngineMode()'>
+            <!-- Dynamic Inject by Javascript Logic Cluster Engine -->
+          </select>
+        </div>
+
+        <div class='border-b border-slate-900 pb-2'>
+          <h2 class='text-[10px] font-black uppercase tracking-widest text-slate-400' id='controlCenterTitle'>Quantum Control Deck</h2>
+          <p class='text-xs text-slate-500 mt-1 leading-relaxed' id='controlCenterDesc'>Configure high-fidelity attributes for targeted synthesis.</p>
+        </div>
+
+        <!-- Main Concept Idea Input -->
+        <div class='space-y-2'>
+          <label class='block text-[11px] font-bold text-slate-400 uppercase tracking-wider' id='lblSubject'>Core Concept / Prompt Input <span class='text-pink-500'>*</span></label>
+          <input class='w-full px-4 py-3 bg-slate-900/30 border border-slate-800 rounded-xl focus:outline-none focus:ring-2 focus:border-transparent text-sm text-white transition placeholder-slate-700 shadow-inner' id='subject' placeholder='Enter your creative core vision...' type='text'/>
+        </div>
+
+        <!-- Reference Asset ID -->
+        <div class='space-y-2'>
+          <label class='block text-[11px] font-bold text-slate-400 uppercase tracking-wider' for='imgUrl'>Image Link Reference (Optional)</label>
+          <input class='w-full px-4 py-3 bg-slate-900/30 border border-slate-800 rounded-xl focus:outline-none focus:ring-2 focus:border-transparent text-sm text-white transition placeholder-slate-700 shadow-inner' id='imgUrl' placeholder='https://images.unsplash.com/... (Image URL)' type='url'/>
+        </div>
+
+        <!-- Parameter Negatif Tuning -->
+        <div class='space-y-2'>
+          <label class='block text-[11px] font-bold text-slate-400 uppercase tracking-wider' for='negativePrompt'>Exclusion Tuning (Negative Prompt)</label>
+          <input class='w-full px-4 py-3 bg-slate-900/30 border border-slate-800 rounded-xl focus:outline-none focus:ring-2 focus:border-transparent text-sm text-white transition placeholder-slate-700 shadow-inner' id='negativePrompt' placeholder='e.g., --no blur frame ugly deformed' type='text'/>
+        </div>
+
+        <!-- Pilihan Rasio Aspek Semantik -->
+        <div class='space-y-2'>
+          <label class='block text-[11px] font-bold text-slate-400 uppercase tracking-wider' id='lblRatio'>Dynamic Aspect Ratio</label>
+          <select class='w-full px-4 py-3 bg-slate-900/30 border border-slate-800 rounded-xl focus:outline-none focus:ring-2 text-sm text-slate-300 transition cursor-pointer' id='aspectRatio'>
+            <!-- Automatic Injected Ratios Option Array -->
+          </select>
+        </div>
+
+        <!-- Action Control Group -->
+        <div class='pt-2 space-y-3'>
+          <button class='w-full bg-slate-900 hover:bg-slate-800 border border-slate-800 text-white text-xs font-bold py-3.5 px-4 rounded-xl transition duration-200 cursor-pointer flex items-center justify-center gap-2 tracking-wide' id='btnCompile' onclick='generatePrompt(false)'>
+            ⚙️ Compile Engineered Template
+          </button>
+          <button class='w-full text-white text-xs font-extrabold py-3.5 px-4 rounded-xl shadow-lg transition duration-200 cursor-pointer flex items-center justify-center gap-2 tracking-wide' id='btnRandom' onclick='generatePrompt(true)'>
+            ✨ Chaos Spectacular Randomizer
+          </button>
+        </div>
+      </div>
+
+      <!-- Footer Framework Metadata System -->
+      <div class='pt-6 border-t border-slate-900 mt-8 space-y-4'>
+        <button class='w-full bg-rose-950/20 hover:bg-rose-950/40 border border-rose-900/30 text-rose-400 text-xs font-bold py-3 px-4 rounded-xl transition duration-200 cursor-pointer flex items-center justify-center gap-2' onclick='resetDashboard()'>
+          🗑️ Flush Multiverse Engine Cache (Reset)
+        </button>
+        <div class='text-center text-[9px] text-slate-500 font-bold tracking-widest uppercase'>
+          INFINITE ENGINE MULTIVERSE • <span class='transition-colors duration-500' id='footerWatermark'>@circlemonth</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN MONITOR FEED SCREEN PANEL -->
+    <section class='flex-1 bg-[#04060a] p-8 flex flex-col overflow-hidden transition-all duration-300' id='rightDisplayPanel'>
+      
+      <!-- Quantum Status Synchronization Bar -->
+      <div class='flex items-center justify-between mb-6 bg-slate-950 border border-slate-900/80 px-5 py-4 rounded-xl shadow-sm' id='statusBarRight'>
+        <div class='flex items-center gap-3'>
+          <span class='flex h-2.5 w-2.5 rounded-full animate-pulse' id='statusPulseDot'></span>
+          <span class='text-xs font-black text-slate-400 uppercase tracking-widest' id='feedTitle'>Output Synchronization Pipeline</span>
+        </div>
+        <div class='text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full' id='promptCounter'>
+          0 Logs Transmitted
+        </div>
+      </div>
+
+      <!-- Realtime Output Render Pipeline Row Area -->
+      <div class='flex-1 overflow-y-auto space-y-5 pr-1 custom-scroll' id='promptLogContainer'>
+        <!-- Dynamic Empty Placeholder Injection Object -->
+        <div class='h-full flex flex-col items-center justify-center text-center p-8' id='emptyState'></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- INTERACTIVE OVERLAY MODAL: THEME SOURCE CODE EXPLORER -->
+  <div class='fixed inset-0 bg-slate-950/90 backdrop-blur-lg z-50 flex items-center justify-center p-4 md:p-12 transition-all duration-300 hidden opacity-0' id='sourceModal'>
+    <div class='bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-5xl h-full max-h-[85vh] flex flex-col overflow-hidden shadow-2xl scale-95 transition-all duration-300' id='modalBox'>
+      
+      <!-- Modal Header -->
+      <div class='px-6 py-5 bg-slate-950 border-b border-slate-800/80 flex items-center justify-between shrink-0'>
+        <div class='flex items-center gap-3'>
+          <div class='h-9 w-9 bg-cyan-500/10 border border-cyan-500/20 rounded-xl flex items-center justify-center text-md'>📦</div>
+          <div>
+            <h3 class='text-sm font-black text-white uppercase tracking-wider'>Blogger Theme Manifest Code</h3>
+            <p class='text-[10px] text-slate-500 font-medium mt-0.5'>Copy this complete XML source to install into your Blogger theme deck.</p>
+          </div>
+        </div>
+        <button class='bg-slate-900 hover:bg-rose-950/30 hover:text-rose-400 border border-slate-800 text-slate-400 text-xs font-extrabold px-4 py-2 rounded-xl transition cursor-pointer' onclick='toggleSourceModal(false)'>
+          ✕ Close Space
+        </button>
+      </div>
+
+      <!-- Modal Body (Code Field) -->
+      <div class='flex-1 p-6 overflow-hidden relative bg-slate-950/40'>
+        <textarea class='w-full h-full bg-slate-950 border border-slate-800/80 rounded-2xl p-5 text-xs text-slate-300 font-mono focus:outline-none focus:ring-1 focus:ring-cyan-500 resize-none overflow-auto custom-scroll select-all shadow-inner' id='themeSourceArea' readonly='readonly'>
+          <!-- Source Code will be automatically cloned and printed here by engine script -->
+        </textarea>
+      </div>
+
+      <!-- Modal Action Footer Bar -->
+      <div class='px-6 py-4 bg-slate-950 border-t border-slate-800/80 flex items-center justify-between shrink-0'>
+        <span class='text-[10px] font-black tracking-widest text-slate-600 uppercase'>Architecture Grade: Production V1.1</span>
+        <button class='bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs font-black px-6 py-3 rounded-xl transition cursor-pointer shadow-lg shadow-cyan-500/10' id='btnCopySource' onclick='copyWholeThemeSourcePayload(this)'>
+          📋 Copy Entire Theme Code
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- OMNISTUDIO COMPREHENSIVE MULTIVERSE MATRIX ENGINE RUNTIME -->
+  <script type='text/javascript'>
+    //<![CDATA[
+    
+    // GALAXIES CLUSTER CONTEXT SPECIFICATION
+    const MULTIVERSE_CLUSTERS = {
+      realism: {
+        bgClass: "overflow-hidden text-slate-200 antialiased bg-[#090d16]",
+        badgeClass: "bg-amber-500/10 text-amber-400 border border-amber-500/20 focus:ring-amber-500",
+        btnClass: "bg-gradient-to-r from-amber-500 via-orange-600 to-rose-600 hover:from-amber-400 hover:to-rose-500 shadow-amber-500/20",
+        ringColor: "focus:ring-amber-500",
+        footerColor: "text-amber-500",
+        boosters: ["photorealistic raw texture, authentic unedited skin details, 8k resolution hyperrealism --style raw --v 6.0", "dramatic cinematic volumetric lighting configuration, award-winning exposure masterclass composition --v 6.0"],
+        ratios: [{text:"Anamorphic Theater (16:9)", val:"--ar 16:9"}, {text:"Ultra Movie Display (21:9)", val:"--ar 21:9"}, {text:"Vertical Frame (4:5)", val:"--ar 4:5"}]
+      },
+      toy3d: {
+        bgClass: "overflow-hidden text-slate-200 antialiased bg-[#0b070f]",
+        badgeClass: "bg-pink-500/10 text-pink-400 border border-pink-500/20 focus:ring-pink-500",
+        btnClass: "bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 hover:from-pink-500 hover:to-purple-500 shadow-pink-600/20",
+        ringColor: "focus:ring-pink-500",
+        footerColor: "text-pink-400",
+        boosters: ["octane render look engine, intricate raytracing parameters, unreal engine 5 game asset viewport --v 6.0", "cute chunky stylized dimensions, glossy smooth product finish concept --style raw --v 6.0"],
+        ratios: [{text:"Square Model Showcase (1:1)", val:"--ar 1:1"}, {text:"Horizontal Banner (16:9)", val:"--ar 16:9"}, {text:"Sticker Layout Spec (9:16)", val:"--ar 9:16"}]
+      },
+      artistic: {
+        bgClass: "overflow-hidden text-slate-200 antialiased bg-[#050907]",
+        badgeClass: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 focus:ring-emerald-500",
+        btnClass: "bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-700 hover:from-emerald-500 hover:to-teal-500 shadow-emerald-500/20",
+        ringColor: "focus:ring-emerald-500",
+        footerColor: "text-emerald-400",
+        boosters: ["highly defined fine art organic pigments, masterpiece historical brushstrokes --v 6.0", "expressive elegant museum curation tier layout composition, high asset depth mapping --style raw --v 6.0"],
+        ratios: [{text:"Classic Portrait Frame (4:5)", val:"--ar 4:5"}, {text:"Canvas Landscape Wide (16:9)", val:"--ar 16:9"}, {text:"Square Gallery Block (1:1)", val:"--ar 1:1"}]
+      },
+      branding: {
+        bgClass: "overflow-hidden text-slate-200 antialiased bg-[#060b12]",
+        badgeClass: "bg-blue-500/10 text-blue-400 border border-blue-500/20 focus:ring-blue-500",
+        btnClass: "bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-700 hover:from-blue-500 hover:to-indigo-500 shadow-blue-500/20",
+        ringColor: "focus:ring-blue-500",
+        footerColor: "text-blue-400",
+        boosters: ["commercial studio product catalog rendering, clean corporate outline vector aesthetics --v 6.0", "premium industrial award packaging template standard --style raw --v 6.0"],
+        ratios: [{text:"High Resolution Banner (16:9)", val:"--ar 16:9"}, {text:"Standard Box Spec (1:1)", val:"--ar 1:1"}, {text:"Mobile UI Format (9:16)", val:"--ar 9:16"}]
+      },
+      scifi: {
+        bgClass: "overflow-hidden text-slate-200 antialiased bg-[#0e0714]",
+        badgeClass: "bg-fuchsia-500/10 text-fuchsia-400 border border-fuchsia-500/20 focus:ring-fuchsia-500",
+        btnClass: "bg-gradient-to-r from-fuchsia-600 via-violet-600 to-pink-700 hover:from-fuchsia-500 hover:to-violet-500 shadow-fuchsia-600/20",
+        ringColor: "focus:ring-fuchsia-500",
+        footerColor: "text-fuchsia-400",
+        boosters: ["advanced futuristic environment mechanics blueprint overlay, highly detailed machinery hardware infrastructure --v 6.0", "high contrast cyber emission lighting roll-off array --style raw --v 6.0"],
+        ratios: [{text:"Widescreen Matrix (16:9)", val:"--ar 16:9"}, {text:"Extreme Cinematic Wide (21:9)", val:"--ar 21:9"}, {text:"Vertical Interface Spec (9:16)", val:"--ar 9:16"}]
+      },
+      popculture: {
+        bgClass: "overflow-hidden text-slate-200 antialiased bg-[#140b07]",
+        badgeClass: "bg-orange-500/10 text-orange-400 border border-orange-500/20 focus:ring-orange-500",
+        btnClass: "bg-gradient-to-r from-orange-500 via-red-600 to-yellow-600 hover:from-orange-400 hover:to-red-500 shadow-orange-500/20",
+        ringColor: "focus:ring-orange-500",
+        footerColor: "text-orange-400",
+        boosters: ["vibrant print layout overlay dotting matrix, stylized retro comic book outline ink structures --v 6.0", "saturated color processing framework --style raw --v 6.0"],
+        ratios: [{text:"Standard Screen Layout (16:9)", val:"--ar 16:9"}, {text:"Retro Comic Scale (4:3)", val:"--ar 4:3"}, {text:"Square Print Area (1:1)", val:"--ar 1:1"}]
+      },
+      experimental: {
+        bgClass: "overflow-hidden text-slate-200 antialiased bg-[#101012]",
+        badgeClass: "bg-rose-500/10 text-rose-400 border border-rose-500/20 focus:ring-rose-500",
+        btnClass: "bg-gradient-to-r from-rose-600 via-stone-800 to-neutral-900 hover:from-rose-500 hover:to-stone-700 shadow-rose-600/20",
+        ringColor: "focus:ring-rose-500",
+        footerColor: "text-rose-400",
+        boosters: ["unconventional abstract perspective architecture, psychological weirdcore conceptual synthesis --v 6.0", "extreme visual parameters chaos modification tuning --style raw --v 6.0"],
+        ratios: [{text:"Default Universe Box (1:1)", val:"--ar 1:1"}, {text:"Wide Dreamscape Scope (16:9)", val:"--ar 16:9"}, {text:"Liminal Vertical Corridor (9:16)", val:"--ar 9:16"}]
+      }
+    };
+
+    // VOCABULARY CORPUS MATRIX DATA FOR SPECTACULAR CHAOS EXPANSION
+    const VOCABULARY_CORPUS = {
+      subjects: ["an ancient mystic temple guard", "a futuristic cyberpunk netrunner technician", "a majestic cosmic phoenix entity", "an abandoned Victorian library corridor", "a hyper-cute kitten piloting a miniature mechanical robot suit", "a high-fashion model wearing abstract eco-clothing structures", "an enigmatic wanderer standing on the edge of a floating sky platform", "a traditional indonesian festive culinary celebration setup", "a mysterious plague alchemist brewing glowing essences", "a colossal mechanical titan resting under an oasis waterfall"],
+      styles: ["A spectacular professional production render", "An breathtaking conceptual presentation masterclass artwork", "A wonderful groundbreaking premium composition design", "An astonishing pristine display illustration visualization"],
+      adjectives: ["with jaw-dropping subtle surface details and structural balance", "featuring mind-blowing crisp micro textures and flawless edge definition", "showcasing extraordinary atmospheric lighting layers and premium depth", "with absolute technical mastery and beautiful volumetric distribution traits"],
+      vibes: ["engulfed in a profoundly hypnotic emotional resonance mood", "radiating a powerful awe-inspiring mystical signature vibe", "steeped in a dense dramatic narrative cinematic presentation layer", "dripping with a rare captivating majestic visual energy pulse"],
+      colors: ["a masterfully balanced high-end color grading palette scheme", "stark rich contrasting tone execution profiles", "elegant monochromatic values fused with intentional light rays emissions", "hyper-vibrant organic color arrangements with deep shadow accents"]
+    };
+
+    // MASTER ENGINE MAP ARRAY (50 CORES ACROSS 7 VISUAL GALAXIES)
+    const OMNI_ENGINE_MODES = [
+      // Cluster 1: Realism & Photo Vibes (7 Modes)
+      { id: "cinematic", cluster: "realism", name: "🎞️ Cinematic Moody Street", sub: "35mm Analog Film Aesthetics & Leica Optics Framework", emoji: "📸", phrase: "A spectacular cinematic street photograph capturing" },
+      { id: "editorial", cluster: "realism", name: "💎 High-Fashion Editorial", sub: "Avant-Garde Studio Light Engineering & Vogue Magazine Grade", emoji: "👠", phrase: "A high-fashion avant-garde editorial magazine portrait showcasing" },
+      { id: "macro", cluster: "realism", name: "🦎 Hyper-Detailed Macro Photo", sub: "Razor-Sharp Micro Texture & Wildlife Pro Macro Lens Setup", emoji: "🔍", phrase: "An extreme hyper-detailed macro National Geographic wildlife close-up of" },
+      { id: "paparazzi", cluster: "realism", name: "🚨 Raw Paparazzi Candid Flash", sub: "Gritty Realistic Flash Exposure & Urban Street Intrusion", emoji: "📸", phrase: "A raw unedited paparazzi flash photography capturing realistic snapshot of" },
+      { id: "drone", cluster: "realism", name: "🗺️ Wide Drone Top-Down Aerial", sub: "Satellite Pro Elevation Perspectives & Breathtaking Scale Landscapes", emoji: "🦅", phrase: "A breathtaking wide top-down aerial drone panoramic photography of" },
+      { id: "vintagephoto", cluster: "realism", name: "🌻 1970s Polaroid Retro Roll", sub: "Sun-Faded Analog Chemistry Simulation & Muted Chromatic Nostalgia", emoji: "🎞️", phrase: "A vintage nostalgic faded 1970s polaroid film roll photograph capturing" },
+      { id: "liminalspace", cluster: "realism", name: "🚪 Eerie Liminal Space Reality", sub: "Haunting Deserted Architectures Shrouded in Fluorescent Isolation", emoji: "🔦", phrase: "An eerie unsettling liminal space flashlight photography representing empty" },
+
+      // Cluster 2: 3D, Toy, & Game Assets (7 Modes)
+      { id: "claymation", cluster: "toy3d", name: "🧱 3D Isometric Claymation", sub: "Tactile Clay Fingerprints & Beautiful Whimsical Diorama Engine", emoji: "🧸", phrase: "A spectacular 3D isometric claymation model diorama of" },
+      { id: "unreal5", cluster: "toy3d", name: "🦾 Unreal Engine 5 Future 3D", sub: "Next-Gen Hard Surface Models & Hyper-Real Global Illumination", emoji: "🧊", phrase: "A high-end Unreal Engine 5 digital 3D model viewport render of" },
+      { id: "chibi3d", cluster: "toy3d", name: "📦 Cute 3D Blind Box Toy", sub: "Glossy Pop Mart Collectible Figurines & Smooth Plastic Architecture", emoji: "🎀", phrase: "A hyper-cute 3D glossy blind box vinyl toy character model of" },
+      { id: "voxel", cluster: "toy3d", name: "🎮 3D Voxel Sandbox Art", sub: "Chunky 3D Pixel Grid Environments & Classic Retro Core Voxels", emoji: "🧱", phrase: "A wonderful detailed 3D voxel art scene game asset configuration representing" },
+      { id: "lowpoly", cluster: "toy3d", name: "🕹️ Retro Low-Poly PS1 Style", sub: "90s Low-Polygon Count Crunchy Shading & Low-Res Video Game Magic", emoji: "🎮", phrase: "A retro low-poly PS1 style video game environment rendering of" },
+      { id: "glassmorphism", cluster: "toy3d", name: "🔮 Frosted Glassmorphism UI", sub: "Translucent Crystal Material Simulation & Internal Neon Light Pendants", emoji: "💎", phrase: "A sleek premium frosted glassmorphism translucent 3D asset graphic of" },
+      { id: "origami", cluster: "toy3d", name: "📄 Intricate Papercraft Origami", sub: "Masterfully Folded Creases & Multi-Layered Fine Paper Cut Textures", emoji: "📄", phrase: "An intricate multi-layered papercraft asset origami engineering model of" },
+
+      // Cluster 3: Illustration & Fine Art (7 Modes)
+      { id: "darkfantasy", cluster: "artistic", name: "💀 Dark Fantasy Oil Canvas", sub: "Gothic Grim Dark-Art & Sinister Heavy Impasto Canvas Texture", emoji: "🎨", phrase: "A spectacular dark fantasy oil canvas painting masterclass depicting" },
+      { id: "watercolor", cluster: "artistic", name: "🦄 Ethereal Splash Watercolor", sub: "Fluid Organic Ink Bleeding & Dreamy Storybook Fairytale Assets", emoji: "💧", phrase: "An ethereal soft splash watercolor ink wash illustration of" },
+      { id: "ghibli", cluster: "artistic", name: "🍃 Nostalgic Hand-Painted Ghibli", sub: "Retro 90s Anime Key Art Animation Screenshot & Whimsical Cels", emoji: "🌿", phrase: "A breathtaking retro 90s anime cel animation masterclass illustration of" },
+      { id: "pencilsketch", cluster: "artistic", name: "📝 Hyper-Detailed Pencil Sketch", sub: "Fine Graphite Shadowing Interplay & Textured Grain Fine Art Paper", emoji: "✏️", phrase: "A hyper-detailed charcoal graphite pencil sketch manual illustration of" },
+      { id: "vintageink", cluster: "artistic", name: "✒️ 1930s Engraving Etching", sub: "Manual Cross-Hatching Linework Overlay & Antique Ink Patina Papers", emoji: "📜", phrase: "An antique 1930s vintage ink engraving plate print style illustrating" },
+      { id: "ukiyo-e", cluster: "artistic", name: "🗻 Traditional Japanese Ukiyo-e", sub: "Edo Period Masterpiece Woodblock Prints & Coarse Fiber Textures", emoji: "🌊", phrase: "A traditional Japanese woodblock print ukiyo-e historical artwork showcasing" },
+      { id: "stainedglass", cluster: "artistic", name: "⛪ Cathedral Stained Glass Art", sub: "Vibrant Translucent Colored Glass Windows & Heavy Lead Framings", emoji: "⛪", phrase: "A magnificent gothic cathedral stained glass window design matrix of" },
+
+      // Cluster 4: Design, Branding, & Architecture (7 Modes)
+      { id: "vectorflat", cluster: "branding", name: "📐 Corporate Clean Vector Flat", sub: "Minimalist Geometrics Illustration Framework & Modern App Ready Layouts", emoji: "💻", phrase: "A premium corporate vector flat clean illustration design asset representing" },
+      { id: "architectural", cluster: "branding", name: "🏛️ Luxury Architectural Render", sub: "Minimalist High-End Materialization Layout, Exposed Cement & Natural Rays", emoji: "🏛️", phrase: "A luxury minimalist architectural interior snapshot photography rendering of" },
+      { id: "logominimal", cluster: "branding", name: "🏷️ Golden Ratio Minimalist Logo", sub: "Vector Core Brand Geometry Icons & Crisp High Contrast Isolation Backgrounds", emoji: "🎯", phrase: "A minimalist modern geometric abstract logo icon vectors representing" },
+      { id: "packaging", cluster: "branding", name: "📦 Premium Product Packaging", sub: "Botanical Box Cosmetics Templates & High-End Cosmetic Dropper Mockups", emoji: "🌿", phrase: "A premium product retail cosmetics dropper packaging box design layout of" },
+      { id: "isometricline", cluster: "branding", name: "⚙️ Isometric Blueprint Diagram", sub: "Technical Drawing Layouts, Clean Linework Vectors & Blueprint Matrix Look", emoji: "📐", phrase: "A clean minimalist isometric technical blueprint design line-art diagram of" },
+      { id: "typography", cluster: "branding", name: "🔠 Streetwear Kinetic Graphic", sub: "Cybernetic Typography Apparel Vectors & High-End Edgy Streetwear Prints", emoji: "👕", phrase: "An edgy modern streetwear apparel kinetic typography poster design displaying" },
+      { id: "brutalist", cluster: "branding", name: "🏢 Swiss Brutalism Grid Poster", sub: "Raw Structural Heavy Grid Systems & Industrial Asymmetric High Contrast Typography", emoji: "📐", phrase: "A bold Swiss brutalism graphic design layout poster archetype representing" },
+
+      // Cluster 5: Subculture, Cyber, & Sci-Fi (7 Modes)
+      { id: "cyberpunk", cluster: "scifi", name: "📟 High-Tech Cyberpunk Neon", sub: "Dystopian Blade Runner Cities Framework, Refractive Rain & Heavy Grids", emoji: "🔮", phrase: "A stunning cinematic cyberpunk neo-noir future exposure capturing" },
+      { id: "biomechanical", cluster: "scifi", name: "🦾 Biomechanical H.R. Giger Core", sub: "Organic Vertebrae Fused with Heavy Industrial Engine Ribs Machinery", emoji: "🦴", phrase: "A terrifying hyper-detailed biomechanical machine entity structure style of" },
+      { id: "atompunk", cluster: "scifi", name: "🛰️ 1950s Raygun Atompunk Retro", sub: "Retro-Futurism Fallout Architecture, Chromed Spaceships & Curved Plastics", emoji: "🚀", phrase: "A retro-futuristic 1950s atompunk raygun-gothic digital concept art of" },
+      { id: "solarpunk", cluster: "scifi", name: "☀️ Eco-Utopian Solarpunk Cities", sub: "Lush Plant Ecosystem Architectural Integrations & Clean Glass Dome Structures", emoji: "🌱", phrase: "A beautiful eco-utopian solarpunk sustainable architecture infrastructure of" },
+      { id: "synthwave", cluster: "scifi", name: "🎛️ 1980s Outrun Neon Synthwave", sub: "Vapor Wireframe Neon Horizon Grids & Retro Cyber Sunset Vectors", emoji: "🌌", phrase: "An iconic 1980s outrun synthwave retro vector landscape artwork of" },
+      { id: "spacegothic", cluster: "scifi", name: "🪐 Dark Cosmic Space Gothic", sub: "Warhammer-esque Void Battleships & Sinister Cathedral Mech Engine Priests", emoji: "🪐", phrase: "An epic grim dark space gothic cosmic sci-fi environment concept art of" },
+      { id: "cyberbiom", cluster: "scifi", name: "🧪 Cybernetic Biomaterial Mesh", sub: "Fluorescent Micro-Vascular Synthetic Circuit Panels & Liquid Polymers", emoji: "🧬", phrase: "A high-tech cybernetic biomechanical vascular network circuit matrix of" },
+
+      // Cluster 6: Pop Culture, Comics, & Retro Arcade (7 Modes)
+      { id: "pixelart", cluster: "popculture", name: "🧱 16-Bit Retro Pixel Arcade", sub: "Arcade Canvas Shading Engine, Limited Palette Resolution Grid Layouts", emoji: "👾", phrase: "A pristine 16-bit retro pixel art retro video game asset scene depicting" },
+      { id: "popart", cluster: "popculture", name: "🎨 Andy Warhol Pop Art Frame", sub: "Vintage Comic Ben-Day Halftone Dot Screens & High Contrast Poster Colors", emoji: "🎸", phrase: "A classic retro pop art screenprint poster illustration style showcasing" },
+      { id: "vintagecomic", cluster: "popculture", name: "🦹 1980s Dark Ink Wash Comic", sub: "Hand-Inked Graphic Novel Panel Layouts & Aged Paper Newsprint Grain Overlays", emoji: "📚", phrase: "A vintage 1980s retro dark comic book illustration asset grid panel of" },
+      { id: "graffiti", cluster: "popculture", name: "🎨 Street Urban Graffiti Mural", sub: "Saturated Aerosol Drips, Abstract Street Letters & Splattered Tags Backdrop", emoji: "💥", phrase: "A vibrant industrial street graffiti mural wall art design visualizing" },
+      { id: "sticker", cluster: "popculture", name: "🧸 Kawaii Die-Cut Vector Sticker", sub: "Thick Clean White Contour Outlines, Flat Vibrant Cartoons Vector Specs", emoji: "🏷️", phrase: "A clean kawaii die-cut vector sticker asset sheet illustration featuring" },
+      { id: "mecha", cluster: "popculture", name: "🗜️ Heavy Industrial Mecha Armor", sub: "Gundam Mecha Blueprint Panels, Weathered Iron Plates & Weapon Systems", emoji: "🤖", phrase: "An epic high-fidelity mechanical armor giant combat mecha robot robot of" },
+      { id: "chibidrawing", cluster: "popculture", name: "🧁 Cute Chibi Kawaii Mascot Art", sub: "Adorable Thick Rounded Outlines, Pastel Color Blocking Concept Elements", emoji: "🧁", phrase: "An adorable minimalistic hyper-cute chibi kawaii cartoon animal illustration of" },
+
+      // Cluster 7: Chaos, Maximalism, & Experimental (8 Modes)
+      { id: "dopamine", cluster: "experimental", name: "💥 Dopamine Maximalist Clutter", sub: "Overloaded Eye-Candy Visual Densities & Electric Saturated Neon Assets", emoji: "⚡", phrase: "A dopamine maximalist hyper-vibrant heavily cluttered visual chaos art of" },
+      { id: "psychedelic", cluster: "experimental", name: "🌈 Acid Trippy Fractal Liquid", sub: "Swirling Fluid Rainbow Gradients & Molten Trippy Hallucination Distortions", emoji: "🌀", phrase: "A psychedelic acid trippy liquid swirling rainbow fractal canvas artwork of" },
+      { id: "weirdcore", cluster: "experimental", name: "👁️ Liminal Dreamcore Surrealism", sub: "Web 1.0 Retro Digital Glitch Textures & Unsettling Nostalgic Low-Fi Collagen", emoji: "👁️", phrase: "A bizarre weirdcore dreamcore internet nostalgia surrealist art piece showing" },
+      { id: "glitchcore", cluster: "experimental", name: "💾 VHS Datamosh Glitch Video", sub: "Corrupted Memory Scanline Overlays & Magnetic Track Distortion Frames", emoji: "📼", phrase: "A heavily corrupted VHS datamosh glitch art screen capture visualization of" },
+      { id: "darkambient", cluster: "experimental", name: "🌑 Abyssal Dark Ambient Void", sub: "Eerie Textural Abstract Ink Poolings & Terrifying Dark Occult Minimalism", emoji: "🌑", phrase: "A haunting minimal dark ambient abstract textural fine art painting of" },
+      { id: "gothicink", cluster: "experimental", name: "🩸 Crimson Blood Calligraphy Ink", sub: "Splattered Liquid Ink Wash Artifacts & Ornate Dark Cursive Victoria Marks", emoji: "🩸", phrase: "A dramatic dark gothic calligraphy ink splatter fine art composition of" },
+      { id: "fluidart", cluster: "experimental", name: "🧪 Fluid Acrylic Marbling Pour", sub: "Molten Gold Veins Translucent Ribbons & Organic Dynamic Epoxy Pigmentations", emoji: "🧪", phrase: "A stunning fluid acrylic pouring marbling fine art pattern canvas with" },
+      { id: "vaporwave", cluster: "experimental", name: "🌴 90s Vaporwave Aesthetic", sub: "Pink Pastel Roman Busts, Cyber Retrowave Grids & Lo-Fi Chillwave Memories", emoji: "🌴", phrase: "A nostalgic lo-fi vaporwave aesthetic retro digital collage illustrating" }
+    ];
+
+    let counter = 0;
+    let currentMode = 'cinematic';
+
+    // MULTIVERSE DROP-DOWN SYSTEM AUTOMATION INJECTION
+    function initializeMultiverseSystemEngine() {
+      const dropdown = document.getElementById('engineMode');
+      dropdown.innerHTML = ''; // Wipe HTML fallback placeholder container clear
+      
+      OMNI_ENGINE_MODES.forEach(function(engine) {
+        let opt = document.createElement('option');
+        opt.value = engine.id;
+        opt.innerText = engine.name;
+        dropdown.appendChild(opt);
+      });
+
+      // Prepare target source repository container data directly on system initialize load
+      document.getElementById('themeSourceArea').value = document.documentElement.outerHTML;
+
+      // Execute primary focus initialization setup
+      switchEngineMode();
+    }
+
+    // UTILITY METHOD: Get absolute random item array element
+    function drawRandomAsset(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    // CENTRAL INTEGRATED LOGIC CORE MULTIVERSE INTERFACE SWITCH
+    function switchEngineMode() {
+      currentMode = document.getElementById('engineMode').value;
+      
+      // Pinpoint exact match mode dataset record row object array lookup
+      const modeConfig = OMNI_ENGINE_MODES.find(m => m.id === currentMode);
+      if (!modeConfig) return;
+
+      // Extract corresponding main galaxy cluster configuration parameter bundle
+      const clusterConfig = MULTIVERSE_CLUSTERS[modeConfig.cluster] || MULTIVERSE_CLUSTERS['realism'];
+
+      // Cache target document element pointer objects
+      const body = document.getElementById('studioBody');
+      const dropdownSelect = document.getElementById('engineMode');
+      const logoText = document.getElementById('logoText');
+      const badge = document.getElementById('badgeMode');
+      const subHeader = document.getElementById('subHeaderTitle');
+      const btnRandom = document.getElementById('btnRandom');
+      const btnCompile = document.getElementById('btnCompile');
+      const pulseDot = document.getElementById('statusPulseDot');
+      const counterBadge = document.getElementById('promptCounter');
+      const lblSubject = document.getElementById('lblSubject');
+      const inputSubject = document.getElementById('subject');
+      const footerWt = document.getElementById('footerWatermark');
+
+      // Clear input fields parameters safely on environment transformation
+      inputSubject.value = '';
+
+      // Perform deep atomic dynamic UI morph execution steps instantly
+      body.className = clusterConfig.bgClass;
+      dropdownSelect.className = "w-full px-4 py-3 bg-slate-950 border border-slate-900 rounded-xl focus:outline-none focus:ring-2 text-sm font-bold text-white transition cursor-pointer " + clusterConfig.ringColor;
+      
+      // Morph header visual elements
+      logoText.innerText = modeConfig.emoji;
+      badge.innerText = modeConfig.name.split(" ").slice(1).join(" ").toUpperCase();
+      badge.className = "text-xs font-black uppercase tracking-widest px-2 py-0.5 rounded-md border bg-slate-950/40 " + clusterConfig.badgeClass;
+      subHeader.innerText = modeConfig.sub;
+      
+      // Re-initialize primary interactive run compile triggers look
+      btnRandom.className = "w-full text-white text-xs font-extrabold py-3.5 px-4 rounded-xl shadow-lg transition duration-200 cursor-pointer flex items-center justify-center gap-2 tracking-wide " + clusterConfig.btnClass;
+      btnCompile.innerText = "⚙️ Compile " + modeConfig.name.split(" ").slice(1).join(" ") + " Core";
+      
+      // Update small visual accents tracking dots markers
+      pulseDot.className = "flex h-2.5 w-2.5 rounded-full animate-pulse " + clusterConfig.btnClass.split(" ")[1];
+      counterBadge.className = "text-xs font-bold uppercase tracking-wider bg-slate-950/60 px-3 py-1 rounded-full " + clusterConfig.badgeClass.split(" ").slice(1,3).join(" ");
+      footerWt.className = "transition-colors duration-500 " + clusterConfig.footerColor;
+
+      // Restructure custom input metadata fields tracking context
+      lblSubject.innerHTML = modeConfig.name.split(" ").slice(1).join(" ") + " Target Subject Concept <span class='text-rose-500'>*</span>";
+      inputSubject.placeholder = "Enter high resolution concept for " + modeConfig.name.split(" ").slice(1).join(" ") + "...";
+
+      // Flush dynamic ratio configurations inputs list
+      injectDynamicAspectRatios(clusterConfig.ratios);
+
+      // Re-trigger visual placeholder states dynamically
+      triggerMultiverseEmptyFeedState(modeConfig.emoji, modeConfig.name + " System Online", "Awaiting quantum subject inputs deployment metrics mapping vectors framework sequence.");
+      counter = 0;
+      updateLogsTrackingPanelDisplay();
+    }
+
+    function injectDynamicAspectRatios(ratioArray) {
+      const selectRatio = document.getElementById('aspectRatio');
+      selectRatio.innerHTML = '';
+      ratioArray.forEach(function(ratioItem) {
+        let elementOption = document.createElement('option');
+        elementOption.value = ratioItem.val;
+        elementOption.innerText = ratioItem.text;
+        selectRatio.appendChild(elementOption);
+      });
+    }
+
+    // SWITCH TAB SYSTEM INSIDE GENERATED LOG CARDS
+    window.switchPromptCardTab = function(tabInstance, logId, targetType) {
+      const parentCard = document.getElementById('promptCard_' + logId);
+      const allTabs = parentCard.querySelectorAll('.tab-trigger');
+      const textBlock = document.getElementById('text_' + logId);
+      const jsonBlock = document.getElementById('json_' + logId);
+      const btnCopy = parentCard.querySelector('.btn-copy-action');
+
+      allTabs.forEach(tab => {
+        tab.classList.remove('text-white', 'border-b-2', 'border-cyan-500');
+        tab.classList.add('text-slate-500');
+      });
+      tabInstance.classList.add('text-white', 'border-b-2', 'border-cyan-500');
+      tabInstance.classList.remove('text-slate-500');
+
+      if (targetType === 'string') {
+        textBlock.classList.remove('hidden');
+        jsonBlock.classList.add('hidden');
+        btnCopy.setAttribute('onclick', `copyEnginePromptStringPayload(this, ${logId}, 'string')`);
+        btnCopy.innerText = "📋 Copy Manifest String Data";
+      } else {
+        textBlock.classList.add('hidden');
+        jsonBlock.classList.remove('hidden');
+        btnCopy.setAttribute('onclick', `copyEnginePromptStringPayload(this, ${logId}, 'json')`);
+        btnCopy.innerText = "⚡ Copy JSON Prompt";
+      }
+    }
+
+    function triggerMultiverseEmptyFeedState(emoji, title, narrative) {
+      const logContainer = document.getElementById('promptLogContainer');
+      logContainer.innerHTML = "\
+        <div class='h-full flex flex-col items-center justify-center text-center p-8' id='emptyState'>\
+          <div class='h-16 w-16 bg-slate-950 border border-slate-900 rounded-2xl flex items-center justify-center text-2xl shadow-inner mb-4 opacity-80 animate-bounce' id='emptyStateEmoji'>" + emoji + "</div>\
+          <h3 class='text-xs font-black text-slate-400 uppercase tracking-widest' id='emptyStateTitle'>" + title + "</h3>\
+          <p class='text-xs text-slate-500 mt-2 max-w-xs leading-relaxed font-medium' id='emptyStateDesc'>" + narrative + "</p>\
+        </div>\
+      ";
+    }
+
+    // MAIN HIGH INTENSITY PROMPT STRUCTURING ENGINE LOGIC COMPILER RUNTIME
+    function generatePrompt(activateChaosRandomizer) {
+      let subjectValue = document.getElementById('subject').value.trim();
+      const imageRefUrl = document.getElementById('imgUrl').value.trim();
+      const customNegativeParam = document.getElementById('negativePrompt').value.trim();
+      const selectedAspectRatioSpec = document.getElementById('aspectRatio').value;
+
+      const targetModeObj = OMNI_ENGINE_MODES.find(m => m.id === currentMode);
+      if (!targetModeObj) return;
+
+      const baseClusterObj = MULTIVERSE_CLUSTERS[targetModeObj.cluster] || MULTIVERSE_CLUSTERS['realism'];
+
+      if (activateChaosRandomizer) {
+        subjectValue = drawRandomAsset(VOCABULARY_CORPUS.subjects);
+        document.getElementById('subject').value = subjectValue;
+      } else if (!subjectValue) {
+        alert("Attention: Please insert a distinct operational objective core target conceptual layout text input subject descriptor parameter first!");
+        return;
+      }
+
+      // Draw secondary matrix structural variables data randomly
+      const randomizedStyle = drawRandomAsset(VOCABULARY_CORPUS.styles);
+      const randomizedAdjective = drawRandomAsset(VOCABULARY_CORPUS.adjectives);
+      const randomizedVibe = drawRandomAsset(VOCABULARY_CORPUS.vibes);
+      const randomizedColorGrade = drawRandomAsset(VOCABULARY_CORPUS.colors);
+      const secondaryBoosterPack = drawRandomAsset(baseClusterObj.boosters);
+
+      // 1. Build Standard Text String Output
+      let engineeredPromptResultString = "";
+      if (imageRefUrl) engineeredPromptResultString += imageRefUrl + " ";
+      engineeredPromptResultString += targetModeObj.phrase + " " + subjectValue + ", " + randomizedStyle + ", " + randomizedAdjective + ", " + randomizedVibe + ", " + randomizedColorGrade + ", " + secondaryBoosterPack + " " + selectedAspectRatioSpec;
+      if (customNegativeParam) engineeredPromptResultString += " " + customNegativeParam;
+
+      // 2. Build Structured JSON Object Output (X-Style Architecture)
+      const jsonOutputPayload = {
+        meta: {
+          engine_version: "OmniStudio Multiverse AI v1.1",
+          core_universe: targetModeObj.name.split(" ").slice(1).join(" "),
+          timestamp: new Date().toISOString()
+        },
+        prompt: {
+          image_reference: imageRefUrl || null,
+          prefix_phrase: targetModeObj.phrase,
+          core_concept: subjectValue,
+          style_modifiers: [randomizedStyle, randomizedAdjective],
+          vibe_ambience: randomizedVibe,
+          color_grading: randomizedColorGrade,
+          rendering_boosters: secondaryBoosterPack.split(", ").map(s => s.trim()),
+          parameters: {
+            aspect_ratio: selectedAspectRatioSpec.replace('--ar ', ''),
+            negative_exclusion: customNegativeParam || null
+          }
+        },
+        compiled_raw: engineeredPromptResultString
+      };
+
+      const formattedJsonString = JSON.stringify(jsonOutputPayload, null, 2);
+
+      // Evaporate empty state asset blocks if exists
+      const currentEmptyStateContainerElement = document.getElementById('emptyState');
+      if (currentEmptyStateContainerElement) currentEmptyStateContainerElement.remove();
+
+      counter++;
+      const feedContainerElement = document.getElementById('promptLogContainer');
+      
+      let rowBadgeStyles, rowBorderHoverAccent, executionCopyBtnStyles, unifiedCopyText, elementLogsSerialBadgeLabel;
+      rowBadgeStyles = baseClusterObj.badgeClass;
+      rowBorderHoverAccent = "hover:border-" + baseClusterObj.footerColor.split("-")[1] + "-500/40";
+      executionCopyBtnStyles = "hover:bg-" + baseClusterObj.footerColor.split("-")[1] + "-500/20 hover:text-white";
+      elementLogsSerialBadgeLabel = targetModeObj.id.toUpperCase() + " LOG #" + counter;
+      unifiedCopyText = "📋 Copy Manifest String Data";
+
+      let structuralImageLinkAttachmentBadgeElement = imageRefUrl ? "<span class='bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-[9px] font-black px-2.5 py-1 rounded-md tracking-wider uppercase flex items-center gap-1'>🔗 ASSET ATTACHED</span>" : "";
+
+      const rawRowLogCardTemplateHtmlMarkup = "\
+        <div class='bg-slate-900/40 p-5 rounded-2xl border border-slate-900 shadow-md flex flex-col justify-between gap-4 transition-all duration-300 group " + rowBorderHoverAccent + "' id='promptCard_" + counter + "'>\
+          <div class='flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-900/80 pb-3'>\
+            <div class='flex items-center gap-2 shrink-0'>\
+              <span class='text-[9px] font-black px-2.5 py-1 rounded-md tracking-wider uppercase " + rowBadgeStyles + "'>\
+                " + elementLogsSerialBadgeLabel + "\
+              </span>\
+              " + structuralImageLinkAttachmentBadgeElement + "\
+            </div>\
+            <!-- Dual Tab Switcher -->\
+            <div class='flex items-center gap-4 text-xs font-bold bg-slate-950 px-3 py-1.5 rounded-xl border border-slate-900/60'>\
+              <button class='tab-trigger text-white border-b-2 border-cyan-500 pb-0.5 cursor-pointer transition' onclick='switchPromptCardTab(this, " + counter + ", \"string\")'>📝 Raw Text</button>\
+              <button class='tab-trigger text-slate-500 pb-0.5 cursor-pointer transition' onclick='switchPromptCardTab(this, " + counter + ", \"json\")'>⚡ JSON Prompt</button>\
+            </div>\
+            <button class='btn-copy-action text-xs bg-slate-950 border border-slate-800 text-slate-300 font-extrabold py-1.5 px-4 rounded-xl transition duration-200 cursor-pointer shadow-sm sm:group-hover:scale-105 " + executionCopyBtnStyles + "' onclick='copyEnginePromptStringPayload(this, " + counter + ", \"string\")'>\
+              " + unifiedCopyText + "\
+            </button>\
+          </div>\
+          <!-- Output Blocks -->\
+          <p class='text-sm font-medium text-slate-300 leading-relaxed break-words select-all font-mono tracking-tight bg-slate-950/80 p-4 rounded-xl border border-slate-950 shadow-inner' id='text_" + counter + "'>" + engineeredPromptResultString + "</p>\
+          <pre class='hidden text-xs font-mono text-emerald-400 overflow-x-auto custom-scroll bg-slate-950/90 p-4 rounded-xl border border-slate-950 shadow-inner select-all whitespace-pre' id='json_" + counter + "'>" + formattedJsonString + "</pre>\
+        </div>\
+      ";
+
+      feedContainerElement.insertAdjacentHTML('afterbegin', rawRowLogCardTemplateHtmlMarkup);
+      updateLogsTrackingPanelDisplay();
+    }
+
+    function copyEnginePromptStringPayload(targetButtonDomElement, uniqueLogCardId, currentActiveType) {
+      const elementTargetId = currentActiveType === 'string' ? "text_" + uniqueLogCardId : "json_" + uniqueLogCardId;
+      const targetedTextStringSourcePayload = document.getElementById(elementTargetId).innerText;
+      
+      navigator.clipboard.writeText(targetedTextStringSourcePayload).then(function() {
+        const defaultLabel = currentActiveType === 'string' ? "📋 Copy Manifest String Data" : "⚡ Copy JSON Prompt";
+        targetButtonDomElement.innerText = "✨ Copied Successfully!";
+        targetButtonDomElement.style.borderColor = "transparent";
+        targetButtonDomElement.style.backgroundColor = "rgba(16, 185, 129, 0.2)";
+        targetButtonDomElement.style.color = "#34d399";
+        
+        setTimeout(function() {
+          targetButtonDomElement.innerText = defaultLabel;
+          targetButtonDomElement.style.borderColor = "";
+          targetButtonDomElement.style.backgroundColor = "";
+          targetButtonDomElement.style.color = "";
+        }, 1200);
+      }).catch(function(errorSystemLog) {
+        console.error('Critical Framework Error: Clipboard write process failed.', errorSystemLog);
+      });
+    }
+
+    function updateLogsTrackingPanelDisplay() {
+      document.getElementById('promptCounter').innerText = counter + " Quantum Logs Transmitted";
+    }
+
+    // INTERACTIVE MODAL OVERLAY ROUTINE LOGIC
+    function toggleSourceModal(shouldShowModal) {
+      const modalOverlay = document.getElementById('sourceModal');
+      const modalInnerBox = document.getElementById('modalBox');
+
+      if (shouldShowModal) {
+        document.getElementById('themeSourceArea').value = document.documentElement.outerHTML;
+        modalOverlay.classList.remove('hidden');
+        setTimeout(function() {
+          modalOverlay.classList.remove('opacity-0');
+          modalInnerBox.classList.remove('scale-95');
+        }, 30);
+      } else {
+        modalOverlay.classList.add('opacity-0');
+        modalInnerBox.classList.add('scale-95');
+        setTimeout(function() {
+          modalOverlay.classList.add('hidden');
+        }, 300);
+      }
+    }
+
+    function copyWholeThemeSourcePayload(buttonInstance) {
+      const themeSourceTextPayload = document.getElementById('themeSourceArea').value;
+      navigator.clipboard.writeText(themeSourceTextPayload).then(function() {
+        const previousButtonLabelText = "📋 Copy Entire Theme Code";
+        buttonInstance.innerText = "⚡ XML Code Copied Successfully!";
+        buttonInstance.style.backgroundImage = "none";
+        buttonInstance.style.backgroundColor = "#10b981";
+        
+        setTimeout(function() {
+          buttonInstance.innerText = previousButtonLabelText;
+          buttonInstance.style.backgroundImage = "";
+          buttonInstance.style.backgroundColor = "";
+        }, 1500);
+      }).catch(function(err) {
+        console.error('Failed to copy code: ', err);
+      });
+    }
+
+    function resetDashboard() {
+      if (confirm('Are you absolutely certain you want to initiate a full operational core cycle flush sequence?')) {
+        document.getElementById('subject').value = '';
+        document.getElementById('imgUrl').value = '';
+        document.getElementById('negativePrompt').value = '';
+        counter = 0;
+        switchEngineMode(); 
+      }
+    }
+
+    function toggleZenMode(activateZenLayoutState) {
+      const leftSidebarMenuPanelContainer = document.getElementById('leftMenuPanel');
+      const triggersBtnZenModeActivation = document.getElementById('btnZenMode');
+      const triggersBtnDefaultViewRestore = document.getElementById('btnDefaultView');
+
+      if (activateZenLayoutState) {
+        leftSidebarMenuPanelContainer.classList.add('hidden');
+        triggersBtnZenModeActivation.classList.add('hidden');
+        triggersBtnDefaultViewRestore.classList.remove('hidden');
+      } else {
+        leftSidebarMenuPanelContainer.classList.remove('hidden');
+        triggersBtnZenModeActivation.classList.remove('hidden');
+        triggersBtnDefaultViewRestore.classList.add('hidden');
+      }
+    }
+
+    window.onload = function() {
+      initializeMultiverseSystemEngine(); 
+    };
+    //]]>
+  </script>
+
+</body>
+</html>
