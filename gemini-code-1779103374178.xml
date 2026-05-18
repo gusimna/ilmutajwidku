@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultmessages='false' b:layouts='false' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2014/b/skin' xmlns:data='http://www.google.com/2014/b/share' xmlns:expr='http://www.google.com/2014/b/expr'>
+<head>
+    <meta charset='UTF-8'/>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+    <title>KREASI FOTO TEMPO DOELOE - Premium Prompt Generator</title>
+    
+    <script src='https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4'></script>
+    
+    <link href='https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600&amp;family=Playfair+Display:ital,wght=0,600;1,400&amp;display=swap' rel='stylesheet'/>
+
+    <b:skin><![CDATA[
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #e6dfd1; 
+            background-image: radial-gradient(#d9cfbc 1px, transparent 0);
+            background-size: 24px 24px;
+            transition: all 0.3s ease;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #d6cdbc;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #9c8f75;
+            border-radius: 3px;
+        }
+        .vintage-panel {
+            background-color: #f4efe4 !important; 
+            border: 1px solid #c5b89d !important;
+        }
+        .vintage-input {
+            background-color: #ebdcb9 !important;
+            border: 1px solid #bda880 !important;
+            color: #383020 !important;
+        }
+        .vintage-input::placeholder {
+            color: #8c7d60 !important;
+        }
+        body.zen-mode-active {
+            background-color: #121214 !important;
+            background-image: none !important;
+        }
+        body.zen-mode-active header, 
+        body.zen-mode-active footer, 
+        body.zen-mode-active #layar1-section {
+            display: none !important;
+        }
+        body.zen-mode-active #layar2-section {
+            grid-column: span 12 / span 12 !important;
+        }
+    ]]></b:skin>
+</head>
+<body class='text-stone-900 antialiased min-h-screen flex flex-col justify-between' id='appBody'>
+
+    <header class='border-b border-stone-400 bg-[#ebe4d5]/90 backdrop-blur py-6 px-4 sticky top-0 z-50 shadow-sm'>
+        <div class='max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4'>
+            <div>
+                <h1 class='text-2xl font-serif font-600 tracking-tight text-amber-950'>KREASI FOTO TEMPO DOELOE</h1>
+                <p class='text-xs text-stone-600 mt-0.5 font-serif italic'>Premium Historical &amp; Vintage AI Prompt Engine</p>
+            </div>
+            <div class='flex items-center gap-2 text-xs bg-[#decda7] text-amber-950 px-3 py-1.5 rounded-md border border-amber-900/20 font-mono font-medium shadow-sm'>
+                <span class='w-2 h-2 rounded-full bg-amber-800 animate-pulse'></span>
+                100+ Master Prompts Loaded
+            </div>
+        </div>
+    </header>
+
+    <main class='max-w-7xl w-full mx-auto p-4 lg:p-8 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-8'>
+        
+        <section class='lg:col-span-5 vintage-panel rounded-xl p-6 shadow-md self-start sticky lg:top-28' id='layar1-section'>
+            <div class='mb-6 border-b border-stone-300 pb-4'>
+                <h2 class='text-lg font-serif font-600 text-stone-900'>Layar 1: Konfigurasi Objek</h2>
+                <p class='text-xs text-stone-600 mt-1'>Sempurnakan rotasi penuh 360°, kemiripan, penuaan, atmosfer, dan humor.</p>
+            </div>
+            
+            <div class='space-y-4'>
+                <div>
+                    <label class='block text-[10px] font-mono font-bold uppercase tracking-wider text-stone-700 mb-1'>Subjek Utama / Objek Foto</label>
+                    <input class='w-full px-4 py-2.5 vintage-input rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-900/20 focus:border-amber-900 transition-all text-sm font-serif' id='subjectInput' placeholder='Contoh: A majestic locomotive' type='text' value='A busy traditional market center'/>
+                </div>
+
+                <div>
+                    <label class='block text-[10px] font-mono font-bold uppercase tracking-wider text-stone-700 mb-1'>URL Gambar (Referensi)</label>
+                    <input class='w-full px-4 py-2.5 vintage-input rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-900/20 focus:border-amber-900 transition-all text-sm font-mono' id='imageUrlInput' placeholder='https://example.com/image.jpg' type='url'/>
+                </div>
+
+                <div class='grid grid-cols-1 gap-3 border-t border-stone-300 pt-3'>
+                    <div>
+                        <div class='flex justify-between items-center mb-1'>
+                            <label class='text-[10px] font-mono font-bold uppercase text-stone-700'>Kemiripan Gambar</label>
+                            <span class='text-[10px] font-mono font-bold bg-[#decda7] px-1.5 rounded' id='imageSimilarityVal'>50%</span>
+                        </div>
+                        <input class='w-full h-1.5 bg-stone-300 rounded-lg appearance-none cursor-pointer accent-amber-900' id='imageSimilarityInput' max='100' min='0' oninput='updateImageSimilarityView(this.value)' type='range' value='50'/>
+                    </div>
+
+                    <div>
+                        <div class='flex justify-between items-center mb-1'>
+                            <label class='text-[10px] font-mono font-bold uppercase text-stone-700'>Gaya Pose</label>
+                            <span class='text-[10px] font-mono font-bold bg-[#decda7] px-1.5 rounded' id='poseStyleVal'>Semi Formal</span>
+                        </div>
+                        <input class='w-full h-1.5 bg-stone-300 rounded-lg appearance-none cursor-pointer accent-amber-900' id='poseStyleInput' max='100' min='0' oninput='updatePoseStyleView(this.value)' type='range' value='40'/>
+                    </div>
+
+                    <div>
+                        <div class='flex justify-between items-center mb-1'>
+                            <label class='text-[10px] font-mono font-bold uppercase text-stone-700'>Usia Semantik</label>
+                            <span class='text-[10px] font-mono font-bold bg-[#decda7] px-1.5 rounded' id='ageStyleVal'>Mature Adult</span>
+                        </div>
+                        <input class='w-full h-1.5 bg-stone-300 rounded-lg appearance-none cursor-pointer accent-amber-900' id='ageStyleInput' max='100' min='0' oninput='updateAgeStyleView(this.value)' type='range' value='35'/>
+                    </div>
+
+                    <div>
+                        <div class='flex justify-between items-center mb-1'>
+                            <label class='text-[10px] font-mono font-bold uppercase text-stone-700'>Atmosfer Zaman</label>
+                            <span class='text-[10px] font-mono font-bold bg-[#decda7] px-1.5 rounded' id='vibeStyleVal'>Damai Sentosa</span>
+                        </div>
+                        <input class='w-full h-1.5 bg-stone-300 rounded-lg appearance-none cursor-pointer accent-amber-900' id='vibeStyleInput' max='100' min='0' oninput='updateVibeStyleView(this.value)' type='range' value='65'/>
+                    </div>
+
+                    <div>
+                        <div class='flex justify-between items-center mb-1'>
+                            <label class='text-[10px] font-mono font-bold uppercase text-stone-700'>Tingkat Kelucuan</label>
+                            <span class='text-[10px] font-mono font-bold bg-[#decda7] px-1.5 rounded' id='humorStyleVal'>Natural</span>
+                        </div>
+                        <input class='w-full h-1.5 bg-stone-300 rounded-lg appearance-none cursor-pointer accent-amber-900' id='humorStyleInput' max='100' min='0' oninput='updateHumorStyleView(this.value)' type='range' value='30'/>
+                    </div>
+
+                    <div>
+                        <div class='flex justify-between items-center mb-1'>
+                            <label class='text-[10px] font-mono font-bold uppercase text-stone-700'>Rotasi &amp; Orientasi Foto</label>
+                            <span class='text-[10px] font-mono font-bold bg-[#decda7] px-1.5 rounded' id='tiltStyleVal'>0° (Normal)</span>
+                        </div>
+                        <input class='w-full h-1.5 bg-stone-300 rounded-lg appearance-none cursor-pointer accent-amber-900' id='tiltStyleInput' max='360' min='0' oninput='updateTiltStyleView(this.value)' type='range' value='0'/>
+                    </div>
+                </div>
+
+                <div class='pt-2'>
+                    <label class='block text-[10px] font-mono font-bold uppercase text-stone-700 mb-1'>Kondisi Fisik Foto</label>
+                    <select class='w-full px-4 py-2 vintage-input rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-900/20 text-sm font-serif' id='conditionInput'>
+                        <option value='pristine'>Pristine (Mulus)</option>
+                        <option value='faded'>Faded (Kusam)</option>
+                        <option value='damaged'>Damaged (Rusak)</option>
+                        <option value='burned'>Burned (Terbakar)</option>
+                        <option value='all-effects'>Mixed (Acak)</option>
+                    </select>
+                </div>
+
+                <div class='space-y-2 pt-2'>
+                    <button class='w-full bg-gradient-to-r from-amber-900 to-stone-900 text-[#f4efe4] font-serif font-medium py-3 px-4 rounded-lg shadow-md hover:from-stone-900 transition-all transform active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer border border-amber-950/40' onclick='generateHistoricalPrompts()'>
+                        <span>Generate 100+ Master Prompts</span>
+                    </button>
+                    
+                    <div class='grid grid-cols-2 gap-2'>
+                        <button class='bg-[#ebdcb9] hover:bg-[#decda7] text-amber-950 font-mono font-semibold py-1.5 px-3 text-[10px] rounded-lg border border-stone-400/40 transition-all cursor-pointer' onclick='resetInputs()'>Reset</button>
+                        <button class='bg-[#ebdcb9] hover:bg-[#decda7] text-amber-950 font-mono font-semibold py-1.5 px-3 text-[10px] rounded-lg border border-stone-400/40 transition-all cursor-pointer' onclick='refreshToDefault()'>Refresh</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class='lg:col-span-7 flex flex-col min-h-[500px]' id='layar2-section'>
+            <div class='bg-stone-900 rounded-xl p-6 shadow-xl border-2 border-stone-700 flex flex-col flex-1 relative'>
+                <button class='hidden absolute top-4 right-4 z-50 bg-amber-700 hover:bg-amber-800 text-white font-mono text-xs px-3 py-1.5 rounded transition-all shadow-md' id='exitZenBtn' onclick='toggleZenMode()'>Keluar Zen Mode [ESC]</button>
+                <div class='flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-stone-700 pb-4 mb-4 gap-4'>
+                    <div>
+                        <h2 class='text-lg font-serif font-500 text-amber-400'>Layar 2: Structured JSON Prompts</h2>
+                        <p class='text-xs text-stone-400 mt-0.5 font-mono text-[10px]'>JSON database + 360° Frame Angle.</p>
+                    </div>
+                    <button class='text-xs bg-stone-800 text-stone-300 hover:text-white px-3 py-2 rounded font-mono transition-all border border-stone-700' onclick='toggleZenMode()'>Zen Mode</button>
+                </div>
+                <div class='flex-1 relative bg-stone-950 rounded-lg border border-stone-800 p-4 overflow-y-auto max-h-[650px] custom-scrollbar space-y-4 text-xs text-stone-400' id='jsonOutputArea'>
+                    <div class='text-amber-200/80 font-mono' id='defaultMessageArea'>// Tekan tombol "Generate" untuk menyusun database JSON prompt otomatis...</div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer class='border-t border-stone-400 bg-[#ebe4d5] py-3 px-4 text-center text-[10px] text-stone-600 font-mono'>
+        &copy; 2026 KREASI FOTO TEMPO DOELOE &bull; Premium Blogger Theme Layout.
+    </footer>
+
+    <script type='text/javascript'>
+        //<![CDATA[
+        var conditionModifiers = {
+            'pristine': 'well-preserved, clean plate, archival museum quality, untouched',
+            'faded': 'faded chemistry, heavily low-contrast, muted tones, sepia-bleached, dusty silver coating',
+            'damaged': 'severely torn edges, deep scratches on emulsion, cracked glass plate, tattered paper texture, water stains',
+            'burned': 'partially burned edges, scorched paper borders, singed emulsion, fire-damaged celluloid artifacts',
+            'all-effects': 'randomized deterioration, aged paper rot, water damage, scorched corner, heavily scratched negatives'
+        };
+
+        var timelineData = {
+            era_1: { name: "1826-1827: Early Camera Obscura", tech: "Niépce heliography method, bitumen on pewter plate", lighting: "8-hour daylight exposure, high-contrast shadows", camera_spec: "Primitive wooden camera obscura", start_year: 1826, end_year: 1827 },
+            era_2: { name: "1839: Daguerreotype Dawn", tech: "Louis Daguerre technique, polished silver-plated copper", lighting: "Studio skylight illumination, stark side lighting", camera_spec: "Giroux Daguerreotype camera", start_year: 1839, end_year: 1845 },
+            era_3: { name: "1888: Kodak Film Revolution", tech: "Nitrocellulose flexible roll film, circular mask framing", lighting: "Casual outdoor snapshots, natural lighting", camera_spec: "Original Kodak No. 1", start_year: 1888, end_year: 1895 },
+            era_4: { name: "1930-1950: Golden Era", tech: "Vintage monochrome, organic gelatin silver fiber prints", lighting: "Nostalgic cinematic shadows, retro atmosphere", camera_spec: "Analog TLR camera, vintage optics", start_year: 1930, end_year: 1955 }
+        };
+
+        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+        function generateFakeDate(startYear, endYear) {
+            var randDay = Math.floor(Math.random() * 28) + 1; 
+            var randMonth = months[Math.floor(Math.random() * 12)];
+            var randYear = Math.floor(Math.random() * (endYear - startYear + 1)) + startYear;
+            return randDay + " " + randMonth + " " + randYear;
+        }
+
+        function updateImageSimilarityView(val) { document.getElementById('imageSimilarityVal').innerText = val + '%'; }
+
+        function getPoseModifier(val) {
+            var numeric = parseInt(val);
+            if (numeric <= 25) return { label: "Candid (Bebas)", phrase: "unposed candid look, looking away from camera" };
+            else if (numeric <= 50) return { label: "Semi Formal", phrase: "relaxed stance, natural historical posture" };
+            else if (numeric <= 75) return { label: "Studio Portrait", phrase: "stiff vintage studio pose, looking into lens" };
+            else return { label: "Rigid Formal", phrase: "extremely rigid historical posing, steady composition" };
+        }
+        function updatePoseStyleView(val) { document.getElementById('poseStyleVal').innerText = getPoseModifier(val).label; }
+
+        function getAgeModifier(val) {
+            var numeric = parseInt(val);
+            if (numeric <= 15) return { label: "Youthful", phrase: "youthful fresh-faced, clear young features" };
+            else if (numeric <= 30) return { label: "Young Adult", phrase: "young adult appearance, early twenties" };
+            else if (numeric <= 50) return { label: "Mature Adult", phrase: "mature prime-of-life appearance, established features" };
+            else if (numeric <= 75) return { label: "Middle Aged", phrase: "middle-aged depiction, maturity of time" };
+            else return { label: "Extremely Aged", phrase: "distinguished elderly depiction, deep wrinkles" };
+        }
+        function updateAgeStyleView(val) { document.getElementById('ageStyleVal').innerText = getAgeModifier(val).label; }
+
+        function getVibeModifier(val) {
+            var numeric = parseInt(val);
+            if (numeric <= 25) return { label: "Perang Dunia", phrase: "grim historical wartime atmosphere, smoke in distance", concept: "wartime" };
+            else if (numeric <= 50) return { label: "Pemulihan", phrase: "post-war reconstruction setting, weary community", concept: "recovery" };
+            else if (numeric <= 75) return { label: "Damai Sentosa", phrase: "serene peaceful prosperity, stable environment", concept: "peace" };
+            else return { label: "Penuh Cinta", phrase: "heartfelt celebration of love, joyful human unity", concept: "joy" };
+        }
+        function updateVibeStyleView(val) { document.getElementById('vibeStyleVal').innerText = getVibeModifier(val).label; }
+
+        function getHumorModifier(val) {
+            var numeric = parseInt(val);
+            if (numeric <= 25) return { label: "Formal/Stoik", phrase: "stoic historical expression, dignified seriousness", mood: "serious" };
+            else if (numeric <= 50) return { label: "Natural", phrase: "pleasant historical expression, unassuming look", mood: "natural" };
+            else if (numeric <= 75) return { label: "Jenaka (Playful)", phrase: "playful whimsical historical humor, amusing interaction", mood: "playful" };
+            else return { label: "Sangat Lucu", phrase: "humorous comedic historical situation, laughing candidly, vintage slapstick vibe", mood: "funny" };
+        }
+        function updateHumorStyleView(val) { document.getElementById('humorStyleVal').innerText = getHumorModifier(val).label; }
+
+        // UPDATE!! Evaluator Rotasi Semantik 0° sampai 360°
+        function getTiltModifier(val) {
+            var deg = parseInt(val);
+            if (deg === 0 || deg === 360) {
+                return { label: deg + "° (Normal / Upright)", phrase: "perfectly upright vertical orientation, standard level tracking, normal horizon blueprint", type: "level" };
+            } else if (deg === 90) {
+                return { label: "90° (Sideways / Portrait Rotated)", phrase: "90-degree rotated composition, sideways historical camera perspective layout", type: "sideways" };
+            } else if (deg === 180) {
+                return { label: "180° (Upside-Down / Inverted)", phrase: "completely inverted 180-degree upside-down orientation, flipped historical lens art print", type: "flipped" };
+            } else if (deg === 270) {
+                return { label: "270° (Counter-Sideways Rotated)", phrase: "270-degree flipped sideways studio rotation perspective framework", type: "sideways-reverse" };
+            } else if (deg > 0 && deg < 90) {
+                return { label: deg + "° (Dynamic Dutch Angle)", phrase: "cinematic Dutch angle framing, canted historical camera perspective, dynamic oblique composition at " + deg + " degrees", type: "tilt" };
+            } else if (deg > 90 && deg < 180) {
+                return { label: deg + "° (Inverted Slant Angle)", phrase: "experimental chaotic inverted camera alignment, oblique upside-down orientation at " + deg + " degrees", type: "slant-inverted" };
+            } else if (deg > 180 && deg < 270) {
+                return { label: deg + "° (Reversed Flipped Slant)", phrase: "reversed oblique angle framing, unorthodox historical camera axis distortion at " + deg + " degrees", type: "slant-reversed" };
+            } else {
+                return { label: deg + "° (Returning Axis Tilt)", phrase: "final-quadrant historical rotation alignment, tilted canvas restoration frame at " + deg + " degrees", type: "tilt-return" };
+            }
+        }
+        function updateTiltStyleView(val) { document.getElementById('tiltStyleVal').innerText = getTiltModifier(val).label; }
+
+        // UPDATE!! Cerita Khayalan Mengikuti Parameter Rotasi Baru
+        function generateFictionalStory(subject, date, vibeConcept, ageLabel, humorMood, deg, rotType) {
+            var intro = "Foto " + date + " ini menampilkan " + subject + ". ";
+            var plot = "";
+            var angleText = "";
+
+            if (rotType === "level") {
+                angleText = " Arsip kuno ini diabadikan dengan sumbu horisontal tegak lurus sempurna, memancarkan keteraturan disiplin fotografer klasik masa itu. ";
+            } else if (rotType === "sideways" || rotType === "sideways-reverse") {
+                angleText = " Anehnya, pelat negatif foto ini terpasang miring menyamping " + deg + " derajat di dalam selongsong arsip, memaksa kita melihat momen sejarah ini dari sudut pandang vertikal yang tidak biasa. ";
+            } else if (rotType === "flipped") {
+                angleText = " Cetakan arsip ini ditemukan dalam kondisi terbalik total 180 derajat (upside-down), memberikan impresi surealisme seolah ruang waktu kuno ini sedang menjungkirbalikkan ingatan kita. ";
+            } else {
+                angleText = " Komposisinya sengaja dibuat miring secara radikal sebesar " + deg + " derajat (Dutch Angle). Sudut distorsi aksis ini memunculkan ilusi ketidakstabilan atau kepanikan momen yang membeku. ";
+            }
+            
+            if (vibeConcept === "wartime") {
+                plot = "Di tengah situasi krisis perang, sosok " + ageLabel + " mencoba bertahan. ";
+                if(humorMood === "funny") plot += "Meskipun keadaan genting, aksi jenaka tak terduga berhasil tertangkap lensa, menyelipkan humor di sela sejarah.";
+                else plot += "Ekspresi stoik yang serius membekukan aura kecemasan zamannya.";
+            } else if (vibeConcept === "joy") {
+                plot = "Momen ini diambil pada masa penuh suka cita dan kehangatan rasa. ";
+                if(humorMood === "funny") plot += "Rona tawa lepas figur " + ageLabel + " ini sangat hidup dan memberikan getaran komikal yang menghibur.";
+                else plot += "Keanggunan pembawaan " + ageLabel + " ini menyatu indah dengan berkas cahaya kolektif.";
+            } else {
+                plot = "Atmosfer era ini terekam dengan nuansa " + vibeConcept + ", di mana subjek tampil dengan pembawaan " + humorMood + ".";
+            }
+            return intro + plot + angleText + "Gambar ini adalah pusaka sejarah kuno yang sangat berharga.";
+        }
+
+        function generateHistoricalPrompts() {
+            var subject = document.getElementById('subjectInput').value.trim() || "An untold historical scene";
+            var attachedImageUrl = document.getElementById('imageUrlInput').value.trim();
+            var imgSimilarityWeight = document.getElementById('imageSimilarityInput').value;
+            var poseValue = document.getElementById('poseStyleInput').value;
+            var ageValue = document.getElementById('ageStyleInput').value;
+            var vibeValue = document.getElementById('vibeStyleInput').value;
+            var humorValue = document.getElementById('humorStyleInput').value;
+            var tiltValue = document.getElementById('tiltStyleInput').value;
+            var chosenCondition = document.getElementById('conditionInput').value;
+            var conditionText = conditionModifiers[chosenCondition];
+
+            var outputContainer = document.getElementById('jsonOutputArea');
+            outputContainer.innerHTML = '';
+
+            var calculatedImageWeight = (parseInt(imgSimilarityWeight) / 50).toFixed(2);
+            var currentPoseObj = getPoseModifier(poseValue);
+            var currentAgeObj = getAgeModifier(ageValue);
+            var currentVibeObj = getVibeModifier(vibeValue);
+            var currentHumorObj = getHumorModifier(humorValue);
+            var currentTiltObj = getTiltModifier(tiltValue);
+            
+            var promptCounter = 1;
+            var eras = Object.keys(timelineData);
+
+            for (var e = 0; e < eras.length; e++) {
+                var eraKey = eras[e];
+                var era = timelineData[eraKey];
+                var eraHeader = document.createElement('div');
+                eraHeader.className = 'pt-4 pb-1 border-b border-stone-800 text-amber-400 font-serif font-medium text-[11px] sticky top-0 bg-zinc-950 z-10';
+                eraHeader.innerHTML = '<span>' + era.name + '</span>';
+                outputContainer.appendChild(eraHeader);
+
+                for (var i = 1; i <= 26; i++) {
+                    var styleVariant = "";
+                    var conditionSelector = conditionText;
+                    if (chosenCondition === 'all-effects') {
+                        var keys = Object.keys(conditionModifiers);
+                        conditionSelector = conditionModifiers[keys[Math.floor(Math.random() * 4)]];
+                    }
+
+                    var mod = i % 5;
+                    var structuralBase = "Pose: " + currentPoseObj.phrase + ". Age: " + currentAgeObj.phrase + ". Vibe: " + currentVibeObj.phrase + ". Humor: " + currentHumorObj.phrase + ". Layout Angle: " + currentTiltObj.phrase + ".";
+
+                    if (mod === 0) styleVariant = "Cinematic documentary of " + subject + ". " + structuralBase;
+                    else if (mod === 1) styleVariant = "Raw macro detail of " + subject + ". " + structuralBase;
+                    else if (mod === 2) styleVariant = "Wide establishing shot of " + subject + ". " + structuralBase;
+                    else if (mod === 3) styleVariant = "Chiaroscuro study of " + subject + ". " + structuralBase;
+                    else if (mod === 4) styleVariant = "Archival flat layout record of " + subject + ". " + structuralBase;
+
+                    var fakePhotoDate = generateFakeDate(era.start_year, era.end_year);
+                    var fullPrompt = (attachedImageUrl !== "" ? attachedImageUrl + " " : "") + "Historical photograph layout dated " + fakePhotoDate + ", depicting " + styleVariant + " Captured via " + era.tech + ". Camera properties: " + era.camera_spec + ", preservation condition: " + conditionSelector + ". --ar 4:3" + (attachedImageUrl !== "" ? " --iw " + calculatedImageWeight : "");
+
+                    var padId = String(promptCounter);
+                    while (padId.length < 3) { padId = "0" + padId; }
+                    var promptId = "PRMPT-" + padId;
+
+                    var singlePromptObj = {
+                        id: promptId,
+                        era: era.name,
+                        date: fakePhotoDate, 
+                        pose: currentPoseObj.label,
+                        age: currentAgeObj.label, 
+                        vibe: currentVibeObj.label,
+                        humor: currentHumorObj.label,
+                        frame_rotation_degree: currentTiltObj.label,
+                        story: generateFictionalStory(subject, fakePhotoDate, currentVibeObj.concept, currentAgeObj.label, currentHumorObj.mood, parseInt(tiltValue), currentTiltObj.type),
+                        prompt: fullPrompt
+                    };
+
+                    var card = document.createElement('div');
+                    card.className = 'bg-stone-900 border border-stone-800 rounded-lg p-3 flex flex-col gap-2 shadow-md hover:border-stone-700 transition-all';
+                    card.innerHTML = '\
+                        <div class="flex justify-between items-center">\
+                            <span class="text-[10px] font-mono font-bold text-amber-500">' + promptId + '</span>\
+                            <button class="bg-stone-800 hover:bg-amber-800 text-zinc-300 hover:text-white px-2 py-0.5 rounded text-[9px] font-mono transition-all cursor-pointer border border-stone-700" onclick="copySinglePrompt(\'' + promptId + '\')" id="btn-' + promptId + '">Copy JSON</button>\
+                        </div>\
+                        <div class="bg-stone-950 p-2 rounded-lg border border-stone-850 overflow-x-auto">\
+                            <pre class="font-mono text-emerald-400 whitespace-pre-wrap text-[9px]" id="code-' + promptId + '">' + JSON.stringify(singlePromptObj, null, 4) + '</pre>\
+                        </div>\
+                    ';
+                    outputContainer.appendChild(card);
+                    promptCounter++;
+                }
+            }
+        }
+
+        function copySinglePrompt(id) {
+            var codeText = document.getElementById('code-' + id).innerText;
+            var btn = document.getElementById('btn-' + id);
+            navigator.clipboard.writeText(codeText).then(function() {
+                var originalText = btn.innerText; btn.innerText = "Copied! ✓"; btn.style.backgroundColor = "#065f46";
+                setTimeout(function() { btn.innerText = originalText; btn.style.backgroundColor = "#27272a"; }, 2000);
+            });
+        }
+
+        function toggleZenMode() {
+            var body = document.getElementById('appBody');
+            var exitBtn = document.getElementById('exitZenBtn');
+            body.classList.toggle('zen-mode-active');
+            if (body.classList.contains('zen-mode-active')) exitBtn.classList.remove('hidden');
+            else exitBtn.classList.add('hidden');
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('appBody').classList.contains('zen-mode-active')) toggleZenMode();
+        });
+
+        function resetInputs() {
+            document.getElementById('subjectInput').value = '';
+            document.getElementById('imageUrlInput').value = '';
+            document.getElementById('conditionInput').selectedIndex = 0;
+            document.getElementById('imageSimilarityInput').value = 50;
+            document.getElementById('poseStyleInput').value = 40;
+            document.getElementById('ageStyleInput').value = 35;
+            document.getElementById('vibeStyleInput').value = 65;
+            document.getElementById('humorStyleInput').value = 30;
+            document.getElementById('tiltStyleInput').value = 0;
+            updateImageSimilarityView(50); updatePoseStyleView(40); updateAgeStyleView(35); updateVibeStyleView(65); updateHumorStyleView(30); updateTiltStyleView(0);
+            document.getElementById('jsonOutputArea').innerHTML = '<div class="text-amber-200/80 font-mono">// Reset selesai.</div>';
+        }
+
+        function refreshToDefault() { location.reload(); }
+        //]]>
+    </script>
+</body>
+</html>
