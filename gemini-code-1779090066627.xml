@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultmessages='false' b:layouts='false' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2014/b/skin' xmlns:data='http://www.google.com/2014/b/share' xmlns:expr='http://www.google.com/2014/b/expr'>
+<head>
+    <meta charset='UTF-8'/>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+    <title>KREASI FOTO TEMPO DOELOE - Premium Prompt Generator</title>
+    
+    <script src='https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4'></script>
+    
+    <link href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:ital,wght=0,600;1,400&amp;display=swap' rel='stylesheet'/>
+
+    <b:skin><![CDATA[
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #e6dfd1; /* Warna kertas koran/arsip usang kuno */
+            background-image: radial-gradient(#d9cfbc 1px, transparent 0);
+            background-size: 24px 24px;
+            transition: all 0.3s ease;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Custom Scrollbar bertema antik */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #d6cdbc;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #9c8f75;
+            border-radius: 3px;
+        }
+        /* Style Elemen Khusus untuk Vibe Jadul */
+        .vintage-panel {
+            background-color: #f4efe4 !important; /* Warna kertas linen tua */
+            border: 1px solid #c5b89d !important;
+        }
+        .vintage-input {
+            background-color: #ebdcb9 !important;
+            border: 1px solid #bda880 !important;
+            color: #383020 !important;
+        }
+        .vintage-input::placeholder {
+            color: #8c7d60 !important;
+        }
+        /* Mode Zen Khusus */
+        body.zen-mode-active {
+            background-color: #121214 !important;
+            background-image: none !important;
+        }
+        body.zen-mode-active header, 
+        body.zen-mode-active footer, 
+        body.zen-mode-active #layar1-section {
+            display: none !important;
+        }
+        body.zen-mode-active #layar2-section {
+            grid-column: span 12 / span 12 !important;
+        }
+    ]]></b:skin>
+</head>
+<body class='text-stone-900 antialiased min-h-screen flex flex-col justify-between' id='appBody'>
+
+    <header class='border-b border-stone-400 bg-[#ebe4d5]/90 backdrop-blur py-6 px-4 sticky top-0 z-50 shadow-sm'>
+        <div class='max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4'>
+            <div>
+                <h1 class='text-2xl font-serif font-600 tracking-tight text-amber-950'>KREASI FOTO TEMPO DOELOE</h1>
+                <p class='text-xs text-stone-600 mt-0.5 font-serif italic'>Premium Historical &amp; Vintage AI Prompt Engine</p>
+            </div>
+            <div class='flex items-center gap-2 text-xs bg-[#decda7] text-amber-950 px-3 py-1.5 rounded-md border border-amber-900/20 font-mono font-medium shadow-sm'>
+                <span class='w-2 h-2 rounded-full bg-amber-800 animate-pulse'></span>
+                100+ Master Prompts Loaded
+            </div>
+        </div>
+    </header>
+
+    <main class='max-w-7xl w-full mx-auto p-4 lg:p-8 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-8'>
+        
+        <section class='lg:col-span-5 vintage-panel rounded-xl p-6 shadow-md self-start sticky lg:top-28' id='layar1-section'>
+            <div class='mb-6 border-b border-stone-300 pb-4'>
+                <h2 class='text-lg font-serif font-600 text-stone-900'>Layar 1: Konfigurasi Objek</h2>
+                <p class='text-xs text-stone-600 mt-1'>Tentukan subjek utama serta referensi visual penunjang rekonstruksi fiktif.</p>
+            </div>
+            
+            <div class='space-y-5'>
+                <div>
+                    <label class='block text-xs font-mono font-bold uppercase tracking-wider text-stone-700 mb-2'>Subjek Utama / Objek Foto</label>
+                    <input class='w-full px-4 py-3 vintage-input rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-900/20 focus:border-amber-900 transition-all text-sm font-serif' id='subjectInput' placeholder='Contoh: A majestic locomotive, a portrait of a smiling woman' type='text' value='A busy traditional market center'/>
+                </div>
+
+                <div>
+                    <label class='block text-xs font-mono font-bold uppercase tracking-wider text-stone-700 mb-2'>URL Gambar Lampiran (Referensi Image-to-Image)</label>
+                    <input class='w-full px-4 py-3 vintage-input rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-900/20 focus:border-amber-900 transition-all text-sm font-mono' id='imageUrlInput' placeholder='https://example.com/image.jpg (Kosongkan jika tidak ada)' type='url'/>
+                </div>
+
+                <div>
+                    <div class='flex justify-between items-center mb-2'>
+                        <label class='block text-xs font-mono font-bold uppercase tracking-wider text-stone-700'>Kemiripan Terhadap Gambar Lampiran</label>
+                        <span class='text-xs font-mono font-bold bg-[#decda7] text-amber-950 px-2 py-0.5 rounded' id='imageSimilarityVal'>50%</span>
+                    </div>
+                    <input class='w-full h-2 bg-stone-300 rounded-lg appearance-none cursor-pointer accent-amber-900' id='imageSimilarityInput' max='100' min='0' oninput='updateImageSimilarityView(this.value)' type='range' value='50'/>
+                    <div class='flex justify-between text-[10px] text-stone-600 mt-1 font-mono'>
+                        <span>0% (Bebas)</span>
+                        <span>100% (Identik)</span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class='flex justify-between items-center mb-2'>
+                        <label class='block text-xs font-mono font-bold uppercase tracking-wider text-stone-700'>Gaya Pose &amp; Fokus Kamera</label>
+                        <span class='text-xs font-mono font-bold bg-[#decda7] text-amber-950 px-2 py-0.5 rounded' id='poseStyleVal'>Semi Formal (Medium)</span>
+                    </div>
+                    <input class='w-full h-2 bg-stone-300 rounded-lg appearance-none cursor-pointer accent-amber-900' id='poseStyleInput' max='100' min='0' oninput='updatePoseStyleView(this.value)' type='range' value='40'/>
+                    <div class='flex justify-between text-[10px] text-stone-600 mt-1 font-mono'>
+                        <span>Candid</span>
+                        <span>Rigid Formal</span>
+                    </div>
+                </div>
+
+                <div>
+                    <label class='block text-xs font-mono font-bold uppercase tracking-wider text-stone-700 mb-2'>Kondisi Fisik Foto (Efek Vintage)</label>
+                    <select class='w-full px-4 py-3 vintage-input rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-900/20 focus:border-amber-900 transition-all text-sm font-serif' id='conditionInput'>
+                        <option value='pristine'>Perfect &amp; Well Preserved (Mulus Terawat)</option>
+                        <option value='faded'>Kusam &amp; Faded (Pudar Tergerus Waktu)</option>
+                        <option value='damaged'>Torn &amp; Damaged (Sobek &amp; Rusak Berpori)</option>
+                        <option value='burned'>Partially Burned (Terbakar Sebagian di Tepi)</option>
+                        <option value='all-effects'>Mix All Vibe (Acak Variasi Kerusakan)</option>
+                    </select>
+                </div>
+
+                <div class='space-y-2 pt-2'>
+                    <button class='w-full bg-gradient-to-r from-amber-900 to-stone-900 text-[#f4efe4] font-serif font-medium py-3.5 px-4 rounded-lg shadow-md hover:from-stone-900 hover:to-stone-950 transition-all transform active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer border border-amber-950/40' onclick='generateHistoricalPrompts()'>
+                        <span>Generate 100+ Modular Prompts</span>
+                    </button>
+                    
+                    <div class='grid grid-cols-2 gap-2'>
+                        <button class='bg-[#ebdcb9] hover:bg-[#decda7] text-amber-950 font-mono font-semibold py-2 px-3 text-xs rounded-lg border border-stone-400/40 transition-all cursor-pointer' onclick='resetInputs()'>
+                            Reset Input
+                        </button>
+                        <button class='bg-[#ebdcb9] hover:bg-[#decda7] text-amber-950 font-mono font-semibold py-2 px-3 text-xs rounded-lg border border-stone-400/40 transition-all cursor-pointer' onclick='refreshToDefault()'>
+                            Refresh Default
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class='lg:col-span-7 flex flex-col min-h-[500px]' id='layar2-section'>
+            <div class='bg-stone-900 rounded-xl p-6 shadow-xl border-2 border-stone-700 flex flex-col flex-1 relative'>
+                
+                <button class='hidden absolute top-4 right-4 z-50 bg-amber-700 hover:bg-amber-800 text-white font-mono text-xs px-3 py-1.5 rounded transition-all shadow-md' id='exitZenBtn' onclick='toggleZenMode()'>
+                    Keluar Zen Mode [ESC]
+                </button>
+
+                <div class='flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-stone-700 pb-4 mb-4 gap-4'>
+                    <div>
+                        <h2 class='text-lg font-serif font-500 text-amber-400'>Layar 2: Structured JSON Prompts</h2>
+                        <p class='text-xs text-stone-400 mt-0.5 font-mono'>Database JSON output mandiri aman parser XML.</p>
+                    </div>
+                    <div class='flex flex-wrap items-center gap-2 w-full sm:w-auto'>
+                        <button class='text-xs bg-stone-800 text-stone-300 hover:text-white hover:bg-stone-700 px-3 py-2 rounded font-mono transition-all cursor-pointer border border-stone-700' onclick='toggleZenMode()'>
+                            Zen Mode
+                        </button>
+                    </div>
+                </div>
+
+                <div class='flex-1 relative bg-stone-950 rounded-lg border border-stone-800 p-4 overflow-y-auto max-h-[650px] custom-scrollbar space-y-4 text-xs text-stone-400' id='jsonOutputArea'>
+                    <div class='text-amber-200/80 font-mono' id='defaultMessageArea'>// Tekan tombol "Generate" untuk menyusun database JSON prompt otomatis...</div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer class='border-t border-stone-400 bg-[#ebe4d5] py-4 px-4 text-center text-xs text-stone-600 font-mono'>
+        &copy; 2026 KREASI FOTO TEMPO DOELOE &bull; Premium Blogger Theme Layout.
+    </footer>
+
+    <script type='text/javascript'>
+        //<![CDATA[
+        var conditionModifiers = {
+            'pristine': 'well-preserved, clean plate, archival museum quality, untouched',
+            'faded': 'faded chemistry, heavily low-contrast, muted tones, sepia-bleached, dusty silver coating',
+            'damaged': 'severely torn edges, deep scratches on emulsion, cracked glass plate, tattered paper texture, water stains',
+            'burned': 'partially burned edges, scorched paper borders, singed emulsion, fire-damaged celluloid artifacts',
+            'all-effects': 'randomized deterioration, aged paper rot, water damage, scorched corner, heavily scratched negatives'
+        };
+
+        var timelineData = {
+            era_1: {
+                name: "1826-1827: Early Camera Obscura & Bitumen Era",
+                tech: "Niépce heliography method, bitumen of Judea on pewter plate, experimental chemical coating",
+                lighting: "8-hour continuous daylight exposure, shifting sun directions, high-contrast harsh direct shadows",
+                camera_spec: "Primitive wooden camera obscura box, no optical lens correction, experimental focus",
+                start_year: 1826, end_year: 1827
+            },
+            era_2: {
+                name: "1839: Daguerreotype & Commercial Dawn",
+                tech: "Louis Daguerre technique, highly polished iodized silver-plated copper, mercury vapor development",
+                lighting: "3-to-15 minutes intense studio skylight illumination, stark side lighting, stiff headrests utilized",
+                camera_spec: "Giroux Daguerreotype camera, Chevalier acromatic lens, razor-sharp central detail, mirror-like metallic sheen",
+                start_year: 1839, end_year: 1845
+            },
+            era_3: {
+                name: "1888: Eastman Kodak Flexible Film Revolution",
+                tech: "Early nitrocellulose flexible roll film, circular mask snapshot framing, grainy black and white silver halide emulsion",
+                lighting: "Casual outdoor snapshots, natural erratic lighting, unposed candid illumination",
+                camera_spec: "Original Kodak No. 1 box camera, fixed-focus barrel lens, rapid shutter speed instantaneous exposure",
+                start_year: 1888, end_year: 1895
+            },
+            era_4: {
+                name: "Vintage Vibe & Mid-Century Aesthetics",
+                tech: "Classic vintage monochrome, early autochrome color shifts, organic gelatin silver fiber prints",
+                lighting: "Soft nostalgic cinematic shadows, timeless retro atmosphere, low fidelity tonal range",
+                camera_spec: "Classic analog twin-lens reflex (TLR) or rangefinder camera, vintage coated glass optics",
+                start_year: 1930, end_year: 1955
+            }
+        };
+
+        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+        function generateFakeDate(startYear, endYear) {
+            var randDay = Math.floor(Math.random() * 28) + 1; 
+            var randMonth = months[Math.floor(Math.random() * 12)];
+            var randYear = Math.floor(Math.random() * (endYear - startYear + 1)) + startYear;
+            return randDay + " " + randMonth + " " + randYear;
+        }
+
+        function updateImageSimilarityView(val) {
+            document.getElementById('imageSimilarityVal').innerText = val + '%';
+        }
+
+        // Interseptor visual nilai teks slider pose semantik
+        function getPoseModifier(val) {
+            var numeric = parseInt(val);
+            if (numeric <= 25) {
+                return { label: "Candid & Natural (Bebas)", phrase: "unposed candid look, captured in motion, figures looking away from the camera lens" };
+            } else if (numeric <= 50) {
+                return { label: "Semi Formal (Medium)", phrase: "relaxed stance, realistic vintage posture, natural human anatomical composition" };
+            } else if (numeric <= 75) {
+                return { label: "Studio Portrait (Klasik)", phrase: "stiff vintage studio pose, figures looking directly into the historical lens camera setup" };
+            } else {
+                return { label: "Rigid Formal (Sangat Kaku)", phrase: "extremely rigid formal historical posing, head-and-shoulders alignment, absolute steady composition" };
+            }
+        }
+
+        function updatePoseStyleView(val) {
+            var poseData = getPoseModifier(val);
+            document.getElementById('poseStyleVal').innerText = poseData.label;
+        }
+
+        function generateHistoricalPrompts() {
+            var subject = document.getElementById('subjectInput').value.trim() || "An untold historical scene";
+            var attachedImageUrl = document.getElementById('imageUrlInput').value.trim();
+            var imgSimilarityWeight = document.getElementById('imageSimilarityInput').value;
+            var poseValue = document.getElementById('poseStyleInput').value;
+            var chosenCondition = document.getElementById('conditionInput').value;
+            var conditionText = conditionModifiers[chosenCondition];
+
+            var outputContainer = document.getElementById('jsonOutputArea');
+            outputContainer.innerHTML = '';
+
+            var calculatedImageWeight = (parseInt(imgSimilarityWeight) / 50).toFixed(2);
+            var currentPoseObj = getPoseModifier(poseValue);
+            var promptCounter = 1;
+            var eras = Object.keys(timelineData);
+
+            for (var e = 0; e < eras.length; e++) {
+                var eraKey = eras[e];
+                var era = timelineData[eraKey];
+
+                var eraHeader = document.createElement('div');
+                eraHeader.className = 'pt-4 pb-2 border-b border-stone-800 text-amber-400 font-serif font-medium text-sm sticky top-0 bg-zinc-950 z-10 flex justify-between items-center';
+                eraHeader.innerHTML = '<span>' + era.name + '</span> <span class="text-xs font-mono text-stone-500">26 Prompts</span>';
+                outputContainer.appendChild(eraHeader);
+
+                for (var i = 1; i <= 26; i++) {
+                    var styleVariant = "";
+                    var conditionSelector = conditionText;
+                    
+                    if (chosenCondition === 'all-effects') {
+                        var keys = Object.keys(conditionModifiers);
+                        conditionSelector = conditionModifiers[keys[Math.floor(Math.random() * 4)]];
+                    }
+
+                    var mod = i % 5;
+                    if (mod === 0) styleVariant = "Cinematic documentary style capturing " + subject + ", tracking shot perspective. Physical presentation: " + currentPoseObj.phrase + ".";
+                    else if (mod === 1) styleVariant = "Close-up raw macro detail focusing on " + subject + ". Physical presentation: " + currentPoseObj.phrase + ".";
+                    else if (mod === 2) styleVariant = "Wide-angle establishing shot showcasing " + subject + " in its raw environment. Physical presentation: " + currentPoseObj.phrase + ".";
+                    else if (mod === 3) styleVariant = "Atmospheric chiaroscuro study of " + subject + ", deep artistic shadows. Physical presentation: " + currentPoseObj.phrase + ".";
+                    else if (mod === 4) styleVariant = "Authentic museum archival record photo of " + subject + ", flat layout look. Physical presentation: " + currentPoseObj.phrase + ".";
+
+                    var fakePhotoDate = generateFakeDate(era.start_year, era.end_year);
+                    var dateContextPrefix = "An authentic archival photograph document dated on " + fakePhotoDate + ", depicting ";
+
+                    var fullPrompt = "";
+                    if (attachedImageUrl !== "") {
+                        fullPrompt = attachedImageUrl + " " + dateContextPrefix + styleVariant + " Photographed using " + era.tech + ". Technical setup: " + era.camera_spec + ", under " + era.lighting + ". Photographic condition: " + conditionSelector + ". Masterpiece historical rendering --ar 4:3 --iw " + calculatedImageWeight + " --v 6.0";
+                    } else {
+                        fullPrompt = dateContextPrefix + styleVariant + " Photographed using " + era.tech + ". Technical setup: " + era.camera_spec + ", under " + era.lighting + ". Photographic condition: " + conditionSelector + ". Masterpiece historical rendering --ar 4:3 --v 6.0";
+                    }
+
+                    var padId = String(promptCounter);
+                    while (padId.length < 3) { padId = "0" + padId; }
+                    var promptId = "PRMPT-" + padId;
+
+                    var singlePromptObj = {
+                        id: promptId,
+                        era_reference: eraKey,
+                        variant_style: "Option #" + i,
+                        photo_taken_date: fakePhotoDate, 
+                        assigned_pose_type: currentPoseObj.label,
+                        image_reference_url: attachedImageUrl !== "" ? attachedImageUrl : "none",
+                        image_similarity_weight: attachedImageUrl !== "" ? imgSimilarityWeight + "%" : "not applicable",
+                        prompt_string: fullPrompt
+                    };
+
+                    var jsonString = JSON.stringify(singlePromptObj, null, 4);
+
+                    var card = document.createElement('div');
+                    card.className = 'bg-stone-900 border border-stone-800 rounded-lg p-4 flex flex-col gap-3 shadow-md hover:border-stone-700 transition-all';
+                    
+                    card.innerHTML = '\
+                        <div class="flex justify-between items-center">\
+                            <span class="text-xs font-mono font-bold text-amber-500">' + promptId + ' (' + singlePromptObj.variant_style + ')</span>\
+                            <button class="bg-stone-800 hover:bg-amber-800 text-zinc-300 hover:text-white px-2.5 py-1 rounded text-[11px] font-mono transition-all cursor-pointer border border-stone-700" onclick="copySinglePrompt(\'' + promptId + '\')" id="btn-' + promptId + '">\
+                                Copy JSON Object\
+                            </button>\
+                        </div>\
+                        <div class="bg-stone-950 p-3 rounded-lg border border-stone-850 overflow-x-auto">\
+                            <pre class="font-mono text-emerald-400 whitespace-pre-wrap text-[11px]" id="code-' + promptId + '">' + escapeHtml(jsonString) + '</pre>\
+                        </div>\
+                    ';
+                    
+                    outputContainer.appendChild(card);
+                    promptCounter++;
+                }
+            }
+        }
+
+        function escapeHtml(text) {
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        function copySinglePrompt(id) {
+            var codeText = document.getElementById('code-' + id).innerText;
+            var btn = document.getElementById('btn-' + id);
+            
+            navigator.clipboard.writeText(codeText).then(function() {
+                var originalText = btn.innerText;
+                btn.innerText = "Copied! ✓";
+                btn.style.backgroundColor = "#065f46";
+                
+                setTimeout(function() {
+                    btn.innerText = originalText;
+                    btn.style.backgroundColor = "#27272a";
+                }, 2000);
+            }).catch(function(err) {
+                alert("Gagal menyalin teks.");
+            });
+        }
+
+        function toggleZenMode() {
+            var body = document.getElementById('appBody');
+            var exitBtn = document.getElementById('exitZenBtn');
+            body.classList.toggle('zen-mode-active');
+            
+            if (body.classList.contains('zen-mode-active')) {
+                exitBtn.classList.remove('hidden');
+            } else {
+                exitBtn.classList.add('hidden');
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('appBody').classList.contains('zen-mode-active')) {
+                toggleZenMode();
+            }
+        });
+
+        function resetInputs() {
+            document.getElementById('subjectInput').value = '';
+            document.getElementById('imageUrlInput').value = '';
+            document.getElementById('conditionInput').selectedIndex = 0;
+            document.getElementById('imageSimilarityInput').value = 50;
+            document.getElementById('imageSimilarityVal').innerText = '50%';
+            document.getElementById('poseStyleInput').value = 40;
+            document.getElementById('poseStyleVal').innerText = 'Semi Formal (Medium)';
+            document.getElementById('jsonOutputArea').innerHTML = '<div class="text-amber-200/80 font-mono">// Input telah di-reset. Masukkan subjek baru lalu tekan tombol Generate.</div>';
+        }
+
+        function refreshToDefault() {
+            document.getElementById('subjectInput').value = 'A busy traditional market center';
+            document.getElementById('imageUrlInput').value = '';
+            document.getElementById('conditionInput').value = 'pristine';
+            document.getElementById('imageSimilarityInput').value = 50;
+            document.getElementById('imageSimilarityVal').innerText = '50%';
+            document.getElementById('poseStyleInput').value = 40;
+            document.getElementById('poseStyleVal').innerText = 'Semi Formal (Medium)';
+            document.getElementById('jsonOutputArea').innerHTML = '<div class="text-amber-200/80 font-mono">// Tekan tombol "Generate" untuk menyusun database JSON prompt otomatis...</div>';
+            
+            if (document.getElementById('appBody').classList.contains('zen-mode-active')) {
+                toggleZenMode();
+            }
+        }
+        //]]>
+    </script>
+</body>
+</html>
