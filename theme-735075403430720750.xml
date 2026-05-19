@@ -1,0 +1,762 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultmessages='false' b:layouts='false' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <meta charset='UTF-8'/>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+    <title>KREASI FOTO LAWAS DAN FOTO RUSAK</title>
+    
+    <script src='https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4'/>
+    
+    <link href='https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600&amp;family=Playfair+Display:ital,wght=0,600;1,400&amp;display=swap' rel='stylesheet'/>
+
+    <b:skin><![CDATA[
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #e6dfd1; 
+            background-image: radial-gradient(#d9cfbc 1px, transparent 0);
+            background-size: 24px 24px;
+            transition: all 0.3s ease;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #d6cdbc;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #9c8f75;
+            border-radius: 3px;
+        }
+        .vintage-panel {
+            background-color: #f4efe4 !important;
+            border: 1px solid #c5b89d !important;
+        }
+        .vintage-input {
+            background-color: #ebdcb9 !important;
+            border: 1px solid #bda880 !important;
+            color: #383020 !important;
+        }
+        .vintage-input::placeholder {
+            color: #8c7d60 !important;
+        }
+        body.zen-mode-active {
+            background-color: #121214 !important;
+            background-image: none !important;
+        }
+        body.zen-mode-active header, 
+        body.zen-mode-active footer, 
+        body.zen-mode-active #layar1-section {
+            display: none !important;
+        }
+        body.zen-mode-active #layar2-section {
+            grid-column: span 12 / span 12 !important;
+        }
+    ]]></b:skin>
+</head>
+<body class='text-stone-900 antialiased min-h-screen flex flex-col justify-between' id='appBody'>
+
+    <header class='border-b border-stone-400 bg-[#ebe4d5]/90 backdrop-blur py-6 px-4 sticky top-0 z-50 shadow-sm'>
+        <div class='max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4'>
+            <div>
+                <h1 class='text-2xl font-serif font-600 tracking-tight text-amber-950'>KREASI FOTO LAWAS DAN FOTO RUSAK</h1>
+                <p class='text-xs text-stone-600 mt-0.5 font-serif italic'>Premium Historical &amp; Vintage AI Prompt Engine</p>
+            </div>
+            <div class='flex items-center gap-2 text-xs bg-[#decda7] text-amber-950 px-3 py-1.5 rounded-md border border-amber-900/20 font-mono font-medium shadow-sm'>
+                <span class='w-2 h-2 rounded-full bg-amber-800 animate-pulse'/>
+                Engine Sliders &amp; Narrative Builder Connected
+            </div>
+        </div>
+    </header>
+
+    <main class='max-w-7xl w-full mx-auto p-4 lg:p-8 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-8'>
+        
+        <section class='lg:col-span-5 vintage-panel rounded-xl p-6 shadow-md self-start sticky lg:top-28' id='layar1-section'>
+            <div class='mb-6 border-b border-stone-300 pb-4'>
+                <h2 class='text-lg font-serif font-600 text-stone-900'>Layar 1: Konfigurasi Objek</h2>
+                <p class='text-xs text-stone-600 mt-1'>Sempurnakan rotasi penuh 360&#176;, penuaan, atmosfer, dan humor secara interaktif.</p>
+            </div>
+            
+            <div class='space-y-4'>
+                <div>
+                    <label class='block text-[10px] font-mono font-bold uppercase tracking-wider text-stone-700 mb-1'>Subjek Utama / Objek Foto</label>
+                    <input class='w-full px-4 py-2.5 vintage-input rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-900/20 focus:border-amber-900 transition-all text-sm font-serif' id='subjectInput' placeholder='Contoh: A majestic locomotive' type='text' value='A busy traditional market center'/>
+                </div>
+
+                <div>
+                    <label class='block text-[10px] font-mono font-bold uppercase tracking-wider text-stone-700 mb-1'>URL Gambar (Referensi)</label>
+                    <input class='w-full px-4 py-2.5 vintage-input rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-900/20 focus:border-amber-900 transition-all text-sm font-mono' id='imageUrlInput' placeholder='https://example.com/image.jpg' type='url'/>
+                </div>
+
+                <div class='grid grid-cols-1 gap-3 border-t border-stone-300 pt-3'>
+                    <div>
+                        <div class='flex justify-between items-center mb-1'>
+                            <label class='text-[10px] font-mono font-bold uppercase text-stone-700'>Kemiripan Gambar</label>
+                            <span class='text-[10px] font-mono font-bold bg-[#decda7] px-1.5 rounded' id='imageSimilarityVal'>50%</span>
+                        </div>
+                        <input class='w-full h-1.5 bg-stone-300 rounded-lg appearance-none cursor-pointer accent-amber-900' id='imageSimilarityInput' max='100' min='0' type='range' value='50'/>
+                    </div>
+
+                    <div>
+                        <div class='flex justify-between items-center mb-1'>
+                            <label class='text-[10px] font-mono font-bold uppercase text-stone-700'>Gaya Pose</label>
+                            <span class='text-[10px] font-mono font-bold bg-[#decda7] px-1.5 rounded' id='poseStyleVal'>Semi Formal</span>
+                        </div>
+                        <input class='w-full h-1.5 bg-stone-300 rounded-lg appearance-none cursor-pointer accent-amber-900' id='poseStyleInput' max='100' min='0' type='range' value='40'/>
+                    </div>
+
+                    <div>
+                        <div class='flex justify-between items-center mb-1'>
+                            <label class='text-[10px] font-mono font-bold uppercase text-stone-700'>Usia Semantik</label>
+                            <span class='text-[10px] font-mono font-bold bg-[#decda7] px-1.5 rounded' id='ageStyleVal'>Mature Adult</span>
+                        </div>
+                        <input class='w-full h-1.5 bg-stone-300 rounded-lg appearance-none cursor-pointer accent-amber-900' id='ageStyleInput' max='100' min='0' type='range' value='35'/>
+                    </div>
+
+                    <div>
+                        <div class='flex justify-between items-center mb-1'>
+                            <label class='text-[10px] font-mono font-bold uppercase text-stone-700'>Atmosfer Zaman</label>
+                            <span class='text-[10px] font-mono font-bold bg-[#decda7] px-1.5 rounded' id='vibeStyleVal'>Damai Sentosa</span>
+                        </div>
+                        <input class='w-full h-1.5 bg-stone-300 rounded-lg appearance-none cursor-pointer accent-amber-900' id='vibeStyleInput' max='100' min='0' type='range' value='65'/>
+                    </div>
+
+                    <div>
+                        <div class='flex justify-between items-center mb-1'>
+                            <label class='text-[10px] font-mono font-bold uppercase text-stone-700'>Tingkat Kelucuan</label>
+                            <span class='text-[10px] font-mono font-bold bg-[#decda7] px-1.5 rounded' id='humorStyleVal'>Natural</span>
+                        </div>
+                        <input class='w-full h-1.5 bg-stone-300 rounded-lg appearance-none cursor-pointer accent-amber-900' id='humorStyleInput' max='100' min='0' type='range' value='30'/>
+                    </div>
+
+                    <div>
+                        <div class='flex justify-between items-center mb-1'>
+                            <label class='text-[10px] font-mono font-bold uppercase text-stone-700'>Rotasi &amp; Orientasi Foto</label>
+                            <span class='text-[10px] font-mono font-bold bg-[#decda7] px-1.5 rounded' id='tiltStyleVal'>0&#176; (Normal / Upright)</span>
+                        </div>
+                        <input class='w-full h-1.5 bg-stone-300 rounded-lg appearance-none cursor-pointer accent-amber-900' id='tiltStyleInput' max='360' min='0' type='range' value='0'/>
+                    </div>
+                </div>
+
+                <div class='pt-2'>
+                    <label class='block text-[10px] font-mono font-bold uppercase text-stone-700 mb-1'>Kondisi Fisik Foto</label>
+                    <select class='w-full px-4 py-2 vintage-input rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-900/20 text-sm font-serif cursor-pointer' id='conditionInput'>
+                        <option value='pristine'>Perfect &amp; Well Preserved (Mulus Terawat)</option>
+                        <option value='faded'>Faded &amp; Low Contrast (Memudar &amp; Kurang Kontras)</option>
+                        <option value='damaged'>Severely Damaged (Rusak Berat)</option>
+                        <option value='burned'>Burned &amp; Scorched (Terbakar &amp; Hangus)</option>
+                        <option value='all-effects'>All Effects Combined (Semua Efek Rusak)</option>
+                        <option value='vintage'>Vintage Classic (Vintage Klasik)</option>
+                        <option value='aged'>Naturally Aged (Alami Tua)</option>
+                        <option value='moldy'>Moldy &amp; Mildewed (Berjamur)</option>
+                        <option value='scratched'>Heavily Scratched (Banyak Goresan)</option>
+                        <option value='creased'>Creased &amp; Folded (Terlipat &amp; Kusut)</option>
+                        <option value='stained'>Stained (Bernoda)</option>
+                        <option value='waterdamaged'>Water Damaged (Rusak Air)</option>
+                        <option value='torn'>Torn &amp; Ripped (Sobek)</option>
+                        <option value='cracked'>Cracked Emulsion (Emulsi Retak)</option>
+                        <option value='peeling'>Peeling Emulsion (Emulsi Mengelupas)</option>
+                        <option value='overexposed'>Overexposed (Over Exposure)</option>
+                        <option value='underexposed'>Underexposed (Under Exposure)</option>
+                        <option value='fogged'>Chemically Fogged (Berkabut Kimia)</option>
+                        <option value='lightleaks'>Light Leaks (Light Leak)</option>
+                        <option value='dusty'>Dusty &amp; Spotty (Berdebu)</option>
+                        <option value='fingerprints'>Fingerprints &amp; Smudges (Sidik Jari)</option>
+                        <option value='chemicalstain'>Chemical Stains (Noda Kimia)</option>
+                        <option value='silvering'>Silvering &amp; Mirroring (Silvering)</option>
+                        <option value='reticulated'>Reticulated Emulsion (Emulsi Keriput)</option>
+                        <option value='scorch'>Scorched Edges (Tepian Hangus)</option>
+                        <option value='insect'>Insect Damaged (Dimakan Serangga)</option>
+                        <option value='foxed'>Foxed &amp; Oxidized (Foxing)</option>
+                        <option value='vignetted'>Strong Vignetting (Vignetting Kuat)</option>
+                        <option value='halated'>Halation Glow (Efek Halo)</option>
+                        <option value='solarized'>Solarized (Solarisasi)</option>
+                        <option value='crossprocessed'>Cross Processed (Cross Process)</option>
+                        <option value='expiredfilm'>Expired Film (Film Kadaluarsa)</option>
+                        <option value='pinholes'>Pinholes Damage (Lubang Jarum)</option>
+                        <option value='bubbles'>Emulsion Bubbles (Gelembung Emulsi)</option>
+                        <option value='frayed'>Frayed Edges (Tepian Aus)</option>
+                        <option value='brittle'>Brittle &amp; Fragile (Rapuh)</option>
+                        <option value='curled'>Curled &amp; Warped (Melengkung)</option>
+                        <option value='toned'>Chemically Toned (Ditonir)</option>
+                        <option value='sepia'>Warm Sepia (Sepia Hangat)</option>
+                        <option value='cyanotype'>Cyanotype Blue (Cyanotype Biru)</option>
+                        <option value='albumen'>Albumen Print (Cetak Albumen)</option>
+                        <option value='collodion'>Wet Plate Collodion (Collodion Basah)</option>
+                        <option value='daguerreotype'>Daguerreotype (Daguerreotype)</option>
+                        <option value='tintype'>Tintype Plate (Tintype)</option>
+                        <option value='polaroid'>Polaroid Aged (Polaroid Tua)</option>
+                        <option value='filmstrip'>Film Strip (Strip Film)</option>
+                        <option value='negative'>Black &amp; White Negative (Negatif Hitam Putih)</option>
+                        <option value='glassplate'>Glass Plate (Plat Kaca)</option>
+                        <option value='nitrate'>Nitrate Film (Film Nitrat)</option>
+                        <option value='acetatedegrade'>Acetate Degradation (Vinegar Syndrome)</option>
+                        <option value='colorfade'>Color Faded (Warna Memudar)</option>
+                        <option value='grainy'>Heavy Grain (Grain Kasar)</option>
+                        <option value='softfocus'>Soft Focus (Soft Focus)</option>
+                        <option value='doubleexposure'>Double Exposure (Double Exposure)</option>
+                        <option value='motionblur'>Motion Blur (Gerak Kabur)</option>
+                        <option value='outoffocus'>Out of Focus (Tidak Fokus)</option>
+                        <option value='embossed'>Embossed Texture (Tekstur Emboss)</option>
+                        <option value='matte'>Matte Print (Cetak Matte)</option>
+                        <option value='glossy'>Glossy Print (Cetak Glossy)</option>
+                        <option value='archival'>Archival Museum Quality (Kualitas Arsip Museum)</option>
+                        <option value='postcard'>Vintage Postcard (Kartu Pos Vintage)</option>
+                        <option value='cabinetcard'>Cabinet Card (Cabinet Card)</option>
+                        <option value='stereoview'>Stereoview Card (Kartu Stereo)</option>
+                        <option value='lanternslide'>Lantern Slide (Slide Lentera)</option>
+                        <option value='newsprint'>Newsprint Texture (Tekstur Koran)</option>
+                        <option value='polaroidaged'>Aged Polaroid (Polaroid Tua)</option>
+                        <option value='kodachrome'>Kodachrome Colors (Warna Kodachrome)</option>
+                        <option value='ektachrome'>Ektachrome Film (Film Ektachrome)</option>
+                        <option value='c41fade'>C-41 Color Fade (C-41 Memudar)</option>
+                        <option value='infrared'>Infrared Film (Film Infrared)</option>
+                        <option value='lithprint'>Lith Print (Cetak Lith)</option>
+                        <option value='gumprint'>Gum Bichromate (Gum Print)</option>
+                        <option value='saltprint'>Salt Print (Salt Print)</option>
+                        <option value='platinumprint'>Platinum Print (Platinum Print)</option>
+                        <option value='cyanprint'>Cyanotype Print (Cetak Cyanotype)</option>
+                        <option value='ambrotype'>Ambrotype (Ambrotype)</option>
+                        <option value='calotype'>Calotype (Calotype)</option>
+                        <option value='randomdamage'>Random Severe Damage (Kerusakan Acak Berat)</option>
+                    </select>
+                </div>
+
+                <div class='space-y-2 pt-2'>
+                    <button class='w-full bg-gradient-to-r from-amber-900 to-stone-900 text-[#f4efe4] font-serif font-medium py-3 px-4 rounded-lg shadow-md hover:from-stone-900 transition-all transform active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer border border-amber-950/40' id='btnGenerateMaster'>
+                        <span>Generate 100+ Master Prompts</span>
+                    </button>
+                
+                    <div class='grid grid-cols-3 gap-2'>
+                        <button class='bg-[#ebdcb9] hover:bg-[#decda7] text-amber-950 font-mono font-semibold py-1.5 px-2 text-[10px] rounded-lg border border-stone-400/40 transition-all cursor-pointer shadow-sm' id='btnResetForm'>Reset</button>
+                        <button class='bg-amber-800 hover:bg-amber-900 text-white font-mono font-semibold py-1.5 px-2 text-[10px] rounded-lg border border-amber-950/30 transition-all cursor-pointer shadow-sm' id='btnRandomizeForm'>Acak Parameter</button>
+                        <button class='bg-[#ebdcb9] hover:bg-[#decda7] text-amber-950 font-mono font-semibold py-1.5 px-2 text-[10px] rounded-lg border border-stone-400/40 transition-all cursor-pointer shadow-sm' onclick='window.location.reload();'>Refresh</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class='lg:col-span-7 flex flex-col min-h-[500px]' id='layar2-section'>
+            <div class='bg-stone-900 rounded-xl p-6 shadow-xl border-2 border-stone-700 flex flex-col flex-1 relative'>
+                <button class='hidden absolute top-4 right-4 z-50 bg-amber-700 hover:bg-amber-800 text-white font-mono text-xs px-3 py-1.5 rounded transition-all shadow-md' id='exitZenBtn'>Keluar Zen Mode [ESC]</button>
+                
+                <div class='flex flex-col border-b border-stone-700 pb-4 mb-4 gap-4'>
+                    <div class='flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4'>
+                        <div>
+                            <h2 class='text-lg font-serif font-500 text-amber-400'>Layar 2: Structured JSON Prompts</h2>
+                            <p class='text-xs text-stone-400 mt-0.5 font-mono text-[10px]'>JSON database + 360&#176; Frame Angle + Narrative Content.</p>
+                        </div>
+                        <div class='flex items-center gap-2 self-stretch sm:self-auto justify-end w-full sm:w-auto'>
+                            <button class='hidden text-xs bg-emerald-800 hover:bg-emerald-900 text-white px-3 py-2 rounded font-mono transition-all border border-emerald-950 shadow-md cursor-pointer' id='btnBulkCopyJSON'>Copy All JSON</button>
+                            <button class='text-xs bg-stone-800 text-stone-300 hover:text-white px-3 py-2 rounded font-mono transition-all border border-stone-700 cursor-pointer shadow-sm' id='btnZenMode'>Zen Mode</button>
+                        </div>
+                    </div>
+
+                    <div class='hidden grid grid-cols-1 sm:grid-cols-12 gap-2 pt-2 border-t border-stone-800' id='filterBarContainer'>
+                        <div class='sm:col-span-7'>
+                            <label class='block text-[9px] font-mono uppercase tracking-wider text-stone-400 mb-1'>Saring Berdasarkan Era Sejarah</label>
+                            <select class='w-full px-3 py-1.5 bg-stone-950 border border-stone-700 rounded text-stone-200 text-xs font-serif focus:outline-none focus:border-amber-500 cursor-pointer' id='eraFilterSelector'>
+                                <option value='all'>Tampilkan Semua Era (104 Prompts)</option>
+                                <option value='era_1'>1826-1827: Early Camera Obscura</option>
+                                <option value='era_2'>1839: Daguerreotype Dawn</option>
+                                <option value='era_3'>1888: Kodak Film Revolution</option>
+                                <option value='era_4'>1930-1950: Golden Era</option>
+                            </select>
+                        </div>
+                        <div class='sm:col-span-5'>
+                            <label class='block text-[9px] font-mono uppercase tracking-wider text-stone-400 mb-1'>Cari Kata di Dalam JSON</label>
+                            <input class='w-full px-3 py-1.5 bg-stone-950 border border-stone-700 rounded text-stone-200 text-xs font-mono focus:outline-none focus:border-amber-500' id='keywordFilterSearch' placeholder='Ketik misal: candid, jaman...' type='text'/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='flex-1 relative bg-stone-950 rounded-lg border border-stone-800 p-4 overflow-y-auto max-h-[650px] custom-scrollbar space-y-4 text-xs text-stone-400' id='jsonOutputArea'>
+                    <div class='text-amber-200/80 font-mono' id='defaultMessageArea'>// Tekan tombol &quot;Generate&quot; untuk menyusun database JSON prompt otomatis...</div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer class='border-t border-stone-400 bg-[#ebe4d5] py-3 px-4 text-center text-[10px] text-stone-600 font-mono'>
+        &#169; 2026 KREASI FOTO TEMPO DOELOE | Premium Blogger Theme Layout.
+    </footer>
+
+    <div class='hidden'>
+        <b:section id='abc' maxwidgets='1' showaddelement='yes'/>
+    </div>
+
+    <script type='text/javascript'>
+        //<![CDATA[
+        var conditionModifiers = {
+            'pristine': 'well-preserved, clean plate, archival museum quality, untouched',
+            'faded': 'faded chemistry, heavily low-contrast, muted tones, sepia-bleached, dusty silver coating',
+            'damaged': 'severely torn edges, deep scratches on emulsion, cracked glass plate, tattered paper texture, water stains',
+            'burned': 'partially burned edges, scorched paper borders, singed emulsion, fire-damaged celluloid artifacts',
+            'all-effects': 'randomized deterioration, aged paper rot, water damage, scorched corner, heavily scratched negatives',
+            'vintage': 'warm sepia tones, subtle vignetting, authentic 1920s film look, slight paper curl',
+            'aged': 'heavily yellowed, foxing spots, natural aging patina, brittle edges',
+            'moldy': 'mold growth spots, fuzzy mildew patches, organic decay texture, bluish-green contamination',
+            'scratched': 'fine surface scratches, deep gouges across emulsion, hairline abrasions, frequent handling marks',
+            'creased': 'prominent fold creases, cracked emulsion along folds, wrinkled paper base, heavy usage wear',
+            'stained': 'coffee stains, tea rings, ink bleeds, reddish-brown chemical stains',
+            'waterdamaged': 'severe water damage, bubbling emulsion, warped paper, dissolved silver areas',
+            'torn': 'ragged tears, missing fragments, patched repairs, uneven borders',
+            'cracked': 'crazed emulsion cracking, alligator skin texture, network of fine cracks',
+            'peeling': 'peeling emulsion layers, lifting corners, flaking silver gelatin',
+            'overexposed': 'blown highlights, washed-out details, high-contrast burn, thin negative',
+            'underexposed': 'blocked shadows, murky tones, dense negative, lost highlight detail',
+            'fogged': 'chemical fog, overall veil, light leaks, hazy atmosphere',
+            'lightleaks': 'strong red and yellow light leaks, bleeding color streaks, film border exposure',
+            'dusty': 'heavy dust spots, white specks, scanning artifacts, airborne particles',
+            'fingerprints': 'oily fingerprints, smudged emulsion, handling marks, thumb prints',
+            'chemicalstain': 'purple manganese stains, dichroic staining, metallic sheen damage',
+            'silvering': 'mirroring silvering effect, bronze tarnish, reflective degradation',
+            'reticulated': 'reticulated emulsion, crocodile skin texture, wrinkled grain pattern',
+            'scorch': 'charred edges, heat distortion, brown burn marks, fire singe',
+            'insect': 'insect damage, worm holes, bite marks, larvae tracks',
+            'foxed': 'classic foxing spots, reddish-brown age spots, scattered oxidation',
+            'vignetted': 'strong corner vignetting, darkened edges, tunnel effect',
+            'halated': 'halation glow around highlights, blooming light, soft diffusion',
+            'solarized': 'solarization effect, reversed tones, Mackie lines, Sabattier partial reversal',
+            'crossprocessed': 'cross-processed film look, unnatural colors, high contrast shifts',
+            'expiredfilm': 'expired film characteristics, color shifts, increased grain, unpredictable tones',
+            'pinholes': 'numerous pinholes, light spots from perforations, tiny transparent dots',
+            'bubbles': 'emulsion bubbles, blistering surface, chemical reaction artifacts',
+            'frayed': 'frayed paper edges, fibrous texture, threadbare borders',
+            'brittle': 'extremely brittle, cracking when flexed, fragile dry plate',
+            'curled': 'strongly curled edges, rolled print, warped negative',
+            'toned': 'selenium toned, gold toned, blue toned, split-toned print',
+            'sepia': 'strong archival sepia, warm brown tones, antique photographic look',
+            'cyanotype': 'classic cyanotype blue, Prussian blue tones, alternative process feel',
+            'albumen': 'albumen print texture, glossy highlights, warm paper base',
+            'collodion': 'wet plate collodion look, sharp details, glass plate artifacts',
+            'daguerreotype': 'mirror-like daguerreotype, metallic sheen, delicate highlights',
+            'tintype': 'tintype plate, dark metal backing, direct positive appearance',
+            'polaroid': 'Polaroid SX-70 style, chemical border, developing artifacts',
+            'filmstrip': 'film strip borders, sprocket holes, frame numbers, Kodak edge printing',
+            'negative': 'black and white negative, inverted tones, high contrast scan',
+            'glassplate': 'old glass negative plate, thick glass edges, vintage laboratory look',
+            'nitrate': 'highly flammable nitrate film base, decaying acetate smell simulation, vinegar syndrome',
+            'acetatedegrade': 'vinegar syndrome, shrinkage, buckling, strong acetic acid damage',
+            'colorfade': 'faded color film, magenta cast, cyan loss, unstable dyes',
+            'grainy': 'extremely grainy, high ISO push, coarse film texture',
+            'softfocus': 'soft focus lens effect, dreamy glow, diffused details',
+            'doubleexposure': 'double exposure ghosting, superimposed images, translucent overlay',
+            'motionblur': 'motion blur streaks, camera shake, long exposure trails',
+            'outoffocus': 'deliberately soft focus, blurry subject, dreamy unfocused aesthetic',
+            'embossed': 'embossed texture, raised paper fibers, letterpress feel',
+            'matte': 'matte print surface, non-reflective, velvety texture',
+            'glossy': 'high gloss gelatin silver, reflective highlights, deep blacks',
+            'archival': 'archival pigment print, museum quality matte, fade-resistant',
+            'postcard': 'vintage postcard back, divided back, stamp marks, writing space',
+            'cabinetcard': 'cabinet card mount, thick card stock, ornate borders',
+            'stereoview': 'stereoscopic card, dual image, 3D viewing effect',
+            'lanternslide': 'hand-colored lantern slide, projected glass slide, vibrant tints',
+            'newsprint': 'yellowed newsprint texture, halftone dots, newspaper aging',
+            'polaroidaged': 'aged Polaroid with yellow border, chemical leaks, time-worn instant photo',
+            'kodachrome': 'vintage Kodachrome colors, rich saturation, classic slide film',
+            'ektachrome': 'Ektachrome faded blues, cool color palette, transparency film',
+            'c41fade': 'C-41 color negative fade, orange mask remnants, unstable dyes',
+            'infrared': 'infrared film look, glowing whites, dark skies, ethereal effect',
+            'lithprint': 'lith print texture, warm infectious tones, high contrast grain',
+            'gumprint': 'gum bichromate print, painterly texture, multiple layers',
+            'saltprint': 'salt print texture, matte paper, soft delicate tones',
+            'platinumprint': 'platinum/palladium print, rich subtle tones, archival permanence',
+            'cyanprint': 'cyanotype blueprint style, deep Prussian blue, engineering drawing feel',
+            'ambrotype': 'ambrotype on glass, black backing, positive/negative duality',
+            'calotype': 'early calotype paper negative, soft details, foxed texture',
+            'randomdamage': 'completely randomized physical and chemical damage, unpredictable deterioration, mix of scratches, stains, tears and fading'
+        };
+
+        var timelineData = {
+            era_1: { idCode: "era_1", name: "1826-1827: Early Camera Obscura", tech: "Niépce heliography method, bitumen on pewter plate", lighting: "8-hour daylight exposure, high-contrast shadows", camera_spec: "Primitive wooden camera obscura", start_year: 1826, end_year: 1827 },
+            era_2: { idCode: "era_2", name: "1839: Daguerreotype Dawn", tech: "Louis Daguerre technique, polished silver-plated copper", lighting: "Studio skylight illumination, stark side lighting", camera_spec: "Giroux Daguerreotype camera", start_year: 1839, end_year: 1845 },
+            era_3: { idCode: "era_3", name: "1888: Kodak Film Revolution", tech: "Nitrocellulose flexible roll film, circular mask framing", lighting: "Casual outdoor snapshots, natural lighting", camera_spec: "Original Kodak No. 1", start_year: 1888, end_year: 1895 },
+            era_4: { idCode: "era_4", name: "1930-1950: Golden Era", tech: "Vintage monochrome, organic gelatin silver fiber prints", lighting: "Nostalgic cinematic shadows, retro atmosphere", camera_spec: "Analog TLR camera, vintage optics", start_year: 1930, end_year: 1955 }
+        };
+
+        var months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+        
+        var currentGeneratedDatabase = [];
+
+        function generateFakeDate(startYear, endYear) {
+            var randDay = Math.floor(Math.random() * 28) + 1;
+            var randMonth = months[Math.floor(Math.random() * 12)];
+            var randYear = Math.floor(Math.random() * (endYear - startYear + 1)) + startYear;
+            return randDay + " " + randMonth + " " + randYear;
+        }
+
+        function getPoseModifier(val) {
+            var numeric = parseInt(val);
+            if (numeric <= 25) return { label: "Candid (Bebas)", phrase: "unposed candid look, looking away from camera" };
+            if (numeric <= 50) return { label: "Semi Formal", phrase: "relaxed stance, natural historical posture" };
+            if (numeric <= 75) return { label: "Studio Portrait", phrase: "stiff vintage studio pose, looking into lens" };
+            return { label: "Rigid Formal", phrase: "extremely rigid historical posing, steady composition" };
+        }
+
+        function getAgeModifier(val) {
+            var numeric = parseInt(val);
+            if (numeric <= 15) return { label: "Youthful", phrase: "youthful fresh-faced, clear young features" };
+            if (numeric <= 30) return { label: "Young Adult", phrase: "young adult appearance, early twenties" };
+            if (numeric <= 50) return { label: "Mature Adult", phrase: "mature prime-of-life appearance, established features" };
+            if (numeric <= 75) return { label: "Middle Aged", phrase: "middle-aged depiction, maturity of time" };
+            return { label: "Extremely Aged", phrase: "distinguished elderly depiction, deep wrinkles" };
+        }
+
+        function getVibeModifier(val) {
+            var numeric = parseInt(val);
+            if (numeric <= 25) return { label: "Perang Dunia", phrase: "grim historical wartime atmosphere, smoke in distance", concept: "krisis peperangan" };
+            if (numeric <= 50) return { label: "Pemulihan", phrase: "post-war reconstruction setting, weary community", concept: "rekonstruksi pasca-perang" };
+            if (numeric <= 75) return { label: "Damai Sentosa", phrase: "serene peaceful prosperity, stable environment", concept: "kedamaian yang tenang" };
+            return { label: "Penuh Cinta", phrase: "heartfelt celebration of love, joyful human unity", concept: "suka cita penuh cinta" };
+        }
+
+        function getHumorModifier(val) {
+            var numeric = parseInt(val);
+            if (numeric <= 25) return { label: "Formal/Stoik", phrase: "stoic historical expression, dignified seriousness", mood: "stoik penuh wibawa" };
+            if (numeric <= 50) return { label: "Natural", phrase: "pleasant historical expression, unassuming look", mood: "bersahaja tanpa rekayasa" };
+            if (numeric <= 75) return { label: "Jenaka (Playful)", phrase: "playful whimsical historical humor, amusing interaction", mood: "jenaka dan menggelitik" };
+            return { label: "Sangat Lucu", phrase: "humorous comedic historical situation, laughing candidly, vintage slapstick vibe", mood: "spontan penuh tawa jenaka" };
+        }
+
+        function getTiltModifier(val) {
+            var deg = parseInt(val);
+            if (deg === 0 || deg === 360) return { label: deg + "° (Normal / Upright)", phrase: "perfectly upright vertical orientation, standard level tracking, normal horizon blueprint", type: "level" };
+            if (deg === 90) return { label: "90° (Sideways / Portrait Rotated)", phrase: "90-degree rotated composition, sideways historical camera perspective layout", type: "sideways" };
+            if (deg === 180) return { label: "180° (Upside-Down / Inverted)", phrase: "completely inverted 180-degree upside-down orientation, flipped historical lens art print", type: "flipped" };
+            if (deg === 270) return { label: "270° (Counter-Sideways Rotated)", phrase: "270-degree flipped sideways studio rotation perspective framework", type: "sideways-reverse" };
+            if (deg > 0 && deg < 90) return { label: deg + "° (Dynamic Dutch Angle)", phrase: "cinematic Dutch angle framing, canted historical camera perspective, dynamic oblique composition at " + deg + " degrees", type: "tilt" };
+            if (deg > 90 && deg < 180) return { label: deg + "° (Inverted Slant Angle)", phrase: "experimental chaotic inverted camera alignment, oblique upside-down orientation at " + deg + " degrees", type: "slant-inverted" };
+            if (deg > 180 && deg < 270) return { label: deg + "° (Reversed Flipped Slant)", phrase: "reversed oblique angle framing, unorthodox historical camera axis distortion at " + deg + " degrees", type: "slant-reversed" };
+            return { label: deg + "° (Returning Axis Tilt)", phrase: "final-quadrant historical rotation alignment, tilted canvas restoration frame at " + deg + " degrees", type: "tilt-return" };
+        }
+
+        function updateImageSimilarityView(val) { document.getElementById('imageSimilarityVal').innerText = val + '%'; }
+        function updatePoseStyleView(val) { document.getElementById('poseStyleVal').innerText = getPoseModifier(val).label; }
+        function updateAgeStyleView(val) { document.getElementById('ageStyleVal').innerText = getAgeModifier(val).label; }
+        function updateVibeStyleView(val) { document.getElementById('vibeStyleVal').innerText = getVibeModifier(val).label; }
+        function updateHumorStyleView(val) { document.getElementById('humorStyleVal').innerText = getHumorModifier(val).label; }
+        function updateTiltStyleView(val) { document.getElementById('tiltStyleVal').innerText = getTiltModifier(val).label; }
+
+        // SUNTIKAN BARU: Fungsi untuk menyusun teks "narrative_content" khayalan jaman dulu
+        function buildNarrativeContent(subject, date, eraName, vibeConcept, ageLabel, humorMood, deg, rotType) {
+            var opening = "Menatap lembaran sisa masa lalu tertanggal " + date + ". Sebuah fragmen memori berharga yang mengabadikan \"" + subject + "\" di tengah riuhnya panggung sejarah era " + eraName + ". ";
+            
+            var bodyNarrative = "";
+            if (vibeConcept.indexOf("peperangan") !== -1) {
+                bodyNarrative = "Suasana " + vibeConcept + " begitu pekat terasa di sekelilingnya, menyisakan kecemasan yang mendalam. Namun di tengah kepulan takdir tersebut, sosok " + ageLabel + " yang terekam di sini mencoba tegar menghadapi zaman. Pembawaannya yang " + humorMood + " seolah berbicara banyak tentang ketabahan jiwa-jiwa terdahulu.";
+            } else if (vibeConcept.indexOf("cinta") !== -1 || vibeConcept.indexOf("kedamaian") !== -1) {
+                bodyNarrative = "Aura " + vibeConcept + " terpancar kuat dari balik lensa, membawa kita kembali pada kesederhanaan hidup yang bersahaja. Karakter " + ageLabel + " ini tertangkap dengan riang, menampilkan raut wajah " + humorMood + " yang begitu jujur dan humanis. Sungguh sebuah warisan rasa yang melintasi batas waktu.";
+            } else {
+                bodyNarrative = "Kondisi jaman yang penuh dinamika " + vibeConcept + " berhasil dibekukan secara magis. Penampilan figur " + ageLabel + " dalam foto ini begitu kontras, mengekspresikan karakter yang " + humorMood + ", menghidupkan kembali denyut nadi kehidupan lama yang telah lama sunyi.";
+            }
+
+            var technicalArt = "";
+            if (rotType === "level") {
+                technicalArt = " Sumbu horisontal bidikan yang tegak lurus sempurna mencerminkan ketelitian sang fotografer dalam mengunci momen abadi ini.";
+            } else if (rotType === "sideways" || rotType === "sideways-reverse") {
+                technicalArt = " Kemiringan sudut foto sebesar " + deg + " derajat ini memberikan kesan eksentrik, seolah pelat negatifnya sengaja disimpan menyamping demi menyembunyikan sebuah rahasia.";
+            } else if (rotType === "flipped") {
+                technicalArt = " Uniknya, orientasi visual yang terbalik total 180 derajat ini menciptakan ilusi surealis, menantang persepsi kita dalam mengeja ulang kronologi masa lalu.";
+            } else {
+                technicalArt = " Sudut pandang kamera miring " + deg + " derajat (Dutch Angle) sengaja diterapkan, menyuntikkan ketegangan dramatis seakan ruang dan waktu kala itu sedang bergeser miring.";
+            }
+
+            var closing = " Selembar potret rusak berjamur, namun menyimpan sejuta narasi romansa dan nostalgia sejarah yang tak akan pernah lekang oleh waktu.";
+            return opening + bodyNarrative + technicalArt + closing;
+        }
+
+        // Fungsi Rendering Filter Secara Dinamis Tanpa Re-Generate
+        function renderFilteredPrompts() {
+            var selectedEraKey = document.getElementById('eraFilterSelector').value;
+            var searchKeyword = document.getElementById('keywordFilterSearch').value.toLowerCase().trim();
+            var outputContainer = document.getElementById('jsonOutputArea');
+            
+            outputContainer.innerHTML = '';
+            var eras = Object.keys(timelineData);
+            
+            for (var e = 0; e < eras.length; e++) {
+                var eraKey = eras[e];
+                var era = timelineData[eraKey];
+                
+                if (selectedEraKey !== 'all' && selectedEraKey !== eraKey) {
+                    continue;
+                }
+
+                var itemsInEra = currentGeneratedDatabase.filter(function(item) {
+                    var matchEra = item._internalEraKey === eraKey;
+                    var matchKeyword = true;
+                    if (searchKeyword !== '') {
+                        var stringified = JSON.stringify(item).toLowerCase();
+                        matchKeyword = stringified.indexOf(searchKeyword) !== -1;
+                    }
+                    return matchEra && matchKeyword;
+                });
+
+                if (itemsInEra.length === 0) {
+                    continue;
+                }
+
+                var eraHeader = document.createElement('div');
+                eraHeader.className = 'pt-4 pb-1 border-b border-stone-700 text-amber-400 font-serif font-medium text-[11px] sticky top-0 bg-stone-950 z-10 flex justify-between items-center';
+                eraHeader.innerHTML = '<span>ERA ARCHIVE SYSTEM: ' + era.name.toUpperCase() + '</span><span class="text-stone-500 text-[9px] font-mono">' + itemsInEra.length + ' MATCHES</span>';
+                outputContainer.appendChild(eraHeader);
+
+                for (var i = 0; i < itemsInEra.length; i++) {
+                    var item = itemsInEra[i];
+                    
+                    // SUNTIKAN BARU: Properti narative_content ikut dimasukkan ke objek bersih untuk tampilan
+                    var displayObj = {
+                        id: item.id,
+                        era: item.era,
+                        date: item.date,
+                        pose: item.pose,
+                        age: item.age,
+                        vibe: item.vibe,
+                        humor: item.humor,
+                        frame_rotation_degree: item.frame_rotation_degree,
+                        narrative_content: item.narrative_content,
+                        prompt: item.prompt
+                    };
+
+                    var card = document.createElement('div');
+                    card.className = 'bg-stone-900 border border-stone-800 rounded-lg p-3 flex flex-col gap-2 shadow-md hover:border-stone-700 transition-all';
+                    card.innerHTML = '\
+                        <div class="flex justify-between items-center">\
+                            <span class="text-[10px] font-mono font-bold text-amber-500">' + item.id + '</span>\
+                            <button class="bg-stone-800 hover:bg-amber-800 text-zinc-300 hover:text-white px-2 py-0.5 \
+                            rounded text-[9px] font-mono transition-all cursor-pointer border border-stone-700" id="btn-' + item.id + '">Copy JSON</button>\
+                        </div>\
+                        <div class="bg-stone-950 p-2 rounded-lg border border-stone-850 overflow-x-auto">\
+                            <pre class="font-mono text-emerald-400 whitespace-pre-wrap text-[9px]" id="code-' + item.id + '">' + JSON.stringify(displayObj, null, 4) + '</pre>\
+                        </div>\
+                    ';
+                    outputContainer.appendChild(card);
+                    
+                    (function(id) {
+                        var btn = document.getElementById('btn-' + id);
+                        if(btn) {
+                            btn.onclick = function() {
+                                var codeText = document.getElementById('code-' + id).innerText;
+                                var targetBtn = this;
+                                navigator.clipboard.writeText(codeText).then(function() {
+                                    var originalText = targetBtn.innerText; targetBtn.innerText = "Copied! ✓"; targetBtn.style.backgroundColor = "#065f46";
+                                    setTimeout(function() { targetBtn.innerText = originalText; targetBtn.style.backgroundColor = "#27272a"; }, 1500);
+                                });
+                            };
+                        }
+                    })(item.id);
+                }
+            }
+
+            if (outputContainer.children.length === 0) {
+                outputContainer.innerHTML = '<div class="text-stone-500 font-mono text-center py-8">// Tidak ditemukan prompt JSON yang cocok dengan kriteria pencarian filter Anda.</div>';
+            }
+        }
+
+        function generateHistoricalPrompts() {
+            var subject = document.getElementById('subjectInput').value.trim() || "An untold historical scene";
+            var attachedImageUrl = document.getElementById('imageUrlInput').value.trim();
+            var imgSimilarityWeight = document.getElementById('imageSimilarityInput').value;
+            var poseValue = document.getElementById('poseStyleInput').value;
+            var ageValue = document.getElementById('ageStyleInput').value;
+            var vibeValue = document.getElementById('vibeStyleInput').value;
+            var humorValue = document.getElementById('humorStyleInput').value;
+            var tiltValue = document.getElementById('tiltStyleInput').value;
+            var chosenCondition = document.getElementById('conditionInput').value;
+            var conditionText = conditionModifiers[chosenCondition];
+            
+            currentGeneratedDatabase = [];
+
+            var calculatedImageWeight = (parseInt(imgSimilarityWeight) / 50).toFixed(2);
+            var currentPoseObj = getPoseModifier(poseValue);
+            var currentAgeObj = getAgeModifier(ageValue);
+            var currentVibeObj = getVibeModifier(vibeValue);
+            var currentHumorObj = getHumorModifier(humorValue);
+            var currentTiltObj = getTiltModifier(tiltValue);
+            
+            var promptCounter = 1;
+            var eras = Object.keys(timelineData);
+
+            for (var e = 0; e < eras.length; e++) {
+                var eraKey = eras[e];
+                var era = timelineData[eraKey];
+
+                for (var i = 1; i <= 26; i++) {
+                    var styleVariant = "";
+                    var conditionSelector = conditionText;
+                    if (chosenCondition === 'all-effects') {
+                        var keys = Object.keys(conditionModifiers);
+                        conditionSelector = conditionModifiers[keys[Math.floor(Math.random() * keys.length)]];
+                    }
+
+                    var mod = i % 5;
+                    var structuralBase = "Pose: " + currentPoseObj.phrase + ". Age: " + currentAgeObj.phrase + ". Vibe: " + currentVibeObj.phrase + ". Humor: " + currentHumorObj.phrase + ". Layout Angle: " + currentTiltObj.phrase + ".";
+                    
+                    if (mod === 0) styleVariant = "Cinematic documentary of " + subject + ". " + structuralBase;
+                    else if (mod === 1) styleVariant = "Raw macro detail of " + subject + ". " + structuralBase;
+                    else if (mod === 2) styleVariant = "Wide establishing shot of " + subject + ". " + structuralBase;
+                    else if (mod === 3) styleVariant = "Chiaroscuro study of " + subject + ". " + structuralBase;
+                    else if (mod === 4) styleVariant = "Archival flat layout record of " + subject + ". " + structuralBase;
+                    
+                    var fakePhotoDate = generateFakeDate(era.start_year, era.end_year);
+                    var fullPrompt = (attachedImageUrl !== "" ? attachedImageUrl + " " : "") + "Historical photograph layout dated " + fakePhotoDate + ", depicting " + styleVariant + " Captured via " + era.tech + ". Camera properties: " + era.camera_spec + ", preservation condition: " + conditionSelector + ". --ar 4:3" + (attachedImageUrl !== "" ? " --iw " + calculatedImageWeight : "");
+                    
+                    var padId = String(promptCounter);
+                    while (padId.length < 3) { padId = "0" + padId; }
+                    var promptId = "PRMPT-" + padId;
+
+                    // SUNTIKAN BARU: Pembuatan narasi khayalan digabung ke objek utama database
+                    var singlePromptObj = {
+                        id: promptId,
+                        era: era.name,
+                        date: fakePhotoDate, 
+                        pose: currentPoseObj.label,
+                        age: currentAgeObj.label, 
+                        vibe: currentVibeObj.label,
+                        humor: currentHumorObj.label,
+                        frame_rotation_degree: currentTiltObj.label,
+                        narrative_content: buildNarrativeContent(subject, fakePhotoDate, era.name, currentVibeObj.concept, currentAgeObj.label, currentHumorObj.mood, parseInt(tiltValue), currentTiltObj.type),
+                        prompt: fullPrompt,
+                        _internalEraKey: eraKey
+                    };
+                    
+                    currentGeneratedDatabase.push(singlePromptObj);
+                    promptCounter++;
+                }
+            }
+            
+            document.getElementById('filterBarContainer').classList.remove('hidden');
+            document.getElementById('btnBulkCopyJSON').classList.remove('hidden');
+
+            document.getElementById('eraFilterSelector').value = 'all';
+            document.getElementById('keywordFilterSearch').value = '';
+
+            renderFilteredPrompts();
+        }
+
+        // DOM Life Cycle Binding Process
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            document.getElementById('imageSimilarityInput').addEventListener('input', function() { updateImageSimilarityView(this.value); });
+            document.getElementById('poseStyleInput').addEventListener('input', function() { updatePoseStyleView(this.value); });
+            document.getElementById('ageStyleInput').addEventListener('input', function() { updateAgeStyleView(this.value); });
+            document.getElementById('vibeStyleInput').addEventListener('input', function() { updateVibeStyleView(this.value); });
+            document.getElementById('humorStyleInput').addEventListener('input', function() { updateHumorStyleView(this.value); });
+            document.getElementById('tiltStyleInput').addEventListener('input', function() { updateTiltStyleView(this.value); });
+            
+            document.getElementById('eraFilterSelector').addEventListener('change', renderFilteredPrompts);
+            document.getElementById('keywordFilterSearch').addEventListener('input', renderFilteredPrompts);
+
+            document.getElementById('btnGenerateMaster').onclick = generateHistoricalPrompts;
+            
+            document.getElementById('btnRandomizeForm').onclick = function() {
+                var randomSimilarity = Math.floor(Math.random() * 101);
+                var randomPose = Math.floor(Math.random() * 101);
+                var randomAge = Math.floor(Math.random() * 101);
+                var randomVibe = Math.floor(Math.random() * 101);
+                var randomHumor = Math.floor(Math.random() * 101);
+                var randomTilt = Math.floor(Math.random() * 361);
+                
+                var conditionSelect = document.getElementById('conditionInput');
+                var randomConditionIndex = Math.floor(Math.random() * conditionSelect.options.length);
+
+                document.getElementById('imageSimilarityInput').value = randomSimilarity;
+                document.getElementById('poseStyleInput').value = randomPose;
+                document.getElementById('ageStyleInput').value = randomAge;
+                document.getElementById('vibeStyleInput').value = randomVibe;
+                document.getElementById('humorStyleInput').value = randomHumor;
+                document.getElementById('tiltStyleInput').value = randomTilt;
+                conditionSelect.selectedIndex = randomConditionIndex;
+
+                updateImageSimilarityView(randomSimilarity);
+                updatePoseStyleView(randomPose);
+                updateAgeStyleView(randomAge);
+                updateVibeStyleView(randomVibe);
+                updateHumorStyleView(randomHumor);
+                updateTiltStyleView(randomTilt);
+
+                document.getElementById('jsonOutputArea').innerHTML = '<div class="text-amber-400 font-mono">// [SYSTEM]: Seluruh parameter slider & kondisi fisik berhasil diacak! Silakan klik "Generate 100+ Master Prompts".</div>';
+                document.getElementById('btnBulkCopyJSON').classList.add('hidden');
+                document.getElementById('filterBarContainer').classList.add('hidden');
+            };
+            
+            document.getElementById('btnBulkCopyJSON').onclick = function() {
+                if (currentGeneratedDatabase.length === 0) return;
+                
+                var cleanBulkArray = currentGeneratedDatabase.map(function(item) {
+                    return {
+                        id: item.id,
+                        era: item.era,
+                        date: item.date,
+                        pose: item.pose,
+                        age: item.age,
+                        vibe: item.vibe,
+                        humor: item.humor,
+                        frame_rotation_degree: item.frame_rotation_degree,
+                        narrative_content: item.narrative_content,
+                        prompt: item.prompt
+                    };
+                });
+
+                var bulkDataText = JSON.stringify(cleanBulkArray, null, 4);
+                var btn = this;
+                navigator.clipboard.writeText(bulkDataText).then(function() {
+                    var originalText = btn.innerText; btn.innerText = "All Copied! ✓"; btn.style.backgroundColor = "#065f46";
+                    setTimeout(function() { btn.innerText = originalText; btn.style.backgroundColor = "#065f46"; }, 2000);
+                });
+            };
+            
+            document.getElementById('btnResetForm').onclick = function() {
+                document.getElementById('subjectInput').value = '';
+                document.getElementById('imageUrlInput').value = '';
+                document.getElementById('conditionInput').selectedIndex = 0;
+                document.getElementById('imageSimilarityInput').value = 50;
+                document.getElementById('poseStyleInput').value = 40;
+                document.getElementById('ageStyleInput').value = 35;
+                document.getElementById('vibeStyleInput').value = 65;
+                document.getElementById('humorStyleInput').value = 30;
+                document.getElementById('tiltStyleInput').value = 0;
+                
+                updateImageSimilarityView(50); 
+                updatePoseStyleView(40); 
+                updateAgeStyleView(35); 
+                updateVibeStyleView(65); 
+                updateHumorStyleView(30); 
+                updateTiltStyleView(0);
+                
+                document.getElementById('jsonOutputArea').innerHTML = '<div class="text-amber-200/80 font-mono">// Reset selesai. Form siap diisi kembali.</div>';
+                document.getElementById('btnBulkCopyJSON').classList.add('hidden');
+                document.getElementById('filterBarContainer').classList.add('hidden');
+                currentGeneratedDatabase = [];
+            };
+
+            var body = document.getElementById('appBody');
+            var exitBtn = document.getElementById('exitZenBtn');
+            
+            document.getElementById('btnZenMode').onclick = function() {
+                body.classList.toggle('zen-mode-active');
+                if (body.classList.contains('zen-mode-active')) exitBtn.classList.remove('hidden');
+                else exitBtn.classList.add('hidden');
+            };
+            
+            exitBtn.onclick = function() {
+                body.classList.remove('zen-mode-active');
+                exitBtn.classList.add('hidden');
+            };
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && body.classList.contains('zen-mode-active')) {
+                    body.classList.remove('zen-mode-active');
+                    exitBtn.classList.add('hidden');
+                }
+            });
+        });
+        //]]>
+    </script>
+</body>
+</html>
