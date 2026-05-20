@@ -1,0 +1,181 @@
+
+<option value='pristine'>Perfect &amp; Well Preserved (Mulus Terawat)</option>
+<option value='faded'>Faded &amp; Low Contrast (Memudar &amp; Kurang Kontras)</option>
+<option value='damaged'>Severely Damaged (Rusak Berat)</option>
+<option value='burned'>Burned &amp; Scorched (Terbakar &amp; Hangus)</option>
+<option value='all-effects'>All Effects Combined (Semua Efek Rusak)</option>
+
+<option value='vintage'>Vintage Classic (Vintage Klasik)</option>
+<option value='aged'>Naturally Aged (Alami Tua)</option>
+<option value='moldy'>Moldy &amp; Mildewed (Berjamur)</option>
+<option value='scratched'>Heavily Scratched (Banyak Goresan)</option>
+<option value='creased'>Creased &amp; Folded (Terlipat &amp; Kusut)</option>
+<option value='stained'>Stained (Bernoda)</option>
+<option value='waterdamaged'>Water Damaged (Rusak Air)</option>
+<option value='torn'>Torn &amp; Ripped (Sobek)</option>
+<option value='cracked'>Cracked Emulsion (Emulsi Retak)</option>
+<option value='peeling'>Peeling Emulsion (Emulsi Mengelupas)</option>
+<option value='overexposed'>Overexposed (Over Exposure)</option>
+<option value='underexposed'>Underexposed (Under Exposure)</option>
+<option value='fogged'>Chemically Fogged (Berkabut Kimia)</option>
+<option value='lightleaks'>Light Leaks (Light Leak)</option>
+<option value='dusty'>Dusty &amp; Spotty (Berdebu)</option>
+<option value='fingerprints'>Fingerprints &amp; Smudges (Sidik Jari)</option>
+<option value='chemicalstain'>Chemical Stains (Noda Kimia)</option>
+<option value='silvering'>Silvering &amp; Mirroring (Silvering)</option>
+<option value='reticulated'>Reticulated Emulsion (Emulsi Keriput)</option>
+<option value='scorch'>Scorched Edges (Tepian Hangus)</option>
+<option value='insect'>Insect Damaged (Dimakan Serangga)</option>
+<option value='foxed'>Foxed &amp; Oxidized (Foxing)</option>
+<option value='vignetted'>Strong Vignetting (Vignetting Kuat)</option>
+<option value='halated'>Halation Glow (Efek Halo)</option>
+<option value='solarized'>Solarized (Solarisasi)</option>
+<option value='crossprocessed'>Cross Processed (Cross Process)</option>
+<option value='expiredfilm'>Expired Film (Film Kadaluarsa)</option>
+<option value='pinholes'>Pinholes Damage (Lubang Jarum)</option>
+<option value='bubbles'>Emulsion Bubbles (Gelembung Emulsi)</option>
+<option value='frayed'>Frayed Edges (Tepian Aus)</option>
+<option value='brittle'>Brittle &amp; Fragile (Rapuh)</option>
+<option value='curled'>Curled &amp; Warped (Melengkung)</option>
+<option value='toned'>Chemically Toned (Ditonir)</option>
+<option value='sepia'>Warm Sepia (Sepia Hangat)</option>
+<option value='cyanotype'>Cyanotype Blue (Cyanotype Biru)</option>
+<option value='albumen'>Albumen Print (Cetak Albumen)</option>
+<option value='collodion'>Wet Plate Collodion (Collodion Basah)</option>
+<option value='daguerreotype'>Daguerreotype (Daguerreotype)</option>
+<option value='tintype'>Tintype Plate (Tintype)</option>
+<option value='polaroid'>Polaroid Aged (Polaroid Tua)</option>
+<option value='filmstrip'>Film Strip (Strip Film)</option>
+<option value='negative'>Black &amp; White Negative (Negatif Hitam Putih)</option>
+<option value='glassplate'>Glass Plate (Plat Kaca)</option>
+<option value='nitrate'>Nitrate Film (Film Nitrat)</option>
+<option value='acetatedegrade'>Acetate Degradation (Vinegar Syndrome)</option>
+<option value='colorfade'>Color Faded (Warna Memudar)</option>
+<option value='grainy'>Heavy Grain (Grain Kasar)</option>
+<option value='softfocus'>Soft Focus (Soft Focus)</option>
+<option value='doubleexposure'>Double Exposure (Double Exposure)</option>
+<option value='motionblur'>Motion Blur (Gerak Kabur)</option>
+<option value='outoffocus'>Out of Focus (Tidak Fokus)</option>
+<option value='embossed'>Embossed Texture (Tekstur Emboss)</option>
+<option value='matte'>Matte Print (Cetak Matte)</option>
+<option value='glossy'>Glossy Print (Cetak Glossy)</option>
+<option value='archival'>Archival Museum Quality (Kualitas Arsip Museum)</option>
+<option value='postcard'>Vintage Postcard (Kartu Pos Vintage)</option>
+<option value='cabinetcard'>Cabinet Card (Cabinet Card)</option>
+<option value='stereoview'>Stereoview Card (Kartu Stereo)</option>
+<option value='lanternslide'>Lantern Slide (Slide Lentera)</option>
+<option value='newsprint'>Newsprint Texture (Tekstur Koran)</option>
+<option value='polaroidaged'>Aged Polaroid (Polaroid Tua)</option>
+<option value='kodachrome'>Kodachrome Colors (Warna Kodachrome)</option>
+<option value='ektachrome'>Ektachrome Film (Film Ektachrome)</option>
+<option value='c41fade'>C-41 Color Fade (C-41 Memudar)</option>
+<option value='infrared'>Infrared Film (Film Infrared)</option>
+<option value='lithprint'>Lith Print (Cetak Lith)</option>
+<option value='gumprint'>Gum Bichromate (Gum Print)</option>
+<option value='saltprint'>Salt Print (Salt Print)</option>
+<option value='platinumprint'>Platinum Print (Platinum Print)</option>
+<option value='cyanprint'>Cyanotype Print (Cetak Cyanotype)</option>
+<option value='ambrotype'>Ambrotype (Ambrotype)</option>
+<option value='calotype'>Calotype (Calotype)</option>
+<option value='randomdamage'>Random Severe Damage (Kerusakan Acak Berat)</option>
+
+
+
+
+
+
+
+
+========================================
+
+
+
+
+
+
+
+
+
+
+var conditionModifiers = {
+    'pristine': 'well-preserved, clean plate, archival museum quality, untouched',
+    'faded': 'faded chemistry, heavily low-contrast, muted tones, sepia-bleached, dusty silver coating',
+    'damaged': 'severely torn edges, deep scratches on emulsion, cracked glass plate, tattered paper texture, water stains',
+    'burned': 'partially burned edges, scorched paper borders, singed emulsion, fire-damaged celluloid artifacts',
+    'all-effects': 'randomized deterioration, aged paper rot, water damage, scorched corner, heavily scratched negatives',
+
+    // NEW 60+ ENTRIES
+    'vintage': 'warm sepia tones, subtle vignetting, authentic 1920s film look, slight paper curl',
+    'aged': 'heavily yellowed, foxing spots, natural aging patina, brittle edges',
+    'moldy': 'mold growth spots, fuzzy mildew patches, organic decay texture, bluish-green contamination',
+    'scratched': 'fine surface scratches, deep gouges across emulsion, hairline abrasions, frequent handling marks',
+    'creased': 'prominent fold creases, cracked emulsion along folds, wrinkled paper base, heavy usage wear',
+    'stained': 'coffee stains, tea rings, ink bleeds, reddish-brown chemical stains',
+    'waterdamaged': 'severe water damage, bubbling emulsion, warped paper, dissolved silver areas',
+    'torn': 'ragged tears, missing fragments, patched repairs, uneven borders',
+    'cracked': 'crazed emulsion cracking, alligator skin texture, network of fine cracks',
+    'peeling': 'peeling emulsion layers, lifting corners, flaking silver gelatin',
+    'overexposed': 'blown highlights, washed-out details, high-contrast burn, thin negative',
+    'underexposed': 'blocked shadows, murky tones, dense negative, lost highlight detail',
+    'fogged': 'chemical fog, overall veil, light leaks, hazy atmosphere',
+    'lightleaks': 'strong red and yellow light leaks, bleeding color streaks, film border exposure',
+    'dusty': 'heavy dust spots, white specks, scanning artifacts, airborne particles',
+    'fingerprints': 'oily fingerprints, smudged emulsion, handling marks, thumb prints',
+    'chemicalstain': 'purple manganese stains, dichroic staining, metallic sheen damage',
+    'silvering': 'mirroring silvering effect, bronze tarnish, reflective degradation',
+    'reticulated': 'reticulated emulsion, crocodile skin texture, wrinkled grain pattern',
+    'scorch': 'charred edges, heat distortion, brown burn marks, fire singe',
+    'insect': 'insect damage, worm holes, bite marks, larvae tracks',
+    'foxed': 'classic foxing spots, reddish-brown age spots, scattered oxidation',
+    'vignetted': 'strong corner vignetting, darkened edges, tunnel effect',
+    'halated': 'halation glow around highlights, blooming light, soft diffusion',
+    'solarized': 'solarization effect, reversed tones, Mackie lines, Sabattier partial reversal',
+    'crossprocessed': 'cross-processed film look, unnatural colors, high contrast shifts',
+    'expiredfilm': 'expired film characteristics, color shifts, increased grain, unpredictable tones',
+    'pinholes': 'numerous pinholes, light spots from perforations, tiny transparent dots',
+    'bubbles': 'emulsion bubbles, blistering surface, chemical reaction artifacts',
+    'frayed': 'frayed paper edges, fibrous texture, threadbare borders',
+    'brittle': 'extremely brittle, cracking when flexed, fragile dry plate',
+    'curled': 'strongly curled edges, rolled print, warped negative',
+    'toned': 'selenium toned, gold toned, blue toned, split-toned print',
+    'sepia': 'strong archival sepia, warm brown tones, antique photographic look',
+    'cyanotype': 'classic cyanotype blue, Prussian blue tones, alternative process feel',
+    'albumen': 'albumen print texture, glossy highlights, warm paper base',
+    'collodion': 'wet plate collodion look, sharp details, glass plate artifacts',
+    'daguerreotype': 'mirror-like daguerreotype, metallic sheen, delicate highlights',
+    'tintype': 'tintype plate, dark metal backing, direct positive appearance',
+    'polaroid': 'Polaroid SX-70 style, chemical border, developing artifacts',
+    'filmstrip': 'film strip borders, sprocket holes, frame numbers, Kodak edge printing',
+    'negative': 'black and white negative, inverted tones, high contrast scan',
+    'glassplate': 'old glass negative plate, thick glass edges, vintage laboratory look',
+    'nitrate': 'highly flammable nitrate film base, decaying acetate smell simulation, vinegar syndrome',
+    'acetatedegrade': 'vinegar syndrome, shrinkage, buckling, strong acetic acid damage',
+    'colorfade': 'faded color film, magenta cast, cyan loss, unstable dyes',
+    'grainy': 'extremely grainy, high ISO push, coarse film texture',
+    'softfocus': 'soft focus lens effect, dreamy glow, diffused details',
+    'doubleexposure': 'double exposure ghosting, superimposed images, translucent overlay',
+    'motionblur': 'motion blur streaks, camera shake, long exposure trails',
+    'outoffocus': 'deliberately soft focus, blurry subject, dreamy unfocused aesthetic',
+    'embossed': 'embossed texture, raised paper fibers, letterpress feel',
+    'matte': 'matte print surface, non-reflective, velvety texture',
+    'glossy': 'high gloss gelatin silver, reflective highlights, deep blacks',
+    'archival': 'archival pigment print, museum quality matte, fade-resistant',
+    'postcard': 'vintage postcard back, divided back, stamp marks, writing space',
+    'cabinetcard': 'cabinet card mount, thick card stock, ornate borders',
+    'stereoview': 'stereoscopic card, dual image, 3D viewing effect',
+    'lanternslide': 'hand-colored lantern slide, projected glass slide, vibrant tints',
+    'newsprint': 'yellowed newsprint texture, halftone dots, newspaper aging',
+    'polaroidaged': 'aged Polaroid with yellow border, chemical leaks, time-worn instant photo',
+    'kodachrome': 'vintage Kodachrome colors, rich saturation, classic slide film',
+    'ektachrome': 'Ektachrome faded blues, cool color palette, transparency film',
+    'c41fade': 'C-41 color negative fade, orange mask remnants, unstable dyes',
+    'infrared': 'infrared film look, glowing whites, dark skies, ethereal effect',
+    'lithprint': 'lith print texture, warm infectious tones, high contrast grain',
+    'gumprint': 'gum bichromate print, painterly texture, multiple layers',
+    'saltprint': 'salt print texture, matte paper, soft delicate tones',
+    'platinumprint': 'platinum/palladium print, rich subtle tones, archival permanence',
+    'cyanprint': 'cyanotype blueprint style, deep Prussian blue, engineering drawing feel',
+    'ambrotype': 'ambrotype on glass, black backing, positive/negative duality',
+    'calotype': 'early calotype paper negative, soft details, foxed texture',
+    'randomdamage': 'completely randomized physical and chemical damage, unpredictable deterioration, mix of scratches, stains, tears and fading'
+};

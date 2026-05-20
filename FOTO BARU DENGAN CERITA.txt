@@ -1,0 +1,804 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultmessages='false' b:layouts='false' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <meta charset='UTF-8'/>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+    <title>SPLIT ENGINE CORE V4.1 - FACTORY PURGE SYSTEM</title>
+    
+    <script src='https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4'/>
+    
+    <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700;800&amp;family=Space+Grotesk:wght=500;700&amp;display=swap' rel='stylesheet'/>
+
+    <b:skin><![CDATA[
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0b0f19; 
+            background-image: radial-gradient(#1e293b 1.2px, transparent 0);
+            background-size: 24px 24px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .font-tech {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #6366f1;
+        }
+        .cyber-panel {
+            background-color: rgba(15, 23, 42, 0.8) !important;
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(99, 102, 241, 0.2) !important;
+        }
+        body.zen-mode-active header, 
+        body.zen-mode-active footer, 
+        body.zen-mode-active #layar1-section {
+            display: none !important;
+        }
+        body.zen-mode-active #layar2-section {
+            grid-column: span 12 / span 12 !important;
+        }
+    ]]></b:skin>
+</head>
+<body class='text-slate-200 antialiased min-h-screen flex flex-col justify-between' id='appBody'>
+
+    <header class='border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-md py-4 px-6 sticky top-0 z-50 shadow-lg'>
+        <div class='max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4'>
+            <div class='flex items-center gap-3'>
+                <div class='w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center text-white font-tech font-bold text-lg shadow-md'>
+                    Ψ
+                </div>
+                <div>
+                    <h1 class='text-xl font-tech font-bold tracking-tight text-white uppercase'>SPLIT<span class='text-indigo-400 font-light lowercase'>engine</span> V4.1 CORE</h1>
+                    <p class='text-[10px] text-slate-400 font-mono tracking-wide uppercase mt-0.5'>Advanced Parameter Fine-Tuning Framework</p>
+                </div>
+            </div>
+            <div class='flex items-center gap-2 text-xs bg-indigo-950/60 text-indigo-300 px-3 py-2 rounded-xl border border-indigo-500/30 font-mono'>
+                <span class='w-2 h-2 rounded-full bg-cyan-400 animate-pulse'/>
+                Engine Mode: Parameter Purge Optimized
+            </div>
+        </div>
+    </header>
+
+    <main class='max-w-7xl w-full mx-auto p-4 lg:p-8 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-8'>
+        
+        <section class='lg:col-span-5 cyber-panel rounded-2xl p-6 shadow-2xl self-start sticky lg:top-24' id='layar1-section'>
+            <div class='mb-6 border-b border-slate-800 pb-4'>
+                <h2 class='text-lg font-tech font-bold text-white flex items-center gap-2'>
+                    🎛&#65039; Layar 1: AI Parameter Studio
+                </h2>
+                <p class='text-xs text-slate-400 mt-1'>Suntikkan parameter kustomisasi model AI, batasan negatif, nilai deviasi chaos, kustomisasi rasio, dan tanda air digital.</p>
+            </div>
+            
+            <div class='space-y-4 max-h-[70vh] overflow-y-auto pr-1 custom-scrollbar'>
+                
+                <div>
+                    <label class='block text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 mb-1.5'>Subjek Utama / Objek Foto Modern</label>
+                    <div class='relative flex items-center'>
+                        <input class='w-full pl-4 pr-12 py-2.5 bg-slate-900 border border-slate-700/80 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all text-sm font-medium text-white shadow-inner' id='subjectInput' placeholder='Ketik subjek foto kustom...' type='text' value='A futuristic bustling modern coffee shop and coworking hub'/>
+                        <button class='absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-slate-400 hover:text-rose-400 hover:bg-slate-800 rounded-lg text-lg font-bold transition-all cursor-pointer' id='btnResetSubjectOnly' title='Reset subjek saja' type='button'>
+                            &#10227;
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <label class='block text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 mb-1.5'>URL Gambar Referensi (Image Link)</label>
+                    <input class='w-full px-4 py-2.5 bg-slate-900 border border-slate-700/80 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all text-sm font-mono text-indigo-300 shadow-inner' id='imageUrlInput' placeholder='https://example.com/image.jpg' type='url'/>
+                </div>
+
+                <div>
+                    <label class='block text-[10px] font-mono font-bold uppercase tracking-wider text-rose-400 mb-1.5'>Negative Prompt Dinamis (--no)</label>
+                    <input class='w-full px-4 py-2.5 bg-slate-900 border border-rose-950 text-xs rounded-xl text-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-500/40 shadow-inner' id='negativePromptInput' placeholder='e.g., blurry, low quality, photorealistic flaws, historical gear' type='text' value='old vintage sepia, black and white monochrome, physical photo scratches, damaged paper, 3d blender render, low resolution artifacting, historical clothing'/>
+                </div>
+
+                <div class='grid grid-cols-2 gap-3'>
+                    <div>
+                        <label class='block text-[10px] font-mono font-bold uppercase text-slate-400 mb-1.5'>Personal Signature</label>
+                        <input class='w-full px-3 py-2 bg-slate-900 border border-slate-700 text-xs rounded-xl text-white focus:outline-none focus:ring-1 focus:ring-indigo-500 shadow-inner' id='personalSignatureInput' placeholder='e.g., Heaven' type='text' value='Heaven'/>
+                    </div>
+                    <div>
+                        <label class='block text-[10px] font-mono font-bold uppercase text-slate-400 mb-1.5'>Brand/Social Handle</label>
+                        <input class='w-full px-3 py-2 bg-slate-900 border border-slate-700 text-xs rounded-xl text-white focus:outline-none focus:ring-1 focus:ring-indigo-500 shadow-inner' id='brandWatermarkInput' placeholder='e.g., @circlemonth' type='text' value='@circlemonth'/>
+                    </div>
+                </div>
+
+                <div class='grid grid-cols-1 gap-3.5 border-t border-slate-800 pt-4'>
+                    <div>
+                        <div class='flex justify-between items-center mb-1.5'>
+                            <label class='text-[10px] font-mono font-bold uppercase text-slate-400'>Kemiripan Referensi Gambar (IW)</label>
+                            <span class='text-[10px] font-mono font-bold bg-indigo-950 text-indigo-300 px-2 py-0.5 rounded-md border border-indigo-800/40' id='imageSimilarityVal'>1.00</span>
+                        </div>
+                        <input class='w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500' id='imageSimilarityInput' max='200' min='0' type='range' value='100'/>
+                    </div>
+
+                    <div>
+                        <div class='flex justify-between items-center mb-1.5'>
+                            <label class='text-[10px] font-mono font-bold uppercase text-slate-400'>CFG Scale (Kepatuhan Teks Prompt)</label>
+                            <span class='text-[10px] font-mono font-bold bg-indigo-950 text-indigo-300 px-2 py-0.5 rounded-md border border-indigo-800/40' id='cfgScaleVal'>6.5</span>
+                        </div>
+                        <input class='w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500' id='cfgScaleInput' max='150' min='10' type='range' value='65'/>
+                    </div>
+
+                    <div>
+                        <div class='flex justify-between items-center mb-1.5'>
+                            <label class='text-[10px] font-mono font-bold uppercase text-cyan-400'>Chaos Parameter Level (--chaos)</label>
+                            <span class='text-[10px] font-mono font-bold bg-cyan-950 text-cyan-300 px-2 py-0.5 rounded-md border border-cyan-800/40' id='chaosLevelVal'>0</span>
+                        </div>
+                        <input class='w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-500' id='chaosLevelInput' max='100' min='0' type='range' value='0'/>
+                    </div>
+
+                    <div>
+                        <div class='flex justify-between items-center mb-1.5'>
+                            <label class='text-[10px] font-mono font-bold uppercase text-purple-400'>Weird Expression Level (--weird)</label>
+                            <span class='text-[10px] font-mono font-bold bg-purple-950 text-purple-300 px-2 py-0.5 rounded-md border border-purple-800/40' id='weirdLevelVal'>0</span>
+                        </div>
+                        <input class='w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-purple-500' id='weirdLevelInput' max='3000' min='0' step='50' type='range' value='0'/>
+                    </div>
+
+                    <div>
+                        <div class='flex justify-between items-center mb-1.5'>
+                            <label class='text-[10px] font-mono font-bold uppercase text-slate-400'>Gaya Pose / Angle Orang</label>
+                            <span class='text-[10px] font-mono font-bold bg-indigo-950 text-indigo-300 px-2 py-0.5 rounded-md border border-indigo-800/40' id='poseStyleVal'>Candid Urban</span>
+                        </div>
+                        <input class='w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500' id='poseStyleInput' max='100' min='0' type='range' value='35'/>
+                    </div>
+
+                    <div>
+                        <div class='flex justify-between items-center mb-1.5'>
+                            <label class='text-[10px] font-mono font-bold uppercase text-slate-400'>Demografi / Kelompok Usia</label>
+                            <span class='text-[10px] font-mono font-bold bg-indigo-950 text-indigo-300 px-2 py-0.5 rounded-md border border-indigo-800/40' id='ageStyleVal'>Gen Z / Millennials</span>
+                        </div>
+                        <input class='w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500' id='ageStyleInput' max='100' min='0' type='range' value='25'/>
+                    </div>
+
+                    <div>
+                        <div class='flex justify-between items-center mb-1.5'>
+                            <label class='text-[10px] font-mono font-bold uppercase text-slate-400'>Atmosfer Sosial / Tren Gaya Hidup</label>
+                            <span class='text-[10px] font-mono font-bold bg-indigo-950 text-indigo-300 px-2 py-0.5 rounded-md border border-indigo-800/40' id='vibeStyleVal'>Aesthetic Minimalis</span>
+                        </div>
+                        <input class='w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500' id='vibeStyleInput' max='100' min='0' type='range' value='70'/>
+                    </div>
+
+                    <div>
+                        <div class='flex justify-between items-center mb-1.5'>
+                            <label class='text-[10px] font-mono font-bold uppercase text-slate-400'>Mood Konten / Tone Ekspresi</label>
+                            <span class='text-[10px] font-mono font-bold bg-indigo-950 text-indigo-300 px-2 py-0.5 rounded-md border border-indigo-800/40' id='humorStyleVal'>Chill &amp; Santai</span>
+                        </div>
+                        <input class='w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500' id='humorStyleInput' max='100' min='0' type='range' value='45'/>
+                    </div>
+
+                    <div>
+                        <div class='flex justify-between items-center mb-1.5'>
+                            <label class='text-[10px] font-mono font-bold uppercase text-slate-400'>Rotasi Lensa Kamera</label>
+                            <span class='text-[10px] font-mono font-bold bg-indigo-950 text-indigo-300 px-2 py-0.5 rounded-md border border-indigo-800/40' id='tiltStyleVal'>0&#176;</span>
+                        </div>
+                        <input class='w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500' id='tiltStyleInput' max='360' min='0' type='range' value='0'/>
+                    </div>
+                </div>
+
+                <div class='grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2'>
+                    <div>
+                        <label class='block text-[10px] font-mono font-bold uppercase text-cyan-400 mb-1.5'>Model AI Version</label>
+                        <b:tag class='w-full px-2 py-2.5 bg-slate-900 border border-cyan-900 text-xs rounded-xl text-white focus:outline-none cursor-pointer shadow-md' id='modelVersionInput' name='select'>
+                            <option value='--v 6.1'>Midjourney v6.1</option>
+                            <option value='--v 6.0'>Midjourney v6.0 Core</option>
+                            <option value='--v 5.2'>Midjourney v5.2 Legacy</option>
+                            <option value='--niji 6'>Niji v6 (Anime Art)</option>
+                        </b:tag>
+                    </div>
+                    <div>
+                        <label class='block text-[10px] font-mono font-bold uppercase text-slate-400 mb-1.5'>Aspect Ratio (--ar)</label>
+                        <b:tag class='w-full px-2 py-2.5 bg-slate-900 border border-slate-700 text-xs rounded-xl text-white focus:outline-none cursor-pointer shadow-md' id='aspectRatioInput' name='select'>
+                            <option value='16:9'>16:9 (Cinema)</option>
+                            <option value='9:16'>9:16 (Stories)</option>
+                            <option value='1:1'>1:1 (Square)</option>
+                            <option value='4:3'>4:3 (Classic)</option>
+                            <option value='21:9'>21:9 (Panoramic)</option>
+                        </b:tag>
+                    </div>
+                    <div>
+                        <label class='block text-[10px] font-mono font-bold uppercase text-slate-400 mb-1.5'>Filter Estetika</label>
+                        <b:tag class='w-full px-2 py-2.5 bg-slate-900 border border-slate-700 text-xs rounded-xl text-white focus:outline-none cursor-pointer shadow-md' id='conditionInput' name='select'>
+                            <option value='hyper-clean'>Ultra Clean Photo</option>
+                            <option value='cyberpunk-neon'>Cyberpunk Neon</option>
+                            <option value='disposable-cam'>90s Disposable</option>
+                            <option value='glitch-art'>Digital Glitch</option>
+                            <option value='vhs-retro'>Lo-Fi VHS Tape</option>
+                            <option value='lightroom-preset'>Cinematic Mood</option>
+                            <option value='anamorphic-flare'>Anamorphic Flare</option>
+                            <option value='grainy-film'>Coarse Movie Grain</option>
+                            <option value='soft-dreamy'>Soft Dreamy Glow</option>
+                            <option value='gopro-wide'>Action-Cam POV</option>
+                        </b:tag>
+                    </div>
+                </div>
+
+                <div class='space-y-2 pt-2'>
+                    <button class='w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-700 hover:to-pink-700 text-white font-tech font-bold py-3 px-4 rounded-xl shadow-lg shadow-indigo-500/20 transition-all transform active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer' id='btnGenerateMaster'>
+                        <span>Generate 104 Database Split Engine</span>
+                    </button>
+                
+                    <div class='grid grid-cols-3 gap-2'>
+                        <button class='bg-slate-800 hover:bg-slate-700 text-slate-300 font-mono font-bold py-1.5 px-2 text-[10px] rounded-xl border border-slate-700 transition-all cursor-pointer' id='btnResetForm'>Clear All</button>
+                        <button class='bg-indigo-950 hover:bg-indigo-900 text-indigo-300 font-mono font-bold py-1.5 px-2 text-[10px] rounded-xl border border-indigo-800/40 transition-all cursor-pointer' id='btnRandomizeForm'>Acak</button>
+                        <button class='bg-rose-950 hover:bg-rose-900 text-rose-300 border border-rose-800/60 font-mono font-bold py-1.5 px-2 text-[10px] rounded-xl transition-all cursor-pointer' id='btnHardRefreshDefault'>Refresh Default</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class='lg:col-span-7 flex flex-col min-h-[550px]' id='layar2-section'>
+            <div class='bg-slate-900 rounded-2xl p-6 shadow-2xl border border-slate-800 flex flex-col flex-1 relative'>
+                <button class='hidden absolute top-4 right-4 z-50 bg-rose-600 hover:bg-rose-700 text-white font-mono text-xs px-3 py-1.5 rounded-xl transition-all shadow-md' id='exitZenBtn'>Exit Zen Mode [ESC]</button>
+                
+                <div class='flex flex-col border-b border-slate-800 pb-4 mb-4 gap-4'>
+                    <div class='flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4'>
+                        <div>
+                            <h2 class='text-lg font-tech font-bold text-indigo-400'>Layar 2: Realtime Contemporary Output</h2>
+                            <p class='text-xs text-slate-400 mt-0.5 font-mono text-[10px]'>Terminal Engine: AI Tuning Matrix System Applied</p>
+                        </div>
+                        <div class='flex items-center gap-2 self-stretch sm:self-auto justify-end w-full sm:w-auto'>
+                            <button class='hidden text-xs bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-2 rounded-xl font-mono transition-all shadow-sm cursor-pointer' id='btnBulkCopyJSON'>📦 Bulk Copy JSON (All)</button>
+                            <button class='hidden text-xs bg-rose-700 hover:bg-rose-800 text-white px-3 py-2 rounded-xl font-mono transition-all shadow-sm cursor-pointer' id='btnBulkCopyPromptsOnly'>📋 Copy All Raw Prompts</button>
+                            <button class='text-xs bg-slate-800 text-slate-300 hover:text-white px-3 py-2 rounded-xl font-mono transition-all border border-slate-700 cursor-pointer shadow-2xs' id='btnZenMode'>Zen Mode</button>
+                        </div>
+                    </div>
+
+                    <div class='hidden grid grid-cols-1 sm:grid-cols-12 gap-3 pt-3 border-t border-slate-800/80' id='filterBarContainer'>
+                        <div class='sm:col-span-7'>
+                            <label class='block text-[9px] font-mono uppercase tracking-wider text-slate-400 mb-1.5'>Saring Berdasarkan Era Teknologi Digital</label>
+                            <b:tag class='w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-xs focus:outline-none focus:border-indigo-500 cursor-pointer shadow-inner' id='eraFilterSelector' name='select'>
+                                <option value='all'>Tampilkan Semua Era Modern (104 Prompts)</option>
+                                <option value='era_1'>2010-2015: Smartphone Dawn Era</option>
+                                <option value='era_2'>2016-2020: Vlog &amp; Cinematic Drone Revolution</option>
+                                <option value='era_3'>2021-2024: Short-Form Video &amp; Cyber Influencer Trend</option>
+                                <option value='era_4'>2025-2026: Next-Gen Spatial Computing &amp; Hyper-Real AI</option>
+                            </b:tag>
+                        </div>
+                        <div class='sm:col-span-5'>
+                            <label class='block text-[9px] font-mono uppercase tracking-wider text-slate-400 mb-1.5'>Cari Kata Kunci</label>
+                            <input class='w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-xs font-mono focus:outline-none focus:border-indigo-500 placeholder-slate-700 shadow-inner' id='keywordFilterSearch' placeholder='Ketik kata kunci...' type='text'/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='flex-1 relative bg-slate-950 rounded-xl border border-slate-800 p-4 overflow-y-auto max-h-[650px] custom-scrollbar space-y-4 text-xs text-slate-400 font-mono' id='jsonOutputArea'>
+                    <div class='text-indigo-400/80' id='defaultMessageArea'>// Tekan tombol &quot;Generate&quot; untuk menyusun sistem split data prompt otomatis...</div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer class='border-t border-slate-800 bg-slate-950 py-3 px-4 text-center text-[10px] text-slate-400 font-mono tracking-wide'>
+        &#169; 2026 PROMPT ENGINE CORE | Advanced AI Parameters Dashboard V4.1
+    </footer>
+
+    <div class='hidden'>
+        <b:section id='main-widget-area' maxwidgets='1' showaddelement='yes'/>
+    </div>
+
+    <script type='text/javascript'>
+        //<![CDATA[
+        var filterModifiers = {
+            'hyper-clean': 'ultra photorealistic image, 8k resolution, razor-sharp details, shot on Sony A1 with 85mm G-Master lens, raw unedited mobile photo style, clean optics, professional high-end lighting',
+            'cyberpunk-neon': 'dramatic cyber neon aesthetic, dynamic purple and blue lighting contrast, reflection on wet sleek surfaces, modern cyberpunk cityscape atmospheric glow',
+            'disposable-cam': 'authentic 90s disposable camera flash look, raw flash glare, nostalgic amateur film colors, dynamic shadow contrast, indie aesthetics',
+            'glitch-art': 'experimental cyber glitch distortions, subtle chromatic aberration, digital artifacting textures, data corruption stylization, neon trails',
+            'vhs-retro': 'lo-fi VHS tape preview style, scan lines tracking artifacts, nostalgic late 90s camcorder colors, bleeding light streaks',
+            'lightroom-preset': 'moody cinematic color grading, hyper-modern Lightroom presets, urban teal and orange aesthetic, sharp shadow deep tones',
+            'anamorphic-flare': 'cinematic anamorphic lens flare streaks, captured via Arri Alexa 65 camera setup, professional high-fidelity volumetric ray tracking',
+            'grainy-film': 'coarse aesthetic film grain noise, beautiful hyper-modern cinematic movie still framework, high contrast film look',
+            'soft-dreamy': 'soft pastel dreamcore style, dopamine maximalist color vibrancy palette, whimsical modern studio lighting',
+            'gopro-wide': 'action-cam ultra-wide fisheye distortion perspective, immersive POV framing, urban exploration style'
+        };
+
+        var timelineData = {
+            era_1: { idCode: "era_1", name: "2010-2015: Smartphone Dawn Era", tech: "early high-end mobile phone camera, square ratio crop framing grid, vintage square filter overlays", lighting: "natural day-to-day coffee shop exposure, ambient lifestyle setup", camera_spec: "iPhone 5s mobile lens back camera", start_year: 2010, end_year: 2015 },
+            era_2: { idCode: "era_2", name: "2016-2020: Vlog & Cinematic Drone Revolution", tech: "high-definition vlogging camera, crisp stabilization frame tracker, 4k cinematic aerial drone lighting map", lighting: "bright golden hour sunlight tracking, professional ring light illumination", camera_spec: "Sony A7S III mirrorless setup with DJI Mavic Pro optics", start_year: 2016, end_year: 2020 },
+            era_3: { idCode: "era_3", name: "2021-2024: Short-Form Video & Cyber Influencer Trend", tech: "vertical mobile screen display configuration, crisp multi-exposure computational photography mode", lighting: "vibrant RGB LED light strips ambiance glow, neon studio aesthetic reflections", camera_spec: "iPhone 15 Pro Max cinematic camera mode", start_year: 2021, end_year: 2024 },
+            era_4: { idCode: "era_4", name: "2025-2026: Next-Gen Spatial Computing & Hyper-Real AI", tech: "ultra high-fidelity digital image output, spatial computing panoramic resolution layout, generative neural rendering layers", lighting: "volumetric computational raytracing shadows, hyper-realistic ambient smart light maps", camera_spec: "Next-gen Red V-Raptor 8K cinematic system", start_year: 2025, end_year: 2026 }
+        };
+
+        var months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+        var currentGeneratedDatabase = [];
+
+        function generateFakeDate(startYear, endYear) {
+            var randDay = Math.floor(Math.random() * 28) + 1;
+            var randMonth = months[Math.floor(Math.random() * 12)];
+            var randYear = Math.floor(Math.random() * (endYear - startYear + 1)) + startYear;
+            return randDay + " " + randMonth + " " + randYear;
+        }
+
+        function getPoseModifier(val) {
+            var numeric = parseInt(val);
+            if (numeric <= 25) return { label: "Candid Urban (Bebas)", phrase: "unposed candid modern look, casual lifestyle stance, looking away from lens naturally" };
+            if (numeric <= 50) return { label: "Influencer Style", phrase: "chic trendsetter aesthetic posing, confident gaze, model street style composition" };
+            if (numeric <= 75) return { label: "Cinematic Movie Still", phrase: "dramatic character framing, intense direct lens interaction, professional cinematic layout" };
+            return { label: "Tech Portrait", phrase: "sleek professional corporate tech profile pose, centered symmetrical composition" };
+        }
+
+        function getAgeModifier(val) {
+            var numeric = parseInt(val);
+            if (numeric <= 25) return { label: "Gen Z Alpha", phrase: "contemporary young styling, hip street-wear outfit, vibrant youth features" };
+            if (numeric <= 50) return { label: "Young Professionals", phrase: "smart-casual young professional look, contemporary modern executive aesthetic" };
+            if (numeric <= 75) return { label: "Established Millennials", phrase: "mature adult demeanor, sleek minimalist styling, confident contemporary charisma" };
+            return { label: "Ageless Digital Avatar", phrase: "ageless sleek modern character design, refined elegant cyber look" };
+        }
+
+        function getVibeModifier(val) {
+            var numeric = parseInt(val);
+            if (numeric <= 25) return { label: "Cyberpunk City", phrase: "high-tech urban cityscape ambiance, high contrast skyscrapers backdrop, metropolitan rush hour look", concept: "dinamika megapolitan futuristik" };
+            if (numeric <= 50) return { label: "Quiet Luxury / Minimalist", phrase: "ultra clean quiet luxury aesthetic, soft monochrome neutral palette, sophisticated minimalism", concept: "estetika kemewahan minimalis modern" };
+            if (numeric <= 75) return { label: "Aesthetic Minimalis", phrase: "cozy modern aesthetic layout, warm Scandinavian interior vibes, calming smart lifestyle spaces", concept: "kenyamanan hidup modern urban" };
+            return { label: "Hypebeast Pop Culture", phrase: "vibrant high-contrast pop culture vibes, colorful street maximalist energy, hypebeast streetwear culture", concept: "suka cita ekspresi kultural urban masa kini" };
+        }
+
+        function getHumorModifier(val) {
+            var numeric = parseInt(val);
+            if (numeric <= 25) return { label: "Serious Alpha", phrase: "focused tech-driven serious expression, intense high-focus digital gaze", mood: "serius penuh determinasi modern" };
+            if (numeric <= 50) return { label: "Chill & Santai", phrase: "relaxed cheerful contemporary look, calm unassuming smile, confident aura", mood: "santai bersahaja tanpa beban" };
+            if (numeric <= 75) return { label: "Playful / Aesthetic Joy", phrase: "playful whimsical facial expression, candid laugh, fun social media influencer behavior", mood: "jenaka ekspresif khas konten digital" };
+            return { label: "Hyper-Expressive", phrase: "dynamic hyper-expressive joyous face, spontaneous celebration energy look", mood: "spontan penuh tawa riang kekinian" };
+        }
+
+        function getTiltModifier(val) {
+            var deg = parseInt(val);
+            if (deg === 0 || deg === 360) return { label: deg + "° (Normal Grid)", phrase: "perfectly straight modern smartphone grid level tracking, precise symmetrical horizon framing", type: "level" };
+            if (deg === 90) return { label: "90° (Vertical Stories Mode)", phrase: "90-degree fully rotated vertical framing layout, optimal mobile stories media viewport perspective", type: "vertical" };
+            if (deg === 180) return { label: "180° (Inverted Drone Tilt)", phrase: "experimental 180-degree inverted drone layout framing framework", type: "inverted" };
+            if (deg > 0 && deg < 90) return { label: deg + "° (Dynamic Vlog Angle)", phrase: "dynamic cinematic hand-held vlog tracking tilt composition at " + deg + " degrees", type: "tilt" };
+            return { label: deg + "° (Alternative Cyber Tilt)", phrase: "unorthodox stylized diagonal cyber layout distortion framework at " + deg + " degrees", type: "cyber-tilt" };
+        }
+
+        function buildNarrativeContent(subject, date, eraName, vibeConcept, ageLabel, humorMood, deg, rotType) {
+            var opening = "Merekam jejak realitas urban masa kini tertanggal " + date + ". Sebuah dokumentasi visual digital yang menangkap esensi unik dari \"" + subject + "\" di tengah panggung gaya hidup modern era " + eraName + ". ";
+            var bodyNarrative = "Sentuhan gaya " + vibeConcept + " mendominasi sudut estetika visual ini, membingkai harmoni ruang perkotaan kontemporer dengan rapi. Karakter " + ageLabel + " di dalam frame tampil dengan pembawaan " + humorMood + " yang orisinil.";
+            var technicalArt = (rotType === "level") ? " Komposisi grid lensa yang presisi dan lurus memberikan kestabilan visual yang bersih." : " Kemiringan lensa dinamis sebesar " + deg + " derajat menyuntikkan ketegangan artistik yang segar.";
+            return opening + bodyNarrative + technicalArt;
+        }
+
+        function buildSagaStoryCommand(item) {
+            return "DILARANG MELAKUKAN RANGKUMAN. Eksekusi menggunakan Saga Generation Engine: Tulis sebuah cerita rekaan fiksi urban kontemporer mendalam (minimal 5 bagian kronologis yang berantai) secara detail berdasarkan koordinat berikut:\n\n" +
+                   "- LATAR TEKNOLOGI: Era " + item.era + " (Spesifik tertanggal: " + item.date + ")\n" +
+                   "- PARAMETER VISUAL UTAMA: " + item.prompt + "\n" +
+                   "- SYNOPSIS UTAMA & ALUR: " + item.narrative_content + "\n" +
+                   "- PENGEMBANGAN KARAKTER: Kelompok " + item.age + " dengan pembawaan watak " + item.humor + "\n\n" +
+                   "Jalin dialog antar karakter secara panjang menggunakan diksi modern yang cerdas!";
+        }
+
+        function renderFilteredPrompts() {
+            var selectedEraKey = document.getElementById('eraFilterSelector').value;
+            var searchKeyword = document.getElementById('keywordFilterSearch').value.toLowerCase().trim();
+            var outputContainer = document.getElementById('jsonOutputArea');
+            
+            outputContainer.innerHTML = '';
+            var eras = Object.keys(timelineData);
+            var grandTotalDisplayed = 0;
+
+            for (var e = 0; e < eras.length; e++) {
+                var eraKey = eras[e];
+                var era = timelineData[eraKey];
+                
+                if (selectedEraKey !== 'all' && selectedEraKey !== eraKey) continue;
+
+                var itemsInEra = currentGeneratedDatabase.filter(function(item) {
+                    var matchEra = item._internalEraKey === eraKey;
+                    var matchKeyword = true;
+                    if (searchKeyword !== '') {
+                        var stringified = JSON.stringify(item).toLowerCase();
+                        matchKeyword = stringified.indexOf(searchKeyword) !== -1;
+                    }
+                    return matchEra && matchKeyword;
+                });
+
+                if (itemsInEra.length === 0) continue;
+                grandTotalDisplayed += itemsInEra.length;
+
+                var eraHeader = document.createElement('div');
+                eraHeader.className = 'pt-4 pb-1 border-b border-slate-700 text-indigo-400 font-tech font-bold text-[11px] sticky top-0 bg-slate-950 z-10 flex justify-between items-center';
+                eraHeader.innerHTML = '<span>DIGITAL ERA TIMELINE: ' + era.name.toUpperCase() + '</span><span class="text-slate-500 text-[9px] font-mono">' + itemsInEra.length + ' PLUGINS</span>';
+                outputContainer.appendChild(eraHeader);
+
+                for (var i = 0; i < itemsInEra.length; i++) {
+                    var item = itemsInEra[i];
+                    var card = document.createElement('div');
+                    card.className = 'bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col gap-3 shadow-md hover:border-slate-700 transition-all';
+                    
+                    var visualCleanObj = {
+                        id: item.id,
+                        digital_era: item.era,
+                        date: item.date,
+                        pose_style: item.pose,
+                        demographic_age: item.age,
+                        social_vibe: item.vibe,
+                        mood_tone: item.humor,
+                        lens_rotation: item.frame_rotation_degree,
+                        ai_parameters: item.ai_parameters, 
+                        blueprint_visual: item.narrative_content,
+                        prompt: item.prompt
+                    };
+
+                    var jsonStr = JSON.stringify(visualCleanObj, null, 4);
+
+                    card.innerHTML = '\
+                        <div class="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-2 border-b border-slate-800 pb-2">\
+                            <span class="text-[10px] font-mono font-bold text-indigo-400">' + item.id + '</span>\
+                            <div class="flex flex-wrap gap-1.5 w-full xl:w-auto justify-start xl:justify-end">\
+                                <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-2 py-1 rounded-md text-[9px] font-mono transition-all cursor-pointer shadow-xs btn-copy-json">Tombol 1: Copy JSON</button>\
+                                <button class="bg-slate-800 hover:bg-stone-700 text-zinc-300 px-2 py-1 rounded-md text-[9px] font-mono transition-all cursor-pointer shadow-xs btn-copy-saga">Tombol 2: Copy Cerita</button>\
+                                <button class="bg-emerald-700 hover:bg-emerald-800 text-white px-2 py-1 rounded-md text-[9px] font-mono transition-all cursor-pointer shadow-xs btn-copy-prompt-only">Tombol 3: Copy Prompt</button>\
+                                <button class="bg-amber-600 hover:bg-amber-700 text-white px-2 py-1 rounded-md text-[9px] font-mono transition-all cursor-pointer shadow-xs btn-view-blueprint">Tombol 4: View Narrative</button>\
+                                <button class="bg-rose-700 hover:bg-rose-800 text-white px-2 py-1 rounded-md text-[9px] font-mono transition-all cursor-pointer shadow-xs btn-clear-card">Tombol 5: Clear</button>\
+                            </div>\
+                        </div>\
+                        <div class="bg-slate-950 p-3 rounded-lg border border-slate-850 max-h-48 overflow-y-auto custom-scrollbar">\
+                            <pre class="font-mono text-emerald-400 whitespace-pre-wrap text-[9px] data-display-area">' + jsonStr + '</pre>\
+                        </div>\
+                    ';
+                    outputContainer.appendChild(card);
+                }
+            }
+
+            if (grandTotalDisplayed === 0) {
+                outputContainer.innerHTML = '<div class="text-slate-600 font-mono text-center py-8">// Tidak ditemukan prompt JSON modern yang cocok dengan filter.</div>';
+            } else {
+                var cards = outputContainer.children;
+                var cardIdx = 0;
+                
+                for (var e = 0; e < eras.length; e++) {
+                    var eraKey = eras[e];
+                    if (selectedEraKey !== 'all' && selectedEraKey !== eraKey) continue;
+                    
+                    var itemsInEra = currentGeneratedDatabase.filter(function(item) {
+                        var matchEra = item._internalEraKey === eraKey;
+                        var matchKeyword = (searchKeyword === '') ? true : JSON.stringify(item).toLowerCase().indexOf(searchKeyword) !== -1;
+                        return matchEra && matchKeyword;
+                    });
+
+                    if (itemsInEra.length === 0) continue;
+                    cardIdx++; 
+
+                    for (var i = 0; i < itemsInEra.length; i++) {
+                        var item = itemsInEra[i];
+                        var currentCardNode = cards[cardIdx];
+                        cardIdx++;
+
+                        (function(itemData, node) {
+                            var displayArea = node.querySelector('.data-display-area');
+                            var cleanObjStr = JSON.stringify({
+                                id: itemData.id, digital_era: itemData.era, date: itemData.date, pose_style: itemData.pose,
+                                demographic_age: itemData.age, social_vibe: itemData.vibe, mood_tone: itemData.humor,
+                                lens_rotation: itemData.frame_rotation_degree, ai_parameters: itemData.ai_parameters, 
+                                blueprint_visual: itemData.narrative_content, prompt: itemData.prompt
+                            }, null, 4);
+
+                            node.querySelector('.btn-copy-json').onclick = function() {
+                                navigator.clipboard.writeText(cleanObjStr);
+                                var self = this; self.innerText = "Copied! ✓";
+                                setTimeout(function() { self.innerText = "Tombol 1: Copy JSON"; }, 1000);
+                            };
+
+                            node.querySelector('.btn-copy-saga').onclick = function() {
+                                navigator.clipboard.writeText(buildSagaStoryCommand(itemData));
+                                var self = this; self.innerText = "Saga Copied! ✓";
+                                setTimeout(function() { self.innerText = "Tombol 2: Copy Cerita"; }, 1000);
+                            };
+
+                            node.querySelector('.btn-copy-prompt-only').onclick = function() {
+                                navigator.clipboard.writeText(itemData.prompt);
+                                var self = this; self.innerText = "Prompt Copied! ✓";
+                                setTimeout(function() { self.innerText = "Tombol 3: Copy Prompt"; }, 1000);
+                            };
+
+                            node.querySelector('.btn-view-blueprint').onclick = function() {
+                                displayArea.innerText = "NARRATIVE BLUEPRINT BACKGROUND:\n==============================\n" + itemData.narrative_content;
+                                displayArea.className = "font-mono text-amber-400 whitespace-pre-wrap text-[10px] data-display-area";
+                            };
+
+                            node.querySelector('.btn-clear-card').onclick = function() {
+                                displayArea.innerText = "// Content cleared by technician controller.";
+                                displayArea.className = "font-mono text-slate-600 whitespace-pre-wrap text-[9px] data-display-area";
+                            };
+
+                        })(item, currentCardNode);
+                    }
+                }
+            }
+        }
+
+        function generateContemporaryPrompts() {
+            var subject = document.getElementById('subjectInput').value.trim();
+            if(!subject) {
+                alert("Subjek Utama tidak boleh kosong untuk melakukan kompilasi data!");
+                return;
+            }
+            var attachedImageUrl = document.getElementById('imageUrlInput').value.trim();
+            var imgSimilarityWeight = document.getElementById('imageSimilarityInput').value;
+            var cfgScaleSetting = document.getElementById('cfgScaleInput').value;
+            var chaosSetting = document.getElementById('chaosLevelInput').value;
+            var weirdSetting = document.getElementById('weirdLevelInput').value;
+            var poseValue = document.getElementById('poseStyleInput').value;
+            var ageValue = document.getElementById('ageStyleInput').value;
+            var vibeValue = document.getElementById('vibeStyleInput').value;
+            var humorValue = document.getElementById('humorStyleInput').value;
+            var tiltValue = document.getElementById('tiltStyleInput').value;
+            var chosenCondition = document.getElementById('conditionInput').value;
+            var targetAR = document.getElementById('aspectRatioInput').value;
+            var targetVersion = document.getElementById('modelVersionInput').value;
+            var customNegative = document.getElementById('negativePromptInput').value.trim();
+
+            var pSignature = document.getElementById('personalSignatureInput').value.trim();
+            var bWatermark = document.getElementById('brandWatermarkInput').value.trim();
+            var watermarkString = "";
+            if(pSignature !== "") watermarkString += "Incorporate subtle creative signature imprint '" + pSignature + "'. ";
+            if(bWatermark !== "") watermarkString += "Marked with brand handle watermark text '" + bWatermark + "'. ";
+
+            var conditionText = filterModifiers[chosenCondition];
+            currentGeneratedDatabase = [];
+
+            var calculatedImageWeight = (parseInt(imgSimilarityWeight) / 100).toFixed(2);
+            var actualCFGValue = (parseInt(cfgScaleSetting) / 10).toFixed(1);
+
+            var currentPoseObj = getPoseModifier(poseValue);
+            var currentAgeObj = getAgeModifier(ageValue);
+            var currentVibeObj = getVibeModifier(vibeValue);
+            var currentHumorObj = getHumorModifier(humorValue);
+            var currentTiltObj = getTiltModifier(tiltValue);
+            
+            var promptCounter = 1;
+            var eras = Object.keys(timelineData);
+
+            for (var e = 0; e < eras.length; e++) {
+                var eraKey = eras[e];
+                var era = timelineData[eraKey];
+
+                for (var i = 1; i <= 26; i++) {
+                    var styleVariant = "";
+                    var activeFilter = conditionText;
+                    var mod = i % 5;
+
+                    var structuralBase = "Atmospheric setting: " + currentPoseObj.phrase + ". Cast properties: " + currentAgeObj.phrase + ". Cultural context: " + currentVibeObj.phrase + ". Mood preset: " + currentHumorObj.phrase + ". Spatial rotation alignment: " + currentTiltObj.phrase + ". " + watermarkString;
+                    
+                    if (mod === 0) styleVariant = "Cinematic candid raw shot of " + subject + ". " + structuralBase;
+                    else if (mod === 1) styleVariant = "Ultra crisp urban documentation snapshot of " + subject + ". " + structuralBase;
+                    else if (mod === 2) styleVariant = "Wide-angle panoramic establishing frame of " + subject + ". " + structuralBase;
+                    else if (mod === 3) styleVariant = "Neon noir low-light ambiance exposure study of " + subject + ". " + structuralBase;
+                    else styleVariant = "Minimalist social media feed aesthetic capture of " + subject + ". " + structuralBase;
+
+                    var fakePhotoDate = generateFakeDate(era.start_year, era.end_year);
+                    
+                    var extraParams = " " + targetVersion + " --ar " + targetAR;
+                    if (parseInt(chaosSetting) > 0) extraParams += " --chaos " + chaosSetting;
+                    if (parseInt(weirdSetting) > 0) extraParams += " --weird " + weirdSetting;
+                    if (attachedImageUrl !== "") extraParams += " --iw " + calculatedImageWeight;
+
+                    var fullPrompt = (attachedImageUrl !== "" ? attachedImageUrl + " " : "") + "A high-fidelity contemporary photograph dated " + fakePhotoDate + ", visualizing " + styleVariant + " Rendered via " + era.tech + ". Production specs: " + era.camera_spec + ", stylistic filter overlay: " + activeFilter + "." + extraParams;
+                    var promptId = "CYBER-PRMPT-" + String(promptCounter).padStart(3, '0');
+
+                    var aiParametersMetadata = {
+                        target_model: targetVersion.replace('--', '').toUpperCase(),
+                        aspect_ratio: targetAR,
+                        cfg_scale: parseFloat(actualCFGValue),
+                        chaos_level: parseInt(chaosSetting),
+                        weird_level: parseInt(weirdSetting),
+                        negative_prompt: customNegative !== "" ? customNegative : "none",
+                        sampler_type: "Euler a Neural Nodes",
+                        seed_randomization: Math.floor(Math.random() * 4294967295),
+                        image_weight: attachedImageUrl !== "" ? parseFloat(calculatedImageWeight) : null
+                    };
+
+                    currentGeneratedDatabase.push({
+                        id: promptId,
+                        era: era.name,
+                        date: fakePhotoDate, 
+                        pose: currentPoseObj.label,
+                        age: currentAgeObj.label, 
+                        vibe: currentVibeObj.label,
+                        humor: currentHumorObj.label,
+                        frame_rotation_degree: currentTiltObj.label,
+                        ai_parameters: aiParametersMetadata, 
+                        narrative_content: buildNarrativeContent(subject, fakePhotoDate, era.name, currentVibeObj.concept, currentAgeObj.label, currentHumorObj.mood, parseInt(tiltValue), currentTiltObj.type),
+                        prompt: fullPrompt,
+                        _internalEraKey: eraKey
+                    });
+                    promptCounter++;
+                }
+            }
+            
+            document.getElementById('filterBarContainer').classList.remove('hidden');
+            document.getElementById('btnBulkCopyJSON').classList.remove('hidden');
+            document.getElementById('btnBulkCopyPromptsOnly').classList.remove('hidden');
+            document.getElementById('eraFilterSelector').value = 'all';
+            document.getElementById('keywordFilterSearch').value = '';
+
+            renderFilteredPrompts();
+        }
+
+        // Fungsi Master Hard Reset bawaan Pabrik (Optimasi Baru)
+        function triggerHardPurgeDefault() {
+            // 1. Kembalikan semua nilai input teks & link ke default asli
+            document.getElementById('subjectInput').value = 'A futuristic bustling modern coffee shop and coworking hub';
+            document.getElementById('imageUrlInput').value = '';
+            document.getElementById('personalSignatureInput').value = 'Heaven';
+            document.getElementById('brandWatermarkInput').value = '@circlemonth';
+            document.getElementById('negativePromptInput').value = 'old vintage sepia, black and white monochrome, physical photo scratches, damaged paper, 3d blender render, low resolution artifacting, historical clothing';
+            
+            // 2. Kembalikan seluruh elemen select/dropdown ke indeks pertama (0)
+            document.getElementById('conditionInput').selectedIndex = 0;
+            document.getElementById('aspectRatioInput').selectedIndex = 0;
+            document.getElementById('modelVersionInput').selectedIndex = 0;
+            
+            // 3. Kembalikan seluruh 9 slider ke nilai standarnya masing-masing
+            document.getElementById('imageSimilarityInput').value = 100;
+            document.getElementById('cfgScaleInput').value = 65;
+            document.getElementById('chaosLevelInput').value = 0;
+            document.getElementById('weirdLevelInput').value = 0;
+            document.getElementById('poseStyleInput').value = 35;
+            document.getElementById('ageStyleInput').value = 25;
+            document.getElementById('vibeStyleInput').value = 70;
+            document.getElementById('humorStyleInput').value = 45;
+            document.getElementById('tiltStyleInput').value = 0;
+            
+            // 4. Paksa trigger event input agar label teks di atas slider ikut diperbarui secara presisi
+            document.getElementById('imageSimilarityInput').dispatchEvent(new Event('input'));
+            document.getElementById('cfgScaleInput').dispatchEvent(new Event('input'));
+            document.getElementById('chaosLevelInput').dispatchEvent(new Event('input'));
+            document.getElementById('weirdLevelInput').dispatchEvent(new Event('input'));
+            document.getElementById('poseStyleInput').dispatchEvent(new Event('input'));
+            document.getElementById('ageStyleInput').dispatchEvent(new Event('input'));
+            document.getElementById('vibeStyleInput').dispatchEvent(new Event('input'));
+            document.getElementById('humorStyleInput').dispatchEvent(new Event('input'));
+            document.getElementById('tiltStyleInput').dispatchEvent(new Event('input'));
+            
+            // 5. Bersihkan total basis data temporer dan area terminal output
+            currentGeneratedDatabase = [];
+            document.getElementById('jsonOutputArea').innerHTML = '<div class="text-indigo-400/80 font-mono">// Sistem berhasil dipulihkan penuh ke Parameter Default Pabrik. Siap dikompilasi ulang!</div>';
+            
+            // 6. Sembunyikan kembali kontrol massal di layar 2
+            document.getElementById('btnBulkCopyJSON').classList.add('hidden');
+            document.getElementById('btnBulkCopyPromptsOnly').classList.add('hidden');
+            document.getElementById('filterBarContainer').classList.add('hidden');
+        }
+
+        // DOM Life Cycle Binding Process
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById('imageSimilarityInput').oninput = function() { document.getElementById('imageSimilarityVal').innerText = (this.value / 100).toFixed(2); };
+            document.getElementById('cfgScaleInput').oninput = function() { document.getElementById('cfgScaleVal').innerText = (this.value / 10).toFixed(1); };
+            document.getElementById('chaosLevelInput').oninput = function() { document.getElementById('chaosLevelVal').innerText = this.value; };
+            document.getElementById('weirdLevelInput').oninput = function() { document.getElementById('weirdLevelVal').innerText = this.value; };
+            document.getElementById('poseStyleInput').oninput = function() { document.getElementById('poseStyleVal').innerText = getPoseModifier(this.value).label; };
+            document.getElementById('ageStyleInput').oninput = function() { document.getElementById('ageStyleVal').innerText = getAgeModifier(this.value).label; };
+            document.getElementById('vibeStyleInput').oninput = function() { document.getElementById('vibeStyleVal').innerText = getVibeModifier(this.value).label; };
+            document.getElementById('humorStyleInput').oninput = function() { document.getElementById('humorStyleVal').innerText = getHumorModifier(this.value).label; };
+            document.getElementById('tiltStyleInput').oninput = function() { document.getElementById('tiltStyleVal').innerText = getTiltModifier(this.value).label; };
+            
+            document.getElementById('eraFilterSelector').onchange = renderFilteredPrompts;
+            document.getElementById('keywordFilterSearch').oninput = renderFilteredPrompts;
+            document.getElementById('btnGenerateMaster').onclick = generateContemporaryPrompts;
+
+            document.getElementById('btnResetSubjectOnly').onclick = function() {
+                var subInput = document.getElementById('subjectInput');
+                subInput.value = ''; subInput.focus();
+            };
+
+            // Ikatan Tombol Reset Pabrik Default yang Dioptimalkan
+            document.getElementById('btnHardRefreshDefault').onclick = triggerHardPurgeDefault;
+
+            // Tombol Clear All (Kosong Total)
+            document.getElementById('btnResetForm').onclick = function() {
+                document.getElementById('subjectInput').value = '';
+                document.getElementById('imageUrlInput').value = '';
+                document.getElementById('personalSignatureInput').value = '';
+                document.getElementById('brandWatermarkInput').value = '';
+                document.getElementById('negativePromptInput').value = '';
+                document.getElementById('conditionInput').selectedIndex = 0;
+                document.getElementById('aspectRatioInput').selectedIndex = 0;
+                document.getElementById('modelVersionInput').selectedIndex = 0;
+                document.getElementById('imageSimilarityInput').value = 100;
+                document.getElementById('cfgScaleInput').value = 65;
+                document.getElementById('chaosLevelInput').value = 0;
+                document.getElementById('weirdLevelInput').value = 0;
+                document.getElementById('poseStyleInput').value = 35;
+                document.getElementById('ageStyleInput').value = 25;
+                document.getElementById('vibeStyleInput').value = 70;
+                document.getElementById('humorStyleInput').value = 45;
+                document.getElementById('tiltStyleInput').value = 0;
+                
+                document.getElementById('imageSimilarityInput').dispatchEvent(new Event('input'));
+                document.getElementById('cfgScaleInput').dispatchEvent(new Event('input'));
+                document.getElementById('chaosLevelInput').dispatchEvent(new Event('input'));
+                document.getElementById('weirdLevelInput').dispatchEvent(new Event('input'));
+                document.getElementById('poseStyleInput').dispatchEvent(new Event('input'));
+                document.getElementById('ageStyleInput').dispatchEvent(new Event('input'));
+                document.getElementById('vibeStyleInput').dispatchEvent(new Event('input'));
+                document.getElementById('humorStyleInput').dispatchEvent(new Event('input'));
+                document.getElementById('tiltStyleInput').dispatchEvent(new Event('input'));
+                
+                document.getElementById('jsonOutputArea').innerHTML = '<div class="text-indigo-400/80 font-mono">// Seluruh formulir dikosongkan total tanpa menyisakan teks default.</div>';
+                document.getElementById('btnBulkCopyJSON').classList.add('hidden');
+                document.getElementById('btnBulkCopyPromptsOnly').classList.add('hidden');
+                document.getElementById('filterBarContainer').classList.add('hidden');
+                currentGeneratedDatabase = [];
+            };
+
+            document.getElementById('btnRandomizeForm').onclick = function() {
+                document.getElementById('imageSimilarityInput').value = Math.floor(Math.random() * 201);
+                document.getElementById('cfgScaleInput').value = Math.floor(Math.random() * 110) + 30;
+                document.getElementById('chaosLevelInput').value = Math.floor(Math.random() * 80); 
+                document.getElementById('weirdLevelInput').value = Math.floor(Math.random() * 30) * 50; 
+                document.getElementById('poseStyleInput').value = Math.floor(Math.random() * 101);
+                document.getElementById('ageStyleInput').value = Math.floor(Math.random() * 101);
+                document.getElementById('vibeStyleInput').value = Math.floor(Math.random() * 101);
+                document.getElementById('humorStyleInput').value = Math.floor(Math.random() * 101);
+                document.getElementById('tiltStyleInput').value = Math.floor(Math.random() * 361);
+                
+                var conditionSelect = document.getElementById('conditionInput');
+                conditionSelect.selectedIndex = Math.floor(Math.random() * conditionSelect.options.length);
+                var arSelect = document.getElementById('aspectRatioInput');
+                arSelect.selectedIndex = Math.floor(Math.random() * arSelect.options.length);
+                var versionSelect = document.getElementById('modelVersionInput');
+                versionSelect.selectedIndex = Math.floor(Math.random() * versionSelect.options.length);
+
+                document.getElementById('imageSimilarityInput').dispatchEvent(new Event('input'));
+                document.getElementById('cfgScaleInput').dispatchEvent(new Event('input'));
+                document.getElementById('chaosLevelInput').dispatchEvent(new Event('input'));
+                document.getElementById('weirdLevelInput').dispatchEvent(new Event('input'));
+                document.getElementById('poseStyleInput').dispatchEvent(new Event('input'));
+                document.getElementById('ageStyleInput').dispatchEvent(new Event('input'));
+                document.getElementById('vibeStyleInput').dispatchEvent(new Event('input'));
+                document.getElementById('humorStyleInput').dispatchEvent(new Event('input'));
+                document.getElementById('tiltStyleInput').dispatchEvent(new Event('input'));
+
+                generateContemporaryPrompts();
+            };
+            
+            document.getElementById('btnBulkCopyJSON').onclick = function() {
+                if (currentGeneratedDatabase.length === 0) return;
+                var bulkDataText = JSON.stringify(currentGeneratedDatabase, null, 4);
+                var btn = this;
+                navigator.clipboard.writeText(bulkDataText).then(function() {
+                    var originalText = btn.innerText; btn.innerText = "All JSON Copied! ✓";
+                    setTimeout(function() { btn.innerText = originalText; }, 1500);
+                });
+            };
+
+            document.getElementById('btnBulkCopyPromptsOnly').onclick = function() {
+                if (currentGeneratedDatabase.length === 0) return;
+                var lineByLinePrompts = currentGeneratedDatabase.map(function(item) { return item.prompt; }).join("\n");
+                var btn = this;
+                navigator.clipboard.writeText(lineByLinePrompts).then(function() {
+                    var originalText = btn.innerText; btn.innerText = "All Prompts Copied! ✓";
+                    setTimeout(function() { btn.innerText = originalText; }, 1500);
+                });
+            };
+
+            var body = document.getElementById('appBody');
+            var exitBtn = document.getElementById('exitZenBtn');
+            document.getElementById('btnZenMode').onclick = function() {
+                body.classList.toggle('zen-mode-active');
+                if (body.classList.contains('zen-mode-active')) exitBtn.classList.remove('hidden');
+                else exitBtn.classList.add('hidden');
+            };
+            exitBtn.onclick = function() { body.classList.remove('zen-mode-active'); exitBtn.classList.add('hidden'); };
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && body.classList.contains('zen-mode-active')) {
+                    body.classList.remove('zen-mode-active'); exitBtn.classList.add('hidden');
+                }
+            });
+        });
+        //]]>
+    </script>
+</body>
+</html>

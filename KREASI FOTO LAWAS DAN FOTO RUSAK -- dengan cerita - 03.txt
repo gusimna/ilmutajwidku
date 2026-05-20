@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultmessages='false' b:layouts='false' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <meta charset='UTF-8'/>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+    <title>CONTEMPORARY SPLIT ENGINE V2</title>
+    
+    <script src='https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4'/>
+    
+    <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700;800&amp;family=Space+Grotesk:wght=500;700&amp;display=swap' rel='stylesheet'/>
+
+    <b:skin><![CDATA[
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0b0f19; 
+            background-image: radial-gradient(#1e293b 1.2px, transparent 0);
+            background-size: 24px 24px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .font-tech {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        /* Custom Scrollbar Modern */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #6366f1;
+        }
+        /* Neon Glassmorphism Panel */
+        .cyber-panel {
+            background-color: rgba(15, 23, 42, 0.8) !important;
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(99, 102, 241, 0.2) !important;
+        }
+        /* Zen Mode Tampilan Minimalis Fokus */
+        body.zen-mode-active header, 
+        body.zen-mode-active footer, 
+        body.zen-mode-active #layar1-section {
+            display: none !important;
+        }
+        body.zen-mode-active #layar2-section {
+            grid-column: span 12 / span 12 !important;
+        }
+    ]]></b:skin>
+</head>
+<body class='text-slate-200 antialiased min-h-screen flex flex-col justify-between' id='appBody'>
+
+    <header class='border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-md py-4 px-6 sticky top-0 z-50 shadow-lg'>
+        <div class='max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4'>
+            <div class='flex items-center gap-3'>
+                <div class='w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center text-white font-tech font-bold text-lg shadow-md'>
+                    Ω
+                </div>
+                <div>
+                    <h1 class='text-xl font-tech font-bold tracking-tight text-white uppercase'>SPLIT<span class='text-indigo-400 font-light lowercase'>engine</span> CONTEMPORARY</h1>
+                    <p class='text-[10px] text-slate-400 font-mono tracking-wide uppercase mt-0.5'>Hyper-Real Image Blueprint &amp; Contemporary Knots</p>
+                </div>
+            </div>
+            <div class='flex items-center gap-2 text-xs bg-indigo-950/60 text-indigo-300 px-3 py-2 rounded-xl border border-indigo-500/30 font-mono'>
+                <span class='w-2 h-2 rounded-full bg-emerald-500 animate-pulse'/>
+                Engine System Fixed
+            </div>
+        </div>
+    </header>
+
+    <main class='max-w-7xl w-full mx-auto p-4 lg:p-8 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-8'>
+        
+        <section class='lg:col-span-5 cyber-panel rounded-2xl p-6 shadow-2xl self-start sticky lg:top-24' id='layar1-section'>
+            <div class='mb-6 border-b border-slate-800 pb-4'>
+                <h2 class='text-lg font-tech font-bold text-white flex items-center gap-2'>
+                    Layar 1: Config Center
+                </h2>
+                <p class='text-xs text-slate-400 mt-1'>Modifikasi rotasi kreatif, vibez perkotaan kekinian, estetika kamera, serta parameter AI.</p>
+            </div>
+            
+            <div class='space-y-4'>
+                <div>
+                    <label class='block text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 mb-1.5'>Subjek Utama / Objek Foto Modern</label>
+                    <div class='relative flex items-center'>
+                        <input class='w-full pl-4 pr-12 py-2.5 bg-slate-900 border border-slate-700/80 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all text-sm font-medium text-white shadow-inner' id='subjectInput' placeholder='Ketik subjek foto kekinian di sini...' type='text' value='A futuristic bustling modern coffee shop and coworking hub'/>
+                        <button class='absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-slate-400 hover:text-rose-400 hover:bg-slate-800 rounded-lg text-lg font-bold transition-all cursor-pointer' id='btnResetSubjectOnly' title='Reset subjek saja' type='button'>
+                            &#10227;
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <label class='block text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 mb-1.5'>URL Gambar Referensi (Jika Ada)</label>
+                    <input class='w-full px-4 py-2.5 bg-slate-900 border border-slate-700/80 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all text-sm font-mono text-indigo-300 shadow-inner' id='imageUrlInput' placeholder='https://example.com/modern-image.jpg' type='url'/>
+                </div>
+
+                <div class='grid grid-cols-1 gap-3.5 border-t border-slate-800 pt-4'>
+                    <div>
+                        <div class='flex justify-between items-center mb-1.5'>
+                            <label class='text-[10px] font-mono font-bold uppercase text-slate-400'>Kemiripan Referensi Gambar</label>
+                            <span class='text-[10px] font-mono font-bold bg-indigo-950 text-indigo-300 px-2 py-0.5 rounded-md border border-indigo-800/40' id='imageSimilarityVal'>50%</span>
+                        </div>
+                        <input class='w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500' id='imageSimilarityInput' max='100' min='0' type='range' value='50'/>
+                    </div>
+
+                    <div>
+                        <div class='flex justify-between items-center mb-1.5'>
+                            <label class='text-[10px] font-mono font-bold uppercase text-slate-400'>Gaya Pose / Angle Orang</label>
+                            <span class='text-[10px] font-mono font-bold bg-indigo-950 text-indigo-300 px-2 py-0.5 rounded-md border border-indigo-800/40' id='poseStyleVal'>Candid Urban</span>
+                        </div>
+                        <input class='w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500' id='poseStyleInput' max='100' min='0' type='range' value='35'/>
+                    </div>
+
+                    <div>
+                        <div class='flex justify-between items-center mb-1.5'>
+                            <label class='text-[10px] font-mono font-bold uppercase text-slate-400'>Demografi / Kelompok Usia</label>
+                            <span class='text-[10px] font-mono font-bold bg-indigo-950 text-indigo-300 px-2 py-0.5 rounded-md border border-indigo-800/40' id='ageStyleVal'>Gen Z / Millennials</span>
+                        </div>
+                        <input class='w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500' id='ageStyleInput' max='100' min='0' type='range' value='25'/>
+                    </div>
+
+                    <div>
+                        <div class='flex justify-between items-center mb-1.5'>
+                            <label class='text-[10px] font-mono font-bold uppercase text-slate-400'>Atmosfer Sosial / Tren Gaya Hidup</label>
+                            <span class='text-[10px] font-mono font-bold bg-indigo-950 text-indigo-300 px-2 py-0.5 rounded-md border border-indigo-800/40' id='vibeStyleVal'>Aesthetic Minimalis</span>
+                        </div>
+                        <input class='w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500' id='vibeStyleInput' max='100' min='0' type='range' value='70'/>
+                    </div>
+
+                    <div>
+                        <div class='flex justify-between items-center mb-1.5'>
+                            <label class='text-[10px] font-mono font-bold uppercase text-slate-400'>Mood Konten / Tone Ekspresi</label>
+                            <span class='text-[10px] font-mono font-bold bg-indigo-950 text-indigo-300 px-2 py-0.5 rounded-md border border-indigo-800/40' id='humorStyleVal'>Chill &amp; Santai</span>
+                        </div>
+                        <input class='w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500' id='humorStyleInput' max='100' min='0' type='range' value='45'/>
+                    </div>
+
+                    <div>
+                        <div class='flex justify-between items-center mb-1.5'>
+                            <label class='text-[10px] font-mono font-bold uppercase text-slate-400'>Rotasi Lensa Kamera</label>
+                            <span class='text-[10px] font-mono font-bold bg-indigo-950 text-indigo-300 px-2 py-0.5 rounded-md border border-indigo-800/40' id='tiltStyleVal'>0&#176;</span>
+                        </div>
+                        <input class='w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500' id='tiltStyleInput' max='360' min='0' type='range' value='0'/>
+                    </div>
+                </div>
+
+                <div class='pt-2'>
+                    <label class='block text-[10px] font-mono font-bold uppercase text-slate-400 mb-1.5'>Estetika Kamera / Filter Tren Masa Kini</label>
+                    <div class='relative'>
+                        <b:tag class='w-full px-4 py-2.5 bg-slate-900 border border-slate-700 text-sm rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 cursor-pointer appearance-none shadow-md' id='conditionInput' name='select'>
+                            <option value='hyper-clean'>Ultra Clean &amp; Photorealistic (8K, Sempurna Tanpa Cela)</option>
+                            <option value='cyberpunk-neon'>Cyberpunk Neon Glow (Lampu Neon Biru/Ungu Kota)</option>
+                            <option value='disposable-cam'>90s Disposable Camera Look (Estetika Analog Indie)</option>
+                            <option value='glitch-art'>Digital Glitch Art / Cyber Distortions (Efek Gangguan Data)</option>
+                            <option value='vhs-retro'>Lo-Fi VHS Tape Aesthetic (Vibez Retro Tahun 90-an Akhir)</option>
+                            <option value='lightroom-preset'>Moody Cinematic Presets (Lightroom Teal &amp; Orange)</option>
+                            <option value='anamorphic-flare'>Anamorphic Lens Flare (Efek Pantulan Cahaya Bioskop)</option>
+                            <option value='grainy-film'>Coarse Cinematic Film Grain (Butiran Film Estetik)</option>
+                            <option value='soft-dreamy'>Soft Pastel Dreamy Glow (Vibez Dopamine Maximalist)</option>
+                            <option value='gopro-wide'>Action-Cam Ultra-Wide Fisheye Distortion (Sudut Pandang GoPro Lebar)</option>
+                        </b:tag>
+                        <div class='pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500'>&#9660;</div>
+                    </div>
+                </div>
+
+                <div class='space-y-2 pt-2'>
+                    <button class='w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-700 hover:to-pink-700 text-white font-tech font-bold py-3 px-4 rounded-xl shadow-lg shadow-indigo-500/20 transition-all transform active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer' id='btnGenerateMaster'>
+                        <span>Generate 104 Database Split Engine</span>
+                    </button>
+                
+                    <div class='grid grid-cols-3 gap-2'>
+                        <button class='bg-slate-800 hover:bg-slate-700 text-slate-300 font-mono font-bold py-1.5 px-2 text-[10px] rounded-xl border border-slate-700 transition-all cursor-pointer shadow-2xs' id='btnResetForm'>Reset All</button>
+                        <button class='bg-indigo-950 hover:bg-indigo-900 text-indigo-300 font-mono font-bold py-1.5 px-2 text-[10px] rounded-xl border border-indigo-800/40 transition-all cursor-pointer shadow-2xs' id='btnRandomizeForm'>Acak</button>
+                        <button class='bg-slate-800 hover:bg-slate-700 text-slate-300 font-mono font-bold py-1.5 px-2 text-[10px] rounded-xl border border-slate-700 transition-all cursor-pointer shadow-2xs' onclick='window.location.reload();'>Refresh</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class='lg:col-span-7 flex flex-col min-h-[550px]' id='layar2-section'>
+            <div class='bg-slate-900 rounded-2xl p-6 shadow-2xl border border-slate-800 flex flex-col flex-1 relative'>
+                <button class='hidden absolute top-4 right-4 z-50 bg-rose-600 hover:bg-rose-700 text-white font-mono text-xs px-3 py-1.5 rounded-xl transition-all shadow-md' id='exitZenBtn'>Exit Zen Mode [ESC]</button>
+                
+                <div class='flex flex-col border-b border-slate-800 pb-4 mb-4 gap-4'>
+                    <div class='flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4'>
+                        <div>
+                            <h2 class='text-lg font-tech font-bold text-indigo-400'>Layar 2: Realtime Contemporary Output</h2>
+                            <p class='text-xs text-slate-400 mt-0.5 font-mono text-[10px]'>Terminal Engine: Pure Image Code &amp; Anti-Shortcut Story Commands</p>
+                        </div>
+                        <div class='flex items-center gap-2 self-stretch sm:self-auto justify-end w-full sm:w-auto'>
+                            <button class='hidden text-xs bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-2 rounded-xl font-mono transition-all shadow-sm cursor-pointer' id='btnBulkCopyJSON'>Copy All JSON</button>
+                            <button class='text-xs bg-slate-800 text-slate-300 hover:text-white px-3 py-2 rounded-xl font-mono transition-all border border-slate-700 cursor-pointer shadow-2xs' id='btnZenMode'>Zen Mode</button>
+                        </div>
+                    </div>
+
+                    <div class='hidden grid grid-cols-1 sm:grid-cols-12 gap-3 pt-3 border-t border-slate-800/80' id='filterBarContainer'>
+                        <div class='sm:col-span-7'>
+                            <label class='block text-[9px] font-mono uppercase tracking-wider text-slate-400 mb-1.5'>Saring Berdasarkan Era Teknologi Digital</label>
+                            <b:tag class='w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-xs focus:outline-none focus:border-indigo-500 cursor-pointer shadow-inner' id='eraFilterSelector' name='select'>
+                                <option value='all'>Tampilkan Semua Era Modern (104 Prompts)</option>
+                                <option value='era_1'>2010-2015: Smartphone Dawn Era</option>
+                                <option value='era_2'>2016-2020: Vlog &amp; Cinematic Drone Revolution</option>
+                                <option value='era_3'>2021-2024: Short-Form Video &amp; Cyber Influencer Trend</option>
+                                <option value='era_4'>2025-2026: Next-Gen Spatial Computing &amp; Hyper-Real AI</option>
+                            </b:tag>
+                        </div>
+                        <div class='sm:col-span-5'>
+                            <label class='block text-[9px] font-mono uppercase tracking-wider text-slate-400 mb-1.5'>Cari Kata Kunci</label>
+                            <input class='w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-xs font-mono focus:outline-none focus:border-indigo-500 placeholder-slate-700 shadow-inner' id='keywordFilterSearch' placeholder='Ketik kata kunci...' type='text'/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='flex-1 relative bg-slate-950 rounded-xl border border-slate-800 p-4 overflow-y-auto max-h-[650px] custom-scrollbar space-y-4 text-xs text-slate-400 font-mono' id='jsonOutputArea'>
+                    <div class='text-indigo-400/80' id='defaultMessageArea'>// Tekan tombol &quot;Generate&quot; untuk menyusun sistem split data prompt otomatis...</div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer class='border-t border-slate-800 bg-slate-950 py-3 px-4 text-center text-[10px] text-slate-400 font-mono tracking-wide'>
+        &#169; 2026 PROMPT CORE | Split Engine Contemporary Technology.
+    </footer>
+
+    <div class='hidden'>
+        <b:section id='main-widget-area' maxwidgets='1' showaddelement='yes'/>
+    </div>
+
+    <script type='text/javascript'>
+        //<![CDATA[
+        var filterModifiers = {
+            'hyper-clean': 'ultra photorealistic image, 8k resolution, razor-sharp details, shot on Sony A1 with 85mm G-Master lens, raw unedited mobile photo style, clean optics, professional high-end lighting',
+            'cyberpunk-neon': 'dramatic cyber neon aesthetic, dynamic purple and blue lighting contrast, reflection on wet sleek surfaces, modern cyberpunk cityscape atmospheric glow',
+            'disposable-cam': 'authentic 90s disposable camera flash look, raw flash glare, nostalgic amateur film colors, dynamic shadow contrast, indie aesthetics',
+            'glitch-art': 'experimental cyber glitch distortions, subtle chromatic aberration, digital artifacting textures, data corruption stylization, neon trails',
+            'vhs-retro': 'lo-fi VHS tape preview style, scan lines tracking artifacts, nostalgic late 90s camcorder colors, bleeding light streaks',
+            'lightroom-preset': 'moody cinematic color grading, hyper-modern Lightroom presets, urban teal and orange aesthetic, sharp shadow deep tones',
+            'anamorphic-flare': 'cinematic anamorphic lens flare streaks, captured via Arri Alexa 65 camera setup, professional high-fidelity volumetric ray tracking',
+            'grainy-film': 'coarse aesthetic film grain noise, beautiful hyper-modern cinematic movie still framework, high contrast film look',
+            'soft-dreamy': 'soft pastel dreamcore style, dopamine maximalist color vibrancy palette, whimsical modern studio lighting',
+            'gopro-wide': 'action-cam ultra-wide fisheye distortion perspective, immersive POV framing, urban exploration style'
+        };
+
+        var timelineData = {
+            era_1: { idCode: "era_1", name: "2010-2015: Smartphone Dawn Era", tech: "early high-end mobile phone camera, square ratio crop framing grid, vintage square filter overlays", lighting: "natural day-to-day coffee shop exposure, ambient lifestyle setup", camera_spec: "iPhone 5s mobile lens back camera", start_year: 2010, end_year: 2015 },
+            era_2: { idCode: "era_2", name: "2016-2020: Vlog & Cinematic Drone Revolution", tech: "high-definition vlogging camera, crisp stabilization frame tracker, 4k cinematic aerial drone lighting map", lighting: "bright golden hour sunlight tracking, professional ring light illumination", camera_spec: "Sony A7S III mirrorless setup with DJI Mavic Pro optics", start_year: 2016, end_year: 2020 },
+            era_3: { idCode: "era_3", name: "2021-2024: Short-Form Video & Cyber Influencer Trend", tech: "vertical mobile screen display configuration, crisp multi-exposure computational photography mode", lighting: "vibrant RGB LED light strips ambiance glow, neon studio aesthetic reflections", camera_spec: "iPhone 15 Pro Max cinematic camera mode", start_year: 2021, end_year: 2024 },
+            era_4: { idCode: "era_4", name: "2025-2026: Next-Gen Spatial Computing & Hyper-Real AI", tech: "ultra high-fidelity digital image output, spatial computing panoramic resolution layout, generative neural rendering layers", lighting: "volumetric computational raytracing shadows, hyper-realistic ambient smart light maps", camera_spec: "Next-gen Red V-Raptor 8K cinematic system", start_year: 2025, end_year: 2026 }
+        };
+
+        var months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+        var currentGeneratedDatabase = [];
+
+        function generateFakeDate(startYear, endYear) {
+            var randDay = Math.floor(Math.random() * 28) + 1;
+            var randMonth = months[Math.floor(Math.random() * 12)];
+            var randYear = Math.floor(Math.random() * (endYear - startYear + 1)) + startYear;
+            return randDay + " " + randMonth + " " + randYear;
+        }
+
+        function getPoseModifier(val) {
+            var numeric = parseInt(val);
+            if (numeric <= 25) return { label: "Candid Urban (Bebas)", phrase: "unposed candid modern look, casual lifestyle stance, looking away from lens naturally" };
+            if (numeric <= 50) return { label: "Influencer Style", phrase: "chic trendsetter aesthetic posing, confident gaze, model street style composition" };
+            if (numeric <= 75) return { label: "Cinematic Movie Still", phrase: "dramatic dramatic character framing, intense direct lens interaction, professional cinematic layout" };
+            return { label: "Tech Portrait", phrase: "sleek professional corporate tech profile pose, centered symmetrical composition" };
+        }
+
+        // Penyesuaian ke era anak muda/modern
+        function getAgeModifier(val) {
+            var numeric = parseInt(val);
+            if (numeric <= 25) return { label: "Gen Z Alpha", phrase: "contemporary young styling, hip street-wear outfit, vibrant youth features" };
+            if (numeric <= 50) return { label: "Young Professionals", phrase: "smart-casual young professional look, contemporary modern executive aesthetic" };
+            if (numeric <= 75) return { label: "Established Millennials", phrase: "mature adult demeanor, sleek minimalist styling, confident contemporary charisma" };
+            return { label: "Ageless Digital Avatar", phrase: "ageless sleek modern character design, refined elegant cyber look" };
+        }
+
+        function getVibeModifier(val) {
+            var numeric = parseInt(val);
+            if (numeric <= 25) return { label: "Cyberpunk City", phrase: "high-tech urban cityscape ambiance, high contrast skyscrapers backdrop, metropolitan rush hour look", concept: "dinamika megapolitan futuristik" };
+            if (numeric <= 50) return { label: "Quiet Luxury / Minimalist", phrase: "ultra clean quiet luxury aesthetic, soft monochrome neutral palette, sophisticated minimalism", concept: "estetika kemewahan minimalis modern" };
+            if (numeric <= 75) return { label: "Aesthetic Minimalis", phrase: "cozy modern aesthetic layout, warm Scandinavian interior vibes, calming smart lifestyle spaces", concept: "kenyamanan hidup modern urban" };
+            return { label: "Hypebeast Pop Culture", phrase: "vibrant high-contrast pop culture vibes, colorful street maximalist energy, hypebeast streetwear culture", concept: "suka cita ekspresi kultural urban masa kini" };
+        }
+
+        function getHumorModifier(val) {
+            var numeric = parseInt(val);
+            if (numeric <= 25) return { label: "Serious Alpha", phrase: "focused tech-driven serious expression, intense high-focus digital gaze", mood: "serius penuh determinasi modern" };
+            if (numeric <= 50) return { label: "Chill & Santai", phrase: "relaxed cheerful contemporary look, calm unassuming smile, confident aura", mood: "sampai bersahaja tanpa beban" };
+            if (numeric <= 75) return { label: "Playful / Aesthetic Joy", phrase: "playful whimsical facial expression, candid laugh, fun social media influencer behavior", mood: "jenaka ekspresif khas konten digital" };
+            return { label: "Hyper-Expressive", phrase: "dynamic hyper-expressive joyous face, spontaneous celebration energy look", mood: "spontan penuh tawa riang kekinian" };
+        }
+
+        function getTiltModifier(val) {
+            var deg = parseInt(val);
+            if (deg === 0 || deg === 360) return { label: deg + "° (Normal Grid)", phrase: "perfectly straight modern smartphone grid level tracking, precise symmetrical horizon framing", type: "level" };
+            if (deg === 90) return { label: "90° (Vertical Stories Mode)", phrase: "90-degree fully rotated vertical framing layout, optimal mobile stories media viewport perspective", type: "vertical" };
+            if (deg === 180) return { label: "180° (Inverted Drone Tilt)", phrase: "experimental 180-degree inverted drone layout framing framework", type: "inverted" };
+            if (deg > 0 && deg < 90) return { label: deg + "° (Dynamic Vlog Angle)", phrase: "dynamic cinematic hand-held vlog tracking tilt composition at " + deg + " degrees", type: "tilt" };
+            return { label: deg + "° (Alternative Cyber Tilt)", phrase: "unorthodox stylized diagonal cyber layout distortion framework at " + deg + " degrees", type: "cyber-tilt" };
+        }
+
+        function buildNarrativeContent(subject, date, eraName, vibeConcept, ageLabel, humorMood, deg, rotType) {
+            var opening = "Merekam jejak realitas urban masa kini tertanggal " + date + ". Sebuah dokumentasi visual digital yang menangkap esensi unik dari \"" + subject + "\" di tengah panggung gaya hidup modern era " + eraName + ". ";
+            var bodyNarrative = "";
+            if (vibeConcept.indexOf("futuristik") !== -1 || vibeConcept.indexOf("kultural") !== -1) {
+                bodyNarrative = "Atmosfer " + vibeConcept + " berdenyut begitu cepat di sekelilingnya, memancarkan energi kota yang tak pernah tidur. Di antara gemerlap cahaya digital tersebut, representasi figur " + ageLabel + " yang terekam di sini mengekspresikan karakter yang " + humorMood + ", mencerminkan generasi yang adaptif terhadap percepatan zaman.";
+            } else {
+                bodyNarrative = "Sentuhan gaya " + vibeConcept + " mendominasi sudut estetika visual ini, membingkai harmoni ruang perkotaan kontemporer dengan rapi. Karakter " + ageLabel + " di dalam frame tampil dengan pembawaan " + humorMood + " yang orisinil, memancarkan konektivitas personal yang kuat dengan tren kultural masa kini.";
+            }
+
+            var technicalArt = "";
+            if (rotType === "level") {
+                technicalArt = " Komposisi grid lensa yang presisi dan lurus memberikan kestabilan visual yang bersih ala feed portfolio digital kelas atas.";
+            } else if (rotType === "vertical") {
+                technicalArt = " Sudut rasio yang diputar 90 derajat ini sengaja diadopsi demi menciptakan kenyamanan navigasi ala konten vertikal mobile masa kini.";
+            } else {
+                technicalArt = " Kemiringan lensa dinamis sebesar " + deg + " derajat ini memberikan efek sinematik genggaman tangan (*handheld vlog*), menyuntikkan ketegangan artistik yang segar.";
+            }
+
+            var closing = " Selembar kompilasi data visual kekinian, mengunci potongan gaya hidup modern yang autentik bagi generasi digital masa depan.";
+            return opening + bodyNarrative + technicalArt + closing;
+        }
+
+        function buildSagaStoryCommand(item) {
+            return "DILARANG MELAKUKAN RANGKUMAN (NO SHORTCUTS CORES). Eksekusi menggunakan Saga Generation Engine: Tulis sebuah cerita rekaan fiksi urban kontemporer mendalam setebal bab novel (minimal 5.500+ kata) yang dibagi ke dalam 5 bagian kronologis yang sinematik dan berantai. Cerita wajib dikembangkan secara detail berdasarkan koordinat tren modern berikut:\n\n" +
+                   "- LATAR TEKNOLOGI: Era " + item.era + " (Spesifik tertanggal: " + item.date + ")\n" +
+                   "- PARAMETER VISUAL UTAMA: " + item.prompt + "\n" +
+                   "- SYNOPSIS UTAMA & ALUR: " + item.narrative_content + "\n" +
+                   "- PENGEMBANGAN KARAKTER: Kelompok " + item.age + " dengan pembawaan watak " + item.humor + "\n" +
+                   "- ATMOSFER SCENE: Dominasi ekosistem " + item.vibe + "\n\n" +
+                   "Instruksi Penulisan: Jalin dialog antar karakter secara panjang menggunakan diksi modern yang cerdas, deskripsikan emosionalitas ruang perkotaan, kafe, ekosistem teknologi, aroma kopi, atau lampu LED, serta detail gawai atau media sosial yang digunakan secara deskriptif tanpa memangkas satu bagian pun!";
+        }
+
+        function renderFilteredPrompts() {
+            var selectedEraKey = document.getElementById('eraFilterSelector').value;
+            var searchKeyword = document.getElementById('keywordFilterSearch').value.toLowerCase().trim();
+            var outputContainer = document.getElementById('jsonOutputArea');
+            
+            outputContainer.innerHTML = '';
+            var eras = Object.keys(timelineData);
+            var grandTotalDisplayed = 0;
+
+            for (var e = 0; e < eras.length; e++) {
+                var eraKey = eras[e];
+                var era = timelineData[eraKey];
+                
+                if (selectedEraKey !== 'all' && selectedEraKey !== eraKey) continue;
+
+                var itemsInEra = currentGeneratedDatabase.filter(function(item) {
+                    var matchEra = item._internalEraKey === eraKey;
+                    var matchKeyword = true;
+                    if (searchKeyword !== '') {
+                        var stringified = JSON.stringify(item).toLowerCase();
+                        matchKeyword = stringified.indexOf(searchKeyword) !== -1;
+                    }
+                    return matchEra && matchKeyword;
+                });
+
+                if (itemsInEra.length === 0) continue;
+                grandTotalDisplayed += itemsInEra.length;
+
+                var eraHeader = document.createElement('div');
+                eraHeader.className = 'pt-4 pb-1 border-b border-slate-700 text-indigo-400 font-tech font-bold text-[11px] sticky top-0 bg-slate-950 z-10 flex justify-between items-center';
+                eraHeader.innerHTML = '<span>DIGITAL ERA TIMELINE: ' + era.name.toUpperCase() + '</span><span class="text-slate-500 text-[9px] font-mono">' + itemsInEra.length + ' PLUGINS</span>';
+                outputContainer.appendChild(eraHeader);
+
+                for (var i = 0; i < itemsInEra.length; i++) {
+                    var item = itemsInEra[i];
+                    var card = document.createElement('div');
+                    card.className = 'bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col gap-3 shadow-md hover:border-slate-700 transition-all';
+                    
+                    var visualCleanObj = {
+                        id: item.id,
+                        digital_era: item.era,
+                        date: item.date,
+                        pose_style: item.pose,
+                        demographic_age: item.age,
+                        social_vibe: item.vibe,
+                        mood_tone: item.humor,
+                        lens_rotation: item.frame_rotation_degree,
+                        ai_parameters: item.ai_parameters, 
+                        blueprint_visual: item.narrative_content,
+                        prompt: item.prompt
+                    };
+
+                    var jsonStr = JSON.stringify(visualCleanObj, null, 4);
+                    var rawSagaCommand = buildSagaStoryCommand(item);
+                    
+                    card.innerHTML = '\
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-800 pb-2">\
+                            <span class="text-[10px] font-mono font-bold text-indigo-400">' + item.id + '</span>\
+                            <div class="flex gap-2 w-full sm:w-auto justify-end">\
+                                <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-2.5 py-1 rounded-md text-[10px] font-mono font-medium transition-all cursor-pointer border border-indigo-500 shadow-xs btn-copy-json" data-json="' + btoa(unescape(encodeURIComponent(jsonStr))) + '">Tombol 1: Copy JSON Blueprint</button>\
+                                <button class="bg-slate-800 hover:bg-stone-700 text-zinc-300 hover:text-white px-2.5 py-1 rounded-md text-[10px] font-mono font-medium transition-all cursor-pointer border border-slate-700 shadow-xs btn-copy-saga" data-saga="' + btoa(unescape(encodeURIComponent(rawSagaCommand))) + '">Tombol 2: Copy Perintah Cerita</button>\
+                            </div>\
+                        </div>\
+                        <div class="bg-slate-950 p-3 rounded-lg border border-slate-850 max-h-48 overflow-y-auto custom-scrollbar">\
+                            <pre class="font-mono text-emerald-400 whitespace-pre-wrap text-[9px]">' + jsonStr + '</pre>\
+                        </div>\
+                    ';
+                    outputContainer.appendChild(card);
+                }
+            }
+
+            if (grandTotalDisplayed === 0) {
+                outputContainer.innerHTML = '<div class="text-slate-600 font-mono text-center py-8">// Tidak ditemukan prompt JSON modern yang cocok dengan filter.</div>';
+            } else {
+                var jsonButtons = outputContainer.getElementsByClassName('btn-copy-json');
+                for (var j = 0; j < jsonButtons.length; j++) {
+                    jsonButtons[j].onclick = function() {
+                        var decodedJson = decodeURIComponent(escape(atob(this.getAttribute('data-json'))));
+                        navigator.clipboard.writeText(decodedJson);
+                        var self = this; var oldTxt = self.innerText; self.innerText = "JSON Copied! ✓"; self.style.backgroundColor = "#065f46";
+                        setTimeout(function() { self.innerText = oldTxt; self.style.backgroundColor = "#4f46e5"; }, 1500);
+                    };
+                }
+                
+                var sagaButtons = outputContainer.getElementsByClassName('btn-copy-saga');
+                for (var s = 0; s < sagaButtons.length; s++) {
+                    sagaButtons[s].onclick = function() {
+                        var decodedSaga = decodeURIComponent(escape(atob(this.getAttribute('data-saga'))));
+                        navigator.clipboard.writeText(decodedSaga);
+                        var self = this; var oldTxt = self.innerText; self.innerText = "Saga Command Copied! ✓"; self.style.backgroundColor = "#9d174d";
+                        setTimeout(function() { self.innerText = oldTxt; self.style.backgroundColor = "#1e293b"; }, 1500);
+                    };
+                }
+            }
+        }
+
+        function generateContemporaryPrompts() {
+            var subject = document.getElementById('subjectInput').value.trim();
+            if(!subject) {
+                alert("Subjek Utama tidak boleh kosong untuk melakukan kompilasi data!");
+                return;
+            }
+            var attachedImageUrl = document.getElementById('imageUrlInput').value.trim();
+            var imgSimilarityWeight = document.getElementById('imageSimilarityInput').value;
+            var poseValue = document.getElementById('poseStyleInput').value;
+            var ageValue = document.getElementById('ageStyleInput').value;
+            var vibeValue = document.getElementById('vibeStyleInput').value;
+            var humorValue = document.getElementById('humorStyleInput').value;
+            var tiltValue = document.getElementById('tiltStyleInput').value;
+            var chosenCondition = document.getElementById('conditionInput').value;
+            var conditionText = filterModifiers[chosenCondition];
+            currentGeneratedDatabase = [];
+
+            var calculatedImageWeight = (parseInt(imgSimilarityWeight) / 50).toFixed(2);
+            var currentPoseObj = getPoseModifier(poseValue);
+            var currentAgeObj = getAgeModifier(ageValue);
+            var currentVibeObj = getVibeModifier(vibeValue);
+            var currentHumorObj = getHumorModifier(humorValue);
+            var currentTiltObj = getTiltModifier(tiltValue);
+            
+            var promptCounter = 1;
+            var eras = Object.keys(timelineData);
+
+            for (var e = 0; e < eras.length; e++) {
+                var eraKey = eras[e];
+                var era = timelineData[eraKey];
+
+                for (var i = 1; i <= 26; i++) {
+                    var styleVariant = "";
+                    var activeFilter = conditionText;
+                    
+                    var mod = i % 5;
+                    var structuralBase = "Atmospheric setting: " + currentPoseObj.phrase + ". Cast properties: " + currentAgeObj.phrase + ". Cultural context: " + currentVibeObj.phrase + ". Mood preset: " + currentHumorObj.phrase + ". Spatial rotation alignment: " + currentTiltObj.phrase + ".";
+                    if (mod === 0) styleVariant = "Cinematic candid raw shot of " + subject + ". " + structuralBase;
+                    else if (mod === 1) styleVariant = "Ultra crisp urban documentation snapshot of " + subject + ". " + structuralBase;
+                    else if (mod === 2) styleVariant = "Wide-angle panoramic establishing frame of " + subject + ". " + structuralBase;
+                    else if (mod === 3) styleVariant = "Neon noir low-light ambiance exposure study of " + subject + ". " + structuralBase;
+                    else if (mod === 4) styleVariant = "Minimalist social media feed aesthetic capture of " + subject + ". " + structuralBase;
+                    
+                    var fakePhotoDate = generateFakeDate(era.start_year, era.end_year);
+                    var fullPrompt = (attachedImageUrl !== "" ? attachedImageUrl + " " : "") + "A high-fidelity contemporary photograph dated " + fakePhotoDate + ", visualizing " + styleVariant + " Rendered via " + era.tech + ". Production specs: " + era.camera_spec + ", stylistic filter overlay: " + activeFilter + ". --ar 16:9 --v 6.0" + (attachedImageUrl !== "" ? " --iw " + calculatedImageWeight : "");
+                    
+                    var promptId = "CYBER-PRMPT-" + String(promptCounter).padStart(3, '0');
+
+                    var aiParametersMetadata = {
+                        target_model: "Midjourney v6.0 / Stable Diffusion XL Ultra",
+                        aspect_ratio: "16:9 (Widescreen)",
+                        cfg_scale: 6.5,
+                        negative_prompt: "old vintage sepia, black and white monochrome, physical photo scratches, damaged paper, 3d blender render, low resolution artifacting, historical clothing",
+                        sampler_type: "DPM++ SDE Karras",
+                        seed_randomization: Math.floor(Math.random() * 4294967295),
+                        image_weight: attachedImageUrl !== "" ? parseFloat(calculatedImageWeight) : null
+                    };
+
+                    currentGeneratedDatabase.push({
+                        id: promptId,
+                        era: era.name,
+                        date: fakePhotoDate, 
+                        pose: currentPoseObj.label,
+                        age: currentAgeObj.label, 
+                        vibe: currentVibeObj.label,
+                        humor: currentHumorObj.label,
+                        frame_rotation_degree: currentTiltObj.label,
+                        ai_parameters: aiParametersMetadata, 
+                        narrative_content: buildNarrativeContent(subject, fakePhotoDate, era.name, currentVibeObj.concept, currentAgeObj.label, currentHumorObj.mood, parseInt(tiltValue), currentTiltObj.type),
+                        prompt: fullPrompt,
+                        _internalEraKey: eraKey
+                    });
+                    promptCounter++;
+                }
+            }
+            
+            document.getElementById('filterBarContainer').classList.remove('hidden');
+            document.getElementById('btnBulkCopyJSON').classList.remove('hidden');
+            document.getElementById('eraFilterSelector').value = 'all';
+            document.getElementById('keywordFilterSearch').value = '';
+
+            renderFilteredPrompts();
+        }
+
+        // DOM Life Cycle Binding Process
+        document.addEventListener("DOMContentLoaded", function() {
+            // Sinkronisasi Slider Otomatis ke Teks Indikator
+            document.getElementById('imageSimilarityInput').oninput = function() { document.getElementById('imageSimilarityVal').innerText = this.value + '%'; };
+            document.getElementById('poseStyleInput').oninput = function() { document.getElementById('poseStyleVal').innerText = getPoseModifier(this.value).label; };
+            document.getElementById('ageStyleInput').oninput = function() { document.getElementById('ageStyleVal').innerText = getAgeModifier(this.value).label; };
+            document.getElementById('vibeStyleInput').oninput = function() { document.getElementById('vibeStyleVal').innerText = getVibeModifier(this.value).label; };
+            document.getElementById('humorStyleInput').oninput = function() { document.getElementById('humorStyleVal').innerText = getHumorModifier(this.value).label; };
+            document.getElementById('tiltStyleInput').oninput = function() { document.getElementById('tiltStyleVal').innerText = getTiltModifier(this.value).label; };
+            
+            document.getElementById('eraFilterSelector').onchange = renderFilteredPrompts;
+            document.getElementById('keywordFilterSearch').oninput = renderFilteredPrompts;
+            document.getElementById('btnGenerateMaster').onclick = generateContemporaryPrompts;
+            
+            // TOMBOL RESET KHUSUS SUBJEK SAJA (Simbol Teks)
+            document.getElementById('btnResetSubjectOnly').onclick = function() {
+                var subInput = document.getElementById('subjectInput');
+                subInput.value = '';
+                subInput.focus();
+            };
+
+            // TOMBOL RESET ALL (Berfungsi Sempurna Mengembalikan Keadaan Indikator)
+            document.getElementById('btnResetForm').onclick = function() {
+                document.getElementById('subjectInput').value = '';
+                document.getElementById('imageUrlInput').value = '';
+                document.getElementById('conditionInput').selectedIndex = 0;
+                document.getElementById('imageSimilarityInput').value = 50;
+                document.getElementById('poseStyleInput').value = 35;
+                document.getElementById('ageStyleInput').value = 25;
+                document.getElementById('vibeStyleInput').value = 70;
+                document.getElementById('humorStyleInput').value = 45;
+                document.getElementById('tiltStyleInput').value = 0;
+                
+                // Memicu paksa sinkronisasi teks indikator slider
+                document.getElementById('imageSimilarityInput').dispatchEvent(new Event('input'));
+                document.getElementById('poseStyleInput').dispatchEvent(new Event('input'));
+                document.getElementById('ageStyleInput').dispatchEvent(new Event('input'));
+                document.getElementById('vibeStyleInput').dispatchEvent(new Event('input'));
+                document.getElementById('humorStyleInput').dispatchEvent(new Event('input'));
+                document.getElementById('tiltStyleInput').dispatchEvent(new Event('input'));
+                
+                document.getElementById('jsonOutputArea').innerHTML = '<div class="text-indigo-400/80 font-mono">// Seluruh formulir dikosongkan. Siap diisi kembali!</div>';
+                document.getElementById('btnBulkCopyJSON').classList.add('hidden');
+                document.getElementById('filterBarContainer').classList.add('hidden');
+                currentGeneratedDatabase = [];
+            };
+
+            document.getElementById('btnRandomizeForm').onclick = function() {
+                document.getElementById('imageSimilarityInput').value = Math.floor(Math.random() * 101);
+                document.getElementById('poseStyleInput').value = Math.floor(Math.random() * 101);
+                document.getElementById('ageStyleInput').value = Math.floor(Math.random() * 101);
+                document.getElementById('vibeStyleInput').value = Math.floor(Math.random() * 101);
+                document.getElementById('humorStyleInput').value = Math.floor(Math.random() * 101);
+                document.getElementById('tiltStyleInput').value = Math.floor(Math.random() * 361);
+                
+                var conditionSelect = document.getElementById('conditionInput');
+                conditionSelect.selectedIndex = Math.floor(Math.random() * conditionSelect.options.length);
+
+                document.getElementById('imageSimilarityInput').dispatchEvent(new Event('input'));
+                document.getElementById('poseStyleInput').dispatchEvent(new Event('input'));
+                document.getElementById('ageStyleInput').dispatchEvent(new Event('input'));
+                document.getElementById('vibeStyleInput').dispatchEvent(new Event('input'));
+                document.getElementById('humorStyleInput').dispatchEvent(new Event('input'));
+                document.getElementById('tiltStyleInput').dispatchEvent(new Event('input'));
+
+                generateContemporaryPrompts();
+            };
+            
+            document.getElementById('btnBulkCopyJSON').onclick = function() {
+                if (currentGeneratedDatabase.length === 0) return;
+                var bulkDataText = JSON.stringify(currentGeneratedDatabase, null, 4);
+                var btn = this;
+                navigator.clipboard.writeText(bulkDataText).then(function() {
+                    var originalText = btn.innerText; btn.innerText = "All Copied! ✓"; btn.style.backgroundColor = "#065f46";
+                    setTimeout(function() { btn.innerText = originalText; btn.style.backgroundColor = "#4f46e5"; }, 2000);
+                });
+            };
+
+            var body = document.getElementById('appBody');
+            var exitBtn = document.getElementById('exitZenBtn');
+            document.getElementById('btnZenMode').onclick = function() {
+                body.classList.toggle('zen-mode-active');
+                if (body.classList.contains('zen-mode-active')) exitBtn.classList.remove('hidden');
+                else exitBtn.classList.add('hidden');
+            };
+            exitBtn.onclick = function() { body.classList.remove('zen-mode-active'); exitBtn.classList.add('hidden'); };
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && body.classList.contains('zen-mode-active')) {
+                    body.classList.remove('zen-mode-active');
+                    exitBtn.classList.add('hidden');
+                }
+            });
+        });
+        //]]>
+    </script>
+</body>
+</html>

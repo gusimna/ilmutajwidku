@@ -1,0 +1,1448 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+    <title><data:blog.pageName/> - <data:blog.title/></title>
+    
+    <b:skin><![CDATA[
+    /*
+     * Theme Name: PureSlate Studio Pro (v4.8 - Dynamic Character Engine)
+     * Description: Ruang kerja narasi dengan pengelolaan barisan karakter yang dapat ditambah/hapus secara fleksibel.
+     */
+    
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    
+    :root {
+        --bg-main: #0b0f19;
+        --bg-sidebar: #0f1626;
+        --bg-card: #141b2d;
+        --bg-input: #1f293d;
+        --border-color: #24324f;
+        --text-main: #f8fafc;
+        --text-muted: #94a3b8;
+        --accent-blue: #38bdf8;
+        --accent-green: #10b981;
+        --accent-purple: #a855f7;
+        --accent-rose: #f43f5e;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body, html {
+        margin: 0; padding: 0;
+        background-color: var(--bg-main);
+        color: var(--text-main);
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Layout Framework */
+    .dashboard-container {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        min-height: 100vh;
+    }
+    
+    @media (max-width: 1024px) {
+        .dashboard-container { grid-template-columns: 1fr; }
+        .sidebar { height: auto !important; position: relative !important; border-right: none !important; border-bottom: 1px solid var(--border-color); }
+    }
+    
+    /* Sidebar Layout */
+    .sidebar {
+        background: var(--bg-sidebar);
+        border-right: 1px solid var(--border-color);
+        padding: 32px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow-y: auto;
+    }
+    
+    .brand-section { display: flex; align-items: center; gap: 12px; }
+    .brand-logo {
+        width: 32px; height: 32px;
+        background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+        border-radius: 8px;
+    }
+    .brand-name a {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--text-main); text-decoration: none;
+        letter-spacing: -0.5px;
+    }
+    
+    /* Navigasi Menu */
+    .nav-menu { display: flex; flex-direction: column; gap: 8px; }
+    .nav-item {
+        display: flex;
+        align-items: center; gap: 12px;
+        padding: 12px 14px; border-radius: 8px;
+        color: var(--text-muted); font-size: 14px; font-weight: 500;
+        cursor: pointer; transition: all 0.2s;
+        text-decoration: none;
+        border: none; background: none; width: 100%; text-align: left;
+        font-family: inherit;
+    }
+    .nav-item:hover, .nav-item.active {
+        background: rgba(168, 85, 247, 0.08);
+        color: var(--accent-purple);
+    }
+    
+    .system-status {
+        margin-top: auto;
+        background: rgba(168, 85, 247, 0.05);
+        border: 1px solid rgba(168, 85, 247, 0.15);
+        border-radius: 8px; padding: 12px;
+        display: flex; align-items: center; gap: 10px;
+        font-size: 12px; color: var(--accent-purple);
+    }
+    .status-pulse {
+        width: 8px; height: 8px; background: var(--accent-purple);
+        border-radius: 50%; box-shadow: 0 0 8px var(--accent-purple);
+    }
+    
+    /* Main Workspace */
+    .main-workspace { padding: 40px; overflow-y: auto; }
+    
+    .workspace-header {
+        display: flex;
+        justify-content: space-between; align-items: center;
+        margin-bottom: 32px; border-bottom: 1px solid var(--border-color);
+        padding-bottom: 24px; flex-wrap: wrap; gap: 20px;
+    }
+    .workspace-title h1 { font-size: 26px; margin: 0 0 4px 0; letter-spacing: -0.5px; }
+    .workspace-title p { margin: 0; color: var(--text-muted); font-size: 14px; }
+    
+    .quick-stats { display: flex; align-items: center; gap: 14px; }
+    .stat-badge {
+        background: var(--bg-card); border: 1px solid var(--border-color);
+        padding: 8px 16px; border-radius: 8px; font-size: 12px;
+    }
+    
+    .btn-zen {
+        background: rgba(56, 189, 248, 0.1);
+        border: 1px solid rgba(56, 189, 248, 0.2);
+        color: var(--accent-blue);
+        padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 600;
+        cursor: pointer; transition: all 0.2s;
+    }
+
+    /* Grid Layout */
+    .workspace-grid-system {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+    }
+    @media (max-width: 900px) { .workspace-grid-system { grid-template-columns: 1fr; } }
+
+    /* Modifikasi Zen Mode */
+    body.zen-mode-active .sidebar { display: none !important; }
+    body.zen-mode-active .dashboard-container { grid-template-columns: 1fr; }
+    body.zen-mode-active .config-panel-section { display: none !important; }
+
+    /* Tab Panels Engine */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Control Panel Boxes */
+    .panel-box {
+        background: var(--bg-card); border: 1px solid var(--border-color);
+        border-radius: 16px; padding: 28px; min-height: 540px; display: flex; flex-direction: column; justify-content: space-between; gap: 20px;
+    }
+    
+    .panel-header-row {
+        display: flex; justify-content: space-between; align-items: center;
+    }
+    .panel-box h2 { font-size: 18px; margin: 0; display: flex; align-items: center; gap: 8px; color: var(--accent-purple); }
+    
+    /* Tombol Kontrol Edit / Save */
+    .panel-actions { display: flex; gap: 8px; }
+    .btn-control-small {
+        padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+    }
+    .btn-edit { background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.2); color: var(--accent-blue); }
+    .btn-save { background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.2); color: var(--accent-green); display: none; }
+    
+    .panel-content-wrapper { display: flex; flex-direction: column; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-label { display: block; font-size: 13px; font-weight: 600; color: var(--text-muted); }
+    
+    .form-control {
+        width: 100%; background: var(--bg-main); border: 1px solid var(--border-color);
+        border-radius: 8px; padding: 12px 14px; color: var(--text-main);
+        font-size: 14px; transition: all 0.2s; font-family: inherit;
+    }
+    .form-control:focus { border-color: var(--accent-purple); outline: none; }
+    .form-control:disabled { background: rgba(11, 15, 25, 0.4); color: #64748b; cursor: not-allowed; border-color: transparent; }
+    textarea.form-control { resize: vertical; min-height: 100px; }
+
+    /* --- GAYA REPEATER MANAGEMENT KARAKTER --- */
+    .character-list-builder { display: flex; flex-direction: column; gap: 12px; max-height: 320px; overflow-y: auto; padding-right: 4px; }
+    .character-row-item {
+        display: grid; grid-template-columns: 1fr 1.5fr auto; gap: 10px; align-items: center;
+        background: rgba(11, 15, 25, 0.3); padding: 10px; border-radius: 8px; border: 1px solid var(--border-color);
+    }
+    .btn-delete-char {
+        background: rgba(244, 63, 94, 0.1); border: 1px solid rgba(244, 63, 94, 0.2); color: var(--accent-rose);
+        width: 38px; height: 38px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14px;
+    }
+    .btn-delete-char:hover { background: rgba(244, 63, 94, 0.2); }
+    .btn-delete-char:disabled { opacity: 0.3; cursor: not-allowed; }
+    
+    .btn-add-char-trigger {
+        background: rgba(168, 85, 247, 0.1); border: 1px dashed rgba(168, 85, 247, 0.4); color: var(--accent-purple);
+        padding: 10px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-align: center; transition: all 0.2s;
+    }
+    .btn-add-char-trigger:hover { background: rgba(168, 85, 247, 0.18); }
+    .btn-add-char-trigger:disabled { display: none; }
+
+    .btn-action-primary {
+        width: 100%; background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);
+        border: none; color: #fff; padding: 14px; border-radius: 8px;
+        font-weight: 600; font-size: 14px; cursor: pointer; transition: opacity 0.2s; margin-top: auto;
+    }
+
+    /* Output Render Preview Terminal */
+    .output-preview-container { display: flex; flex-direction: column; gap: 20px; }
+    .terminal-header {
+        background: #1e293b; border: 1px solid var(--border-color);
+        border-top-left-radius: 12px; border-top-right-radius: 12px;
+        padding: 12px 16px; display: flex; justify-content: space-between; align-items: center;
+        margin-bottom: -21px;
+    }
+    .terminal-dots { display: flex; gap: 6px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-r { background: #ef4444; } .dot-y { background: #f59e0b; } .dot-g { background: #10b981; }
+
+    .narrative-payload {
+        background: #090d16; border: 1px solid var(--border-color);
+        border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;
+        padding: 32px; font-size: 15px; color: #e2e8f0; overflow-y: auto;
+        min-height: 540px; line-height: 1.7;
+    }
+    .narrative-payload h3 { color: var(--accent-purple); font-size: 20px; margin-top: 0; margin-bottom: 12px; }
+    .narrative-payload b { color: var(--accent-blue); }
+    .narrative-payload hr { border: 0; border-top: 1px dashed var(--border-color); margin: 20px 0; }
+
+    /* Indikator Status */
+    .panel-box.locked h2::after { content: '🔒 Locked'; font-size: 11px; background: rgba(244, 63, 94, 0.1); color: var(--accent-rose); padding: 2px 8px; border-radius: 4px; margin-left: 8px; font-weight: 500; }
+    .panel-box.editable h2::after { content: '✍️ Editing'; font-size: 11px; background: rgba(16, 185, 129, 0.1); color: var(--accent-green); padding: 2px 8px; border-radius: 4px; margin-left: 8px; font-weight: 500; }
+
+    .toast-notif {
+        position: fixed; bottom: 24px; right: 24px;
+        background: var(--accent-purple); color: #ffffff; font-weight: 600;
+        padding: 12px 24px; border-radius: 8px; font-size: 13px;
+        box-shadow: 0 10px 25px -5px rgba(0,0,0,0.4);
+        transform: translateY(100px); opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 9999;
+    }
+    .toast-notif.show { transform: translateY(0); opacity: 1; }
+    
+    ]]></b:skin>
+</head>
+<body>
+
+    <div class='dashboard-container'>
+        <aside class='sidebar'>
+            <div class='brand-section'>
+                <div class='brand-logo'/>
+                <div class='brand-name'>
+                    <a expr:href='data:blog.homepageUrl'><data:blog.title/></a>
+                </div>
+            </div>
+            
+            <nav class='nav-menu'>
+                <button class='nav-item active' id='btn-tab-workspace' onclick='switchTab(&quot;workspace&quot;)'>
+                    <span class='icon'>📝</span> Workspace Utama
+                </button>
+                <button class='nav-item' id='btn-tab-character' onclick='switchTab(&quot;character&quot;)'>
+                    <span class='icon'>🎭</span> Manajemen Karakter
+                </button>
+                <button class='nav-item' id='btn-tab-world' onclick='switchTab(&quot;world&quot;)'>
+                    <span class='icon'>🗺&#65039;</span> Alur &amp; Worldbuilding
+                </button>
+                <button class='nav-item' id='btn-tab-visual' onclick='switchTab(&quot;visual&quot;)'>
+                    <span class='icon'>🎨</span> Galeri Estetika Visual
+                </button>
+            </nav>
+            
+            <div class='system-status'>
+                <div class='status-pulse'/>
+                <span>Engine Active &amp; Synced</span>
+            </div>
+        </aside>
+
+        <main class='main-workspace'>
+            <header class='workspace-header'>
+                <div class='workspace-title'>
+                    <h1>Narrative Core Environment</h1>
+                    <p>Konfigurator penulisan cerita, arah kreatif, dan penyusunan naskah terstruktur secara real-time.</p>
+                </div>
+                <div class='quick-stats'>
+                    <button class='btn-zen' onclick='toggleZenMode()'>👁&#65039; Toggle Zen Mode</button>
+                    <div class='stat-badge'>🔮 Mode: <span id='current-mode-display'>Workspace Utama</span></div>
+                </div>
+            </header>
+            
+            <div class='workspace-grid-system'>
+                <div class='config-panel-section'>
+                    
+                    <div class='tab-panel active' id='panel-workspace'>
+                        <div class='panel-box locked' id='box-workspace'>
+                            <div class='panel-header-row'>
+                                <h2>📝 Workspace Utama</h2>
+                                <div class='panel-actions'>
+                                    <button class='btn-control-small btn-edit' id='edit-workspace' onclick='enableEditing(&quot;workspace&quot;)'>&#9999;&#65039; Edit</button>
+                                    <button class='btn-control-small btn-save' id='save-workspace' onclick='savePanelData(&quot;workspace&quot;)'>💾 Save</button>
+                                </div>
+                            </div>
+                            <div class='panel-content-wrapper'>
+                                <div class='form-group'>
+                                    <label class='form-label'>Judul Proyek / Premis Utama</label>
+                                    <input class='form-control' disabled='disabled' id='story_title' oninput='compileStory()' type='text' value='Dua Sisi Cakrawala'/>
+                                </div>
+                                <div class='form-group'>
+                                    <label class='form-label'>Deskripsi Plot / Sinopsis Singkat</label>
+                                    <textarea class='form-control' disabled='disabled' id='story_synopsis' oninput='compileStory()'>Perjalanan emosional dua individu dengan latar belakang dunia yang bertolak belakang, mencoba menyatukan visi di tengah badai konflik sosial modern.</textarea>
+                                </div>
+                            </div>
+                            <button class='btn-action-primary' onclick='copyNarrative()'>Export &amp; Copy Narrative</button>
+                        </div>
+                    </div>
+
+                    <div class='tab-panel' id='panel-character'>
+                        <div class='panel-box locked' id='box-character'>
+                            <div class='panel-header-row'>
+                                <h2>🎭 Manajemen Karakter</h2>
+                                <div class='panel-actions'>
+                                    <button class='btn-control-small btn-edit' id='edit-character' onclick='enableEditing(&quot;character&quot;)'>&#9999;&#65039; Edit</button>
+                                    <button class='btn-control-small btn-save' id='save-character' onclick='savePanelData(&quot;character&quot;)'>💾 Save</button>
+                                </div>
+                            </div>
+                            
+                            <div class='panel-content-wrapper'>
+                                <label class='form-label'>Daftar Nama &amp; Deskripsi Peran Tokoh</label>
+                                
+                                <div class='character-list-builder' id='character_container'>
+                                    </div>
+                                
+                                <button class='btn-add-char-trigger' disabled='disabled' id='btn_add_char' onclick='addNewCharacterRow(&quot;&quot;, &quot;&quot;)'>&#10133; Tambah Karakter Baru</button>
+                            </div>
+                            
+                            <button class='btn-action-primary' onclick='copyNarrative()'>Export &amp; Copy Narrative</button>
+                        </div>
+                    </div>
+
+                    <div class='tab-panel' id='panel-world'>
+                        <div class='panel-box locked' id='box-world'>
+                            <div class='panel-header-row'>
+                                <h2>🗺&#65039; Alur &amp; Worldbuilding</h2>
+                                <div class='panel-actions'>
+                                    <button class='btn-control-small btn-edit' id='edit-world' onclick='enableEditing(&quot;world&quot;)'>&#9999;&#65039; Edit</button>
+                                    <button class='btn-control-small btn-save' id='save-world' onclick='savePanelData(&quot;world&quot;)'>💾 Save</button>
+                                </div>
+                            </div>
+                            <div class='panel-content-wrapper'>
+                                <div class='form-group'>
+                                    <label class='form-label'>Latar Tempat &amp; Suasana Utama</label>
+                                    <input class='form-control' disabled='disabled' id='story_setting' oninput='compileStory()' type='text' value='Kota Metropolitan Baru &amp; Sudut Kota Tua'/>
+                                </div>
+                                <div class='form-group'>
+                                    <label class='form-label'>Poin Konflik Utama / Krisis</label>
+                                    <textarea class='form-control' disabled='disabled' id='story_conflict' oninput='compileStory()'>Rencana penggusuran kawasan bersejarah demi proyek megapolitan yang sengaja ditutupi korporasi raksasa.</textarea>
+                                </div>
+                            </div>
+                            <button class='btn-action-primary' onclick='copyNarrative()'>Export &amp; Copy Narrative</button>
+                        </div>
+                    </div>
+
+                    <div class='tab-panel' id='panel-visual'>
+                        <div class='panel-box locked' id='box-visual'>
+                            <div class='panel-header-row'>
+                                <h2>🎨 Galeri Estetika Visual</h2>
+                                <div class='panel-actions'>
+                                    <button class='btn-control-small btn-edit' id='edit-visual' onclick='enableEditing(&quot;visual&quot;)'>&#9999;&#65039; Edit</button>
+                                    <button class='btn-control-small btn-save' id='save-visual' onclick='savePanelData(&quot;visual&quot;)'>💾 Save</button>
+                                </div>
+                            </div>
+                            <div class='panel-content-wrapper'>
+                                <div class='form-group'>
+                                    <label class='form-label'>Gaya Estetika / Referensi Visual</label>
+                                    <input class='form-control' disabled='disabled' id='story_style' oninput='compileStory()' type='text' value='Studio Ghibli dengan sentuhan Sinematik Chiaroscuro'/>
+                                </div>
+                                <div class='form-group'>
+                                    <label class='form-label'>Palet Warna &amp; Pencahayaan (Lighting)</label>
+                                    <input class='form-control' disabled='disabled' id='story_lighting' oninput='compileStory()' type='text' value='Deep Amber, Midnight Blue, Profoto High-Contrast Shadow'/>
+                                </div>
+                            </div>
+                            <button class='btn-action-primary' onclick='copyNarrative()'>Export &amp; Copy Narrative</button>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <section class='output-preview-container'>
+                    <div class='terminal-header'>
+                        <div class='terminal-dots'>
+                            <div class='dot dot-r'/>
+                            <div class='dot dot-y'/>
+                            <div class='dot dot-g'/>
+                        </div>
+                    </div>
+                    <div class='narrative-payload' id='narrative_live_view'/>
+                </section>
+            </div>
+            
+            <div style='display:none;'>
+                <b:section id='main-hidden-feed' showaddelement='false'>
+                  <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='1'>
+                    <b:widget-settings>
+                      <b:widget-setting name='showDateHeader'>true</b:widget-setting>
+                      <b:widget-setting name='style.textcolor'>#ffffff</b:widget-setting>
+                      <b:widget-setting name='showShareButtons'>false</b:widget-setting>
+                      <b:widget-setting name='showCommentLink'>true</b:widget-setting>
+                      <b:widget-setting name='style.urlcolor'>#ffffff</b:widget-setting>
+                      <b:widget-setting name='showAuthor'>true</b:widget-setting>
+                      <b:widget-setting name='style.linkcolor'>#ffffff</b:widget-setting>
+                      <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
+                      <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
+                      <b:widget-setting name='reactionsLabel'/>
+                      <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
+                      <b:widget-setting name='style.layout'>1x1</b:widget-setting>
+                      <b:widget-setting name='showLabels'>true</b:widget-setting>
+                      <b:widget-setting name='showLocation'>true</b:widget-setting>
+                      <b:widget-setting name='showTimestamp'>true</b:widget-setting>
+                      <b:widget-setting name='postsPerAd'>1</b:widget-setting>
+                      <b:widget-setting name='showBacklinks'>false</b:widget-setting>
+                      <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
+                      <b:widget-setting name='showInlineAds'>false</b:widget-setting>
+                      <b:widget-setting name='showReactions'>false</b:widget-setting>
+                    </b:widget-settings>
+                    <b:includable id='main' var='top'>
+                            <b:loop values='data:posts' var='post'>
+                                <b:include data='post' name='post'/>
+                            </b:loop>
+                        </b:includable>
+                    <b:includable id='backlinkDeleteIcon' var='backlink'/>
+                    <b:includable id='backlinks' var='post'/>
+                    <b:includable id='comment-form' var='post'>
+  <div class='comment-form'>
+    <a name='comment-form'/>
+    <b:if cond='data:mobile'>
+      <h4 id='comment-post-message'>
+        <a expr:id='data:widget.instanceId + &quot;_comment-editor-toggle-link&quot;' href='javascript:void(0)'><data:postCommentMsg/></a></h4>
+      <p><data:blogCommentMessage/></p>
+      <data:blogTeamBlogMessage/>
+      <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src'/>
+      <iframe allowtransparency='true' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight' frameborder='0' id='comment-editor' name='comment-editor' src='' style='display: none' width='100%'/>
+    <b:else/>
+      <h4 id='comment-post-message'><data:postCommentMsg/></h4>
+      <p><data:blogCommentMessage/></p>
+      <data:blogTeamBlogMessage/>
+      <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src'/>
+      <iframe allowtransparency='true' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
+    </b:if>
+    <data:post.cmtfpIframe/>
+    <script type='text/javascript'>
+      BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);
+    </script>
+  </div>
+</b:includable>
+                    <b:includable id='commentDeleteIcon' var='comment'>
+  <span expr:class='&quot;item-control &quot; + data:comment.adminClass'>
+    <b:if cond='data:showCmtPopup'>
+      <div class='goog-toggle-button'>
+        <div class='goog-inline-block comment-action-icon'/>
+      </div>
+    <b:else/>
+      <a class='comment-delete' expr:href='data:comment.deleteUrl' expr:title='data:top.deleteCommentMsg'>
+        <img src='https://resources.blogblog.com/img/icon_delete13.gif'/>
+      </a>
+    </b:if>
+  </span>
+</b:includable>
+                    <b:includable id='comment_count_picker' var='post'>
+  <a class='comment-link' expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'>
+    <data:post.commentLabelFull/>:
+  </a>
+</b:includable>
+                    <b:includable id='comment_picker' var='post'>
+  <b:if cond='data:post.showThreadedComments'>
+    <b:include data='post' name='threaded_comments'/>
+  <b:else/>
+    <b:include data='post' name='comments'/>
+  </b:if>
+</b:includable>
+                    <b:includable id='comments' var='post'>
+  <div class='comments' id='comments'>
+    <a name='comments'/>
+    <b:if cond='data:post.allowComments'>
+      <h4><data:post.commentLabelFull/>:</h4>
+
+      <b:if cond='data:post.commentPagingRequired'>
+        <span class='paging-control-container'>
+          <b:if cond='data:post.hasOlderLinks'>
+            <a expr:class='data:post.oldLinkClass' expr:href='data:post.oldestLinkUrl'><data:post.oldestLinkText/></a>
+              &#160;
+            <a expr:class='data:post.oldLinkClass' expr:href='data:post.olderLinkUrl'><data:post.olderLinkText/></a>
+              &#160;
+          </b:if>
+
+          <data:post.commentRangeText/>
+
+          <b:if cond='data:post.hasNewerLinks'>
+            &#160;
+            <a expr:class='data:post.newLinkClass' expr:href='data:post.newerLinkUrl'><data:post.newerLinkText/></a>
+            &#160;
+            <a expr:class='data:post.newLinkClass' expr:href='data:post.newestLinkUrl'><data:post.newestLinkText/></a>
+          </b:if>
+        </span>
+      </b:if>
+
+      <div expr:id='data:widget.instanceId + &quot;_comments-block-wrapper&quot;'>
+        <dl expr:class='data:post.avatarIndentClass' id='comments-block'>
+          <b:loop values='data:post.comments' var='comment'>
+            <dt expr:class='&quot;comment-author &quot; + data:comment.authorClass' expr:id='data:comment.anchorName'>
+              <b:if cond='data:comment.favicon'>
+                <img expr:src='data:comment.favicon' height='16px' style='margin-bottom:-2px;' width='16px'/>
+              </b:if>
+              <a expr:name='data:comment.anchorName'/>
+              <b:if cond='data:blog.enabledCommentProfileImages'>
+                <data:comment.authorAvatarImage/>
+              </b:if>
+              <b:if cond='data:comment.authorUrl'>
+                <a expr:href='data:comment.authorUrl' rel='nofollow'><data:comment.author/></a>
+              <b:else/>
+                <data:comment.author/>
+              </b:if>
+              <data:commentPostedByMsg/>
+            </dt>
+            <dd class='comment-body' expr:id='data:widget.instanceId + data:comment.cmtBodyIdPostfix'>
+              <b:if cond='data:comment.isDeleted'>
+                <span class='deleted-comment'><data:comment.body/></span>
+              <b:else/>
+                <p>
+                  <data:comment.body/>
+                </p>
+              </b:if>
+            </dd>
+            <dd class='comment-footer'>
+              <span class='comment-timestamp'>
+                <a expr:href='data:comment.url' title='comment permalink'>
+                  <data:comment.timestamp/>
+                </a>
+                <b:include data='comment' name='commentDeleteIcon'/>
+              </span>
+            </dd>
+          </b:loop>
+        </dl>
+      </div>
+
+      <b:if cond='data:post.commentPagingRequired'>
+        <span class='paging-control-container'>
+          <a expr:class='data:post.oldLinkClass' expr:href='data:post.oldestLinkUrl'>
+            <data:post.oldestLinkText/>
+          </a>
+          <a expr:class='data:post.oldLinkClass' expr:href='data:post.olderLinkUrl'>
+            <data:post.olderLinkText/>
+          </a>
+          &#160;
+          <data:post.commentRangeText/>
+          &#160;
+          <a expr:class='data:post.newLinkClass' expr:href='data:post.newerLinkUrl'>
+            <data:post.newerLinkText/>
+          </a>
+          <a expr:class='data:post.newLinkClass' expr:href='data:post.newestLinkUrl'>
+            <data:post.newestLinkText/>
+          </a>
+        </span>
+      </b:if>
+
+      <p class='comment-footer'>
+        <b:if cond='data:post.embedCommentForm'>
+          <b:if cond='data:post.allowNewComments'>
+            <b:include data='post' name='comment-form'/>
+          <b:else/>
+            <data:post.noNewCommentsText/>
+          </b:if>
+        <b:elseif cond='data:post.allowComments'/>
+          <a expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'><data:postCommentMsg/></a>
+        </b:if>
+      </p>
+    </b:if>
+    <b:if cond='data:showCmtPopup'>
+      <div id='comment-popup'>
+        <iframe allowtransparency='true' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
+        </iframe>
+      </div>
+    </b:if>
+
+  </div>
+</b:includable>
+                    <b:includable id='feedLinks'>
+  <b:if cond='data:blog.pageType != &quot;item&quot;'> <!-- Blog feed links -->
+    <b:if cond='data:feedLinks'>
+      <div class='blog-feeds'>
+        <b:include data='feedLinks' name='feedLinksBody'/>
+      </div>
+    </b:if>
+
+  <b:else/> <!--Post feed links -->
+    <div class='post-feeds'>
+      <b:loop values='data:posts' var='post'>
+        <b:include cond='data:post.allowComments and data:post.feedLinks' data='post.feedLinks' name='feedLinksBody'/>
+      </b:loop>
+    </div>
+  </b:if>
+</b:includable>
+                    <b:includable id='feedLinksBody' var='links'>
+  <div class='feed-links'>
+  <data:feedLinksMsg/>
+  <b:loop values='data:links' var='f'>
+     <a class='feed-link' expr:href='data:f.url' expr:type='data:f.mimeType' target='_blank'><data:f.name/> (<data:f.feedType/>)</a>
+  </b:loop>
+  </div>
+</b:includable>
+                    <b:includable id='iframe_comments' var='post'>
+  <!-- G+ comments, no longer available. The includable is retained for backwards-compatibility. -->
+</b:includable>
+                    <b:includable id='mobile-index-post' var='post'>
+  <div class='mobile-date-outer date-outer'>
+    <b:if cond='data:post.dateHeader'>
+      <div class='date-header'>
+        <span><data:post.dateHeader/></span>
+      </div>
+    </b:if>
+
+    <div class='mobile-post-outer'>
+      <a expr:href='data:post.url'>
+        <h3 class='mobile-index-title entry-title' itemprop='name'>
+          <data:post.title/>
+        </h3>
+
+        <div class='mobile-index-arrow'>&amp;rsaquo;</div>
+
+        <div class='mobile-index-contents'>
+          <b:if cond='data:post.thumbnailUrl'>
+            <div class='mobile-index-thumbnail'>
+              <div class='Image'>
+                <img expr:src='data:post.thumbnailUrl'/>
+              </div>
+            </div>
+          </b:if>
+
+          <div class='post-body'>
+            <b:if cond='data:post.snippet'><data:post.snippet/></b:if>
+          </div>
+        </div>
+
+        <div style='clear: both;'/>
+      </a>
+
+      <div class='mobile-index-comment'>
+        <b:include cond='data:blog.pageType != &quot;static_page&quot;                          and data:post.allowComments                          and data:post.numComments != 0' data='post' name='comment_count_picker'/>
+      </div>
+    </div>
+  </div>
+</b:includable>
+                    <b:includable id='mobile-main' var='top'>
+    <!-- posts -->
+    <div class='blog-posts hfeed'>
+
+      <b:include data='top' name='status-message'/>
+
+      <b:if cond='data:blog.pageType == &quot;index&quot;'>
+        <b:loop values='data:posts' var='post'>
+          <b:include data='post' name='mobile-index-post'/>
+        </b:loop>
+      <b:else/>
+        <b:loop values='data:posts' var='post'>
+          <b:include data='post' name='mobile-post'/>
+        </b:loop>
+      </b:if>
+    </div>
+
+   <b:include name='mobile-nextprev'/>
+</b:includable>
+                    <b:includable id='mobile-nextprev'>
+  <div class='blog-pager' id='blog-pager'>
+    <b:if cond='data:newerPageUrl'>
+      <div class='mobile-link-button' id='blog-pager-newer-link'>
+      <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:newerPageTitle'>&amp;lsaquo;</a>
+      </div>
+    </b:if>
+
+    <b:if cond='data:olderPageUrl'>
+      <div class='mobile-link-button' id='blog-pager-older-link'>
+      <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:olderPageTitle'>&amp;rsaquo;</a>
+      </div>
+    </b:if>
+
+    <div class='mobile-link-button' id='blog-pager-home-link'>
+    <a class='home-link' expr:href='data:blog.homepageUrl'><data:homeMsg/></a>
+    </div>
+
+    <div class='mobile-desktop-link'>
+      <a class='home-link' expr:href='data:desktopLinkUrl'><data:desktopLinkMsg/></a>
+    </div>
+
+  </div>
+  <div class='clear'/>
+</b:includable>
+                    <b:includable id='mobile-post' var='post'>
+  <div class='date-outer'>
+    <b:if cond='data:post.dateHeader'>
+      <h2 class='date-header'><span><data:post.dateHeader/></span></h2>
+    </b:if>
+    <div class='date-posts'>
+      <div class='post-outer'>
+
+        <div class='post hentry uncustomized-post-template' itemscope='itemscope' itemtype='http://schema.org/BlogPosting'>
+          <b:if cond='data:post.thumbnailUrl'>
+            <meta expr:content='data:post.thumbnailUrl' itemprop='image_url'/>
+          </b:if>
+          <meta expr:content='data:blog.blogId' itemprop='blogId'/>
+          <meta expr:content='data:post.id' itemprop='postId'/>
+
+          <a expr:name='data:post.id'/>
+          <b:if cond='data:post.title'>
+            <h3 class='post-title entry-title' itemprop='name'>
+              <b:if cond='data:post.link'>
+                <a expr:href='data:post.link'><data:post.title/></a>
+              <b:elseif cond='data:post.url and data:blog.url != data:post.url'/>
+                <a expr:href='data:post.url'><data:post.title/></a>
+              <b:else/>
+                <data:post.title/>
+              </b:if>
+            </h3>
+          </b:if>
+
+          <div class='post-header'>
+            <div class='post-header-line-1'/>
+          </div>
+
+          <div class='post-body entry-content' expr:id='&quot;post-body-&quot; + data:post.id' itemprop='articleBody'>
+            <data:post.body/>
+            <div style='clear: both;'/> <!-- clear for photos floats -->
+          </div>
+
+          <div class='post-footer'>
+            <div class='post-footer-line post-footer-line-1'>
+              <span class='post-author vcard'>
+                <b:if cond='data:top.showAuthor'>
+                  <b:if cond='data:post.authorProfileUrl'>
+                    <span class='fn' itemprop='author' itemscope='itemscope' itemtype='http://schema.org/Person'>
+                      <meta expr:content='data:post.authorProfileUrl' itemprop='url'/>
+                      <a expr:href='data:post.authorProfileUrl' rel='author' title='author profile'>
+                        <span itemprop='name'><data:post.author/></span>
+                      </a>
+                    </span>
+                  <b:else/>
+                    <span class='fn' itemprop='author' itemscope='itemscope' itemtype='http://schema.org/Person'>
+                      <span itemprop='name'><data:post.author/></span>
+                    </span>
+                  </b:if>
+                </b:if>
+              </span>
+
+              <span class='post-timestamp'>
+                <b:if cond='data:top.showTimestamp'>
+                  <data:top.timestampLabel/>
+                  <b:if cond='data:post.url'>
+                    <meta expr:content='data:post.url.canonical' itemprop='url'/>
+                    <a class='timestamp-link' expr:href='data:post.url' rel='bookmark' title='permanent link'><abbr class='published' expr:title='data:post.timestampISO8601' itemprop='datePublished'><data:post.timestamp/></abbr></a>
+                  </b:if>
+                </b:if>
+              </span>
+
+              <span class='post-comment-link'>
+                <b:include cond='data:blog.pageType not in {&quot;item&quot;,&quot;static_page&quot;}                                  and data:post.allowComments' data='post' name='comment_count_picker'/>
+              </span>
+            </div>
+
+            <div class='post-footer-line post-footer-line-2'>
+              <b:if cond='data:top.showMobileShare'>
+                <div class='mobile-link-button goog-inline-block' id='mobile-share-button'>
+                  <a href='javascript:void(0);'><data:shareMsg/></a>
+                </div>
+              </b:if>
+            </div>
+
+          </div>
+        </div>
+
+        <b:include cond='data:blog.pageType in {&quot;static_page&quot;,&quot;item&quot;}' data='post' name='comment_picker'/>
+      </div>
+    </div>
+  </div>
+</b:includable>
+                    <b:includable id='nextprev'>
+  <div class='blog-pager' id='blog-pager'>
+    <b:if cond='data:newerPageUrl'>
+      <span id='blog-pager-newer-link'>
+      <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:newerPageTitle'><data:newerPageTitle/></a>
+      </span>
+    </b:if>
+
+    <b:if cond='data:olderPageUrl'>
+      <span id='blog-pager-older-link'>
+      <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:olderPageTitle'><data:olderPageTitle/></a>
+      </span>
+    </b:if>
+
+    <a class='home-link' expr:href='data:blog.homepageUrl'><data:homeMsg/></a>
+
+    <b:if cond='data:mobileLinkUrl'>
+      <div class='blog-mobile-link'>
+        <a expr:href='data:mobileLinkUrl'><data:mobileLinkMsg/></a>
+      </div>
+    </b:if>
+
+  </div>
+  <div class='clear'/>
+</b:includable>
+                    <b:includable id='post' var='post'>
+  <div class='post hentry uncustomized-post-template' itemprop='blogPost' itemscope='itemscope' itemtype='http://schema.org/BlogPosting'>
+    <b:if cond='data:post.firstImageUrl'>
+      <meta expr:content='data:post.firstImageUrl' itemprop='image_url'/>
+    </b:if>
+    <meta expr:content='data:blog.blogId' itemprop='blogId'/>
+    <meta expr:content='data:post.id' itemprop='postId'/>
+
+    <a expr:name='data:post.id'/>
+    <b:if cond='data:post.title'>
+      <h3 class='post-title entry-title' itemprop='name'>
+      <b:if cond='data:post.link or (data:post.url and data:blog.url != data:post.url)'>
+        <a expr:href='data:post.link ? data:post.link : data:post.url'><data:post.title/></a>
+      <b:else/>
+        <data:post.title/>
+      </b:if>
+      </h3>
+    </b:if>
+
+    <div class='post-header'>
+    <div class='post-header-line-1'/>
+    </div>
+
+    <!-- Then use the post body as the schema.org description, for good G+/FB snippeting. -->
+    <div class='post-body entry-content' expr:id='&quot;post-body-&quot; + data:post.id' expr:itemprop='(data:blog.metaDescription ? &quot;&quot; : &quot;description &quot;) + &quot;articleBody&quot;'>
+      <data:post.body/>
+      <div style='clear: both;'/> <!-- clear for photos floats -->
+    </div>
+
+    <b:if cond='data:post.hasJumpLink'>
+      <div class='jump-link'>
+        <a expr:href='data:post.url + &quot;#more&quot;' expr:title='data:post.title'><data:post.jumpText/></a>
+      </div>
+    </b:if>
+
+    <div class='post-footer'>
+    <div class='post-footer-line post-footer-line-1'>
+      <span class='post-author vcard'>
+        <b:if cond='data:top.showAuthor'>
+          <data:top.authorLabel/>
+            <b:if cond='data:post.authorProfileUrl'>
+              <span class='fn' itemprop='author' itemscope='itemscope' itemtype='http://schema.org/Person'>
+                <meta expr:content='data:post.authorProfileUrl' itemprop='url'/>
+                <a class='g-profile' expr:href='data:post.authorProfileUrl' rel='author' title='author profile'>
+                  <span itemprop='name'><data:post.author/></span>
+                </a>
+              </span>
+            <b:else/>
+              <span class='fn' itemprop='author' itemscope='itemscope' itemtype='http://schema.org/Person'>
+                <span itemprop='name'><data:post.author/></span>
+              </span>
+            </b:if>
+        </b:if>
+      </span>
+
+      <span class='post-timestamp'>
+        <b:if cond='data:top.showTimestamp'>
+          <data:top.timestampLabel/>
+          <b:if cond='data:post.url'>
+            <meta expr:content='data:post.url.canonical' itemprop='url'/>
+            <a class='timestamp-link' expr:href='data:post.url' rel='bookmark' title='permanent link'><abbr class='published' expr:title='data:post.timestampISO8601' itemprop='datePublished'><data:post.timestamp/></abbr></a>
+          </b:if>
+        </b:if>
+      </span>
+
+      <span class='post-comment-link'>
+        <b:include cond='data:blog.pageType not in {&quot;item&quot;,&quot;static_page&quot;}                          and data:post.allowComments' data='post' name='comment_count_picker'/>
+      </span>
+
+      <span class='post-icons'>
+        <!-- email post links -->
+        <b:if cond='data:post.emailPostUrl'>
+          <span class='item-action'>
+          <a expr:href='data:post.emailPostUrl' expr:title='data:top.emailPostMsg'>
+            <img alt='' class='icon-action' height='13' src='https://resources.blogblog.com/img/icon18_email.gif' width='18'/>
+          </a>
+          </span>
+        </b:if>
+
+        <!-- quickedit pencil -->
+        <b:include data='post' name='postQuickEdit'/>
+      </span>
+
+      <!-- share buttons -->
+      <div class='post-share-buttons goog-inline-block'>
+        <b:include cond='data:post.sharePostUrl' data='post' name='shareButtons'/>
+      </div>
+
+      </div>
+
+      <div class='post-footer-line post-footer-line-2'>
+      <span class='post-labels'>
+        <b:if cond='data:top.showPostLabels and data:post.labels'>
+          <data:postLabelsLabel/>
+          <b:loop values='data:post.labels' var='label'>
+            <a expr:href='data:label.url' rel='tag'><data:label.name/></a><b:if cond='not data:label.isLast'>,</b:if>
+          </b:loop>
+        </b:if>
+      </span>
+      </div>
+
+      <div class='post-footer-line post-footer-line-3'>
+      <span class='post-location'>
+        <b:if cond='data:top.showLocation and data:post.location'>
+          <data:postLocationLabel/>
+          <a expr:href='data:post.location.mapsUrl' target='_blank'><data:post.location.name/></a>
+        </b:if>
+      </span>
+      </div>
+      <b:if cond='data:post.authorAboutMe'>
+        <div class='author-profile' itemprop='author' itemscope='itemscope' itemtype='http://schema.org/Person'>
+          <b:if cond='data:post.authorPhoto.url'>
+            <img expr:src='data:post.authorPhoto.url' itemprop='image' width='50px'/>
+          </b:if>
+          <div>
+            <a class='g-profile' expr:href='data:post.authorProfileUrl' itemprop='url' rel='author' title='author profile'>
+              <span itemprop='name'><data:post.author/></span>
+            </a>
+          </div>
+          <span itemprop='description'><data:post.authorAboutMe/></span>
+        </div>
+      </b:if>
+    </div>
+  </div>
+</b:includable>
+                    <b:includable id='postQuickEdit' var='post'>
+  <b:if cond='data:post.editUrl'>
+    <span expr:class='&quot;item-control &quot; + data:post.adminClass'>
+      <a expr:href='data:post.editUrl' expr:title='data:top.editPostMsg'>
+        <img alt='' class='icon-action' height='18' src='https://resources.blogblog.com/img/icon18_edit_allbkg.gif' width='18'/>
+      </a>
+    </span>
+  </b:if>
+</b:includable>
+                    <b:includable id='shareButtons' var='post'>
+  <b:if cond='data:top.showEmailButton'><a class='goog-inline-block share-button sb-email' expr:href='data:post.sharePostUrl + &quot;&amp;target=email&quot;' expr:title='data:top.emailThisMsg' target='_blank'><span class='share-button-link-text'><data:top.emailThisMsg/></span></a></b:if><b:if cond='data:top.showBlogThisButton'><a class='goog-inline-block share-button sb-blog' expr:href='data:post.sharePostUrl + &quot;&amp;target=blog&quot;' expr:onclick='&quot;window.open(this.href, \&quot;_blank\&quot;, \&quot;height=270,width=475\&quot;); return false;&quot;' expr:title='data:top.blogThisMsg' target='_blank'><span class='share-button-link-text'><data:top.blogThisMsg/></span></a></b:if><b:if cond='data:top.showTwitterButton'><a class='goog-inline-block share-button sb-twitter' expr:href='data:post.sharePostUrl + &quot;&amp;target=twitter&quot;' expr:title='data:top.shareToTwitterMsg' target='_blank'><span class='share-button-link-text'><data:top.shareToTwitterMsg/></span></a></b:if><b:if cond='data:top.showFacebookButton'><a class='goog-inline-block share-button sb-facebook' expr:href='data:post.sharePostUrl + &quot;&amp;target=facebook&quot;' expr:onclick='&quot;window.open(this.href, \&quot;_blank\&quot;, \&quot;height=430,width=640\&quot;); return false;&quot;' expr:title='data:top.shareToFacebookMsg' target='_blank'><span class='share-button-link-text'><data:top.shareToFacebookMsg/></span></a></b:if><b:if cond='data:top.showPinterestButton'><a class='goog-inline-block share-button sb-pinterest' expr:href='data:post.sharePostUrl + &quot;&amp;target=pinterest&quot;' expr:title='data:top.shareToPinterestMsg' target='_blank'><span class='share-button-link-text'><data:top.shareToPinterestMsg/></span></a></b:if>
+</b:includable>
+                    <b:includable id='status-message'>
+  <b:if cond='data:navMessage'>
+  <div class='status-msg-wrap'>
+    <div class='status-msg-body'>
+      <data:navMessage/>
+    </div>
+    <div class='status-msg-border'>
+      <div class='status-msg-bg'>
+        <div class='status-msg-hidden'><data:navMessage/></div>
+      </div>
+    </div>
+  </div>
+  <div style='clear: both;'/>
+  </b:if>
+</b:includable>
+                    <b:includable id='threaded-comment-form' var='post'>
+  <div class='comment-form'>
+    <a name='comment-form'/>
+    <b:if cond='data:mobile'>
+      <p><data:blogCommentMessage/></p>
+      <data:blogTeamBlogMessage/>
+      <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src'/>
+      <iframe allowtransparency='true' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight' frameborder='0' id='comment-editor' name='comment-editor' src='' style='display: none' width='100%'/>
+    <b:else/>
+      <p><data:blogCommentMessage/></p>
+      <data:blogTeamBlogMessage/>
+      <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src'/>
+      <iframe allowtransparency='true' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
+    </b:if>
+    <data:post.cmtfpIframe/>
+    <script type='text/javascript'>
+      BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);
+    </script>
+  </div>
+</b:includable>
+                    <b:includable id='threaded_comment_js' var='post'>
+  <script async='async' expr:src='data:post.commentSrc' type='text/javascript'/>
+
+  <script type='text/javascript'>
+    (function() {
+      var items = <data:post.commentJso/>;
+      var msgs = <data:post.commentMsgs/>;
+      var config = <data:post.commentConfig/>;
+
+// <![CDATA[
+      var cursor = null;
+      if (items && items.length > 0) {
+        cursor = parseInt(items[items.length - 1].timestamp) + 1;
+      }
+
+      var bodyFromEntry = function(entry) {
+        var text = (entry &&
+                    ((entry.content && entry.content.$t) ||
+                     (entry.summary && entry.summary.$t))) ||
+            '';
+        if (entry && entry.gd$extendedProperty) {
+          for (var k in entry.gd$extendedProperty) {
+            if (entry.gd$extendedProperty[k].name == 'blogger.contentRemoved') {
+              return '<span class="deleted-comment">' + text + '</span>';
+            }
+          }
+        }
+        return text;
+      }
+
+      var parse = function(data) {
+        cursor = null;
+        var comments = [];
+        if (data && data.feed && data.feed.entry) {
+          for (var i = 0, entry; entry = data.feed.entry[i]; i++) {
+            var comment = {};
+            // comment ID, parsed out of the original id format
+            var id = /blog-(\d+).post-(\d+)/.exec(entry.id.$t);
+            comment.id = id ? id[2] : null;
+            comment.body = bodyFromEntry(entry);
+            comment.timestamp = Date.parse(entry.published.$t) + '';
+            if (entry.author && entry.author.constructor === Array) {
+              var auth = entry.author[0];
+              if (auth) {
+                comment.author = {
+                  name: (auth.name ? auth.name.$t : undefined),
+                  profileUrl: (auth.uri ? auth.uri.$t : undefined),
+                  avatarUrl: (auth.gd$image ? auth.gd$image.src : undefined)
+                };
+              }
+            }
+            if (entry.link) {
+              if (entry.link[2]) {
+                comment.link = comment.permalink = entry.link[2].href;
+              }
+              if (entry.link[3]) {
+                var pid = /.*comments\/default\/(\d+)\?.*/.exec(entry.link[3].href);
+                if (pid && pid[1]) {
+                  comment.parentId = pid[1];
+                }
+              }
+            }
+            comment.deleteclass = 'item-control blog-admin';
+            if (entry.gd$extendedProperty) {
+              for (var k in entry.gd$extendedProperty) {
+                if (entry.gd$extendedProperty[k].name == 'blogger.itemClass') {
+                  comment.deleteclass += ' ' + entry.gd$extendedProperty[k].value;
+                } else if (entry.gd$extendedProperty[k].name == 'blogger.displayTime') {
+                  comment.displayTime = entry.gd$extendedProperty[k].value;
+                }
+              }
+            }
+            comments.push(comment);
+          }
+        }
+        return comments;
+      };
+
+      var paginator = function(callback) {
+        if (hasMore()) {
+          var url = config.feed + '?alt=json&v=2&orderby=published&reverse=false&max-results=50';
+          if (cursor) {
+            url += '&published-min=' + new Date(cursor).toISOString();
+          }
+          window.bloggercomments = function(data) {
+            var parsed = parse(data);
+            cursor = parsed.length < 50 ? null
+                : parseInt(parsed[parsed.length - 1].timestamp) + 1
+            callback(parsed);
+            window.bloggercomments = null;
+          }
+          url += '&callback=bloggercomments';
+          var script = document.createElement('script');
+          script.type = 'text/javascript';
+          script.src = url;
+          document.getElementsByTagName('head')[0].appendChild(script);
+        }
+      };
+      var hasMore = function() {
+        return !!cursor;
+      };
+      var getMeta = function(key, comment) {
+        if ('iswriter' == key) {
+          var matches = !!comment.author
+              && comment.author.name == config.authorName
+              && comment.author.profileUrl == config.authorUrl;
+          return matches ? 'true' : '';
+        } else if ('deletelink' == key) {
+          return config.baseUri + '/comment/delete/'
+               + config.blogId + '/' + comment.id;
+        } else if ('deleteclass' == key) {
+          return comment.deleteclass;
+        }
+        return '';
+      };
+
+      var replybox = null;
+      var replyUrlParts = null;
+      var replyParent = undefined;
+
+      var onReply = function(commentId, domId) {
+        if (replybox == null) {
+          // lazily cache replybox, and adjust to suit this style:
+          replybox = document.getElementById('comment-editor');
+          if (replybox != null) {
+            replybox.height = '250px';
+            replybox.style.display = 'block';
+            replyUrlParts = replybox.src.split('#');
+          }
+        }
+        if (replybox && (commentId !== replyParent)) {
+          replybox.src = '';
+          document.getElementById(domId).insertBefore(replybox, null);
+          replybox.src = replyUrlParts[0]
+              + (commentId ? '&parentID=' + commentId : '')
+              + '#' + replyUrlParts[1];
+          replyParent = commentId;
+        }
+      };
+
+      var hash = (window.location.hash || '#').substring(1);
+      var startThread, targetComment;
+      if (/^comment-form_/.test(hash)) {
+        startThread = hash.substring('comment-form_'.length);
+      } else if (/^c[0-9]+$/.test(hash)) {
+        targetComment = hash.substring(1);
+      }
+
+      // Configure commenting API:
+      var configJso = {
+        'maxDepth': config.maxThreadDepth
+      };
+      var provider = {
+        'id': config.postId,
+        'data': items,
+        'loadNext': paginator,
+        'hasMore': hasMore,
+        'getMeta': getMeta,
+        'onReply': onReply,
+        'rendered': true,
+        'initComment': targetComment,
+        'initReplyThread': startThread,
+        'config': configJso,
+        'messages': msgs
+      };
+
+      var render = function() {
+        if (window.goog && window.goog.comments) {
+          var holder = document.getElementById('comment-holder');
+          window.goog.comments.render(holder, provider);
+        }
+      };
+
+      // render now, or queue to render when library loads:
+      if (window.goog && window.goog.comments) {
+        render();
+      } else {
+        window.goog = window.goog || {};
+        window.goog.comments = window.goog.comments || {};
+        window.goog.comments.loadQueue = window.goog.comments.loadQueue || [];
+        window.goog.comments.loadQueue.push(render);
+      }
+    })();
+// ]]>
+  </script>
+</b:includable>
+                    <b:includable id='threaded_comments' var='post'>
+  <div class='comments' id='comments'>
+    <a name='comments'/>
+    <h4><data:post.commentLabelFull/>:</h4>
+
+    <div class='comments-content'>
+      <b:include cond='data:post.embedCommentForm' data='post' name='threaded_comment_js'/>
+      <div id='comment-holder'>
+         <data:post.commentHtml/>
+      </div>
+    </div>
+
+    <p class='comment-footer'>
+      <b:if cond='data:post.allowNewComments'>
+        <b:include data='post' name='threaded-comment-form'/>
+      <b:else/>
+        <data:post.noNewCommentsText/>
+      </b:if>
+    </p>
+
+    <b:if cond='data:showCmtPopup'>
+      <div id='comment-popup'>
+        <iframe allowtransparency='true' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
+        </iframe>
+      </div>
+    </b:if>
+
+    <div id='backlinks-container'>
+    <div expr:id='data:widget.instanceId + &quot;_backlinks-container&quot;'>
+    </div>
+    </div>
+  </div>
+</b:includable>
+                  </b:widget>
+                </b:section>
+            </div>
+        </main>
+    </div>
+
+    <div class='toast-notif' id='toastEngine'/>
+
+    <script type='text/javascript'>
+        //<![CDATA[
+        
+        // Array Default untuk menampung data Karakter Dinamis
+        let globalCharacters = [
+            { name: "Revan", role: "Protagonis (Arsitek Idealis)" },
+            { name: "Mira", role: "Deuteragonis (Jurnalis Investigasi)" },
+            { name: "Hendra", role: "Antagonis (Direktur Korporasi)" }
+        ];
+
+        // Router Tab Menu Kiri
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById('panel-' + tabId).classList.add('active');
+            document.getElementById('btn-tab-' + tabId).classList.add('active');
+
+            let labelText = document.getElementById('btn-tab-' + tabId).innerText.replace(/[^\w\s]/g, '').trim();
+            document.getElementById('current-mode-display').innerText = labelText;
+            triggerToast("Ruang kerja: " + labelText);
+        }
+
+        // AKSI TOMBOL EDIT: Buka Kunci Bidang
+        function enableEditing(tabId) {
+            let container = document.getElementById('box-' + tabId);
+            container.classList.remove('locked');
+            container.classList.add('editable');
+
+            container.querySelectorAll('.form-control').forEach(input => input.removeAttribute('disabled'));
+            container.querySelectorAll('.char-input-field').forEach(input => input.removeAttribute('disabled'));
+            container.querySelectorAll('.btn-delete-char').forEach(btn => btn.removeAttribute('disabled'));
+            
+            if(tabId === 'character') {
+                document.getElementById('btn_add_char').removeAttribute('disabled');
+            }
+
+            document.getElementById('edit-' + tabId).style.display = 'none';
+            document.getElementById('save-' + tabId).style.display = 'block';
+            triggerToast("Mode penyuntingan aktif.");
+        }
+
+        // AKSI TOMBOL SAVE: Kunci & Sinkronisasi Permanen
+        function savePanelData(tabId) {
+            let container = document.getElementById('box-' + tabId);
+            container.classList.remove('editable');
+            container.classList.add('locked');
+
+            container.querySelectorAll('.form-control').forEach(input => input.setAttribute('disabled', 'disabled'));
+            container.querySelectorAll('.char-input-field').forEach(input => input.setAttribute('disabled', 'disabled'));
+            container.querySelectorAll('.btn-delete-char').forEach(btn => btn.setAttribute('disabled', 'disabled'));
+
+            if(tabId === 'character') {
+                document.getElementById('btn_add_char').setAttribute('disabled', 'disabled');
+                // Tarik struktur data karakter dari form DOM kembali ke Array global
+                syncCharactersFromDOM();
+            }
+
+            persistToStorage();
+            compileStory();
+            document.getElementById('edit-' + tabId).style.display = 'block';
+            document.getElementById('save-' + tabId).style.display = 'none';
+            triggerToast("Data " + tabId + " berhasil disimpan!");
+        }
+
+        // FUNGSI DINAMIS KARAKTER: Menambahkan Baris Form Baru
+        function addNewCharacterRow(nameValue = "", roleValue = "") {
+            let container = document.getElementById('character_container');
+            let timestampId = Date.now() + Math.random().toString(36).substr(2, 5);
+
+            let charRow = document.createElement('div');
+            charRow.className = 'character-row-item';
+            charRow.id = 'char-row-' + timestampId;
+            charRow.innerHTML = `
+                <input type="text" class="form-control char-input-field name-field" oninput="compileStory()" placeholder="Nama Tokoh" value="${nameValue}">
+                <input type="text" class="form-control char-input-field role-field" oninput="compileStory()" placeholder="Peran / Karakteristik" value="${roleValue}">
+                <button class="btn-delete-char" onclick="removeCharacterRow('${timestampId}')" title="Hapus Karakter">🗑️</button>
+            `;
+
+            container.appendChild(charRow);
+            // Gulir ke paling bawah container
+            container.scrollTop = container.scrollHeight;
+            compileStory();
+        }
+
+        // FUNGSI DINAMIS KARAKTER: Menghapus Baris Form Terpilih
+        function removeCharacterRow(id) {
+            let row = document.getElementById('char-row-' + id);
+            if(row) {
+                row.remove();
+                syncCharactersFromDOM();
+                persistToStorage();
+                compileStory();
+                triggerToast("Satu karakter telah dihapus.");
+            }
+        }
+
+        // Sinkronisasi data dari Elemen Input HTML ke struktur Array Objek JavaScript
+        function syncCharactersFromDOM() {
+            let updatedList = [];
+            document.querySelectorAll('.character-row-item').forEach(row => {
+                let name = row.querySelector('.name-field').value.trim();
+                let role = row.querySelector('.role-field').value.trim();
+                if(name !== "" || role !== "") {
+                    updatedList.push({ name: name, role: role });
+                }
+            });
+            globalCharacters = updatedList;
+        }
+
+        // Render struktur list repeater karakter ke layar UI
+        function renderCharacterInputs() {
+            let container = document.getElementById('character_container');
+            container.innerHTML = "";
+            globalCharacters.forEach(char => {
+                addNewCharacterRow(char.name, char.role);
+            });
+        }
+
+        // Kompilator Generator Narasi Real-Time (Sisi Kanan)
+        function compileStory() {
+            let title = document.getElementById('story_title').value;
+            let synopsis = document.getElementById('story_synopsis').value;
+            let setting = document.getElementById('story_setting').value;
+            let conflict = document.getElementById('story_conflict').value;
+            let style = document.getElementById('story_style').value;
+            let lighting = document.getElementById('story_lighting').value;
+
+            // Tarik data karakter secara real-time langsung dari DOM input saat ini
+            let currentChars = [];
+            document.querySelectorAll('.character-row-item').forEach(row => {
+                let name = row.querySelector('.name-field').value.trim();
+                let role = row.querySelector('.role-field').value.trim();
+                if(name) currentChars.push(`• <b>${name}</b>: ${role}`);
+            });
+            
+            let charactersPayloadString = currentChars.length > 0 ? currentChars.join('<br/>') : '<i>Belum ada karakter yang ditambahkan</i>';
+            let characterCleanInline = currentChars.length > 0 ? document.querySelectorAll('.character-row-item').length + ' karakter terdaftar' : 'tanpa karakter';
+
+            let liveView = document.getElementById('narrative_live_view');
+            
+            liveView.innerHTML = `<h3>🔮 BUNDLE PROYEK: ${title}</h3>` +
+                                 `<p><i>${synopsis}</i></p>` +
+                                 `<hr/>` +
+                                 `<p><b>🎭 Arsitektur Barisan Karakter:</b><br/>${charactersPayloadString}</p>` +
+                                 `<p><b>🗺️ World &amp; Konflik:</b><br/>• Latar: ${setting}<br/>• Krisis Utama: ${conflict}</p>` +
+                                 `<p><b>🎨 Direksi Estetika:</b><br/>• Gaya: ${style}<br/>• Pencahayaan: ${lighting}</p>` +
+                                 `<hr/>` +
+                                 `<h5>Prompt Payload Hasil Kompilasi Dinamis:</h5>` +
+                                 `<p style="font-family: 'JetBrains Mono', monospace; font-size:13px; background: rgba(255,255,255,0.03); padding: 14px; border-radius:6px; border: 1px solid var(--border-color); white-space: pre-line;">` +
+                                 `Buat skenario mendalam berdasarkan proyek '${title}' yang berlatar di ${setting} dengan krisis: "${conflict}".\n\n` +
+                                 `Integrasikan jalinan interaksi tokoh-tokoh berikut di dalam alur:\n${currentChars.map(c => c.replace(/<\/?[^>]+(>|$)/g, "")).join('\n')}\n\n` +
+                                 `Visualisasikan tiap adegan secara estetis mengadopsi gaya visual ${style} serta arah skema tata cahaya ${lighting}.` +
+                                 `</p>`;
+        }
+
+        // Fitur Simpan Penyimpanan Internal Browser (LocalStorage)
+        function persistToStorage() {
+            syncCharactersFromDOM(); // Pastikan array sinkron sebelum disimpan
+            let storyData = {
+                title: document.getElementById('story_title').value,
+                synopsis: document.getElementById('story_synopsis').value,
+                setting: document.getElementById('story_setting').value,
+                conflict: document.getElementById('story_conflict').value,
+                style: document.getElementById('story_style').value,
+                lighting: document.getElementById('story_lighting').value,
+                characters: globalCharacters
+            };
+            localStorage.setItem('nce_story_blueprint_v2', JSON.stringify(storyData));
+        }
+
+        // Muat Ulang Data dari Memori Browser saat Membuka Aplikasi
+        function loadStoredData() {
+            let saved = localStorage.getItem('nce_story_blueprint_v2');
+            if (saved) {
+                let data = JSON.parse(saved);
+                if(data.title) document.getElementById('story_title').value = data.title;
+                if(data.synopsis) document.getElementById('story_synopsis').value = data.synopsis;
+                if(data.setting) document.getElementById('story_setting').value = data.setting;
+                if(data.conflict) document.getElementById('story_conflict').value = data.conflict;
+                if(data.style) document.getElementById('story_style').value = data.style;
+                if(data.lighting) document.getElementById('story_lighting').value = data.lighting;
+                if(data.characters) globalCharacters = data.characters;
+            }
+        }
+
+        // Salin Seluruh Blueprint ke Clipboard
+        function copyNarrative() {
+            let title = document.getElementById('story_title').value;
+            let synopsis = document.getElementById('story_synopsis').value;
+            let setting = document.getElementById('story_setting').value;
+            let conflict = document.getElementById('story_conflict').value;
+            let style = document.getElementById('story_style').value;
+            let lighting = document.getElementById('story_lighting').value;
+
+            let charTextList = [];
+            document.querySelectorAll('.character-row-item').forEach(row => {
+                let name = row.querySelector('.name-field').value.trim();
+                let role = row.querySelector('.role-field').value.trim();
+                if(name) charTextList.push(`- ${name}: ${role}`);
+            });
+
+            let cleanText = `PROYEK NARASI MASTERPIECE: ${title}\n` +
+                            `=====================================\n` +
+                            `Sinopsis: ${synopsis}\n\n` +
+                            `🎭 Daftar Karakter:\n${charTextList.join('\n')}\n\n` +
+                            `Latar Tempat: ${setting}\n` +
+                            `Krisis Alur: ${conflict}\n` +
+                            `Gaya Seni: ${style}\n` +
+                            `Pencahayaan: ${lighting}\n\n` +
+                            `Prompt Siap Pakai:\nBuat skenario mendalam berdasarkan proyek '${title}' yang berlatar di ${setting} dengan krisis: "${conflict}". Jalin interaksi antar tokoh:\n${charTextList.join('\n')}\n\nVisualisasikan adegan dengan gaya seni ${style} dan pencahayaan ${lighting}.`;
+
+            navigator.clipboard.writeText(cleanText).then(() => {
+                triggerToast("Seluruh payload dan barisan karakter sukses disalin!");
+            });
+        }
+
+        function toggleZenMode() {
+            document.body.classList.toggle('zen-mode-active');
+            triggerToast(document.body.classList.contains('zen-mode-active') ? "Zen Mode Aktif." : "Zen Mode Nonaktif.");
+        }
+
+        function triggerToast(msg) {
+            let toast = document.getElementById('toastEngine');
+            toast.innerText = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        window.onload = function() {
+            loadStoredData();
+            renderCharacterInputs();
+            // Matikan status disable default di awal render list agar sesuai status terkunci panel
+            document.querySelectorAll('.char-input-field').forEach(input => input.setAttribute('disabled', 'disabled'));
+            document.querySelectorAll('.btn-delete-char').forEach(btn => btn.setAttribute('disabled', 'disabled'));
+            compileStory();
+        };
+        //]]>
+    </script>
+</body>
+</html>
