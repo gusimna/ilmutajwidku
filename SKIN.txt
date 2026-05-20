@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+  <meta content='width=device-width, initial-scale=1' name='viewport'/>
+  <title><data:blog.pageTitle/></title>
+
+  <b:skin><![CDATA[
+    body { margin: 0; padding: 0; background-color: #020617; color: #e2e8f0; font-family: 'Inter', sans-serif; }
+    /* Tambahkan CSS kustom Anda di sini jika perlu */
+  ]]></b:skin>
+
+  <script src='https://cdn.tailwindcss.com'/>
+  <script src='https://unpkg.com/lucide@latest'/>
+</head>
+<body>
+
+  <div class='p-10'>
+    <h1>Selamat Datang di Architect v3.0</h1>
+  </div>
+
+  <script type='text/javascript'>
+    //<![CDATA[
+    console.log("Sistem Siap");
+    //]]>
+  </script>
+</body>
+</html>

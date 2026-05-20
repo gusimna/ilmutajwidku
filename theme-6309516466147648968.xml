@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <b:skin><![CDATA[body{margin:0;padding:0;font-family:sans-serif;}]]></b:skin>
+</head>
+<body>
+    <div style='background:#ffffff; padding:24px; border-radius:30px; box-shadow:0 10px 20px rgba(0,0,0,0.1); width:100%; max-width:500px; margin:20px auto;'>
+        <h1 style='text-align:center; font-weight:bold; color:#1e3a8a; margin-bottom:15px;'>KISAH NYATA</h1>
+        
+        <label style='font-size:10px; font-weight:bold; color:#1e40af;'>PREMIS KISAH</label>
+        <textarea id='premis' placeholder='Inti cerita...' style='width:100%; padding:10px; border:1px solid #bfdbfe; border-radius:10px; background:#eff6ff; margin-bottom:10px;'/>
+        
+        <label style='font-size:10px; font-weight:bold; color:#1e40af;'>BUMBU CERITA</label>
+        <textarea id='feedback' placeholder='Tambahi dengan bumbu cerita disini' style='width:100%; padding:10px; border:1px solid #bfdbfe; border-radius:10px; background:#eff6ff; margin-bottom:15px;'/>
+        
+        <div style='display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:10px;'>
+            <button id='btnAcak' style='padding:10px; background:#dbeafe; color:#1e3a8a; border-radius:10px; font-weight:bold; cursor:pointer;'>ACAK JUDUL</button>
+            <button id='btnReset' style='padding:10px; background:#fee2e2; color:#991b1b; border-radius:10px; font-weight:bold; cursor:pointer;'>RESET</button>
+        </div>
+        
+        <button id='btnInitial' style='width:100%; padding:15px; background:#2563eb; color:white; border-radius:10px; font-weight:bold; margin-bottom:10px; cursor:pointer;'>COPY INITIAL PROMPT</button>
+        <button id='btnContinue' style='width:100%; padding:15px; background:#3b82f6; color:white; border-radius:10px; font-weight:bold; cursor:pointer;'>COPY CONTINUE CMD</button>
+        
+        <p id='status' style='text-align:center; font-size:10px; color:#60a5fa; margin-top:15px;'>SYSTEM READY</p>
+    </div>
+
+    <script>
+        // 1. COPY INITIAL PROMPT
+        document.getElementById(&#39;btnInitial&#39;).onclick = function() {
+            const p = document.getElementById(&#39;premis&#39;).value;
+            const f = document.getElementById(&#39;feedback&#39;).value;
+            const inst = f.trim() !== &quot;&quot; ? f : &quot;Buat alur cerita yang sensual, penuh gairah, dan nakal agar pembaca terbawa suasana.&quot;;
+            const prompt = `Act as a Professional Novelist. Premise: &quot;${p}&quot;. Style/Guidelines: &quot;${inst}&quot;. Write chapter by chapter, end each with &quot;--- SELESAI BAB ---&quot; and wait for &quot;Continue&quot;.`;
+            navigator.clipboard.writeText(prompt);
+            document.getElementById(&#39;status&#39;).innerText = &quot;INITIAL PROMPT TERSALIN&quot;;
+        };
+
+        // 2. COPY CONTINUE
+        document.getElementById(&#39;btnContinue&#39;).onclick = function() {
+            const f = document.getElementById(&#39;feedback&#39;).value;
+            const inst = f.trim() !== &quot;&quot; ? f : &quot;Jaga ritme cerita tetap panas dan sensual seperti instruksi awal, yang penuh intrik dan skandal.&quot;;
+            const cmd = `Continue. Lanjutkan bab berikutnya. Ingat instruksi: &quot;${inst}&quot;`;
+            navigator.clipboard.writeText(cmd);
+            document.getElementById(&#39;status&#39;).innerText = &quot;CONTINUE CMD TERSALIN&quot;;
+        };
+
+        // 3. ACAK JUDUL
+        document.getElementById(&#39;btnAcak&#39;).onclick = async function() {
+            document.getElementById(&#39;status&#39;).innerText = &quot;FETCHING...&quot;;
+            try {
+                const res = await fetch(&#39;https://api.rss2json.com/v1/api.json?rss_url=https://news.google.com/rss/headlines/section/topic/ENTERTAINMENT&#39;);
+                const data = await res.json();
+                const item = data.items[Math.floor(Math.random()*data.items.length)];
+                document.getElementById(&#39;premis&#39;).value = item.title;
+                document.getElementById(&#39;status&#39;).innerText = &quot;SUCCESS&quot;;
+            } catch(e) { 
+                document.getElementById(&#39;premis&#39;).value = &quot;Cinta di musim dingin&quot;;
+                document.getElementById(&#39;status&#39;).innerText = &quot;BACKUP USED&quot;;
+            }
+        };
+
+        // 4. RESET
+        document.getElementById(&#39;btnReset&#39;).onclick = function() {
+            document.getElementById(&#39;premis&#39;).value = &quot;&quot;;
+            document.getElementById(&#39;feedback&#39;).value = &quot;&quot;;
+            document.getElementById(&#39;status&#39;).innerText = &quot;DATA RESET&quot;;
+        };
+    </script>
+   
+
+   
+<div class='abc-container'>
+      <section class='abc'>
+        <b:section id='abc' maxwidgets='1' showaddelement='yes'/>
+      </section>
+</div>
+
+  
+
+
+</body>
+</html>
