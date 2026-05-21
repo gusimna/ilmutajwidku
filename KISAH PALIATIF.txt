@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' name='viewport'/>
+    <b:skin><![CDATA[body{margin:0;padding:0;font-family:sans-serif;background:#f8fafc;}]]></b:skin>
+</head>
+<body>
+    <div style='background:#ffffff; padding:20px; width:100vw; min-height:100vh; box-sizing:border-box; overflow-x:hidden;'>
+        <h1 style='text-align:center; font-weight:bold; color:#1e3a8a; margin-bottom:20px; font-size:24px;'>KISAH PERAWATAN PALIATIF</h1>
+        
+        <label style='display:block; font-size:10px; font-weight:bold; color:#1e40af; margin-bottom:5px;'>PREMIS KISAH</label>
+        <textarea id='premis' placeholder='Inti cerita...' style='width:100%; min-height:80px; padding:12px; border:1px solid #bfdbfe; border-radius:12px; background:#eff6ff; margin-bottom:15px; box-sizing:border-box; word-wrap:break-word; resize:none;'/>
+        
+        <label style='display:block; font-size:10px; font-weight:bold; color:#1e40af; margin-bottom:5px;'>CATATAN / FEEDBACK</label>
+        <textarea id='feedback' placeholder='Tulis bumbu cerita disini, biar seru:' style='width:100%; min-height:80px; padding:12px; border:1px solid #bfdbfe; border-radius:12px; background:#eff6ff; margin-bottom:15px; box-sizing:border-box; word-wrap:break-word; resize:none;'/>
+        
+        <div style='display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:15px;'>
+            <button id='btnAcak' style='padding:12px; background:#dbeafe; color:#1e3a8a; border-radius:12px; font-weight:bold; border:none; cursor:pointer;'>ACAK JUDUL</button>
+            <button id='btnReset' style='padding:12px; background:#fee2e2; color:#991b1b; border-radius:12px; font-weight:bold; border:none; cursor:pointer;'>RESET</button>
+        </div>
+        
+        <button id='btnInitial' style='width:100%; padding:15px; background:#2563eb; color:white; border-radius:12px; font-weight:bold; margin-bottom:10px; border:none; cursor:pointer;'>COPY INITIAL PROMPT</button>
+        <button id='btnContinue' style='width:100%; padding:15px; background:#3b82f6; color:white; border-radius:12px; font-weight:bold; border:none; cursor:pointer;'>COPY CONTINUE CMD</button>
+        
+        <textarea id='hiddenClipboard' readonly='readonly' style='position:absolute; left:-9999px; top:-9999px;'/>
+        
+        <p id='status' style='text-align:center; font-size:10px; color:#60a5fa; margin-top:20px; word-break:break-all;'>SYSTEM READY</p>
+    </div>
+
+    <script type='text/javascript'>
+    //<![CDATA[
+
+        const palliativeKeywordsArray = [
+            "Perawatan paliatif adalah perawatan holistik aktif bagi individu di semua usia dengan SHS (penderitaan terkait kesehatan yang serius).",
+            "Penderitaan terkait kesehatan dianggap serius ketika dikaitkan dengan penyakit atau cedera apa pun.",
+            "Penderitaan terkait kesehatan dianggap serius ketika tidak dapat diatasi tanpa intervensi medis dan ketika mengganggu fungsi fisik, sosial, spiritual, dan/atau emosional.",
+            "Karena penyakit berat (penyakit berat adalah kondisi yang membawa risiko kematian tinggi, berdampak negatif pada kualitas hidup dan fungsi sehari-hari, dan/atau membebani dalam hal gejala, pengobatan, atau stres pengasuh),",
+            "Dan terutama bagi mereka yang mendekati akhir hayat. Tujuannya adalah untuk meningkatkan kualitas hidup pasien, keluarga mereka, dan pengasuh mereka.",
+            "Termasuk pencegahan, identifikasi dini, penilaian komprehensif, dan pengelolaan masalah fisik, termasuk nyeri dan gejala menyusahkan lainnya, tekanan psikologis, tekanan spiritual, dan kebutuhan sosial.",
+            "Sebisa mungkin, intervensi ini harus berbasis bukti.",
+            "Memberikan dukungan untuk membantu pasien hidup seoptimal mungkin hingga kematian dengan memfasilitasi komunikasi yang efektif, membantu mereka, dan Keluarga pasien menentukan tujuan perawatan,",
+            "Berlaku sepanjang perjalanan penyakit, sesuai dengan kebutuhan pasien,",
+            "Diberikan bersamaan dengan terapi modifikasi penyakit bila diperlukan,",
+            "Dapat memengaruhi perjalanan penyakit secara positif,",
+            "Tidak bertujuan untuk mempercepat atau menunda kematian, menegaskan kehidupan, dan mengakui kematian sebagai proses alami,",
+            "Memberikan dukungan kepada keluarga dan pengasuh selama penyakit pasien, dan dalam masa berkabung mereka sendiri,",
+            "Diberikan dengan mengakui dan menghormati nilai-nilai dan kepercayaan budaya pasien dan keluarga,",
+            "Berlaku di semua pengaturan perawatan kesehatan (tempat tinggal dan institusi) dan di semua tingkatan (primer hingga tersier),",
+            "Dapat bagian dari para profesional dengan pelatihan perawatan paliatif dasar,",
+            "Membutuhkan perawatan paliatif spesialis dengan tim multidisiplin untuk rujukan kasus-kasus kompleks,",
+            "Mengadopsi kebijakan dan norma yang memadai yang mencakup perawatan paliatif dalam undang-undang kesehatan, program kesehatan nasional, dan anggaran kesehatan nasional,",
+            "Memastikan bahwa rencana asuransi mengintegrasikan perawatan paliatif sebagai komponennya dari program-program tersebut,",
+            "Memastikan akses terhadap obat-obatan dan teknologi penting untuk pereda nyeri dan perawatan paliatif, termasuk formulasi pediatrik,",
+            "Memastikan bahwa perawatan paliatif menjadi bagian dari semua layanan kesehatan (dari program berbasis kesehatan masyarakat hingga rumah sakit), bahwa setiap orang dievaluasi, dan bahwa semua staf dapat memberikan perawatan paliatif dasar dengan tim spesialis yang tersedia untuk rujukan dan konsultasi,",
+            "Memastikan akses terhadap perawatan paliatif yang memadai untuk kelompok rentan, termasuk anak-anak dan lansia,",
+            "Berinteraksi dengan universitas, akademisi, dan rumah sakit pendidikan untuk memasukkan penelitian perawatan paliatif dan pelatihan perawatan paliatif sebagai komponen integral dari pendidikan berkelanjutan, termasuk pendidikan dasar, menengah, spesialis, dan berkelanjutan"
+        ];
+        const palliativeKeywords = palliativeKeywordsArray.join(", ");
+
+        function eksekusiSalin(teks) {
+            if (navigator.clipboard && window.isSecureContext) {
+                return navigator.clipboard.writeText(teks).then(() => true).catch(() => salahSatuCaraSalinCadangan(teks));
+            } else {
+                return Promise.resolve(salahSatuCaraSalinCadangan(teks));
+            }
+        }
+
+        function salahSatuCaraSalinCadangan(teks) {
+            try {
+                const areaCadangan = document.getElementById('hiddenClipboard');
+                areaCadangan.value = teks;
+                areaCadangan.select();
+                areaCadangan.setSelectionRange(0, 99999);
+                return document.execCommand('copy');
+            } catch (err) {
+                return false;
+            }
+        }
+      
+        document.getElementById('btnInitial').onclick = function() {
+            const p = document.getElementById('premis').value;
+            const f = document.getElementById('feedback').value;
+            
+            // ATURAN STRUKTUR PANJANG (10+ ALINEA) DITAMBAHKAN DI SINI
+            let inst = "Buat alur cerita perawatan paliatif yang sangat mendalam, lambat, emosional, dan sinematik. WAJIB tulis bab ini dalam minimal 10 hingga 12 alinea (paragraf) yang panjang dan detail. Jangan merangkum cerita atau melompati waktu terlalu cepat. Uraikan setiap dialog, suasana ruangan, konflik batin tokoh, serta detail emosi interaksi medis secara terperinci (menggunakan teknik 'Show, Don't Tell').";
+            
+            if (f.trim() !== "") {
+                inst += ` Tambahan instruksi khusus: ${f}.`;
+            }
+            inst += ` Sisipkan variasi esensi perawatan paliatif berikut secara halus, natural, dan menyatu di dalam alinea-alinea tersebut: (${palliativeKeywords}).`;
+            
+            const prompt = `Act as an expert, critically acclaimed novelist specializing in medical drama and Palliative Care frameworks. Premise: "${p}". \n\nGuidelines:\n${inst}\n\nWrite Chapter 1 now. Ensure it has at least 10 distinct, fleshed-out paragraphs. End the chapter exactly with "--- SELESAI BAB --- Ketik: Lanjutkan" and wait for my confirmation.`;
+            
+            eksekusiSalin(prompt);
+            document.getElementById('status').innerText = "INITIAL PROMPT COPIED";
+        };
+
+        document.getElementById('btnContinue').onclick = function() {
+            const f = document.getElementById('feedback').value;
+            
+            // MEMAKSA RITME PANJANG TETAP TERJAGA DI BAB BERIKUTNYA
+            let inst = "Pertahankan ritme penulisan novel yang lambat, mendalam, dan emosional. WAJIB hasilkan bab berikutnya ini dalam minimal 10 alinea (paragraf) utuh. Jangan terburu-buru menyelesaikan konflik.";
+            if (f.trim() !== "") {
+                inst += ` Tambahan instruksi khusus: ${f}.`;
+            }
+            
+            const cmd = `Continue.\n\nLanjutkan ke bab berikutnya. Jaga konsistensi panjang narasi: WAJIB minimal 10 alinea/paragraf yang kaya akan deskripsi emosional, suasana, dan dialog. Ingat instruksi: "${inst}" dan terus jalankan penyisipan nilai perawatan paliatif ini secara menyebar: ${palliativeKeywords}. Jangan tamat sebelum ada instruksi eksplisit.`;
+            
+            eksekusiSalin(cmd);
+            document.getElementById('status').innerText = "CONTINUE CMD COPIED";
+        };
+
+        const trenEntertainmentLokal = [
+            "Kisah Balik Layar Konser Megah yang Mengharu Biru Tahun Ini",
+            "Adaptasi Novel Best Seller Angkat Kisah Perjuangan Keluarga di Rumah Sakit",
+            "Aktris Senior Kembali Lewat Peran Air Mata yang Menyentuh Hati Penonton",
+            "Drama Romantis Musim Dingin Meraih Rating Tertinggi di Platform Streaming"
+        ];
+
+        document.getElementById('btnAcak').onclick = async function() {
+            document.getElementById('status').innerText = "FETCHING...";
+            try {
+                const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://news.google.com/rss/headlines/section/topic/ENTERTAINMENT');
+                if (!res.ok) throw new Error('Network error');
+                const data = await res.json();
+                
+                if(data.items && data.items.length > 0) {
+                    const item = data.items[Math.floor(Math.random()*data.items.length)];
+                    document.getElementById('premis').value = item.title;
+                    document.getElementById('status').innerText = "SUCCESS";
+                } else {
+                    throw new Error('Data empty');
+                }
+            } catch(e) { 
+                const pilihanAcak = trenEntertainmentLokal[Math.floor(Math.random() * trenEntertainmentLokal.length)];
+                document.getElementById('premis').value = pilihanAcak;
+                document.getElementById('status').innerText = "BACKUP USED";
+            }
+        };
+
+        document.getElementById('btnReset').onclick = function() {
+            document.getElementById('premis').value = "";
+            document.getElementById('feedback').value = "";
+            document.getElementById('status').innerText = "DATA RESET";
+        };
+
+    //]]>
+    </script>
+  
+<div class='abc-container'>
+      <section class='abc'>
+        <b:section id='abc' maxwidgets='1' showaddelement='yes'/>
+      </section>
+</div>
+
+</body>
+</html>
