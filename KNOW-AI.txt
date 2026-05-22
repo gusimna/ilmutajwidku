@@ -42,7 +42,7 @@
         🔷 Clinical Knowledge Network Integration
       </div>
       <h1 class='text-2xl md:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-teal-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent'>
-        KNOW-AI <span class='text-[10px] md:text-sm font-bold px-1.5 py-0.5 bg-slate-800 text-slate-300 rounded-md align-middle ml-1 border border-slate-700'>v2.0 Premium</span>
+        KNOW-AI <span class='text-[10px] md:text-sm font-bold px-1.5 py-0.5 bg-slate-800 text-slate-300 rounded-md align-middle ml-1 border border-slate-700'>v2.5 Premium</span>
       </h1>
       <p class='text-[11px] md:text-sm text-slate-400 font-medium mt-2 max-w-xl mx-auto px-2'>
         Sistem Transformasi &amp; Ekstraksi Kognitif Otomatis Berbasis Data Indeks Klinis &amp; Literatur Medis Fleksibel Tradisional.
@@ -221,9 +221,19 @@
           <span class='text-[10px] md:text-xs font-bold bg-purple-950/40 border border-purple-900 text-purple-400 px-2 md:px-2.5 py-1 rounded-md group-hover:bg-purple-500 group-hover:text-white transition-all shrink-0' id='lblGen6'>SALIN</span>
         </button>
 
+        <button class='w-full text-left p-3.5 bg-gradient-to-r from-slate-950 to-cyan-950/30 hover:to-cyan-900/40 border border-cyan-900/60 hover:border-cyan-500 rounded-xl transition-all group flex items-center justify-between cursor-pointer shadow-lg' id='btnGen7' type='button'>
+          <div class='pr-2'>
+            <div class='text-xs font-bold text-cyan-400 group-hover:text-cyan-300 transition-colors break-words flex items-center gap-2'>
+              📚 FASE 7: DEEP ACADEMIC CHAPTER WRITER <span class='text-[9px] px-1 bg-cyan-500 text-slate-950 font-extrabold rounded animate-pulse'>4000+ WORDS</span>
+            </div>
+            <div class='text-[10px] md:text-[11px] text-slate-400 mt-0.5 line-clamp-2 md:line-clamp-none'>Menghasilkan buku teks non-fiksi ilmiah ekstensif, terstruktur, mendalam, dan bersambung per bab.</div>
+          </div>
+          <span class='text-[10px] md:text-xs font-bold bg-cyan-950 border border-cyan-800 text-cyan-400 px-2 md:px-2.5 py-1 rounded-md group-hover:bg-cyan-500 group-hover:text-white transition-all shrink-0' id='lblGen7'>SALIN</span>
+        </button>
+
         <div class='pt-4 border-t border-slate-800 grid grid-cols-1 sm:grid-cols-12 gap-3'>
           <button class='sm:col-span-8 py-3 bg-gradient-to-r from-cyan-600 via-teal-600 to-emerald-600 hover:from-cyan-500 hover:to-emerald-500 text-white font-extrabold text-[11px] md:text-xs tracking-wider uppercase rounded-xl shadow-md transition-all cursor-pointer' id='btnGlobalSummary' type='button'>
-            📋 SALIN KESELURUHAN PROMPT SUMMARY (6-LAYERS)
+            📋 SALIN KESELURUHAN PROMPT SUMMARY (7-LAYERS)
           </button>
           <button class='sm:col-span-4 py-3 bg-slate-950 hover:bg-slate-900 text-rose-400 font-bold text-[11px] md:text-xs tracking-wider uppercase rounded-xl border border-slate-800 hover:border-rose-950/50 transition-all cursor-pointer' id='btnResetPlatform' type='button'>
             🗑️ RESET
@@ -248,10 +258,8 @@
     let isDataLocked = false;
     let isParamsLocked = false;
 
-    // DEFINISI URL DEFAULT UTAMA (IAHPC MANUAL OF PALLIATIVE CARE 3E)
     const DEFAULT_URL = "https://iahpc.org/uploads/2013/9/The%20IAHPC%20Manual%20of%20Palliative%20Care%203e.pdf";
 
-    // DEFINISI KELAS WARNA GELAP METALIK UNTUK RESET KONSISTENSI VISUAL
     const DARK_METAL_CLASS = 'w-full py-2.5 bg-gradient-to-r from-slate-900 via-slate-800 to-zinc-900 hover:from-slate-800 hover:to-zinc-800 text-slate-200 border border-slate-700/50 font-bold text-xs uppercase tracking-wider rounded-xl shadow-md transition-all cursor-pointer';
     const DARK_METAL_CLASS_PARAMS = 'w-full py-2 bg-gradient-to-r from-slate-900 via-slate-800 to-zinc-900 hover:from-slate-800 hover:to-zinc-800 text-slate-200 border border-slate-700/50 font-bold text-[11px] uppercase tracking-wider rounded-xl shadow-md transition-all cursor-pointer';
 
@@ -300,7 +308,6 @@
         }, 2000);
     }
 
-    // SUNTIKAN 3: TOAST FLASH FEEDBACK LUXURY UX ON CLICK BUTTONS
     function animateButtonLabel(id, parentButtonId) {
         const el = document.getElementById(id);
         const parentBtn = document.getElementById(parentButtonId);
@@ -330,7 +337,6 @@
         }
     }
 
-    // NATIVE CLIPBOARD PASTE INTERACTION ENGINE
     document.getElementById('btnPasteUrl').onclick = function() {
         if (navigator.clipboard && navigator.clipboard.readText) {
             navigator.clipboard.readText()
@@ -346,7 +352,6 @@
         }
     };
 
-    // INTERACTIVE LOCK ENGINE: MODUL LITERATUR
     document.getElementById('btnLockData').onclick = function() {
         const lockBtn = document.getElementById('btnLockData');
         const pasteBtn = document.getElementById('btnPasteUrl');
@@ -374,7 +379,6 @@
         }
     };
 
-    // INTERACTIVE LOCK ENGINE: MODUL PARAMETER
     document.getElementById('btnLockParams').onclick = function() {
         const lockBtn = document.getElementById('btnLockParams');
         const sScale = document.getElementById('clinicalScale');
@@ -487,7 +491,45 @@ Rules: Never break character, no meta-commentary, start from deep denial/anxiety
         safeCopy(prompt, () => { updateSystemIndicator("Fase 6 Copied!", 'success'); animateButtonLabel('lblGen6', 'btnGen6'); });
     };
 
-    // GLOBAL MASTER PROMPT SUMMARY
+    // FASE 7: DEEP ACADEMIC CHAPTER WRITER (PROTEKSI ANTI BASA-BASI SUNTIKAN PERBAIKAN)
+    document.getElementById('btnGen7').onclick = function() {
+        const target = resolveTargetParameters();
+        const strictRules = generateStrictContextDirective(target);
+        const scale = document.getElementById('clinicalScale').value;
+        const context = document.getElementById('culturalContext').value;
+        const notes = document.getElementById('customNotes').value;
+
+        const prompt = `Act as a Distinguished Professor of Palliative Medicine and Academic Author.
+${strictRules}
+
+[DEEP ACADEMIC CONTINUOUS WRITING PROTOCOL - TARGET 4000+ WORDS PER CHAPTER]:
+Anda ditugaskan untuk menulis naskah buku teks ilmiah, non-fiksi akademis mutakhir mengenai: "${target.title}" yang disinkronkan dengan skala klinis [${scale}] dalam konteks target [${context}].
+
+[STRICT OUTPUT CONSTRAINT - ANTI CORE ROLEPLAY METADATA]:
+DILARANG KERAS menuliskan kalimat sapaan, impresi pribadi, ekspresi menyambut baik proyek, atau basa-basi pengantar karakter (seperti: "Sebagai seorang Profesor Ulung...", "Saya menyambut baik...", atau "Mari kita mulai..."). 
+AI harus langsung memulai respon dengan Langkah 1 dari mekanisme kontrol alur kerja di bawah ini, tanpa teks pembuka apa pun!
+
+[MEKANISME KONTROL ALUR KERJA USER]:
+- Langkah 1: Minta saya untuk menentukan "NOMOR BAB" dan "JUDUL BAB SPESIFIK" yang ingin ditulis saat ini.
+- Langkah 2: Setelah saya memberikan input bab, mulailah menulis sub-bab A sampai E secara sangat detail, panjang, deskriptif, dan mendalam hingga mencapai batas kapasitas narasi Anda.
+- Langkah 3: Di akhir Bab, buatlah "Ringkasan Jembatan Kognitif" sepanjang 2 paragraf untuk menyambung ke bab berikutnya, lalu berikan instruksi: "SIAP MELANJUTKAN KE BAB BERIKUTNYA. SILAKAN KETIK 'LANJUTKAN BAB [NOMOR BAB]'".
+
+MANDAT PENULISAN:
+1. Sifat Tulisan: BUKAN fiksi, novel, cerita hiburan, atau rekaan bebas. Ini adalah naskah literatur ilmiah formal, padat substansi, objektif, namun ditulis dengan kejelasan bahasa tingkat tinggi yang mendalam (humanis akademis).
+2. Mekanisme Multi-Bab Bersambung: Setiap kali menulis sebuah Bab, jabarkan naskah secara penuh menggunakan sub-bagian operasional berikut (Tanpa poin-poin ringkas! Gunakan paragraf naratif tebal):
+   - A. Tinjauan Filosofis & Landasan Teoretis Makro
+   - B. Analisis Patofisiologi & Klaster Klinis Terapan Sesuai Indikator Medis
+   - C. Metodologi Intervensi Komprehensif (Farmakologi, Non-Farmakologi, & Sosio-Spiritual)
+   - D. Studi Kasus Lapangan / Ilustrasi Klinis Riil Sebagai Pembanding
+   - E. Evaluasi Kritis, Hambatan Institusional, & Proyeksi Masa Depan
+
+${notes ? `[INJEKSI SUBSTANSIAL AKADEMIS]: ${notes}` : ""}
+Language: High-Level Academic Indonesian (Ejaan Resmi, Terminologi Medis Baku, Kaya Analisis Deskriptif). Mulai dengan meminta input nomor bab pertama sekarang tanpa teks pembuka.`;
+
+        safeCopy(prompt, () => { updateSystemIndicator("Fase 7 Copied!", 'success'); animateButtonLabel('lblGen7', 'btnGen7'); });
+    };
+
+    // GLOBAL MASTER PROMPT SUMMARY (7-LAYERS COMPLETE)
     document.getElementById('btnGlobalSummary').onclick = function() {
         const target = resolveTargetParameters();
         const strictRules = generateStrictContextDirective(target);
@@ -495,7 +537,7 @@ Rules: Never break character, no meta-commentary, start from deep denial/anxiety
         const context = document.getElementById('culturalContext').value;
         const notes = document.getElementById('customNotes').value;
 
-        const globalPrompt = `[MASTER 6-LAYER CLINICAL INTELLIGENCE PROMPT SUMMARY]
+        const globalPrompt = `[MASTER 7-LAYER CLINICAL & ACADEMIC INTELLIGENCE PROMPT SUMMARY]
 ======================================================
 ${strictRules}
 ======================================================
@@ -504,13 +546,14 @@ DEPLOYMENT ARCHITECTURE PARAMETERS:
 - Socio-Cultural Localization: ${context}
 - Special Injection Notes: ${notes || "None"}
 ======================================================
-MANDATE TASK: Lakukan pemrosesan sumber di atas dengan restriksi mikro-konteks yang ketat serta protokol kepanjangan naskah narasi yang utuh. Hasilkan output komprehensif dalam bentuk 6 Bagian Utama (Tulis naskah penuh untuk tiap bagian, dilarang memotong isi atau membuat rangkuman pendek):
+MANDATE TASK: Lakukan pemrosesan sumber di atas dengan restriksi mikro-konteks yang ketat serta protokol kepanjangan naskah narasi yang utuh. Hasilkan output komprehensif dalam bentuk 7 Bagian Utama (Tulis naskah penuh untuk tiap bagian, dilarang memotong isi atau membuat rangkuman pendek):
 1. Clinical Summary (Cornerstone focused on Sub-topic)
 2. Differential Diagnosis & Safety Layering (Analytical and deep)
 3. Holistic Bio-Psycho-Social-Spiritual Plan (Long care plan text)
 4. Infographic Ready Script & Micro-copy (Complete visual copy blueprint)
 5. Interdisciplinary SBAR Handover Script (Full conversational script)
-6. Initiate preparation for Interactive Caregiver Simulation (Emotional prompt starter).
+6. Interactive Caregiver Simulation Engine (Emotional prompt starter)
+7. Deep Academic Chapter Writer (Continuous Non-Fiction Book Writing Protocol).
 Language Target: Expert & Empathetic Indonesian. All answers must be extensive and highly professional.`;
 
         safeCopy(globalPrompt, () => { updateSystemIndicator("Master Summary Copied!", 'success'); animateButtonLabel('btnGlobalSummary', 'btnGlobalSummary'); });
