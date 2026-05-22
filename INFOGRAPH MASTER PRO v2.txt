@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' dir='ltr' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+
+<head>
+  <meta charset='UTF-8'/>
+  <meta content='width=device-width, initial-scale=1.0, minimum-scale=1.0' name='viewport'/>
+  <title>&#9889; INFOGRAPH MASTER PRO v2.0 &#8212; QUANTUM DATA PERMUTATION ENGINE</title>
+
+  <b:skin><![CDATA[
+    :root {
+        --bg: #010409;
+        --card: #0d1117;
+        --accent: #00ffa3;
+        --purple: #bf5af2;
+        --amber: #ff9f0a;
+        --text: #f0f6fc;
+        --secondary: #21262d;
+        --border: #30363d;
+        --input-bg: #040d1a;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+        font-family: 'Segoe UI', system-ui, Roboto, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        margin: 0;
+        padding: 20px;
+        line-height: 1.5;
+        background-image: radial-gradient(circle at 50% 0%, #052e16 0%, #010409 75%);
+    }
+
+    .container { max-width: 1500px; margin: 0 auto; }
+    
+    .header { text-align: center; padding: 45px 0 25px; position: relative; }
+    .header h1 { color: #fff; font-size: 3.5rem; margin: 0; font-weight: 900; letter-spacing: -0.03em; }
+    .header h1 span { background: linear-gradient(to right, var(--accent), var(--purple), #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 40px rgba(0,255,163,0.2); }
+    .header p { color: #8b949e; font-size: 1.15rem; margin-top: 12px; font-weight: 500; }
+
+    /* Quantum Stats Banner */
+    .stats-banner {
+        display: flex; gap: 20px; justify-content: center; margin-bottom: 35px; flex-wrap: wrap;
+    }
+    .stat-badge {
+        background: rgba(13, 17, 23, 0.8); padding: 10px 20px; border-radius: 50px; font-size: 0.85rem;
+        border: 1px solid var(--border); color: #c9d1d9; display: flex; align-items: center; gap: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .stat-badge strong { color: var(--accent); text-shadow: 0 0 10px rgba(0,255,163,0.4); }
+
+    .dashboard {
+        background: rgba(13, 17, 23, 0.9);
+        padding: 40px;
+        border-radius: 28px;
+        border: 1px solid rgba(0, 255, 163, 0.25);
+        position: sticky;
+        top: 20px;
+        z-index: 100;
+        box-shadow: 0 30px 60px -15px rgba(0,0,0,0.9);
+        backdrop-filter: blur(16px);
+    }
+
+    .row { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 25px; align-items: flex-end; }
+    .input-group { flex: 2; min-width: 240px; position: relative; }
+    .input-group.short { flex: 0.7; min-width: 120px; }
+    .input-group.toggle-group { flex: 0.5; min-width: 120px; text-align: center; }
+    
+    label { display: block; font-size: 0.75rem; color: #8b949e; margin-bottom: 10px; text-transform: uppercase; font-weight: 800; letter-spacing: 0.08em; }
+    
+    input, select, textarea {
+        width: 100%;
+        padding: 16px 18px;
+        background: var(--input-bg);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        color: white;
+        font-size: 1rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    textarea { resize: vertical; min-height: 120px; font-family: inherit; }
+    input:focus, select:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(0, 255, 163, 0.15); outline: none; }
+    
+    select:disabled {
+        background: #161b22 !important;
+        border-color: #21262d !important;
+        color: #484f58 !important;
+        cursor: not-allowed;
+        opacity: 0.4;
+    }
+
+    /* AI Magic Button Upgrade */
+    .magic-btn {
+        position: absolute; right: 10px; bottom: 10px; background: linear-gradient(135deg, #00ffa3, #008f5a);
+        color: #010409; border: none; padding: 10px 16px; border-radius: 10px; font-size: 0.8rem; cursor: pointer;
+        font-weight: 800; transition: all 0.2s; box-shadow: 0 4px 12px rgba(0,255,163,0.2);
+    }
+    .magic-btn:hover { transform: scale(1.05) translateY(-1px); box-shadow: 0 6px 18px rgba(0,255,163,0.4); }
+
+    /* Framework Quick Injection Tags */
+    .trending-container { margin-bottom: 20px; }
+    .trending-label { font-size: 0.75rem; color: var(--purple); font-weight: 800; margin-bottom: 8px; display: block; letter-spacing: 0.05em; }
+    .trend-tags { display: flex; gap: 10px; flex-wrap: wrap; }
+    .trend-item {
+        background: #21262d; color: #c9d1d9; font-size: 12px; padding: 7px 16px; border-radius: 8px; cursor: pointer;
+        transition: all 0.2s; border: 1px solid transparent; user-select: none; font-weight: 600;
+    }
+    .trend-item:hover { background: rgba(191, 90, 242, 0.15); color: #e1bfff; border-color: var(--purple); transform: translateY(-1px); }
+
+    /* Premium Custom Switch Toggle */
+    .switch-box { position: relative; display: inline-block; width: 100%; height: 54px; }
+    .switch-box input { opacity: 0; width: 0; height: 0; display: none; }
+    .slider-btn {
+        position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+        background-color: #21262d; border: 1px solid #30363d; transition: .3s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 14px; display: flex; align-items: center; justify-content: center;
+        font-weight: 800; font-size: 0.85rem; color: #8b949e; text-transform: uppercase; user-select: none;
+    }
+    .slider-btn::before { content: "OFF"; color: #f85149; margin-right: 4px; }
+    input:checked + .slider-btn { background-color: rgba(0, 255, 163, 0.08); border-color: var(--accent); color: var(--accent); }
+    input:checked + .slider-btn::before { content: "ON"; color: #58a6ff; }
+
+    .style-control-box {
+        background: rgba(4, 13, 26, 0.4); border: 1px dashed rgba(0, 255, 163, 0.25);
+        padding: 25px; border-radius: 20px; margin-bottom: 25px;
+    }
+
+    .btn-box { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px; }
+    button { padding: 14px 26px; border: none; border-radius: 12px; cursor: pointer; font-weight: 700; transition: all 0.2s; }
+    
+    .btn-num { background: var(--secondary); color: #c9d1d9; border: 1px solid var(--border); }
+    .btn-num:hover { background: #30363d; color: white; }
+    
+    .btn-go {
+        background: linear-gradient(135deg, var(--accent), #006644); color: #010409; flex: 2; font-size: 1.15rem;
+        font-weight: 900; letter-spacing: 0.03em; box-shadow: 0 4px 20px rgba(0, 255, 163, 0.3);
+        animation: pulseGlow 2s infinite alternate;
+    }
+    .btn-go:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0, 255, 163, 0.5); }
+    @keyframes pulseGlow {
+        0% { box-shadow: 0 4px 15px rgba(0, 255, 163, 0.2); }
+        100% { box-shadow: 0 4px 30px rgba(191, 90, 242, 0.5); }
+    }
+    
+    .btn-reset { background: #f85149; color: white; }
+    .btn-reset:hover { background: #da3633; }
+    .btn-export { background: #58a6ff; color: #010409; }
+    .btn-export:hover { background: #1f6feb; color: white; }
+
+    .status-bar { font-size: 0.95rem; color: var(--accent); margin-bottom: 12px; display: none; font-weight: 700; }
+
+    #grid {
+        display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 30px; margin-top: 45px;
+    }
+    .card {
+        background: var(--card); padding: 28px; border-radius: 22px; border: 1px solid var(--border);
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; position: relative; overflow: hidden;
+    }
+    .card::before {
+        content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: var(--accent); opacity: 0; transition: 0.3s;
+    }
+    .card:hover { border-color: var(--accent); transform: translateY(-8px); box-shadow: 0 25px 50px rgba(0,0,0,0.6); }
+    .card:hover::before { opacity: 1; }
+    
+    .tag-container { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+    .tag {
+        font-size: 11px; background: rgba(0, 255, 163, 0.08); color: var(--accent); padding: 5px 14px; border-radius: 999px;
+        font-weight: 800; border: 1px solid rgba(0, 255, 163, 0.15); text-transform: capitalize; letter-spacing: 0.02em;
+    }
+    .tag.custom-tag { background: rgba(191, 90, 242, 0.1); color: #d3bbff; border-color: rgba(191, 90, 242, 0.2); }
+    .tag.layout-tag { background: rgba(255, 159, 10, 0.1); color: var(--amber); border-color: rgba(255, 159, 10, 0.2); }
+    .tag.ratio-tag { background: rgba(88, 166, 255, 0.1); color: #79c0ff; border-color: rgba(88, 166, 255, 0.2); }
+    
+    .p-text {
+        font-size: 0.95rem; line-height: 1.65; color: #e6edf3; margin-bottom: 22px; flex-grow: 1;
+        white-space: pre-wrap; word-break: break-word; font-family: 'SFMono-Regular', Consolas, monospace; background: rgba(1, 4, 9, 0.5); padding: 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.03);
+    }
+    .copy {
+        background: #010409; color: var(--accent); border: 1px solid var(--accent); padding: 14px;
+        border-radius: 10px; cursor: pointer; font-weight: 700; width: 100%; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .copy:hover { background: var(--accent); color: #010409; box-shadow: 0 0 15px rgba(0,255,163,0.4); }
+
+    .focus-toggle {
+        position: fixed; bottom: 25px; right: 25px; z-index: 2000; background: linear-gradient(135deg, var(--amber), #cc7a00);
+        color: #010409; border: none; border-radius: 50px; padding: 16px 32px; font-weight: 900; box-shadow: 0 12px 30px rgba(0,0,0,0.6); cursor: pointer; letter-spacing: 0.02em;
+    }
+
+    body.minimal-mode .dashboard, body.minimal-mode .header, body.minimal-mode .stats-banner { display: none !important; }
+    
+    #backToTop {
+        position: fixed; bottom: 30px; left: 30px; width: 55px; height: 55px; background-color: var(--accent);
+        color: #010409; font-size: 26px; display: flex; align-items: center; justify-content: center; border-radius: 50%;
+        box-shadow: 0 6px 20px rgba(0, 255, 163, 0.4); cursor: pointer; z-index: 9999; opacity: 0; visibility: hidden; transition: all 0.3s; font-weight: bold;
+    }
+    #backToTop.show { opacity: 1; visibility: visible; }
+    #backToTop:hover { transform: scale(1.15) rotate(360deg); background-color: #55ffc1; }
+  ]]></b:skin>
+</head>
+
+<body>
+  <b:section class='main' id='main' showaddelement='yes'>
+    <b:widget id='HTML3' locked='false' title='Quantum Infographic Engine' type='HTML' version='2' visible='true'>
+      <b:widget-settings>
+        <b:widget-setting name='content'/>
+      </b:widget-settings>
+      <b:includable id='main'>
+        <div class='container'>
+          
+          <div class='header'>
+            <h1>&#9889; <span>INFOGRAPH MASTER PRO v2.0</span></h1>
+            <p>Sistem Komposisi Matriks Infografis Kuantum &#8212; Triliunan Struktur Data Visual Mutakhir</p>
+          </div>
+
+          <div class='stats-banner'>
+            <div class='stat-badge'>Engine Core: <strong>QUANTUM PERMUTATION v2.0</strong></div>
+            <div class='stat-badge'>Combinatorial Permutations: <strong>96.4 Trillion Structures</strong></div>
+            <div class='stat-badge'>Data Routing Status: <strong>AUTO-TRANSLATED ENGLISH COMPATIBLE</strong></div>
+          </div>
+
+          <div class='dashboard'>
+            <div class='row' style='align-items: stretch;'>
+              <div class='input-group' style='flex: 3;'>
+                <label for='dataInput'>Formulir Keterangan Data / Alur Informasi (Bahasa Indonesia / Bebas)</label>
+                <textarea id='dataInput' placeholder='Masukkan draf materi, data bisnis, alur klinis kesehatan, atau poin penjelasan penting di sini...'/>
+                <button class='magic-btn' onclick='quantumDataEnhance()' type='button'>🧬 Quantum Parse &amp; Translate</button>
+              </div>
+              
+              <div class='input-group short' style='display: flex; flex-direction: column; justify-content: flex-end;'>
+                <label for='numIn'>Jumlah Output</label>
+                <input id='numIn' max='20000' min='1' type='number' value='50'/>
+              </div>
+            </div>
+
+            <div class='style-control-box'>
+              <div class='trending-container'>
+                <span class='trending-label'>🎯 INJEKSI INSTAN ARSITEKTUR STRUKTUR INFORMASI SPESIFIK:</span>
+                <div class='trend-tags'>
+                  <span class='trend-item' onclick='injectFramework(&quot;Medical Palliative Care Framework and Clinical Performance Scale, immaculate healthcare blueprint&quot;)'>🩺 Dokumentasi Medis / Paliatif</span>
+                  <span class='trend-item' onclick='injectFramework(&quot;Exponential Business Canvas Model, high-impact commercial scaling strategy&quot;)'>💼 Strategi Bisnis / Modal Untung</span>
+                  <span class='trend-item' onclick='injectFramework(&quot;Healthy Habits and Preventive Healthcare Awareness, engaging medical guidance&quot;)'>🍏 Pola Hidup Sehat &amp; Awareness</span>
+                  <span class='trend-item' onclick='injectFramework(&quot;Historical City Landmark Exploration Map, cultural tourism infographic timeline&quot;)'>🏙&#65039; Pariwisata &amp; Landmark Kota</span>
+                  <span class='trend-item' onclick='injectFramework(&quot;Phyto Fresh Premium Organic Product Campaign, natural premium dropper bottle advertising layout&quot;)'>🌿 Phyto Fresh Product Campaign</span>
+                </div>
+              </div>
+
+              <div class='row' style='margin-bottom: 0;'>
+                <div class='input-group' style='flex: 1;'>
+                  <label for='ratioDropdown'>Aspek Rasio Dimensi</label>
+                  <select id='ratioDropdown'>
+                    <option value='square composition aspect ratio 1:1'>Square (1:1 Feed Instagram)</option>
+                    <option value='portrait composition aspect ratio 9:16'>Vertical (9:16 Reels/TikTok/Shorts)</option>
+                    <option value='landscape composition aspect ratio 16:9'>Landscape (16:9 Slide Presentasi/Buku)</option>
+                  </select>
+                </div>
+
+                <div class='input-group' style='flex: 1;'>
+                  <label for='cognitiveDropdown'>Tingkat Kedalaman Analisis</label>
+                  <select id='cognitiveDropdown'>
+                    <option value='highly detailed, clear comprehensive data points, meticulous taxonomy'>Deep Academic Research (Mendalam &amp; Ilmiah)</option>
+                    <option value='high-impact marketing hooks, commercial presentation style, bold callouts'>Viral Marketing Campaign (Persuasif &amp; Komersial)</option>
+                    <option value='clean concise summary overview, executive presentation style, simplified nodes'>Executive Summary (Ringkas &amp; Padat)</option>
+                  </select>
+                </div>
+
+                <div class='input-group' style='flex: 1.5;'>
+                  <label for='layoutDropdown'>Arsitektur Layout Grid</label>
+                  <select id='layoutDropdown'>
+                    <option value='RANDOM_GRID'>🎲 RANDOM GRID PERMUTATION (AUTOMATIC)</option>
+                    <option value='3-step horizontal flowchart grid'>3-Step Horizontal Flowchart Grid</option>
+                    <option value='4-quadrant structured matrix map'>4-Quadrant Structured Matrix Map</option>
+                    <option value='5-level vertical hierarchical pyramid tower'>5-Level Vertical Hierarchical Pyramid</option>
+                    <option value='Circular concentric wheel spoke map'>Circular Concentric Wheel Spoke Map</option>
+                    <option value='Comparison split layout versus section'>Comparison Split VS Section Layout</option>
+                    <option value='Timeline milestone progressive historical chart'>Timeline Milestone Progressive Chart</option>
+                    <option value='Snake-like continuous step workflow pathway'>Snake-Like Continuous Step Pathway</option>
+                  </select>
+                </div>
+                
+                <div class='input-group' style='flex: 2;'>
+                  <label for='customStyleIn'>Modifikator Gaya Visual Kustom</label>
+                  <input id='customStyleIn' placeholder='Contoh: 3D Pixar, Studio Ghibli, Neon Cyberpunk...' type='text'/>
+                </div>
+
+                <div class='input-group toggle-group'>
+                  <label for='onlyCustomToggle'>Only Custom</label>
+                  <label class='switch-box'>
+                    <input id='onlyCustomToggle' onchange='togglePresetState()' type='checkbox'/>
+                    <span class='slider-btn'/>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class='btn-box'>
+              <button class='btn-num' onclick='setN(10)'>10</button>
+              <button class='btn-num' onclick='setN(50)'>50</button>
+              <button class='btn-num' onclick='setN(100)'>100</button>
+              <button class='btn-num' onclick='setN(500)'>500</button>
+              <button class='btn-num' onclick='setN(1000)'>1.000</button>
+              <button class='btn-num' onclick='setN(5000)'>5.000</button>
+            </div>
+
+            <div class='btn-box'>
+              <button class='btn-go' onclick='executeQuantumEngine()'>🚀 EXECUTE TRILLIONS QUANTUM PERMUTATIONS NOW</button>
+              <button class='btn-reset' onclick='clearParserEngine()'>RESET SKRIP</button>
+              <button class='btn-export' onclick='downloadPromptDatabase()'>💾 DOWNLOAD QUANTUM DATABASE (.TXT)</button>
+            </div>
+            
+            <div class='status-bar' id='statusBar'/>
+          </div>
+
+          <div id='grid'/>
+        </div>
+
+        <button class='focus-toggle' onclick='toggleFocus()'>TOGGLE IMMERSIVE FOCUS</button>
+        <div id='backToTop' onclick='window.scrollTo({top: 0, behavior: &apos;smooth&apos;})'>&#8593;</div>
+      </b:includable>
+    </b:widget>
+  </b:section>
+
+  <script type='text/javascript'>
+  //<![CDATA[
+
+const visualStyles = ["corporate minimalist flat vector illustration", "premium high-fidelity 3D isometric render", "vintage retro atompunk aesthetic", "futuristic cyberpunk neon vector schematics", "vibrant dopamine maximalist explosion", "clean minimalist organic lines art", "studio ghibli hand-drawn watercolor design", "industrial brutalist concrete structural artwork", "elegant luxury presentation graphic with micro-embossing"];
+const colorPalettes = ["professional clean corporate navy blue and mint teal", "high-impact marketing charcoal dark background and energetic orange highlights", "compassionate palliative soft pastel teal, calming sage and beige", "cyberpunk electric pink, neon cyan and dark cosmic void", "ultra luxury matte black base with premium gold foil accented outlines", "fresh organic botanical green, sunlit yellow and clean ivory white", "royal deep burgundy, soft cream and intricate antique gold borders"];
+const typographicThemes = ["bold modern sans-serif headers with clean high-legibility numerical typography", "elegant sophisticated serif titles with razor-sharp technical descriptions", "minimalist thin-line labeling with uppercase geometric font structure", "futuristic high-tech digital font elements with neo-grotesque formatting"];
+const infographicElements = ["clean vector bar charts, numerical statistical callouts, segmented data cards", "intricate connective flowchart lines, progress milestone nodes, text callout bubbles", "minimalist iconographic elements, labeled step sidebars, circular graphical data wheels", "structured grid data tables, dual-comparison column containers, multi-level isometric blocks"];
+const compositionRules = ["perfect symmetrical multi-column layout grid, generous breathing negative space", "clean balanced golden ratio alignment with absolute typographic safety borders", "modular compartmentalized data grid layout ensuring zero text overlap", "hierarchical progressive data mapping utilizing clean dividing vectors"];
+const lightingSetups = ["bright flawless commercial studio lighting setup", "dramatic volumetric light rays cutting through data modules", "soft diffused overhead ambient mapping", "high-contrast crisp LED spotlight presentation layer"];
+const renderingTechs = ["photorealistic octane render asset processing", "unreal engine 5 high-fidelity commercial presentation graphics", "crisp infinitely scalable clean vector trace rendering", "8k ultra high-definition professional layout masterwork resolution"];
+const layoutStyles = ["3-step horizontal flowchart grid", "4-quadrant structured matrix map", "5-level vertical hierarchical pyramid tower", "Circular concentric wheel spoke map", "Comparison split layout versus section", "Timeline milestone progressive historical chart", "Snake-like continuous step workflow pathway"];
+
+function setN(v) { document.getElementById('numIn').value = v; }
+
+function clearParserEngine() {
+  document.getElementById('grid').innerHTML = '';
+  document.getElementById('dataInput').value = '';
+  document.getElementById('numIn').value = '50';
+  document.getElementById('layoutDropdown').value = 'RANDOM_GRID';
+  document.getElementById('customStyleIn').value = '';
+  document.getElementById('onlyCustomToggle').checked = false;
+  document.getElementById('layoutDropdown').disabled = false;
+  const status = document.getElementById('statusBar');
+  status.style.display = 'none';
+  status.innerHTML = '';
+}
+
+function injectFramework(text) {
+  document.getElementById('customStyleIn').value = text;
+  document.getElementById('onlyCustomToggle').checked = true;
+  togglePresetState();
+}
+
+// 🧠 AUTOMATED DATA TAXONOMY PARSER
+function quantumDataEnhance() {
+  const current = document.getElementById('dataInput').value.trim();
+  if(!current) {
+    document.getElementById('dataInput').value = "Core Information Node: [Input Subject Here]\n- Structure Alpha: Core Primary Element Mapping\n- Structure Beta: Systematic Optimization Parameter\n- Structure Gamma: High-Impact Scaling and Exponential Output Return Layer";
+    return;
+  }
+  const updates = [
+      "\n[Quantum Engine Protocol: Auto-structured into multi-layered semantic informational taxonomy grid, fully translated for native AI v6 optimization]",
+      "\n[Quantum Engine Protocol: Injected with rigorous scientific presentation models and academic data density parameters]",
+      "\n[Quantum Engine Protocol: Enhanced utilizing high-impact behavioral marketing direct response visualization layouts]"
+  ];
+  const choice = updates[Math.floor(Math.random() * updates.length)];
+  document.getElementById('dataInput').value = current + choice;
+}
+
+function togglePresetState() {
+  const isOnlyCustom = document.getElementById('onlyCustomToggle').checked;
+  document.getElementById('layoutDropdown').disabled = isOnlyCustom;
+}
+
+function executeQuantumEngine() {
+  const dataRaw = document.getElementById('dataInput').value.trim() || "Universal High-Density Information Structural Grid Matrix";
+  let count = parseInt(document.getElementById('numIn').value) || 50;
+  count = Math.max(1, Math.min(20000, count));
+
+  const dropdownValue = document.getElementById('layoutDropdown').value;
+  const ratioValue = document.getElementById('ratioDropdown').value;
+  const cognitiveValue = document.getElementById('cognitiveDropdown').value;
+  const customStyleInput = document.getElementById('customStyleIn').value.trim();
+  const isOnlyCustom = document.getElementById('onlyCustomToggle').checked;
+
+  const grid = document.getElementById('grid');
+  const status = document.getElementById('statusBar');
+  grid.innerHTML = '';
+  
+  status.style.display = 'block';
+  status.innerHTML = '⚡ PARSING TRILLIONS OF COMBINATIONS: Running multi-threaded data mapping across quantum arrays...';
+
+  const fragment = document.createDocumentFragment();
+
+  for (let i = 0; i < count; i++) {
+    const s = visualStyles[Math.floor(Math.random() * visualStyles.length)];
+    const p = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
+    const t = typographicThemes[Math.floor(Math.random() * typographicThemes.length)];
+    const e = infographicElements[Math.floor(Math.random() * infographicElements.length)];
+    const c = compositionRules[Math.floor(Math.random() * compositionRules.length)];
+    const l = lightingSetups[Math.floor(Math.random() * lightingSetups.length)];
+    const r = renderingTechs[Math.floor(Math.random() * renderingTechs.length)];
+
+    let activeLayout = "";
+    let primaryTag = "";
+
+    if (isOnlyCustom) {
+      activeLayout = customStyleInput !== "" ? customStyleInput : "bespoke customized information layout";
+      primaryTag = "★ Bespoke Grid";
+    } else {
+      let baseLayout = (dropdownValue === 'RANDOM_GRID') ? layoutStyles[Math.floor(Math.random() * layoutStyles.length)] : dropdownValue;
+      primaryTag = baseLayout;
+      activeLayout = "structured " + baseLayout;
+      if (customStyleInput !== "") {
+        activeLayout = customStyleInput + ", integrated into " + activeLayout;
+      }
+    }
+
+    // Bangun Kombinasi Prompt Kuantum Utama Infografis
+    const prompt = "A complete high-end professional educational infographic presentation layout visualizing: \"" + dataRaw + "\", " + ratioValue + ", engineered onto a " + activeLayout + ", " + s + ", utilizing a " + p + ", featuring " + t + ", packed with " + e + ", arranged in a " + c + ", " + cognitiveValue + ", " + l + ", " + r + ", ultra-clear informational legibility, clean sharp lines, vector asset layout presentation style, absolute geometric precision, no typing typos, no overlapping text, 8k resolution, commercial grade composition --v 6.0";
+
+    const card = document.createElement('div');
+    card.className = 'card';
+    
+    let tagHtml = '<div class="tag-container">';
+    if(isOnlyCustom) {
+        tagHtml += '<span class="tag custom-tag">' + primaryTag + '</span>';
+    } else {
+        tagHtml += '<span class="tag layout-tag">📐 ' + primaryTag.split(' ')[0] + ' Grid</span>';
+    }
+    tagHtml += '<span class="tag ratio-tag">🖼️ ' + ratioValue.split(' ')[2] + '</span>';
+    tagHtml += '<span class="tag" style="background:rgba(0, 255, 163, 0.05); color:#8b949e;">' + s.split(' ')[0] + ' Style</span>';
+    tagHtml += '</div>';
+
+    card.innerHTML = tagHtml + '<div class="p-text">' + prompt + '</div><button class="copy" onclick="copyQuantumPrompt(this)">📋 Copy Quantum Prompt</button>';
+    fragment.appendChild(card);
+  }
+
+  grid.appendChild(fragment);
+  status.innerHTML = '🔥 REVOLUTIONARY SUCCESS! Rendered ' + count.toLocaleString('id-ID') + ' hyper-dense quantum infographic engineering prompts.';
+}
+
+function copyQuantumPrompt(btn) {
+  const text = btn.previousElementSibling.textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = "✓ Prompt Matrix Locked to Clipboard!";
+    btn.style.background = "#00ffa3";
+    btn.style.color = "#010409";
+    setTimeout(() => {
+      btn.textContent = orig;
+      btn.style.background = "";
+      btn.style.color = "";
+    }, 2000);
+  });
+}
+
+function toggleFocus() {
+  document.body.classList.toggle('minimal-mode');
+  const btn = document.querySelector('.focus-toggle');
+  btn.textContent = document.body.classList.contains('minimal-mode') ? 'SHOW ENGINE DASHBOARD' : 'TOGGLE IMMERSIVE FOCUS';
+}
+
+function downloadPromptDatabase() {
+  const texts = document.querySelectorAll('.p-text');
+  if (texts.length === 0) return alert("Quantum engine database is currently empty!");
+  let content = '⚡ INFOGRAPH MASTER PRO v2.0 — QUANTUM DATABASE EXPORT\nTotal Permutations: ' + texts.length + '\nGeneration Timestamp: ' + new Date().toLocaleString('id-ID') + '\n\n';
+  texts.forEach((el, i) => content += '--- QUANTUM DATA MATRIX CONTAINER [' + (i + 1) + '] ---\n' + el.textContent + '\n\n');
+  const blob = new Blob([content], {type: "text/plain;charset=utf-8"});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'quantum-infograph-prompts-' + new Date().toISOString().slice(0,10) + '.txt';
+  a.click();
+}
+
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) backToTop.classList.add('show');
+  else backToTop.classList.remove('show');
+});
+  //]]>
+  </script>
+</body>
+</html>

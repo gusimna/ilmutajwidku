@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' dir='ltr' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+
+<head>
+  <meta charset='UTF-8'/>
+  <meta content='width=device-width, initial-scale=1.0, minimum-scale=1.0' name='viewport'/>
+  <title>🌏 UNIVERSAL CALLIGRAPHY STICKER PROMPTS</title>
+
+  <b:skin><![CDATA[
+    :root {
+        --bg: #05070a;
+        --card: #111827;
+        --accent: #fbbf24;
+        --text: #f9fafb;
+        --secondary: #374151;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+        font-family: 'Segoe UI', system-ui, Roboto, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        margin: 0;
+        padding: 20px;
+        line-height: 1.5;
+    }
+
+    .container { max-width: 1300px; margin: 0 auto; }
+    .header { text-align: center; padding: 40px 0 30px; }
+    .header h1 { color: var(--accent); font-size: 2.8rem; margin: 0; text-shadow: 0 0 20px rgba(251,191,36,0.5); }
+
+    .dashboard {
+        background: var(--card);
+        padding: 30px;
+        border-radius: 20px;
+        border: 1px solid #1f2937;
+        position: sticky;
+        top: 15px;
+        z-index: 100;
+        box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7);
+    }
+
+    .row { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 20px; }
+    .input-group { flex: 1; min-width: 200px; }
+    label { display: block; font-size: 0.75rem; color: #9ca3af; margin-bottom: 8px; text-transform: uppercase; font-weight: 600; }
+    input {
+        width: 100%;
+        padding: 12px 14px;
+        background: #030712;
+        border: 1px solid #374151;
+        border-radius: 10px;
+        color: white;
+        font-size: 1rem;
+    }
+    input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(251,191,36,0.15); outline: none; }
+
+    .btn-box { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px; }
+    button {
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.2s;
+    }
+    .btn-num { background: var(--secondary); color: white; }
+    .btn-num:hover { background: #4b5563; }
+    .btn-go { background: var(--accent); color: #000; flex: 2; font-size: 1.1rem; }
+    .btn-go:hover { background: #fcd34d; transform: translateY(-2px); }
+    .btn-reset { background: #dc2626; color: white; }
+    .btn-export { background: #166534; color: white; }
+
+    #grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 20px;
+        margin-top: 40px;
+    }
+    .card {
+        background: var(--card);
+        padding: 20px;
+        border-radius: 15px;
+        border: 1px solid #1f2937;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+    }
+    .card:hover { border-color: var(--accent); transform: translateY(-5px); }
+    .tag {
+        font-size: 10px;
+        background: rgba(251,191,36,0.1);
+        color: var(--accent);
+        padding: 4px 10px;
+        border-radius: 999px;
+        width: fit-content;
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+    .p-text {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: #d1d5db;
+        margin-bottom: 20px;
+        flex-grow: 1;
+        white-space: pre-wrap;
+        word-break: break-all;
+    }
+    .copy {
+        background: #030712;
+        color: var(--accent);
+        border: 1px solid var(--accent);
+        padding: 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 500;
+        width: 100%;
+    }
+    .copy:hover { background: var(--accent); color: #000; }
+
+    .focus-toggle {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        z-index: 2000;
+        background: #fbbf24;
+        color: #000;
+        border: none;
+        border-radius: 50px;
+        padding: 14px 26px;
+        font-weight: 700;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        cursor: pointer;
+    }
+
+    body.minimal-mode .dashboard { display: none !important; }
+  ]]></b:skin>
+</head>
+
+<body>
+  <b:section class='main' id='main' showaddelement='yes'>
+    <b:widget id='HTML1' locked='false' title='Arabic Calligraphy Explorer' type='HTML' version='2' visible='true'>
+      <b:widget-settings>
+        <b:widget-setting name='content'/>
+      </b:widget-settings>
+      <b:includable id='main'>
+        <div class='container'>
+          <div class='header'>
+            <h1>🌏 UNIVERSAL CALLIGRAPHY STICKER PROMPTS</h1>
+            <p>Hasilkan hingga 20.000 prompt unik sekaligus</p>
+          </div>
+
+          <div class='dashboard'>
+            <div class='row'>
+              <div class='input-group'>
+                <label for='textIn'><a href='https://quran.com/' target='_blank'>QURAN.com</a></label>
+                <input id='textIn' placeholder='Masukkan teks di sini...' type='text'/>
+              </div>
+              <div class='input-group' style='flex:0.35;'>
+                <label for='numIn'>Jumlah Prompt (Maks 20.000)</label>
+                <input id='numIn' max='20000' min='1' type='number' value='50'/>
+              </div>
+            </div>
+
+            <div class='btn-box'>
+              <button class='btn-num' onclick='setN(10)'>10</button>
+              <button class='btn-num' onclick='setN(50)'>50</button>
+              <button class='btn-num' onclick='setN(100)'>100</button>
+              <button class='btn-num' onclick='setN(500)'>500</button>
+              <button class='btn-num' onclick='setN(1000)'>1.000</button>
+              <button class='btn-num' onclick='setN(2000)'>2.000</button>
+              <button class='btn-num' onclick='setN(5000)'>5.000</button>
+              <button class='btn-num' onclick='setN(10000)'>10.000</button>
+              <button class='btn-num' onclick='setN(20000)'>20.000</button>
+            </div>
+
+            <div class='btn-box'>
+              <button class='btn-go' onclick='run()'>🚀 GENERATE RANDOM VARIATIONS</button>
+              <button class='btn-reset' onclick='reset()'>RESET</button>
+              <button class='btn-export' onclick='exportToFile()'>💾 EXPORT TXT</button>
+            </div>
+          </div>
+
+          <div id='grid'/>
+        </div>
+
+        <button class='focus-toggle' onclick='toggleFocus()'>FOCUS MODE</button>
+      </b:includable>
+    </b:widget>
+  </b:section>
+
+  <script type='text/javascript'>
+  //<![CDATA[
+
+     // === ARRAY DATA (Ganti dengan data lengkap Anda nanti) ===
+const vibes = [
+  "ancient manuscript", "antique bronze", "ornate intricate", "art deco glamour",
+  "bold graphic", "bold masculine", "bohemian artistic", "bright cheerful",
+  "bright studio clean", "brutalist modern", "celestial cosmic", "clean japanese zen",
+  "cold metallic future", "contemporary abstract", "contemporary geometric",
+  "cultural heritage", "cyberpunk future", "dark gothic romance", "dark moody",
+  "desert landscape", "digital glitch", "divine illuminated", "dramatic cinematic",
+  "dreamy ethereal", "elegant script", "elegant feminine", "emerald jewel tone",
+  "ethereal light", "fiery passionate", "floral delicate", "forest mystic",
+  "futuristic tech", "geometric precision", "golden hour romantic", "graceful feminine",
+  "handcrafted warm", "icy cool futuristic", "traditional ornate", "luxury dark academia",
+  "luxury premium", "luxury velvet", "minimal sacred", "modern luxury",
+  "modern minimalist", "monochrome elegant", "moody atmospheric", "mountain majestic",
+  "mysterious ancient", "mystical esoteric", "neon cyber", "neon futuristic",
+  "nordic scandinavian", "oceanic deep", "opulent baroque", "ornate traditional",
+  "pastel dreamy", "peaceful serene", "pearl iridescent", "playful whimsical",
+  "powerful authoritative", "premium marble luxury", "premium wax seal",
+  "royal gold opulence", "royal opulent", "royal elegance", "geometric harmony",
+  "soft romantic", "sophisticated classic", "spiritual sacred", "steampunk mechanical",
+  "strong masculine", "mystic", "tropical vibrant", "urban streetwear",
+  "vaporwave retro", "vintage antique", "vintage classic", "vintage postage stamp",
+  "warm boho chic", "warm earthy", "y2k chrome aesthetic", "zen minimalism"
+];
+
+
+// -- ubah menjadi netral, universal, tidak arab, tidak islami: 
+
+
+const compositions = [
+  "3D perspective angle", "angled side view", "asymmetrical modern",
+  "asymmetrical organic flow", "asymmetrical tension", "badge emblem centered",
+  "balanced golden ratio", "balanced triad composition", "centered composition",
+  "centered with breathing space", "cinematic framing", "circular badge style",
+  "close-up macro shot", "corner anchored composition", "diagonal energy flow",
+  "dramatic perspective depth", "dramatic shadow play angle", "dynamic dutch tilt",
+  "dynamic motion composition", "elegant diagonal placement", "elegant off-center placement",
+  "exploded view multiple angles", "extreme close-up detail", "floating isometric view",
+  "floating levitation", "floating with subtle rotation", "front facing hero angle",
+  "full bleed edge to edge", "grid alignment", "hero angled elevation", "hero product shot",
+  "high angle bird view", "horizontal landscape layout", "isometric product showcase",
+  "layered overlapping", "layered paper stack", "low angle dramatic", "macro texture focus",
+  "minimal floating isolation", "minimal negative space", "minimal single focus",
+  "modern clean whitespace", "multi layer 3D stack", "ornate frame border",
+  "ornate vintage frame", "overlapping depth layers", "perfect symmetry mirror",
+  "product flat lay", "radial circular layout", "radial symmetry burst",
+  "rectangular sticker view", "rule of thirds", "scattered casual arrangement",
+  "scattered multiple angles", "slightly tilted angle", "soft corner placement",
+  "sticker sheet flatlay", "symmetrical balance", "symmetrical radial pattern",
+  "three-quarter view", "tight cropped detail", "top down view",
+  "vertical portrait orientation", "wide angle product shot"
+];
+
+
+// -- ubah menjadi netral, universal, tidak arab, tidak islami: 
+
+
+const effects = [
+  "3D extrusion", "ancient crackle", "bevel edge highlight", "butterfly wing iridescence",
+  "chromatic aberration", "cracked surface glow", "crystal refraction", "cyber grid scanline",
+  "deep emboss bevel", "diamond facet sparkle", "dramatic rim shadow", "dreamy light leak",
+  "electric spark arcs", "embossed raised effect", "ethereal aura ring", "film grain texture",
+  "fire ember particles", "firefly sparkles", "floating debris particles", "floating in air",
+  "frost edge crystals", "frosted glass blur", "glitter scatter", "glossy specular highlight",
+  "glow in the dark effect", "golden particle dust", "glowing line patterns", "holographic foil shift",
+  "holographic ripple", "holographic shift", "ink bleeding effect", "ink splatter dynamic",
+  "ink wash bleed", "lens flare burst", "levitation hover", "light ray burst",
+  "light streak trails", "liquid chrome flow", "liquid metal drip", "liquid splash",
+  "long elegant shadow", "metallic edge wear", "metallic reflection", "mirror reflection",
+  "molten edge glow", "motion blur", "multi layer shadow depth", "neon outline glow",
+  "ornate corner flourish", "paper curl edge", "paper fold crease", "particle sparkles",
+  "pearl luster", "prism light dispersion", "prismatic edge split", "rain streak",
+  "rainbow sheen", "smoke wisps", "soft bokeh orb", "soft edge glow halo", "soft vignette",
+  "sparkling star dust", "stitched border", "subtle drop shadow", "subtle heat distortion",
+  "subtle inner glow", "subtle motion lines", "torn paper edge", "translucent overlay",
+  "velvet soft shadow", "volumetric fog", "water droplet effect", "wax drip detail",
+  "wax seal emboss"
+];
+
+
+// -- ubah menjadi netral, universal, tidak arab, tidak islami: 
+
+
+const colorSchemes = [
+  "antique bronze and olive", "aqua marine and pearl", "arctic white and icy blue",
+  "autumn rust and gold", "brushed titanium and teal", "burnished copper and turquoise",
+  "burnt orange and navy", "champagne gold and pearl", "cool sapphire tones",
+  "crimson red and black", "cybernetic blue and magenta", "cyberpunk pink cyan",
+  "dark forest green and gold", "deep burgundy and pearl", "deep emerald and gold",
+  "deep indigo and rose gold", "deep midnight blue and silver", "deep obsidian and crimson",
+  "dreamy lilac and silver", "earthy olive and terracotta", "earthy terracotta and sage",
+  "electric purple and neon cyan", "fiery copper bronze", "fiery red and obsidian",
+  "frosted mint and rose gold", "golden hour orange and teal", "holographic aura rainbow",
+  "holographic silver and violet", "icy blue and silver", "iridescent pearl and lavender",
+  "iridescent rainbow", "jewel tone gemstone", "lavender and soft gold",
+  "luxury burgundy gold", "luxury emerald and cream", "luxury matte black and gold",
+  "matte charcoal and copper", "metallic bronze and sage", "metallic silver and electric blue",
+  "minimal black gold", "minimal cream and black", "modern silver chrome",
+  "monochrome black white", "neon magenta and black", "pastel dream",
+  "pastel sky blue and peach", "pearl white and silver", "rich plum and antique gold",
+  "rose gold and blush", "deep gold and navy", "purple and emerald",
+  "sapphire and diamond white", "serene lavender mint", "soft blush and ivory",
+  "soft gray and rose gold", "soft peach and cream", "sunlit yellow and white",
+  "sunset orange purple", "teal and copper", "velvet black and champagne",
+  "vintage sepia", "vintage wine and cream", "warm caramel and cream",
+  "warm mocha and gold", "warm sand and terracotta", "warm terracotta"
+];
+
+
+// -- ubah menjadi netral, universal, tidak arab, tidak islami: 
+
+const lighting = [
+  "vintage lantern glow", "bright clean studio", "cinematic three-point lighting",
+  "cold futuristic LED", "cool blue hour", "cool silver reflection", "cosmic starlight sparkle",
+  "cyberpunk neon bloom", "deep shadow gradient", "dramatic chiaroscuro", "dramatic god ray burst",
+  "dramatic rim glow", "dramatic rim light", "dramatic side lighting", "dramatic underlighting",
+  "dreamy soft focus glow", "dynamic light streaks", "elegant low angle light",
+  "ethereal backlit halo", "ethereal floating particles", "ethereal glow", "fiery orange rim",
+  "fiery sunset rim light", "gentle feather light", "golden hour glow", "golden rim highlight",
+  "glow in the dark neon", "harsh dramatic shadows", "high contrast key light",
+  "holographic light bloom", "holographic spectrum flare", "icy cold moonlight",
+  "intense specular highlight", "luxury crystal refraction", "luxury pearl sheen light",
+  "luxury spotlight", "metallic reflection light", "minimal single light source",
+  "modern LED panel", "moody atmospheric fog", "moody cinematic lighting", "moody low key lighting",
+  "moonlight shimmer", "ethereal aura glow", "neon cyber glow", "neon tube accent",
+  "pearl specular highlight", "prismatic light dispersion", "rainbow light refraction",
+  "rainbow prism caustics", "soft bokeh highlights", "soft diffused morning light",
+  "soft glowing edge light", "soft inner glow", "soft morning haze", "soft overhead diffused",
+  "soft pastel light wash", "subtle backlighting", "subtle caustics", "subtle lens flare",
+  "velvet shadow play", "volumetric fog lighting", "volumetric god rays", "warm ambient fill",
+  "warm candlelight", "warm ember accent", "warm tungsten glow", "warm vintage bulb glow"
+];
+
+
+// -- ubah menjadi netral, universal, tidak arab, tidak islami: 
+
+const backgrounds = [
+  "ancient clay wall", "ancient manuscript paper", "ancient stone texture", "antique gold leaf",
+  "black chalkboard", "bright studio white", "brushed metal plate", "clean floating platform",
+  "clean minimalist border", "clean studio shadow", "cool mint gradient", "cosmic galaxy",
+  "cracked desert sand", "dark forest green", "dark gradient navy", "dark moody atmosphere",
+  "deep burgundy velvet", "deep charcoal slate", "deep cosmic void", "deep emerald velvet",
+  "deep navy gradient", "dramatic rim lighting", "dramatic spotlight", "elegant cream silk",
+  "elegant dark velvet", "ethereal light rays", "ethereal white mist", "floating marble platform",
+  "frosted glass surface", "glossy white ceramic", "golden bokeh", "golden hour glow",
+  "golden hour sunlight", "holographic aura", "holographic prism", "icy blue crystal",
+  "intricate geometric pattern", "ivory parchment", "light gray linen texture",
+  "light sakura petals", "luxury black marble", "luxury carbon fiber", "luxury dark wood",
+  "luxury emerald marble", "luxury leather surface", "luxury silk fabric", "marble with gold veins",
+  "marbleized ink", "metallic copper plate", "midnight blue velvet", "minimal cream paper",
+  "minimal floating particles", "minimal sand texture", "minimal shadow box", "modern concrete texture",
+  "neutral light gray backdrop", "pearl white shimmer", "polished obsidian", "pure black void",
+  "rose gold metallic gradient", "purple damask", "red damask", "soft beige linen",
+  "soft bokeh light effect", "soft cloud texture", "soft diffused studio", "soft linen weave",
+  "soft misty fog", "soft pastel sky", "soft rice paper", "soft watercolor wash",
+  "stone wall texture", "subtle flowing lines", "subtle golden dust", "subtle grid overlay",
+  "subtle grid pattern", "subtle halftone pattern", "subtle starry night", "velvet rose",
+  "vibrant sunset gradient", "vintage paper aged", "warm beige parchment", "warm kraft paper",
+  "warm sakura bloom", "warm sunset haze", "warm terracotta", "watercolor splashes",
+  "white background"
+];
+
+
+// -- ubah menjadi netral, universal, tidak arab, tidak islami: 
+
+const textures = [
+  "aged parchment", "antique gold leaf", "asphalt grit", "aurora borealis shimmer",
+  "bamboo fiber", "brushed copper", "brushed rose gold", "brushed titanium", "burlap rough",
+  "carbon fiber weave", "ceramic glaze", "chalk pastel", "charcoal sketch", "chrome silver",
+  "copper patina", "cork texture", "cracked porcelain", "crushed velvet", "crystalline diamond dust",
+  "deep ocean blue ink", "denim fabric", "diamond plate", "distressed leather", "scale pattern",
+  "dripping wax", "embossed leather texture", "epoxy resin", "ethereal mist", "feather soft",
+  "fiery copper ember", "flocked velvet", "frosted acrylic", "frosted glass effect", "fur texture",
+  "galaxy nebula", "glitter particle", "glossy candy coat", "glossy liquid gold", "hammered gold",
+  "hammered metal", "handmade paper texture", "high gloss enamel", "holographic foil",
+  "honeycomb pattern", "ice crystal", "icy frost crystal", "ink wash watercolor", "knitted wool",
+  "kraft paper", "laser etched metal", "liquid chrome", "liquid gold drip", "liquid mercury",
+  "liquid metal spill", "marble vein", "matte latex", "matte pastel paint", "matte sandblast",
+  "metallic brushed steel", "metallic flake", "microfiber suede", "mirror chrome", "molten glass",
+  "molten lava glow", "mother of pearl", "oil paint impasto", "oil slick iridescent",
+  "oxidized silver", "pearl sheen", "pearlescent shell", "perforated metal", "plasma energy glow",
+  "polished marble", "polished obsidian", "quilted fabric", "rainbow holographic", "raw concrete",
+  "reptile skin", "rough hessian", "rusted metal patina", "sand dune texture", "satin finish",
+  "satin silk", "smoked glass", "smoked quartz", "soft cashmere", "soft silk fabric", "soft suede",
+  "sparkling sequin", "stone carved", "textured clay", "textured linen", "terracotta clay",
+  "velvet black ink", "velvet flock", "volcanic ash", "warm wood grain", "wax seal",
+  "wet ink bleeding", "wire mesh", "woven fabric"
+];
+
+
+// -- ubah menjadi netral, universal, tidak arab, tidak islami, lebih banyak:
+
+const khats = [
+  "3D Extruded Script", "Ancient Square Script", "Abstract Fluid Script", 
+  "Ornate Decorative Style", "Elegant Regional Style", "Architectural Lettering", 
+  "Historical Bold Script", "Beveled 3D Script", "Traditional Brush Script", 
+  "Bronze Antique Style", "Calligraphic Ornament", "East Asian Fusion", 
+  "Contemporary Modern Script", "Crystal Prism Script", "Cursive Fluid Flow", 
+  "Damascene Ornate Style", "Decorative Elegant Script", "Flowing Ornate Script", 
+  "Ornate Layered Style", "Divine Light Effect", "Hieroglyphic Fusion", 
+  "Elegant Classic Script", "Modern Contemporary Style", "Expressive Brush Script", 
+  "Elegant Fluid Script", "Flowing Ribbon Script", "Futuristic Digital Script", 
+  "Geometric Fusion", "Golden Ratio Script", "Gothic Style Lettering", 
+  "Graffiti Style", "Handlettered Modern", "Early Classic Script", 
+  "Holographic Script", "Certificate Style", "Illuminated Manuscript Style", 
+  "Indo Fusion Style", "Southeast Asian Fusion", "Ink Splash Dynamic", 
+  "Geometric Pattern Script", "Ornate Layered Script", "Classic Brush Script", 
+  "Bold Angular Script", "Square Geometric Script", "Laser Cut Script", 
+  "Layered Overlap Style", "Luxury Embossed Script", "Classic Regional Style", 
+  "Mosaic Tile Style", "Mystic Style", "Flowing Elegant Script", 
+  "Broken Fluid Script", "Neon Glow Script", "Ornate Royal Crest", 
+  "Papercut Silhouette", "Pearl Inlaid Style", "Fluid Elegant Script", 
+  "Illuminated Classic Script", "Classic Rounded Script", "Reqa Style", 
+  "Rounded Soft Script", "Royal Ornate Script", "Casual Hand Script", 
+  "Ancient Central Style", "Modern Regional Style", "Shadow Depth Script", 
+  "Sharp Angular Script", "Shikasteh Style", "Sini Style", 
+  "Square Geometric Script", "Symmetrical Mirror Script", "Tahriri Style", 
+  "Ta'liq Style", "Thuluth Style", "Turkish Sulus Style", "Tuluth Jali Style",
+  "Typographic Fusion", "Ultra Modern Script", "Velvet Texture Lettering", 
+  "Vintage Gold Foil", "Watercolor Script",
+
+  // === Additional New Neutral Styles (More Variety) ===
+  "Minimal Single Stroke", "Modern Serif Script", "Clean Sans Serif Logo", 
+  "Luxury Signature Style", "Vintage Engraved Script", "Retro Bold Lettering",
+  "Art Deco Elegant", "Minimal Thin Line Script", "Bold Condensed Style",
+  "Elegant Cursive Handwriting", "Modern Brush Lettering", "Distressed Vintage Text",
+  "Metallic Chrome Script", "Glass Effect Lettering", "Liquid Metal Script",
+  "Floating 3D Typography", "Layered Shadow Script", "Outline Stroke Style",
+  "Textured Grain Lettering", "Premium Foil Script", "Matte Embossed Style",
+  "High Contrast Blackletter", "Soft Watercolor Flow", "Ink Bleed Dynamic",
+  "Geometric Constructivist", "Bauhaus Minimal Style", "Mid Century Modern Script",
+  "Luxury Fashion Lettering", "Editorial Bold Title", "Delicate Fine Line Script",
+  "Heavy Block Style", "Slim Elegant Monoline", "Vintage Typewriter Style",
+  "Handcrafted Organic Script", "Digital Glitch Typography", "Cyber Futuristic Font",
+  "Soft Shadow Depth", "Golden Metallic Style", "Crystal Gem Lettering",
+  "Marble Texture Script", "Wood Carved Style", "Stone Engraved Lettering",
+  "Neon Tube Typography", "Holographic Prism Text", "Iridescent Rainbow Script",
+  "Minimal Negative Space", "Ornate Flourish Style", "Classic Roman Style",
+  "Modern Italic Cursive", "Powerful Bold Headline", "Dreamy Ethereal Script"
+];
+
+
+// -- ubah menjadi netral, universal, tidak arab, tidak islami: 
+
+const styles = [
+  "3D puffed", "Acrylic mirror", "Ancient wax tablet", "Antique bronze", "Arcane spell scroll",
+  "Aurora borealis", "Black ice", "Blood marble", "Brushed aluminum", "Brushed titanium",
+  "Brutalist concrete", "Burnt edge", "Calligraphy scroll", "Carbon fiber weave", "Ceramic glaze",
+  "Chrome bevel", "Chrome mirror", "Cinematic film grain", "Circuit board etch", "Clear backing",
+  "Cracked porcelain", "Crystal prism cut", "Cutout silhouette", "Cyber grid glow", "Cyberpunk neon",
+  "Deep emboss", "Denim patch", "Diamond facet cut", "Die-cut", "Distressed vintage",
+  "Double layered 3D", "Scale pattern", "Embossed metallic", "Ethereal smoke edge",
+  "Fabric embroidered", "Fabric woven edge", "Floating acrylic", "Floating hologram",
+  "Foil stamped edge", "Frozen crystal", "Frosted glass", "Galaxy resin", "Glassine translucent",
+  "Glitter border", "Glossy candy coat", "Glow edge halo", "Glow in the dark", "Hammered metal",
+  "Handmade washed tape", "Holographic rainbow foil", "Ink bleed", "Geometric tile style",
+  "Kraft paper stamp", "Laser etched", "Layered paper cut", "Leather texture", "Linen fabric",
+  "Liquid mercury", "Liquid metal", "Luxury gold foil", "Luxury seal stamp", "Marble vein",
+  "Matte charcoal", "Matte sandblast", "Metallic edge glow", "Metallic flake", "Metallic lava",
+  "Micro perforated", "Minimal floating shadow", "Minimalist line art", "Mystic symbol engrave",
+  "Neon glow outline", "Neon tube outline", "Oil slick iridescent", "Opal gemstone",
+  "Origami fold", "Ornate frame", "Papercut shadow layer", "Pearl shell finish",
+  "Pearlescent shimmer", "Plasma glow", "Polaroid border", "Prismatic spectrum", "Quantum glass",
+  "Raised emboss", "Retro 80s", "Retro CRT glitch", "Luxury wax seal", "Rusted metal",
+  "Sakura petal edge", "Sandwich layered", "Serrated edge", "Soft clay", "Soft glow resin",
+  "Steampunk gear border", "Sticker bomb style", "Stone carved", "Tarot card frame",
+  "Thermochromic", "Translucent jelly", "UV reactive", "Velvet matte", "Velvet touch",
+  "Vintage postage", "Vintage stamp", "Void black mirror", "Vaporwave grid", "Wax melt",
+  "Wood grain emboss", "Wrinkled paper", "Y2K chrome"
+];
+
+// ==================== KATEGORI TAMBAHAN ====================
+
+// -- ubah menjadi netral, universal, tidak arab, tidak islami, lebih banyak: 
+
+const subjects = [
+  "elegant calligraphy", "luxury calligraphy", "modern script lettering", 
+  "minimal wordmark", "bold typography logo", "ornate monogram", 
+  "luxury name calligraphy", "initial monogram crest", "wedding invitation text",
+  "product label design", "brand logo typography", "motivational quote",
+  "inspirational text art", "elegant quote lettering", "certificate title",
+  "book cover title", "poster typography", "sticker text design",
+  "luxury tagline", "signature style name", "handwritten script logo",
+  "abstract word art", "3D extruded text", "metallic logo design",
+  "minimalist phrase", "elegant slogan lettering", "vintage stamp text",
+  "ornate emblem lettering", "modern sans serif logo", "serif elegance title",
+  "floating text composition", "layered typography", "glow effect lettering",
+  "luxury fashion brand text", "cosmetic product label", "perfume brand name",
+  "watch engraving style", "jewelry monogram", "minimal business card text",
+  "event invitation lettering", "greeting card phrase", "quote of the day",
+  "powerful single word", "elegant script phrase", "bold statement text",
+  "dreamy ethereal words", "vintage retro lettering", "cyberpunk text logo",
+  "futuristic digital typography", "nature inspired wordmark", "geometric text design",
+  "watercolor text art", "gold foil lettering", "marble texture text",
+  "neon sign typography", "holographic logo text", "premium packaging label",
+  "award plaque engraving", "memorial text design", "artistic phrase composition"
+];
+
+
+
+
+// -- ubah menjadi netral, universal, tidak arab, tidak islami, lebih banyak: 
+
+const formats = [
+  "square composition", "portrait orientation", "landscape orientation", 
+  "vertical rectangle", "horizontal rectangle", "circular format", 
+  "badge format", "sticker sheet layout", "single product focus", 
+  "multi angle showcase", "close-up detail shot", "full composition view",
+  "social media post ratio", "story format 9:16", "poster ratio 2:3",
+  "business card ratio", "logo lockup", "emblem centered",
+
+  // Expanded & more variety
+  "wide panoramic", "cinematic wide screen", "iphone story vertical", 
+  "instagram square", "instagram portrait", "twitter header landscape",
+  "youtube thumbnail", "facebook cover", "linkedin banner", 
+  "minimal square lockup", "tall vertical banner", "horizontal billboard",
+  "die-cut sticker", "round seal format", "hexagonal composition",
+  "triangular badge", "oval frame", "arch shaped", "scroll banner",
+  "book cover ratio", "magazine spread", "album cover square",
+  "product packaging flat", "label tag format", "envelope seal",
+  "key visual hero shot", "full bleed composition", "centered emblem",
+  "asymmetrical layout", "grid based collage", "single focus isolation",
+  "exploded view layout", "triptych three panel", "diptych two panel",
+  "vertical story reel", "horizontal carousel", "square product mockup",
+  "3D isometric showcase", "floating product scene", "clean whitespace focus",
+  "ornate framed format", "vintage polaroid", "modern minimal frame",
+  "circular medallion", "shield shape emblem", "crest shaped lockup"
+];
+
+
+
+
+// -- ubah menjadi netral, universal, tidak arab, tidak islami, lebih banyak: 
+
+const details = [
+  "highly detailed", "intricate details", "ultra realistic", "sharp focus", 
+  "8k resolution", "masterpiece", "best quality", "finely detailed", 
+  "ornate details", "luxurious detail", "micro details", "crisp edges", 
+  "perfect composition", "professional rendering", "cinematic detail", 
+  "museum quality", "flawless execution", "hyper detailed", 
+
+  // Expanded
+  "extreme detail", "rich texture detail", "delicate craftsmanship", 
+  "stunning clarity", "photorealistic", "hyper realistic", "intricate surface texture",
+  "refined finishing", "exquisite detailing", "meticulous rendering", 
+  "ultra sharp focus", "crystal clear clarity", "impeccable quality",
+  "award winning detail", "gallery level quality", "premium finish",
+  "subtle surface variations", "layered depth details", "volumetric lighting detail",
+  "beautiful material texture", "elegant material rendering", "high end polish",
+  "smooth gradients", "precise line work", "refined edges and contours",
+  "luxury surface quality", "rich color depth", "dramatic light interaction",
+  "subtle shadow details", "intricate pattern work", "ornate embellishments",
+  "textural richness", "fine grain texture", "velvety smooth finish",
+  "glossy reflections", "matte premium surface", "dynamic lighting details",
+  "atmospheric depth", "3D depth and dimension", "realistic material properties",
+  "masterful composition", "perfect balance and harmony", "stunning visual impact",
+  "exceptional detail level", "next level realism", "cinematic rendering",
+  "ultra high definition", "4k masterpiece", "16k resolution quality"
+];
+
+
+
+
+// -- ubah menjadi netral, universal, tidak arab, tidak islami, lebih banyak: 
+
+const elements = [
+  "subtle geometric pattern", "ornate border frame", "floral motif", 
+  "gold leaf ornament", "elegant corner flourish", "vintage seal stamp",
+  "wax seal with ribbon", "delicate leaf vine", "rose petal accent",
+  "feather quill", "ink pot and pen", "subtle star sparkle",
+  "ethereal light particles", "floating golden dust", "ribbon swirl",
+  "pearl bead accent", "crystal gem accent", "butterfly wing motif",
+  "soft cloud element", "gentle wave pattern", "mountain silhouette",
+  "tree branch detail", "flowing water swirl", "sunburst ray element",
+  "moon phase accent", "star constellation dot", "ornate frame corner",
+  "vintage postage mark", "laurel wreath accent", "olive branch motif",
+  "subtle mandala pattern", "radial symmetry burst", "honeycomb detail",
+  "scale pattern accent", "feather texture layer", "fabric drape fold",
+  "jewelry chain element", "key and lock motif", "crown accent detail",
+  "shield emblem shape", "banner ribbon scroll", "envelope wax seal",
+  "book page corner", "quill and scroll", "ink splash dynamic",
+  "golden ratio spiral", "subtle grid ornament", "dot and line pattern",
+  "floral bouquet accent", "leaf wreath circle", "crystal prism shard",
+  "holographic sparkle", "soft bokeh orb", "floating ember particle",
+  "delicate lace edge", "embroidered texture", "velvet ribbon bow",
+  "metallic chain link", "pearl string accent", "gemstone cluster"
+];
+
+
+
+
+// -- ubah menjadi netral, universal, tidak arab, tidak islami, lebih banyak: 
+
+const cameraAngles = [
+  "eye level straight on", "low angle heroic view", "high angle overhead",
+  "three quarter angle", "side profile view", "extreme close-up macro",
+  "medium shot product focus", "full shot composition", "dynamic dutch tilt",
+  "isometric 30 degree angle", "floating top down view", "dramatic worm's eye view",
+  "elegant 45 degree angle", "close-up detail shot", "wide cinematic angle",
+  "subtle tilted perspective", "front facing direct view", "angled floating perspective",
+  "bird's eye flat lay", "hero elevated angle",
+
+  // Expanded & more variety
+  "slight low angle", "dramatic low angle", "extreme low angle",
+  "high angle dramatic", "overhead flat lay", "high overhead 90 degree",
+  "three-quarter front view", "three-quarter rear view", "side view 90 degree",
+  "dynamic diagonal angle", "fashion editorial angle", "product hero angle",
+  "cinematic wide shot", "tight close-up", "extreme macro detail",
+  "medium close-up", "full body composition", "dutch tilt 15 degree",
+  "dutch tilt 30 degree", "subtle perspective distortion", "forced perspective",
+  "isometric view", "axonometric angle", "floating levitation angle",
+  "dynamic motion angle", "static clean front view", "elegant elevated angle",
+  "downward 45 degree", "upward 45 degree", "profile side view",
+  "back three-quarter view", "over the shoulder angle", "symmetrical front view",
+  "asymmetrical dramatic angle", "rule of thirds composition angle",
+  "centered symmetrical shot", "off-center dynamic shot", "panoramic wide angle",
+  "portrait vertical angle", "landscape horizontal angle", "square overhead view",
+  "microscopic close-up", "aerial drone view", "slightly rotated perspective",
+  "twisted dynamic angle", "clean minimalist angle", "luxury fashion angle",
+  "studio product angle", "dramatic rim light angle", "soft diffused angle",
+  "volumetric lighting angle", "golden hour side angle", "moody atmospheric angle"
+];
+
+
+
+// -- ubah menjadi netral, universal, tidak arab, tidak islami, lebih banyak: 
+
+const productTypes = [
+  "premium sticker", "luxury die-cut sticker", "holographic sticker", 
+  "embossed metal plate", "luxury business card", "wall art print", 
+  "poster design", "product label", "packaging seal", "wedding invitation card",
+  "book cover title", "logo emblem", "phone case design", "t-shirt print",
+  "enamel pin", "wax seal stamp", "certificate border", "social media graphic",
+  "brand identity mark", "ornate plaque", "notebook cover", "laptop decal",
+  "luxury gift tag", "minimalist logo design", "elegant signage",
+
+  // Expanded & more variety
+  "framed wall art", "canvas print", "metal wall sign", "acrylic plaque",
+  "luxury packaging box", "perfume bottle label", "cosmetic product label",
+  "watch dial engraving", "jewelry packaging tag", "greeting card design",
+  "menu card design", "wine label", "luxury bookmark", "diary cover",
+  "passport holder print", "keychain design", "mug print design",
+  "tote bag print", "hoodie graphic", "cap embroidery design",
+  "medal and award design", "trophy plaque", "name plate engraving",
+  "door sign", "office desk nameplate", "luxury stationery set",
+  "thank you card", "birthday invitation", "event ticket design",
+  "brand merchandise print", "app icon design", "website favicon",
+  "product packaging wrap", "bottle neck label", "hang tag design",
+  "clothing tag label", "luxury shopping bag print", "ribbon banner",
+  "seal stamp design", "vintage badge", "modern pin badge",
+  "coin design", "token emblem", "key visual branding",
+  "hero banner design", "promotional flyer", "catalog cover",
+  "magazine cover title", "album cover art", "poster series",
+  "sticker pack collection", "die-cut vinyl decal", "window cling design"
+];
+
+
+
+// -- ubah menjadi netral, universal, tidak arab, tidak islami, lebih banyak: 
+
+const finishing = [
+  "matte finish", "glossy finish", "satin finish", "metallic foil stamping",
+  "embossed texture", "debossed texture", "soft touch coating", "uv spot gloss",
+  "gold foil stamping", "silver foil stamping", "rose gold foil", "holographic lamination",
+  "velvet lamination", "sandblast matte", "high gloss resin coating", "brushed metal finish",
+  "antique patina finish", "pearlized finish", "iridescent coating", "glow in the dark finish",
+  "mirror polished edge", "laser engraved", "hot foil stamped", "spot uv varnish",
+  "textured emboss", "soft velvet touch", "crystal clear resin dome",
+
+  // Expanded & more variety
+  "matte lamination", "gloss lamination", "soft touch lamination", 
+  "anti-glare coating", "textured laminate", "linen texture finish",
+  "leatherette finish", "fabric texture coating", "wood grain emboss",
+  "stone texture finish", "carbon fiber texture", "brushed titanium finish",
+  "chrome mirror finish", "copper foil stamping", "platinum foil stamping",
+  "transparent gloss coating", "frosted finish", "semi-gloss finish",
+  "deep matte finish", "suede touch coating", "silk touch lamination",
+  "pearl foil stamping", "holographic foil", "rainbow foil stamping",
+  "prismatic foil", "metallic edge painting", "beveled edge polish",
+  "rounded edge finish", "deckled edge", "torn paper edge effect",
+  "glow edge highlight", "fluorescent coating", "glow in the dark print",
+  "thermochromic finish", "scent coating", "scratch resistant coating",
+  "waterproof lamination", "UV resistant finish", "fade resistant coating",
+  "high build spot uv", "3D domed resin", "epoxy resin coating",
+  "liquid glass finish", "ceramic coating", "hammered metal texture",
+  "crackle texture finish", "distressed vintage finish", "aged patina effect",
+  "luxury soft touch", "premium velvet finish", "satin metallic finish"
+];
+
+
+
+// -- ubah menjadi netral, universal, tidak arab, tidak islami, lebih banyak: 
+
+const techniques = [
+  "vector illustration", "3D rendering", "photorealistic render", "digital painting",
+  "ink and brush lettering", "gold leaf technique", "watercolor illustration",
+  "cinematic lighting render", "octane render", "unreal engine render",
+  "studio product photography", "mixed media collage", "vector art",
+  "hand drawn lettering", "digital lettering", "3D extrusion",
+  "layered papercut", "foil illustration", "neon light rendering", "volumetric lighting",
+
+  // Expanded & more variety
+  "digital airbrush", "oil painting style", "acrylic painting", "charcoal sketch",
+  "pen and ink drawing", "pencil illustration", "pastel drawing", 
+  "line art illustration", "minimal line drawing", "detailed engraving style",
+  "woodcut print style", "linocut illustration", "screen print texture",
+  "risograph print effect", "high contrast graphic", "flat vector design",
+  "isometric illustration", "axonometric rendering", "cinematic product shot",
+  "studio lighting photography", "commercial product photography",
+  "macro photography detail", "depth of field render", "bokeh photography style",
+  "double exposure effect", "light painting technique", "long exposure render",
+  "motion blur effect", "particle simulation", "fluid dynamic simulation",
+  "metallic material rendering", "glass material rendering", "fabric texture simulation",
+  "leather material render", "marble material texture", "wood grain rendering",
+  "stone texture illustration", "holographic material effect", "iridescent shader",
+  "subsurface scattering", "global illumination render", "ray tracing",
+  "physically based rendering", "matte painting", "concept art style",
+  "character illustration", "product visualization", "packaging mockup render",
+  "3D modeling", "low poly style", "high poly detailed render",
+  "voxel art", "pixel art style", "retro 8-bit rendering",
+  "glitch art effect", "vaporwave aesthetic render", "cyberpunk rendering",
+  "minimalist flat design", "brutalist graphic", "luxury fashion illustration",
+  "editorial illustration", "poster design technique", "logo design rendering"
+];
+    // === FUNGSI ===
+    function setN(v) { document.getElementById('numIn').value = v; }
+
+    function reset() {
+      document.getElementById('grid').innerHTML = '';
+      document.getElementById('textIn').value = '';
+      document.getElementById('numIn').value = '50';
+    }
+
+    function run() {
+      const textInput = document.getElementById('textIn').value.trim() || "Bismillah";
+      let count = parseInt(document.getElementById('numIn').value) || 50;
+      count = Math.max(1, Math.min(20000, count));
+
+      const grid = document.getElementById('grid');
+      grid.innerHTML = '';
+
+      for (let i = 0; i < count; i++) {
+        const u = subjects[Math.floor(Math.random()*subjects.length)];
+        const k = khats[Math.floor(Math.random()*khats.length)];
+        const p = productTypes[Math.floor(Math.random()*productTypes.length)];
+        const f = formats[Math.floor(Math.random()*formats.length)];
+        const v = vibes[Math.floor(Math.random()*vibes.length)];
+        const o = colorSchemes[Math.floor(Math.random()*colorSchemes.length)];
+        const l = lighting[Math.floor(Math.random()*lighting.length)];
+        const a = cameraAngles[Math.floor(Math.random()*cameraAngles.length)];
+        const c = compositions[Math.floor(Math.random()*compositions.length)];
+        const b = backgrounds[Math.floor(Math.random()*backgrounds.length)];
+        const x = textures[Math.floor(Math.random()*textures.length)];
+        const s = styles[Math.floor(Math.random()*styles.length)];
+        const e = effects[Math.floor(Math.random()*effects.length)];
+        const i = finishing[Math.floor(Math.random()*finishing.length)];
+        const n = elements[Math.floor(Math.random()*elements.length)];
+        const t = techniques[Math.floor(Math.random()*techniques.length)];
+        const d = details[Math.floor(Math.random()*details.length)];
+
+
+        const prompt = `${u}, ${s} sticker, high quality universal (non-Arabic) calligraphy of "${textInput}", ${k} style, ${p},  ${f},  ${v},  ${o},  ${l},  ${a},  ${c},  ${b},  ${x},  ${e},  ${i},  ${n},  ${t},  ${d},  thick white border, professional vector, 8k resolution, clean edges --v 6.0`;
+
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `<div class="tag">${s} • ${k}</div><div class="p-text">${prompt}</div><button class="copy" onclick="cp(this)">📋 Salin Prompt</button>`;
+        grid.appendChild(card);
+      }
+    }
+
+    function cp(btn) {
+      const text = btn.previousElementSibling.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = "✓ Tersalin!";
+        btn.style.background = "#15803d";
+        btn.style.color = "white";
+        setTimeout(() => {
+          btn.textContent = orig;
+          btn.style.background = "";
+          btn.style.color = "";
+        }, 2000);
+      });
+    }
+
+    function toggleFocus() {
+      document.body.classList.toggle('minimal-mode');
+      const btn = document.querySelector('.focus-toggle');
+      btn.textContent = document.body.classList.contains('minimal-mode') ? 'SHOW DASHBOARD' : 'FOCUS MODE';
+    }
+
+    function exportToFile() {
+      const texts = document.querySelectorAll('.p-text');
+      if (texts.length === 0) return alert("Belum ada prompt yang dibuat!");
+      let content = `🌏 UNIVERSAL CALLIGRAPHY STICKER PROMPTS\nJumlah: ${texts.length}\nTanggal: ${new Date().toLocaleString('id-ID')}\n\n`;
+      texts.forEach((el, i) => content += `${i+1}. ${el.textContent}\n\n`);
+      const blob = new Blob([content], {type: "text/plain"});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `arabic-prompts-${new Date().toISOString().slice(0,10)}.txt`;
+      a.click();
+    }
+
+  //]]>
+  </script>
+  
+  
+<div id='backToTop' onclick='window.scrollTo({top: 0, behavior: &apos;smooth&apos;})'>
+  &#9992;&#65039;
+</div>
+
+<style>
+  #backToTop {
+    position: fixed;
+    bottom: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 50px;
+    height: 50px;
+    background-color: #007bff;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    z-index: 9999;
+    
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  #backToTop.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  #backToTop:hover {
+    background-color: #0056b3;
+    transform: translateX(-50%) scale(1.1);
+  }
+</style>
+
+<script>
+  const backToTop = document.getElementById(&#39;backToTop&#39;);
+
+  function toggleBackToTop() {
+    if (window.scrollY &gt; 300) {        // Muncul setelah scroll 300px
+      backToTop.classList.add(&#39;show&#39;);
+    } else {
+      backToTop.classList.remove(&#39;show&#39;);
+    }
+  }
+
+  // Jalankan saat scroll
+  window.addEventListener(&#39;scroll&#39;, toggleBackToTop);
+
+  // Cek posisi saat pertama kali load (jika user refresh di tengah halaman)
+  toggleBackToTop();
+</script>
+  
+  
+  
+</body>
+</html>
