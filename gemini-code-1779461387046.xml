@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang='id' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' name='viewport'/>
+  <title>KNOW-AI: Premium Universal Engine</title>
+  
+  <script src='https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4'></script>
+
+  <b:skin><![CDATA[
+  /* Theme Name: KNOW-AI - Premium Universal Engine
+  Author: AI Collaborator
+  Year: 2026
+  */
+  body {
+    background-color: #020617;
+    color: #f1f5f9;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #0b1329; }
+  ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+  
+  /* Hard Reset & Kill Switch untuk Elemen Bawaan Blogger */
+  .abc-container, #abc, .section, .widget, #navbar, .Header, .Blog { 
+    display: none !important; 
+    visibility: hidden !important; 
+    height: 0 !important; 
+    width: 0 !important; 
+    opacity: 0 !important; 
+    overflow: hidden !important;
+  }
+  ]]></b:skin>
+</head>
+<body class='bg-slate-950 text-slate-100 min-h-screen antialiased selection:bg-teal-500 selection:text-white pb-12'>
+
+  <div class='w-full lg:max-w-5xl mx-auto px-4 py-6 md:py-12 transition-all duration-300'>
+    
+    <header class='text-center mb-8 md:mb-10 relative'>
+      <div class='absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-teal-500/10 blur-[120px] rounded-full pointer-events-none'></div>
+      <div class='inline-flex items-center gap-2 bg-teal-950/50 border border-teal-500/30 px-3 py-1 rounded-full text-[10px] md:text-xs font-bold text-teal-400 tracking-wider uppercase mb-3 shadow-sm'>
+        🔷 Clinical Knowledge Network Integration
+      </div>
+      <h1 class='text-2xl md:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-teal-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent'>
+        KNOW-AI <span class='text-[10px] md:text-sm font-bold px-1.5 py-0.5 bg-slate-800 text-slate-300 rounded-md align-middle ml-1 border border-slate-700'>v2.5 Premium</span>
+      </h1>
+      <p class='text-[11px] md:text-sm text-slate-400 font-medium mt-2 max-w-xl mx-auto px-2'>
+        Sistem Transformasi &amp; Ekstraksi Kognitif Otomatis Berbasis Data Indeks Klinis &amp; Literatur Medis Fleksibel Tradisional.
+      </p>
+    </header>
+
+    <div class='space-y-5 md:space-y-6 relative z-10'>
+      
+      <div class='bg-slate-900/80 border border-slate-800 rounded-xl md:rounded-2xl p-4 md:p-5 shadow-xl backdrop-blur-sm space-y-4'>
+        <div class='flex items-center justify-between border-b border-slate-800 pb-2.5 mb-1'>
+          <h2 class='text-xs font-extrabold text-teal-400 uppercase tracking-wider flex items-center gap-2'>
+            📂 1. Input Literatur Medis Kustom
+          </h2>
+        </div>
+
+        <div class='grid grid-cols-1 md:grid-cols-2 gap-4 pt-1'>
+          <div>
+            <label class='block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5'>Judul Referensi / Fokus Sub-Topik Klinis:</label>
+            <input class='w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-sm text-slate-200 focus:outline-none focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 transition-all disabled:opacity-60 disabled:cursor-not-allowed' id='sourceTitleInput' placeholder='Ketik judul spesifik atau bagian sub-topik (ex: Palliative Performance Scale)...' type='text'/>
+          </div>
+          <div>
+            <label class='block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5'>URL Link Utama (Konten Makro Sumber):</label>
+            <div class='relative flex items-center w-full'>
+              <input class='w-full pl-3.5 pr-20 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-cyan-400 font-mono focus:outline-none focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 transition-all disabled:opacity-60 disabled:cursor-not-allowed truncate' id='customUrlInput' placeholder='Default: IAHPC Manual of Palliative Care 3e' type='text'/>
+              <button class='absolute right-2 px-2.5 py-1 bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-slate-600 text-[10px] font-black text-cyan-400 rounded-lg transition-all active:scale-95 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed' id='btnPasteUrl' title='Paste URL dari clipboard' type='button'>
+                PASTE
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class='pt-2 border-t border-slate-800/60'>
+          <button class='w-full py-2.5 bg-gradient-to-r from-slate-900 via-slate-800 to-zinc-900 hover:from-slate-800 hover:to-zinc-800 text-slate-200 border border-slate-700/50 font-bold text-xs uppercase tracking-wider rounded-xl shadow-md transition-all cursor-pointer' id='btnLockData' type='button'>
+            🔒 KUNCI DATA LITERATUR MEDIS
+          </button>
+        </div>
+      </div>
+
+      <div class='bg-slate-900/80 border border-slate-800 rounded-xl md:rounded-2xl p-4 md:p-5 shadow-xl space-y-4'>
+        <h2 class='text-xs font-extrabold text-emerald-400 uppercase tracking-wider flex items-center gap-2 border-b border-slate-800 pb-2.5'>
+          ⚙️ 2. Parameter Lokalisasi &amp; Konteks Indonesia
+        </h2>
+        
+        <div class='grid grid-cols-1 md:grid-cols-2 gap-4'>
+          <div>
+            <label class='block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1.5'>Fokus Skala Klinis:</label>
+            <select class='w-full px-3 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-300 focus:outline-none focus:border-emerald-500 transition-all disabled:opacity-60 disabled:cursor-not-allowed bg-[image:none]' id='clinicalScale'>
+              <optgroup class='bg-slate-950 text-slate-200' label='Symptom Assessment'>
+                  <option value='ESAS'>Edmonton Symptom Assessment Scale (ESAS / ESAS-r)</option>
+                  <option value='MSAS'>Memorial Symptom Assessment Scale (MSAS)</option>
+                  <option value='MDASI'>MD Anderson Symptom Inventory (MDASI)</option>
+                  <option value='SAS'>Symptom Assessment Scale (SAS)</option>
+                  <option value='BPI'>Brief Pain Inventory (BPI)</option>
+                  <option value='MPQ'>McGill Pain Questionnaire (MPQ)</option>
+              </optgroup>
+              <optgroup class='bg-slate-950 text-slate-200' label='Functional Status &amp; Performance'>
+                  <option value='PPS'>Palliative Performance Scale (PPSv2)</option>
+                  <option value='KPS'>Karnofsky Performance Status (KPS)</option>
+                  <option value='AKPS'>Australia-modified Karnofsky Performance Scale (AKPS)</option>
+                  <option value='ECOG'>ECOG Performance Status</option>
+                  <option value='RUG-ADL'>Resource Utilization Groups - ADL (RUG-ADL)</option>
+                  <option value='FAST'>FAST Scale for Advanced Dementia</option>
+              </optgroup>
+              <optgroup class='bg-slate-950 text-slate-200' label='Quality of Life &amp; Multidimensional'>
+                  <option value='IPOS'>Integrated Palliative Care Outcome Scale (IPOS)</option>
+                  <option value='POS'>Palliative Care Outcome Scale (POS)</option>
+                  <option value='MQOL'>McGill Quality of Life Questionnaire (MQOL)</option>
+                  <option value='FACIT-Pal'>FACIT-Palliative Care (FACIT-Pal)</option>
+                  <option value='FACT-G'>Functional Assessment of Cancer Therapy - General (FACT-G)</option>
+                  <option value='Missoula-VITAS'>Missoula-VITAS Quality of Life Index</option>
+              </optgroup>
+              <optgroup class='bg-slate-950 text-slate-200' label='Psychological &amp; Psychiatric'>
+                  <option value='HADS'>Hospital Anxiety and Depression Scale (HADS)</option>
+                  <option value='PHQ9'>Patient Health Questionnaire-9 (PHQ-9)</option>
+                  <option value='GAD7'>Generalized Anxiety Disorder-7 (GAD-7)</option>
+                  <option value='Distress-Thermometer'>Distress Thermometer</option>
+              </optgroup>
+              <optgroup class='bg-slate-950 text-slate-200' label='Prognostic &amp; Identification Tools'>
+                  <option value='PPI'>Palliative Prognostic Index (PPI)</option>
+                  <option value='PaP'>Palliative Prognostic Score (PaP)</option>
+                  <option value='SPICT'>Supportive and Palliative Care Indicators Tool (SPICT)</option>
+                  <option value='NECPAL'>NECPAL Tool</option>
+              </optgroup>
+              <optgroup class='bg-slate-950 text-slate-200' label='Spiritual &amp; Existential'>
+                  <option value='FICA'>FICA Spiritual History Tool</option>
+                  <option value='HOPE'>HOPE Spiritual Assessment Tool</option>
+              </optgroup>
+              <optgroup class='bg-slate-950 text-slate-200' label='Caregiver &amp; Others'>
+                  <option value='Zarit'>Zarit Burden Interview (ZBI)</option>
+                  <option value='NAT-C'>Needs Assessment Tool - Carers (NAT-C)</option>
+                  <option value='MDAS'>Memorial Delirium Assessment Scale (MDAS)</option>
+                  <option value='CAM'>Confusion Assessment Method (CAM)</option>
+                  <option value='NEST'>Needs at the End of Life Screening Tool (NEST)</option>
+              </optgroup>
+              <optgroup class='bg-slate-950 text-slate-200' label='Additional Tools (Localized)'>
+                  <option value='BPI-ID'>Brief Pain Inventory (BPI) Asesmen Nyeri</option>
+                  <option value='Zarit-ID'>Zarit Burden Interview (ZBI) Beban Caregiver</option>
+                  <option value='ECOG-Matrix'>ECOG Performance Status Matrix</option>
+                  <option value='ESAS-r-ID'>Edmonton Symptom Assessment System (ESAS-r)</option>
+              </optgroup>
+            </select>
+          </div>
+ 
+          <div>
+            <label class='block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1.5'>Konteks Budaya &amp; Edukasi:</label>
+            <select class='w-full px-3 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-300 focus:outline-none focus:border-emerald-500 transition-all disabled:opacity-60 disabled:cursor-not-allowed' id='culturalContext'>
+              <option value='Edukasi Keluarga / Awam (Bahasa Indonesia Empatis &amp; Reduktif)'>Edukasi Keluarga / Awam (Empatis &amp; Sederhana)</option>
+              <option value='Panduan Klinis Tim Medis Rumah Sakit Lokal'>Panduan Klinis Tim Medis (Formal Klinis)</option>
+              <option value='Pendekatan Spiritual &amp; Sosio-Kultural Indonesia'>Pendekatan Spiritual &amp; Sosio-Kultural Lokal</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class='block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1.5'>Instruksi Khusus Tambahan (Opsional):</label>
+          <textarea class='w-full min-h-[60px] px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-300 resize-none focus:outline-none focus:border-emerald-500 transition-all disabled:opacity-60 disabled:cursor-not-allowed' id='customNotes' placeholder='Misal: Fokuskan pada manajemen nyeri non-farmakologi atau strategi komunikasi duka cita...'></textarea>
+        </div>
+
+        <div class='pt-2 border-t border-slate-800/60'>
+          <button class='w-full py-2 bg-gradient-to-r from-slate-900 via-slate-800 to-zinc-900 hover:from-slate-800 hover:to-zinc-800 text-slate-200 border border-slate-700/50 font-bold text-[11px] uppercase tracking-wider rounded-xl shadow-md transition-all cursor-pointer' id='btnLockParams' type='button'>
+            🔒 KUNCI PARAMETER LOKALISASI
+          </button>
+        </div>
+      </div>
+
+      <div class='bg-slate-900/80 border border-slate-800 rounded-xl md:rounded-2xl p-4 md:p-5 shadow-xl space-y-3'>
+        <h2 class='text-xs font-extrabold text-cyan-400 uppercase tracking-wider mb-2 flex items-center gap-2 border-b border-slate-800 pb-2.5'>
+          🧠 3. Generation Channels (Salin Urutan ke Gemini)
+        </h2>
+    
+        <button class='w-full text-left p-3.5 bg-slate-950 hover:bg-slate-800/60 border border-slate-800 hover:border-pink-500/40 rounded-xl transition-all group flex items-center justify-between cursor-pointer' id='btnGen1' type='button'>
+          <div class='pr-2'>
+            <div class='text-xs font-bold text-pink-400 group-hover:text-pink-300 transition-colors break-words'>🔥 FASE 1: CLINICAL SUMMARY CORNERSTONE</div>
+            <div class='text-[10px] md:text-[11px] text-slate-500 mt-0.5 line-clamp-2 md:line-clamp-none'>Mengekstrak dasar diagnosis medis baku dan keamanan obat utama.</div>
+          </div>
+          <span class='text-[10px] md:text-xs font-bold bg-pink-950/40 border border-pink-900 text-pink-400 px-2 md:px-2.5 py-1 rounded-md group-hover:bg-pink-500 group-hover:text-white transition-all shrink-0' id='lblGen1'>SALIN</span>
+        </button>
+
+        <button class='w-full text-left p-3.5 bg-slate-950 hover:bg-slate-800/60 border border-slate-800 hover:border-amber-500/40 rounded-xl transition-all group flex items-center justify-between cursor-pointer' id='btnGen2' type='button'>
+          <div class='pr-2'>
+            <div class='text-xs font-bold text-amber-400 group-hover:text-amber-300 transition-colors break-words'>⚡ FASE 2: DIFFERENTIAL DIAGNOSIS &amp; SYMPTOM LAYERING</div>
+            <div class='text-[10px] md:text-[11px] text-slate-500 mt-0.5 line-clamp-2 md:line-clamp-none'>Analisis komorbiditas, interaksi obat berbahaya, dan tanda kegawatdaruratan Red Flag.</div>
+          </div>
+          <span class='text-[10px] md:text-xs font-bold bg-amber-950/40 border border-amber-900 text-amber-400 px-2 md:px-2.5 py-1 rounded-md group-hover:bg-amber-500 group-hover:text-white transition-all shrink-0' id='lblGen2'>SALIN</span>
+        </button>
+
+        <button class='w-full text-left p-3.5 bg-slate-950 hover:bg-slate-800/60 border border-slate-800 hover:border-emerald-500/40 rounded-xl transition-all group flex items-center justify-between cursor-pointer' id='btnGen3' type='button'>
+          <div class='pr-2'>
+            <div class='text-xs font-bold text-emerald-400 group-hover:text-emerald-300 transition-colors break-words'>🍃 FASE 3: BIO-PSYCHO-SOCIAL-SPIRITUAL MAPPING</div>
+            <div class='text-[10px] md:text-[11px] text-slate-500 mt-0.5 line-clamp-2 md:line-clamp-none'>Pemetaan penderitaan holistik (Nyeri Total) yang diadaptasi dengan psikososial lokal.</div>
+          </div>
+          <span class='text-[10px] md:text-xs font-bold bg-emerald-950/40 border border-emerald-900 text-emerald-400 px-2 md:px-2.5 py-1 rounded-md group-hover:bg-emerald-500 group-hover:text-white transition-all shrink-0' id='lblGen3'>SALIN</span>
+        </button>
+
+        <button class='w-full text-left p-3.5 bg-slate-950 hover:bg-slate-800/60 border border-slate-800 hover:border-teal-500/40 rounded-xl transition-all group flex items-center justify-between cursor-pointer' id='btnGen4' type='button'>
+          <div class='pr-2'>
+            <div class='text-xs font-bold text-teal-400 group-hover:text-teal-300 transition-colors break-words'>📊 FASE 4: INFOGRAPHIC COMPREHENSIVE BLUEPRINT</div>
+            <div class='text-[10px] md:text-[11px] text-slate-500 mt-0.5 line-clamp-2 md:line-clamp-none'>Penerjemahan klaster klinis kaku menjadi blueprint mikro-copy visual siap cetak/desain.</div>
+          </div>
+          <span class='text-[10px] md:text-xs font-bold bg-teal-950/40 border border-teal-900 text-teal-400 px-2 md:px-2.5 py-1 rounded-md group-hover:bg-teal-500 group-hover:text-white transition-all shrink-0' id='lblGen4'>SALIN</span>
+        </button>
+
+        <button class='w-full text-left p-3.5 bg-slate-950 hover:bg-slate-800/60 border border-slate-800 hover:border-blue-500/40 rounded-xl transition-all group flex items-center justify-between cursor-pointer' id='btnGen5' type='button'>
+          <div class='pr-2'>
+            <div class='text-xs font-bold text-blue-400 group-hover:text-blue-300 transition-colors break-words'>🤝 FASE 5: INTERDISCIPLINARY COMMUNICATION SCRIPT</div>
+            <div class='text-[10px] md:text-[11px] text-slate-500 mt-0.5 line-clamp-2 md:line-clamp-none'>Skrip komunikasi jembatan antar profesi medis, perawat, keluarga, dan relawan lapangan.</div>
+          </div>
+          <span class='text-[10px] md:text-xs font-bold bg-blue-950/40 border border-blue-900 text-blue-400 px-2 md:px-2.5 py-1 rounded-md group-hover:bg-blue-500 group-hover:text-white transition-all shrink-0' id='lblGen5'>SALIN</span>
+        </button>
+
+        <button class='w-full text-left p-3.5 bg-slate-950 hover:bg-slate-800/60 border border-slate-800 hover:border-purple-500/40 rounded-xl transition-all group flex items-center justify-between cursor-pointer' id='btnGen6' type='button'>
+          <div class='pr-2'>
+            <div class='text-xs font-bold text-purple-400 group-hover:text-purple-300 transition-colors break-words'>🎭 FASE 6: AI INTERACTIVE PATIENT SIMULATOR</div>
+            <div class='text-[10px] md:text-[11px] text-slate-500 mt-0.5 line-clamp-2 md:line-clamp-none'>Mengaktifkan simulasi roleplay berbasis kepanikan emosional keluarga pasien nyata.</div>
+          </div>
+          <span class='text-[10px] md:text-xs font-bold bg-purple-950/40 border border-purple-900 text-purple-400 px-2 md:px-2.5 py-1 rounded-md group-hover:bg-purple-500 group-hover:text-white transition-all shrink-0' id='lblGen6'>SALIN</span>
+        </button>
+
+        <button class='w-full text-left p-3.5 bg-gradient-to-r from-slate-950 to-cyan-950/30 hover:to-cyan-900/40 border border-cyan-900/60 hover:border-cyan-500 rounded-xl transition-all group flex items-center justify-between cursor-pointer shadow-lg' id='btnGen7' type='button'>
+          <div class='pr-2'>
+            <div class='text-xs font-bold text-cyan-400 group-hover:text-cyan-300 transition-colors break-words flex items-center gap-2'>
+              📚 FASE 7: DEEP ACADEMIC CHAPTER WRITER <span class='text-[9px] px-1 bg-cyan-500 text-slate-950 font-extrabold rounded animate-pulse'>4000+ WORDS</span>
+            </div>
+            <div class='text-[10px] md:text-[11px] text-slate-400 mt-0.5 line-clamp-2 md:line-clamp-none'>Menghasilkan buku teks non-fiksi ilmiah ekstensif, terstruktur, mendalam, dan bersambung per bab.</div>
+          </div>
+          <span class='text-[10px] md:text-xs font-bold bg-cyan-950 border border-cyan-800 text-cyan-400 px-2 md:px-2.5 py-1 rounded-md group-hover:bg-cyan-500 group-hover:text-white transition-all shrink-0' id='lblGen7'>SALIN</span>
+        </button>
+
+        <div class='pt-4 border-t border-slate-800 grid grid-cols-1 sm:grid-cols-12 gap-3'>
+          <button class='sm:col-span-8 py-3 bg-gradient-to-r from-cyan-600 via-teal-600 to-emerald-600 hover:from-cyan-500 hover:to-emerald-500 text-white font-extrabold text-[11px] md:text-xs tracking-wider uppercase rounded-xl shadow-md transition-all cursor-pointer' id='btnGlobalSummary' type='button'>
+            📋 SALIN KESELURUHAN PROMPT SUMMARY (7-LAYERS)
+          </button>
+          <button class='sm:col-span-4 py-3 bg-slate-950 hover:bg-slate-900 text-rose-400 font-bold text-[11px] md:text-xs tracking-wider uppercase rounded-xl border border-slate-800 hover:border-rose-950/50 transition-all cursor-pointer' id='btnResetPlatform' type='button'>
+            🗑️ RESET
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class='mt-6 md:mt-8 bg-slate-900/40 border border-slate-900 rounded-xl p-3.5 text-center'>
+      <p class='text-[10px] md:text-xs font-semibold text-slate-500 tracking-wider uppercase' id='systemStatus'>
+        🚀 UNIVERSAL PIPELINE CONFIGURATION READY
+      </p>
+    </div>
+
+  </div>
+
+  <script type='text/javascript'>
+    //<![CDATA[
+    
+    let isDataLocked = false;
+    let isParamsLocked = false;
+
+    const DEFAULT_URL = "https://iahpc.org/uploads/2013/9/The%20IAHPC%20Manual%20of%20Palliative%20Care%203e.pdf";
+
+    const DARK_METAL_CLASS = 'w-full py-2.5 bg-gradient-to-r from-slate-900 via-slate-800 to-zinc-900 hover:from-slate-800 hover:to-zinc-800 text-slate-200 border border-slate-700/50 font-bold text-xs uppercase tracking-wider rounded-xl shadow-md transition-all cursor-pointer';
+    const DARK_METAL_CLASS_PARAMS = 'w-full py-2 bg-gradient-to-r from-slate-900 via-slate-800 to-zinc-900 hover:from-slate-800 hover:to-zinc-800 text-slate-200 border border-slate-700/50 font-bold text-[11px] uppercase tracking-wider rounded-xl shadow-md transition-all cursor-pointer';
+
+    function resolveTargetParameters() {
+        const manualTitle = document.getElementById('sourceTitleInput').value.trim();
+        const manualUrl = document.getElementById('customUrlInput').value.trim();
+        return { 
+            title: manualTitle || "General Clinical Guidelines (Palliative Engine)", 
+            url: manualUrl || DEFAULT_URL 
+        };
+    }
+
+    function generateStrictContextDirective(target) {
+        return `[STRICT CONTEXT BINDING & NARRATIVE LENGTH PROTOCOL]:
+- Topik / Kasus Spesifik yang diekstrak: "${target.title}".
+- Sumber Utama / URL Makro: <${target.url}>.
+- ATURAN VALIDASI KONTEKS: Jika URL memuat data yang sangat luas, fokuskan analisis dan ekstraksi HANYA pada sub-topik "${target.title}". Jangan lakukan generalisasi ke bab lain yang tidak relevan.
+- ATURAN KUALITAS & PANJANG NASKAH: DILARANG memberikan jawaban yang terlalu pendek, seadanya, atau hanya ringkasan poin-poin singkat. Anda harus menyusun naskah narasi yang lengkap, matang, mengalir secara profesional, kaya penjelasan klinis, detail, dan mencakup seluruh aspek instruksi di bawah ini agar layak dan siap pakai sebagai dokumen rujukan medis profesional tanpa revision panjang.`;
+    }
+
+    function updateSystemIndicator(text, mode = 'normal') {
+        const el = document.getElementById('systemStatus');
+        el.innerText = `⚡ ${text.toUpperCase()}`;
+        
+        if(mode === 'success') el.className = "text-[10px] md:text-xs font-bold text-emerald-400 tracking-wider uppercase animate-pulse";
+        else if(mode === 'lock') el.className = "text-[10px] md:text-xs font-bold text-cyan-400 tracking-wider uppercase";
+        else el.className = "text-[10px] md:text-xs font-semibold text-slate-500 tracking-wider uppercase";
+        
+        setTimeout(() => {
+            let statusText = "🚀 UNIVERSAL PIPELINE CONFIGURATION READY";
+            let statusClass = "text-[10px] md:text-xs font-semibold text-slate-500 tracking-wider uppercase";
+            
+            if (isDataLocked && isParamsLocked) {
+                statusText = "🔒 MAXIMUM SECURE MODE: ALL ARCHITECTURES LOCKED";
+                statusClass = "text-[10px] md:text-xs font-bold text-emerald-500 tracking-wider uppercase";
+            } else if (isDataLocked) {
+                statusText = "⚡ LITERATUR DATA STRUCTURE LOCKED";
+                statusClass = "text-[10px] md:text-xs font-bold text-cyan-500 tracking-wider uppercase";
+            } else if (isParamsLocked) {
+                statusText = "⚙️ CLINICAL PARAMETERS ARCHITECTURE LOCKED";
+                statusClass = "text-[10px] md:text-xs font-bold text-amber-500 tracking-wider uppercase";
+            }
+            
+            el.innerText = statusText;
+            el.className = statusClass;
+        }, 2000);
+    }
+
+    function animateButtonLabel(id, parentButtonId) {
+        const el = document.getElementById(id);
+        const parentBtn = document.getElementById(parentButtonId);
+        const oldText = el.innerText;
+        
+        el.innerText = "COPIED! ✓";
+        if(parentBtn && parentButtonId.startsWith('btnGen')) {
+            parentBtn.classList.add('bg-slate-800', 'border-emerald-500/80');
+        }
+        
+        setTimeout(() => { 
+            el.innerText = oldText; 
+            if(parentBtn && parentButtonId.startsWith('btnGen')) {
+                parentBtn.classList.remove('bg-slate-800', 'border-emerald-500/80');
+            }
+        }, 1200);
+    }
+
+    function safeCopy(text, callback) {
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(text).then(() => { if(callback) callback(); });
+        } else {
+            const ta = document.createElement("textarea"); ta.value = text;
+            ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta);
+            ta.focus(); ta.select(); document.execCommand('copy');
+            document.body.removeChild(ta); if(callback) callback();
+        }
+    }
+
+    document.getElementById('btnPasteUrl').onclick = function() {
+        if (navigator.clipboard && navigator.clipboard.readText) {
+            navigator.clipboard.readText()
+            .then(text => {
+                document.getElementById('customUrlInput').value = text;
+                updateSystemIndicator("URL Berhasil Ditempel!", "success");
+            })
+            .catch(err => {
+                alert("Gagal membaca clipboard otomatis. Izinkan akses clipboard di browser Anda.");
+            });
+        } else {
+            alert("Fitur auto-paste membutuhkan jaringan https aman (Secure Context).");
+        }
+    };
+
+    document.getElementById('btnLockData').onclick = function() {
+        const lockBtn = document.getElementById('btnLockData');
+        const pasteBtn = document.getElementById('btnPasteUrl');
+        const tInput = document.getElementById('sourceTitleInput');
+        const uInput = document.getElementById('customUrlInput');
+        
+        if(!isDataLocked) {
+            isDataLocked = true;
+            tInput.disabled = uInput.disabled = pasteBtn.disabled = true;
+            if(uInput.value.trim() === "") {
+                uInput.value = DEFAULT_URL;
+            }
+            lockBtn.innerText = "🔓 BUKA EDIT MODUL LITERATUR";
+            lockBtn.className = 'w-full py-2.5 bg-slate-800 text-cyan-400 border border-slate-700 font-bold text-xs uppercase tracking-wider rounded-xl transition-all cursor-pointer text-center';
+            updateSystemIndicator("Data Literatur Terkunci!", 'lock');
+        } else {
+            isDataLocked = false;
+            tInput.disabled = uInput.disabled = pasteBtn.disabled = false;
+            if(uInput.value === DEFAULT_URL) {
+                uInput.value = "";
+            }
+            lockBtn.innerText = "🔒 KUNCI DATA LITERATUR MEDIS";
+            lockBtn.className = DARK_METAL_CLASS;
+            updateSystemIndicator("Modul Literatur Aktif", 'normal');
+        }
+    };
+
+    document.getElementById('btnLockParams').onclick = function() {
+        const lockBtn = document.getElementById('btnLockParams');
+        const sScale = document.getElementById('clinicalScale');
+        const cContext = document.getElementById('culturalContext');
+        const nNotes = document.getElementById('customNotes');
+        
+        if(!isParamsLocked) {
+            isParamsLocked = true;
+            sScale.disabled = cContext.disabled = nNotes.disabled = true;
+            lockBtn.innerText = "🔓 BUKA EDIT PARAMETER LOKALISASI";
+            lockBtn.className = 'w-full py-2 bg-slate-800 text-amber-400 border border-slate-700 font-bold text-[11px] uppercase tracking-wider rounded-xl transition-all cursor-pointer text-center';
+            updateSystemIndicator("Parameter Klinis Terkunci!", 'lock');
+        } else {
+            isParamsLocked = false;
+            sScale.disabled = cContext.disabled = nNotes.disabled = false;
+            lockBtn.innerText = "🔒 KUNCI PARAMETER LOKALISASI";
+            lockBtn.className = DARK_METAL_CLASS_PARAMS;
+            updateSystemIndicator("Modul Parameter Aktif", 'normal');
+        }
+    };
+
+    // FASE 1: CLINICAL SUMMARY
+    document.getElementById('btnGen1').onclick = function() {
+        const target = resolveTargetParameters();
+        const strictRules = generateStrictContextDirective(target);
+        const scale = document.getElementById('clinicalScale').value;
+        const context = document.getElementById('culturalContext').value;
+        const notes = document.getElementById('customNotes').value;
+
+        const prompt = `Act as an Expert Palliative Care Clinician. 
+${strictRules}
+
+Task: Susun sebuah narasi ekstensif mengenai ekstraksi definisi dasar, intervensi akut, dan sinkronisasi menyeluruh pada skala evaluasi "${scale}" dengan target audiens/konteks: "${context}". Elaborasi narasi secara detail, jelas, berbobot, dan tidak terburu-buru dalam mengambil kesimpulan.
+${notes ? `[CATATAN INJEKSI KHUSUS]: ${notes}` : ""}
+Language: Formal Medical Indonesian. End with: "--- CLINICAL SUMMARY COMPLETE ---"`;
+        
+        safeCopy(prompt, () => { updateSystemIndicator("Fase 1 Copied!", 'success'); animateButtonLabel('lblGen1', 'btnGen1'); });
+    };
+
+    // FASE 2: DIFFERENTIAL DIAGNOSIS
+    document.getElementById('btnGen2').onclick = function() {
+        const target = resolveTargetParameters();
+        const strictRules = generateStrictContextDirective(target);
+        const prompt = `Act as a Senior Clinical Pharmacologist and Palliative Diagnostic Expert.
+${strictRules}
+
+Based on the target segment [${target.title}], generate a comprehensive and deeply analytical narrative text containing:
+1. Differential Diagnostics & Co-morbidity Layering yang dijabarkan secara rinci dan teoretis berdasar kasus terkait.
+2. High-Alert Drug Interactions atau profil keamanan obat dalam fase paliatif (bahas mekanisme interaksi secara deskriptif dan panjang).
+3. Explicit Red Flags (Tanda kegawatdaruratan klinis nyata yang memerlukan eksalasi instan ke IGD rumah sakit terdekat).
+Tuliskan dalam bentuk naskah rujukan medis yang tebal dan berbobot.
+Language: Authoritative Medical Indonesian. End with: "--- DIAGNOSTIC & PHARMACOLOGICAL SAFETY COMPLETED ---"`;
+        
+        safeCopy(prompt, () => { updateSystemIndicator("Fase 2 Copied!", 'success'); animateButtonLabel('lblGen2', 'btnGen2'); });
+    };
+
+    // FASE 3: BIO-PSYCHO-SOCIAL-SPIRITUAL
+    document.getElementById('btnGen3').onclick = function() {
+        const target = resolveTargetParameters();
+        const strictRules = generateStrictContextDirective(target);
+        const context = document.getElementById('culturalContext').value;
+        const prompt = `Act as a Medical Anthropologist and Palliative Care Social Worker.
+${strictRules}
+
+Based exclusively on the isolated subtopic [${target.title}], compile a full-length, deeply moving, and clinically structured Bio-Psycho-Social-Spiritual Care Plan narrative optimized for: "${context}".
+Jabarkan secara panjang dan deskriptif mengenai manajemen 'Total Pain' (Nyeri Total) yang menyangkut dinamika psikologis keluarga, tabu budaya lokal yang harus dihindari, serta panduan naratif untuk dukungan duka cita (grief support) spiritual.
+Language: Highly empathetic, elegant Indonesian. End with: "--- HOLISTIC TOTAL PAIN MAP COMPLETED ---"`;
+
+        safeCopy(prompt, () => { updateSystemIndicator("Fase 3 Copied!", 'success'); animateButtonLabel('lblGen3', 'btnGen3'); });
+    };
+
+    // FASE 4: INFOGRAPHIC COMPREHENSIVE BLUEPRINT
+    document.getElementById('btnGen4').onclick = function() {
+        const target = resolveTargetParameters();
+        const strictRules = generateStrictContextDirective(target);
+        const context = document.getElementById('culturalContext').value;
+        const prompt = `Act as an Elite Medical Copywriter. 
+${strictRules}
+
+Transform the substance of [${target.title}] into a highly structured, elaborate Infographic Blueprint for visual designers. Naskah blueprint ini harus panjang dan siap cetak/desain, bukan ringkasan kasar.
+Sediakan: Komponen Headline Lokal, Rekomendasi Palet Warna Psikologis, dan breakdown 4 Bagian utama Konten di mana tiap bagian memuat Petunjuk Visual (Visual Instructions) yang detil serta Naskah Pendek Penyuluhan (Indonesian Copywriting) yang naratif, persuasif, dan menyentuh.
+Tone: tailored specifically for "${context}". End with: "--- INFOGRAPHIC SCRIPT BLUEPRINT GENERATED ---"`;
+
+        safeCopy(prompt, () => { updateSystemIndicator("Fase 4 Copied!", 'success'); animateButtonLabel('lblGen4', 'btnGen4'); });
+    };
+
+    // FASE 5: INTERDISCIPLINARY SCRIPT
+    document.getElementById('btnGen5').onclick = function() {
+        const target = resolveTargetParameters();
+        const strictRules = generateStrictContextDirective(target);
+        const prompt = `Act as a Palliative Care Liaison Officer. 
+${strictRules}
+
+Develop an extensive Interdisciplinary Communication Script focusing on the clinical management of [${target.title}]. 
+Buatlah naskah dialog serah terima (handover) yang panjang, komplet, dan realistis menggunakan format SBAR secara utuh untuk 3 skenario: Naskah Dokter ke Perawat, Naskah Tim Medis ke Keluarga/Caregiver utama, dan Naskah Komunikasi Relawan Lapangan. Jangan gunakan ringkasan poin, tuliskan percakapan/skrip lengkapnya.
+Language: Clear, actionable Indonesian. End with: "--- INTERDISCIPLINARY COMMUNICATION HANDOVER COMPLETED ---"`;
+
+        safeCopy(prompt, () => { updateSystemIndicator("Fase 5 Copied!", 'success'); animateButtonLabel('lblGen5', 'btnGen5'); });
+    };
+
+    // FASE 6: AI INTERACTIVE PATIENT SIMULATOR
+    document.getElementById('btnGen6').onclick = function() {
+        const target = resolveTargetParameters();
+        const strictRules = generateStrictContextDirective(target);
+        const prompt = `Act as a specialized AI Clinical Simulation Actor roleplaying as an anxious primary caregiver of a terminal patient affected specifically by [${target.title}].
+${strictRules}
+
+Rules: Never break character, no meta-commentary, start from deep denial/anxiety concerning this exact sub-topic condition. Tuliskan tanggapan awal yang sarat emosi, ketakutan, atau keberatan adat/spiritual (panjang 2-3 kalimat yang berbobot secara psikologis) untuk memicu dan memaksa user berlatih komunikasi terapeutik empati secara mendalam dalam Bahasa Indonesia. Begin simulation now.`;
+
+        safeCopy(prompt, () => { updateSystemIndicator("Fase 6 Copied!", 'success'); animateButtonLabel('lblGen6', 'btnGen6'); });
+    };
+
+    // FASE 7: DEEP ACADEMIC CHAPTER WRITER (PROTEKSI ANTI BASA-BASI SUNTIKAN PERBAIKAN)
+    document.getElementById('btnGen7').onclick = function() {
+        const target = resolveTargetParameters();
+        const strictRules = generateStrictContextDirective(target);
+        const scale = document.getElementById('clinicalScale').value;
+        const context = document.getElementById('culturalContext').value;
+        const notes = document.getElementById('customNotes').value;
+
+        const prompt = `Act as a Distinguished Professor of Palliative Medicine and Academic Author.
+${strictRules}
+
+[DEEP ACADEMIC CONTINUOUS WRITING PROTOCOL - TARGET 4000+ WORDS PER CHAPTER]:
+Anda ditugaskan untuk menulis naskah buku teks ilmiah, non-fiksi akademis mutakhir mengenai: "${target.title}" yang disinkronkan dengan skala klinis [${scale}] dalam konteks target [${context}].
+
+[STRICT OUTPUT CONSTRAINT - ANTI CORE ROLEPLAY METADATA]:
+DILARANG KERAS menuliskan kalimat sapaan, impresi pribadi, ekspresi menyambut baik proyek, atau basa-basi pengantar karakter (seperti: "Sebagai seorang Profesor Ulung...", "Saya menyambut baik...", atau "Mari kita mulai..."). 
+AI harus langsung memulai respon dengan Langkah 1 dari mekanisme kontrol alur kerja di bawah ini, tanpa teks pembuka apa pun!
+
+[MEKANISME KONTROL ALUR KERJA USER]:
+- Langkah 1: Minta saya untuk menentukan "NOMOR BAB" dan "JUDUL BAB SPESIFIK" yang ingin ditulis saat ini.
+- Langkah 2: Setelah saya memberikan input bab, mulailah menulis sub-bab A sampai E secara sangat detail, panjang, deskriptif, dan mendalam hingga mencapai batas kapasitas narasi Anda.
+- Langkah 3: Di akhir Bab, buatlah "Ringkasan Jembatan Kognitif" sepanjang 2 paragraf untuk menyambung ke bab berikutnya, lalu berikan instruksi: "SIAP MELANJUTKAN KE BAB BERIKUTNYA. SILAKAN KETIK 'LANJUTKAN BAB [NOMOR BAB]'".
+
+MANDAT PENULISAN:
+1. Sifat Tulisan: BUKAN fiksi, novel, cerita hiburan, atau rekaan bebas. Ini adalah naskah literatur ilmiah formal, padat substansi, objektif, namun ditulis dengan kejelasan bahasa tingkat tinggi yang mendalam (humanis akademis).
+2. Mekanisme Multi-Bab Bersambung: Setiap kali menulis sebuah Bab, jabarkan naskah secara penuh menggunakan sub-bagian operasional berikut (Tanpa poin-poin ringkas! Gunakan paragraf naratif tebal):
+   - A. Tinjauan Filosofis & Landasan Teoretis Makro
+   - B. Analisis Patofisiologi & Klaster Klinis Terapan Sesuai Indikator Medis
+   - C. Metodologi Intervensi Komprehensif (Farmakologi, Non-Farmakologi, & Sosio-Spiritual)
+   - D. Studi Kasus Lapangan / Ilustrasi Klinis Riil Sebagai Pembanding
+   - E. Evaluasi Kritis, Hambatan Institusional, & Proyeksi Masa Depan
+
+${notes ? `[INJEKSI SUBSTANSIAL AKADEMIS]: ${notes}` : ""}
+Language: High-Level Academic Indonesian (Ejaan Resmi, Terminologi Medis Baku, Kaya Analisis Deskriptif). Mulai dengan meminta input nomor bab pertama sekarang tanpa teks pembuka.`;
+
+        safeCopy(prompt, () => { updateSystemIndicator("Fase 7 Copied!", 'success'); animateButtonLabel('lblGen7', 'btnGen7'); });
+    };
+
+    // GLOBAL MASTER PROMPT SUMMARY (7-LAYERS COMPLETE)
+    document.getElementById('btnGlobalSummary').onclick = function() {
+        const target = resolveTargetParameters();
+        const strictRules = generateStrictContextDirective(target);
+        const scale = document.getElementById('clinicalScale').value;
+        const context = document.getElementById('culturalContext').value;
+        const notes = document.getElementById('customNotes').value;
+
+        const globalPrompt = `[MASTER 7-LAYER CLINICAL & ACADEMIC INTELLIGENCE PROMPT SUMMARY]
+======================================================
+${strictRules}
+======================================================
+DEPLOYMENT ARCHITECTURE PARAMETERS:
+- Evaluation Framework Scale: ${scale}
+- Socio-Cultural Localization: ${context}
+- Special Injection Notes: ${notes || "None"}
+======================================================
+MANDATE TASK: Lakukan pemrosesan sumber di atas dengan restriksi mikro-konteks yang ketat serta protokol kepanjangan naskah narasi yang utuh. Hasilkan output komprehensif dalam bentuk 7 Bagian Utama (Tulis naskah penuh untuk tiap bagian, dilarang memotong isi atau membuat rangkuman pendek):
+1. Clinical Summary (Cornerstone focused on Sub-topic)
+2. Differential Diagnosis & Safety Layering (Analytical and deep)
+3. Holistic Bio-Psycho-Social-Spiritual Plan (Long care plan text)
+4. Infographic Ready Script & Micro-copy (Complete visual copy blueprint)
+5. Interdisciplinary SBAR Handover Script (Full conversational script)
+6. Interactive Caregiver Simulation Engine (Emotional prompt starter)
+7. Deep Academic Chapter Writer (Continuous Non-Fiction Book Writing Protocol).
+Language Target: Expert & Empathetic Indonesian. All answers must be extensive and highly professional.`;
+
+        safeCopy(globalPrompt, () => { updateSystemIndicator("Master Summary Copied!", 'success'); animateButtonLabel('btnGlobalSummary', 'btnGlobalSummary'); });
+    };
+
+    // RESET SYSTEM
+    document.getElementById('btnResetPlatform').onclick = function() {
+        isDataLocked = false;
+        isParamsLocked = false;
+        
+        document.getElementById('sourceTitleInput').disabled = document.getElementById('customUrlInput').disabled = document.getElementById('btnPasteUrl').disabled = false;
+        document.getElementById('clinicalScale').disabled = document.getElementById('culturalContext').disabled = document.getElementById('customNotes').disabled = false;
+        
+        document.getElementById('sourceTitleInput').value = document.getElementById('customUrlInput').value = document.getElementById('customNotes').value = "";
+        document.getElementById('clinicalScale').selectedIndex = 0;
+        document.getElementById('culturalContext').selectedIndex = 0;
+        
+        document.getElementById('btnLockData').innerText = "🔒 KUNCI DATA LITERATUR MEDIS";
+        document.getElementById('btnLockData').className = DARK_METAL_CLASS;
+        
+        document.getElementById('btnLockParams').innerText = "🔒 KUNCI PARAMETER LOKALISASI";
+        document.getElementById('btnLockParams').className = DARK_METAL_CLASS_PARAMS;
+        
+        updateSystemIndicator("System Cleared & Reset Success");
+    };
+    
+    //]]>
+  </script>
+   
+  <div class='abc-container'>
+    <section class='abc'>
+      <b:section id='abc' maxwidgets='1' showaddelement='yes'/>
+    </section>
+  </div>
+</body>
+</html>
