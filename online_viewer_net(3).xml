@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <title>Persiapan TOEFL</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'/>
+    <b:skin><![CDATA[body { margin: 0; padding: 0; }]]></b:skin>
+    <style>
+        @import url(&#39;https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap&#39;);
+        
+        body, html { margin: 0; padding: 0; height: 100%; width: 100%; background: #f0f4f8; font-family: &#39;Inter&#39;, sans-serif; overflow-x: hidden; }
+        .wrapper { display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 15px; box-sizing: border-box; }
+        .container { background: #ffffff; width: 100%; max-width: 450px; padding: 25px; border-radius: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: center; }
+        
+        h1 { font-size: 1.5rem; font-weight: 800; color: #0f172a; margin-bottom: 20px; }
+        .box { background: #f8fafc; padding: 20px; border-radius: 20px; margin-bottom: 20px; border: 1px solid #f1f5f9; }
+        
+        label { display: block; text-align: left; font-size: 0.7rem; font-weight: 700; color: #64748b; margin-bottom: 8px; text-transform: uppercase; }
+        select { width: 100%; padding: 12px; border-radius: 12px; border: 2px solid #e2e8f0; margin-bottom: 15px; font-weight: 600; font-family: &#39;Inter&#39;; outline: none; }
+        
+        .day-display { font-size: 1.8rem; font-weight: 800; color: #1e40af; margin-bottom: 10px; }
+        input[type=range] { width: 100%; height: 6px; accent-color: #1e40af; cursor: pointer; }
+        
+        .btn-group { display: flex; flex-direction: column; gap: 10px; }
+        .btn { padding: 16px; border: none; border-radius: 15px; font-size: 0.9rem; font-weight: 700; cursor: pointer; color: white; transition: 0.3s; font-family: &#39;Inter&#39;; width: 100%; }
+        
+        /* Gradasi Mengalir */
+        .btn-1 { background: linear-gradient(90deg, #1e40af, #2655b3); }
+        .btn-2 { background: linear-gradient(90deg, #2655b3, #2e6db8); }
+        .btn-3 { background: linear-gradient(90deg, #2e6db8, #3785bc); }
+        .btn-4 { background: linear-gradient(90deg, #3785bc, #3f9dc1); }
+        .btn-5 { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+        .btn-6 { background: linear-gradient(90deg, #47b5c5, #2dd4bf); }
+        
+        .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+    </style>
+</head>
+<body>
+    <div class='wrapper'>
+        <div class='container'>
+            <h1>Persiapan TOEFL</h1>
+            <div class='box'>
+                <label>Pilih Jenis Ujian:</label>
+                <select id='test-selector'>
+                    <option value='TOEFL iBT'>TOEFL iBT</option>
+                    <option value='IELTS Academic'>IELTS Academic</option>
+                    <option value='TOEIC'>TOEIC</option>
+                    <option value='PTE Academic'>PTE Academic</option>
+                    <option value='Duolingo English Test'>Duolingo English Test</option>
+                </select>
+                <label>Progres Belajar:</label>
+                <div class='day-display' id='day-label'>Hari ke-1</div>
+                <input id='day-slider' max='365' min='1' type='range' value='1'/>
+            </div>
+            <div class='btn-group'>
+                <button class='btn btn-1' onclick='action(&quot;lesson&quot;)'>START DAILY LESSON</button>
+                <button class='btn btn-2' onclick='action(&quot;drill&quot;)'>COGNITIVE DRILL</button>
+                <button class='btn btn-3' onclick='action(&quot;pressure&quot;)'>TIME PRESSURE</button>
+                <button class='btn btn-4' onclick='action(&quot;infinite&quot;)'>&#8734; INFINITE DRILL</button>
+                <button class='btn btn-5' onclick='action(&quot;hack&quot;)'>&#9889; THE CHEAT SHEET HACK</button>
+                <button class='btn btn-6' onclick='action(&quot;examiner&quot;)'>👨&#8205;🏫 EXAMINER MODE: SCORE ME</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const slider = document.getElementById(&#39;day-slider&#39;);
+        const label = document.getElementById(&#39;day-label&#39;);
+        const selector = document.getElementById(&#39;test-selector&#39;);
+        slider.oninput = () =&gt; label.innerText = &quot;Hari ke-&quot; + slider.value;
+        function action(type) {
+            const test = selector.value;
+            const day = slider.value;
+            let prompt = &quot;&quot;;
+            const base = `Gunakan Model Pengetahuan (Training Data) Anda untuk ${test}.`;
+            if(type==&quot;lesson&quot;) prompt = `Tutor ${test} Hari ${day}. Berikan teori, 20 soal, bedah logika. ${base}`;
+            else if(type==&quot;drill&quot;) prompt = `Cognitive Drill ${test} Hari ${day}. 5 soal sulit. Tanya logika saya dulu. ${base}`;
+            else if(type==&quot;pressure&quot;) prompt = `Simulasi ${test} 30 detik. 3 soal expert. Analisis ketat. ${base}`;
+            else if(type==&quot;infinite&quot;) prompt = `Infinite Drill ${test}. 20 soal terus menerus sampai saya stop. ${base}`;
+            else if(type==&quot;hack&quot;) prompt = `Bongkar jebakan soal (cheat sheet) untuk ${test}. ${base}`;
+            else if(type==&quot;examiner&quot;) prompt = `Jadilah penguji ${test}. Beri simulasi, nilai saya, beri prediksi skor. ${base}`;
+            navigator.clipboard.writeText(prompt).then(() =&gt; { alert(&quot;Disalin! Silakan paste di Gemini.&quot;); window.open(&#39;https://gemini.google.com/&#39;, &#39;_blank&#39;); });
+        }
+    </script>
+  <b:section class='main' id='main'/>
+</body>
+</html>
