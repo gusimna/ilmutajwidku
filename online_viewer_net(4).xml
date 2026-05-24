@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <title>KOMPETENSI PALIATIF PRO</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'/>
+    <b:skin><![CDATA[
+        body { margin: 0; padding: 0; background: #f8fafc; font-family: 'Inter', sans-serif; }
+    ]]></b:skin>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap');
+        .wrapper { display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 20px; }
+        .container { background: #ffffff; width: 100%; max-width: 480px; padding: 25px; border-radius: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); text-align: center; }
+        h1 { font-size: 1.4rem; color: #1e293b; margin-bottom: 20px; font-weight: 800; }
+        .box { background: #f1f5f9; padding: 20px; border-radius: 20px; margin-bottom: 20px; }
+        select { width: 100%; padding: 12px; border-radius: 12px; border: 2px solid #cbd5e1; font-weight: 600; font-family: 'Inter'; margin-bottom: 5px; }
+        
+        #status-msg { 
+            font-size: 0.75rem; 
+            color: #475569; 
+            font-weight: 600; 
+            line-height: 1.4;
+            min-height: 40px; 
+            margin-top: 10px; 
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .btn-group { display: flex; flex-direction: column; gap: 8px; }
+        .btn { padding: 14px; border: none; border-radius: 14px; color: white; font-weight: 700; cursor: pointer; transition: 0.3s; width: 100%; font-size: 0.85rem; text-align: center; }
+        
+        /* Tombol Spesifik */
+        .btn-emergency { background: #ef4444; }
+        .btn-assess { background: #f59e0b; }
+        .btn-grad-1 { background: linear-gradient(90deg, #3b82f6, #4f46e5); }
+        .btn-grad-2 { background: linear-gradient(90deg, #4f46e5, #6366f1); }
+        .btn-grad-3 { background: linear-gradient(90deg, #6366f1, #06b6d4); }
+        .btn-grad-4 { background: linear-gradient(90deg, #06b6d4, #14b8a6); }
+        .btn-grad-5 { background: linear-gradient(90deg, #14b8a6, #10b981); }
+        .btn-new-1 { background: #7c3aed; } /* Pharmacology */
+        .btn-new-2 { background: #db2777; } /* Terminal Care */
+
+        .btn:hover { filter: brightness(1.1); transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+    <b:section id='main-section'>
+        <b:widget id='HTML1' locked='true' title='Palliative Tool' type='HTML'>
+            <b:includable id='main'>
+                <div class='wrapper'>
+                    <div class='container'>
+                        <h1>KOMPETENSI PALIATIF</h1>
+                        <div class='box'>
+                            <select id='care-selector'>
+                                <option value='Palliative Care'>Palliative Care</option>
+                                <option value='Hospice Care'>Hospice Care</option>
+                                <option value='End-of-Care'>End-of-Care Planning</option>
+                            </select>
+                            <div id='status-msg'>
+                                <span>Silakan pilih modul,</span>
+                                <span>klik tombol di bawah ini untuk copy-paste di Gemini.</span>
+                            </div>
+                        </div>
+                        <div class='btn-group'>
+                            <button class='btn btn-emergency' onclick='action("emergency")'>⚡ EMERGENCY CHEAT SHEET</button>
+                            <button class='btn btn-assess' onclick='action("assess")'>📊 CLINICAL ASSESSMENT</button>
+                            <button class='btn btn-grad-1' onclick='action("guide")'>CLINICAL GUIDELINE</button>
+                            <button class='btn btn-new-1' onclick='action("meds")'>💊 PHARMACOLOGY &amp; PAIN</button>
+                            <button class='btn btn-grad-2' onclick='action("support")'>EMOTIONAL SUPPORT</button>
+                            <button class='btn btn-grad-3' onclick='action("case")'>CASE STUDY ANALYSIS</button>
+                            <button class='btn btn-grad-4' onclick='action("infinite")'>∞ INFINITE DRILL</button>
+                            <button class='btn btn-new-2' onclick='action("terminal")'>✨ TERMINAL HOUR CARE</button>
+                            <button class='btn btn-grad-5' onclick='action("ethics")'>ETHICAL DECISION MAKING</button>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    function action(type) {
+                        const care = document.getElementById('care-selector').value;
+                        const status = document.getElementById('status-msg');
+                        const base = "Bertindaklah sebagai Pakar Perawatan Medis Profesional. Fokus pada " + care + ". Berikan analisis yang akurat, empati, dan berbasis bukti klinis. ";
+                        let prompt = "";
+
+                        if(type=="emergency") prompt = base + "Pilih secara acak 1 kondisi kegawatan pada perawatan paliatif, lalu berikan langkah penanganan cepat (poin-poin).";
+                        else if(type=="assess") prompt = base + "Berikan daftar alat penilaian klinis (assessment tool) yang paling tepat untuk pasien " + care + ".";
+                        else if(type=="guide") prompt = base + "Berikan protokol standar atau clinical guideline terbaru untuk " + care + ".";
+                        else if(type=="meds") prompt = base + "Fokus pada Manajemen Farmakologi. Pilih secara acak satu gejala fisik (nyeri hebat, mual, atau konstipasi) lalu berikan panduan dosis, titrasi, dan pilihan obat paliatif.";
+                        else if(type=="support") prompt = base + "Berikan teknik komunikasi empatik dan dukungan emosional untuk keluarga pasien " + care + ".";
+                        else if(type=="case") prompt = base + "Berikan satu skenario kasus nyata pada " + care + " dan minta saya untuk memberikan tindakan terbaik.";
+                        else if(type=="infinite") prompt = base + "Mode INFINITE DRILL: Berikan 1 soal studi kasus pilihan ganda. Tunggu jawaban saya, beri umpan balik, lalu lanjut ke soal berikutnya.";
+                        else if(type=="terminal") prompt = base + "Fokus pada Terminal Hour Care (saat kematian sudah dekat). Berikan panduan penanganan fisik (seperti death rattle/sesak) dan dukungan spiritual.";
+                        else if(type=="ethics") prompt = base + "Berikan dilema etis yang sering terjadi pada " + care + " dan jelaskan cara mengambil keputusan yang bijak.";
+                        
+                        navigator.clipboard.writeText(prompt).then(function() {
+                            status.style.color = "#059669";
+                            status.innerHTML = "<span>Instruksi disalin!</span><span>Silakan paste di Gemini.</span>";
+                            setTimeout(function() { 
+                                status.style.color = "#475569";
+                                status.innerHTML = "<span>Silakan pilih modul,</span><span>klik tombol di bawah ini untuk copy-paste di Gemini.</span>"; 
+                            }, 3000);
+                            window.open('https://gemini.google.com/', '_blank');
+                        });
+                    }
+                </script>
+            </b:includable>
+        </b:widget>
+    </b:section>
+</body>
+</html>
