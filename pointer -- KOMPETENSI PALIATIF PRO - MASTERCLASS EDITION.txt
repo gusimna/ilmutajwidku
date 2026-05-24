@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <title>KOMPETENSI PALIATIF PRO - OXFORD EDITION</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'/>
+    
+    <b:skin><![CDATA[
+        /* ========================================================
+           SUNTIKAN ANTI-BOCOR: MEMBERSIHKAN ELEMEN BAWAAN BLOGGER
+           ======================================================== */
+        #header-wrapper, .header-outer, #sidebar-wrapper, .sidebar-outer,
+        #footer-wrapper, .footer-outer, .post-footer, .feed-links,
+        .comments, #blog-pager, .status-msg-wrap, .attribution,
+        .blog-feeds, .report_abuse, .SearchThisBlog, #BlogSearch1,
+        .footer, .post-feeds, #blog-pager, .breadcrumbs, .nav,
+        .widget-item-control, .avatar-image-container {
+            display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        
+        .main-inner, .date-header, .post-title, .post-body, .blog-posts,
+        .main-outer, .columns, .fauxcolumn-left-outer, .fauxcolumn-right-outer {
+            background: none !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        
+        body { 
+            margin: 0 !important; 
+            padding: 0 !important; 
+            background: #f8fafc !important; 
+            font-family: 'Inter', sans-serif; 
+        }
+    ]]></b:skin>
+    
+    <style>
+        @import url(&#39;https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap&#39;);
+        
+        .wrapper { display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 20px; box-sizing: border-box; }
+        .container { background: #ffffff; width: 100%; max-width: 520px; padding: 25px; border-radius: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); text-align: center; box-sizing: border-box; }
+        
+        h1 { font-size: 1.4rem; color: #1e293b; margin-top: 5px; margin-bottom: 5px; font-weight: 800; letter-spacing: -0.5px; text-transform: uppercase; }
+        .tagline { font-size: 0.75rem; color: #64748b; font-weight: 600; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .box { background: #f1f5f9; padding: 20px; border-radius: 20px; margin-bottom: 20px; text-align: left; }
+        .box-label { font-size: 0.75rem; color: #1e3a8a; font-weight: 800; margin-bottom: 10px; text-transform: uppercase; display: block; }
+        
+        textarea { width: 100%; height: 110px; padding: 14px; border-radius: 14px; border: 2px solid #cbd5e1; font-family: &#39;Inter&#39;; font-size: 0.9rem; color: #334155; resize: none; box-sizing: border-box; outline: none; transition: 0.3s; background: #ffffff; line-height: 1.5; }
+        textarea:focus { border-color: #3b82f6; box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1); }
+        textarea:disabled { background: #e2e8f0; color: #64748b; font-style: italic; cursor: not-allowed; }
+        
+        .form-actions { display: flex; gap: 8px; margin-top: 10px; }
+        .btn-action { flex: 1; padding: 10px; border: none; border-radius: 10px; font-weight: 700; font-size: 0.75rem; cursor: pointer; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px; }
+        .btn-save { background: #1e3a8a; color: white; }
+        .btn-edit { background: #cbd5e1; color: #1e293b; }
+        .btn-reset { background: #f1f5f9; color: #ef4444; border: 1px solid #fee2e2; }
+
+        select { width: 100%; padding: 12px; border-radius: 12px; border: 2px solid #cbd5e1; font-weight: 600; font-family: &#39;Inter&#39;; margin-bottom: 10px; background: #ffffff; outline: none; cursor: pointer; }
+        #status-msg { font-size: 0.75rem; color: #475569; font-weight: 600; line-height: 1.4; min-height: 40px; margin-top: 10px; padding: 5px; text-align: center; }
+        
+        .section-title { font-size: 0.8rem; color: #1e293b; font-weight: 800; text-align: left; margin: 20px 0 8px 5px; text-transform: uppercase; letter-spacing: 0.5px; border-left: 4px solid #3b82f6; padding-left: 8px; }
+        
+        .btn-group { display: flex; flex-direction: column; gap: 8px; }
+        .btn { padding: 14px 18px; border: none; border-radius: 14px; color: white; font-weight: 700; cursor: pointer; transition: 0.2s; width: 100%; font-size: 0.85rem; text-align: left; display: flex; align-items: center; gap: 10px; box-sizing: border-box; }
+        .btn:hover { filter: brightness(1.1); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .btn-icon { font-size: 1.1rem; display: inline-block; width: 20px; text-align: center; }
+        
+        /* Premium Palette Colors &amp; Gradients */
+        .btn-sec-1 { background: linear-gradient(135deg, #1e3a8a, #3b82f6); }
+        .btn-sec-2 { background: linear-gradient(135deg, #2563eb, #60a5fa); }
+        .btn-sec-3 { background: linear-gradient(135deg, #0f766e, #0d9488); }
+        .btn-sec-4 { background: linear-gradient(135deg, #0369a1, #0284c7); }
+        .btn-sec-5 { background: linear-gradient(135deg, #6d28d9, #8b5cf6); }
+        .btn-sec-6 { background: linear-gradient(135deg, #be185d, #ec4899); }
+        .btn-sec-7 { background: linear-gradient(135deg, #b91c1c, #ef4444); }
+        .btn-sec-8 { background: linear-gradient(135deg, #c2410c, #f97316); }
+        .btn-sec-9 { background: linear-gradient(135deg, #047857, #10b981); }
+        
+        .btn-special-drill { background: linear-gradient(135deg, #1e293b, #475569); }
+        .btn-special-story { background: linear-gradient(135deg, #15803d, #22c55e); }
+    </style>
+</head>
+<body>
+    <b:section id='main-section'>
+      <b:widget id='HTML1' locked='true' title='Palliative Tool' type='HTML' version='1'>
+        <b:widget-settings>
+          <b:widget-setting name='content'/>
+        </b:widget-settings>
+        <b:includable id='main'>
+                <div class='wrapper'>
+                    <div class='container'>
+                        <h1>KOMPETENSI PALIATIF</h1>
+                        <div class='tagline'>Slide Architect &amp; Oxford Curriculum Engine</div>
+  
+                        <div class='box'>
+                            <span class='box-label'>Pokok Pikiran / Skenario Kasus (Jangkar Slide)</span>
+                            <textarea id='user-thought' placeholder='Ketik pokok pikiran atau skenario klinis spesifik di sini untuk diintegrasikan secara organik ke dalam rancangan naskah slide...'/>
+                            <div class='form-actions'>
+                                <button class='btn-action btn-save' id='btn-lock-save' onclick='toggleFormLock()'>🔒 SIMPAN DATA</button>
+                                <button class='btn-action btn-reset' onclick='resetForm()'>🔄 RESET</button>
+                            </div>
+                        </div>
+
+                        <div class='box'>
+                            <span class='box-label'>Konfigurasi Masterclass</span>
+                            <select id='care-selector'>
+                                <option value='Palliative Care'>Palliative Care Edition</option>
+                                <option value='Hospice Care'>Hospice Care Edition</option>
+                                <option value='End-of-Care'>End-of-Care Planning Edition</option>
+                            </select>
+                
+                            <select id='mode-selector'>
+                                <option value='standard'>Versi Standar (Pembahasan Singkat + 3 Soal)</option>
+                                <option selected='selected' value='pro'>Versi Pro (Deep Dive + 20 Soal HOTs per-Modul)</option>
+                                <option value='story'>Kisah Ilustrasi Berkelanjutan (Naratif Interaktif)</option>
+                            </select>
+   
+                            <div id='status-msg'>Pilih modul &amp; mode, klik tombol di bawah untuk menyalin Mega-Prompt berstruktur PowerPoint.</div>
+                        </div>
+
+                        <div class='btn-group'>
+                            <div class='section-title'>Akselerator Pola Belajar</div>
+                            <button class='btn btn-special-drill' onclick='action(&quot;infinite&quot;)'>
+                                <span class='btn-icon'>&#8734;</span> <span>INFINITE DRILL (ALL OXFORD SPECTRUM)</span>
+                            </button>
+                            <button class='btn btn-special-story' onclick='action(&quot;story_mode&quot;)'>
+                                <span class='btn-icon'>📖</span> <span>KISAH ILUSTRASI NARATIF (UMUM)</span>
+                            </button>
+
+                            <div class='section-title'>Kurikulum Masterclass (9 Bagian)</div>
+                            
+                            <button class='btn btn-sec-1' onclick='action(&quot;sec1&quot;)'>
+                                <span class='btn-icon'>🌍</span> <span>BAGIAN 1: Global Policy &amp; Ethics</span>
+                            </button>
+                            
+                            <button class='btn btn-sec-2' onclick='action(&quot;sec2&quot;)'>
+                                <span class='btn-icon'>🧬</span> <span>BAGIAN 2: Foundations of Medicine</span>
+                            </button>
+                            
+                            <button class='btn btn-sec-3' onclick='action(&quot;sec3&quot;)'>
+                                <span class='btn-icon'>🏥</span> <span>BAGIAN 3: Service Delivery &amp; Models</span>
+                            </button>
+                            
+                            <button class='btn btn-sec-4' onclick='action(&quot;sec4&quot;)'>
+                                <span class='btn-icon'>🤝</span> <span>BAGIAN 4: The Interdisciplinary Team</span>
+                            </button>
+                            
+                            <button class='btn btn-sec-5' onclick='action(&quot;sec5&quot;)'>
+                                <span class='btn-icon'>🗣&#65039;</span> <span>BAGIAN 5: Communication &amp; ACP</span>
+                            </button>
+                            
+                            <button class='btn btn-sec-6' onclick='action(&quot;sec6&quot;)'>
+                                <span class='btn-icon'>👨&#8205;👩&#8205;👧&#8205;👦</span> <span>BAGIAN 6: Family &amp; Caregiver</span>
+                            </button>
+                            
+                            <button class='btn btn-sec-7' onclick='action(&quot;sec7&quot;)'>
+                                <span class='btn-icon'>💊</span> <span>BAGIAN 7: Pain Management (Deep Dive)</span>
+                            </button>
+                            
+                            <button class='btn btn-sec-8' onclick='action(&quot;sec8&quot;)'>
+                                <span class='btn-icon'>🤢</span> <span>BAGIAN 8: Symptom Control (Non-Pain)</span>
+                            </button>
+                            
+                            <button class='btn btn-sec-9' onclick='action(&quot;sec9&quot;)'>
+                                <span class='btn-icon'>&#9203;</span> <span>BAGIAN 9: End-of-Life &amp; Special Pop.</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <script type='text/javascript'>
+                    //<![CDATA[
+                    
+                    function toggleFormLock() {
+                        const txtArea = document.getElementById('user-thought');
+                        const btn = document.getElementById('btn-lock-save');
+                        txtArea.disabled = !txtArea.disabled;
+                        btn.innerHTML = txtArea.disabled ? "✏️ EDIT DATA" : "🔒 SIMPAN DATA";
+                        btn.className = txtArea.disabled ? "btn-action btn-edit" : "btn-action btn-save";
+                    }
+
+                    function resetForm() {
+                        document.getElementById('user-thought').value = "";
+                        document.getElementById('user-thought').disabled = false;
+                        document.getElementById('btn-lock-save').innerHTML = "🔒 SIMPAN DATA";
+                        document.getElementById('btn-lock-save').className = "btn-action btn-save";
+                        document.getElementById('status-msg').innerHTML = "🔄 Formulir input telah dikosongkan.";
+                    }
+
+                    function action(type) {
+                        const care = document.getElementById('care-selector').value;
+                        const mode = document.getElementById('mode-selector').value;
+                        const thought = document.getElementById('user-thought').value.trim();
+                        const status = document.getElementById('status-msg');
+                        
+                        let baseInstruction = "Bertindaklah sebagai Konsultan & Pakar Medis Spesialis Kedokteran Paliatif Senior (merujuk pada Oxford Textbook of Palliative Medicine).\n";
+                        baseInstruction += "Saya ingin Anda menyusun sebuah modul masterclass tingkat tinggi dengan fokus utama pada layanan: \"" + care + "\".\n\n";
+                        
+                        // INTEGRASI LOGIS KASUS USER
+                        if (thought) {
+                            baseInstruction += "🚨 PRIORITAS UTAMA ANALISIS - INTEGRASIKAN KASUS/POKOK PIKIRAN INI:\n";
+                            baseInstruction += "Anda wajib mengaitkan, menerapkan, dan menguji teori pengajaran Anda langsung pada skenario/pokok pikiran berikut: \"" + thought + "\"\n\n";
+                        }
+
+                        // PRESENTATION BLUEPRINT DIRECTIVE
+                        baseInstruction += "⚠️ PRESENTATION BLUEPRINT DIRECTIVE:\n";
+                        baseInstruction += "Sajikan seluruh jawaban pembahasan Anda dalam kerangka 'Naskah Slide Presentasi PowerPoint (PPTx)' demi kenyamanan saya menyalin materi ke media visual. Pecah output menjadi rancangan per-slide (Slide 1, Slide 2, dst.), di mana tiap slide memuat komponen:\n";
+                        baseInstruction += "  - [Judul Slide]: Judul presentasi yang ringkas, tegas, dan berwibawa.\n";
+                        baseInstruction += "  - [Isi Slide / Bullet Points]: Maksimal 4-5 poin ringkas, padat, mendalam, dan berbasis bukti (evidence-based).\n";
+                        baseInstruction += "  - [Visual Cue]: Saran konsep gambar konkrit, bagan alur patofisiologi, tabel dosis, atau grafik klinis pendukung yang relevan untuk memperkuat estetika slide.\n\n";
+                        
+                        baseInstruction += "Lakukan pendekatan 'Deep Dive' yang seluas samudra, lengkap, rinci, terstruktur, matang, dan berbasis bukti untuk setiap rancangan slide.\n\n";
+
+                        let continuityRule = "\n\nCRITICAL RULE UNTUK GEMINI:\nJangan mengakhiri sesi atau menyimpulkan materi secara final di satu respons ini saja. ";
+                        continuityRule += "Pada akhir output Anda, WAJIB berikan 'Prompt Hook' berupa pertanyaan terbuka atau opsi sub-topik lanjutan yang spesifik untuk melangkah ke slide evaluasi/pendalaman berikutnya, lalu instruksikan saya untuk mengetik 'Lanjut'.";
+
+                        // KONSTRUKSI STRUKTUR KELUARAN MODE SELECTOR
+                        let modeConstraint = "";
+                        if(mode === 'pro') {
+                            modeConstraint = "STRUKTUR OUTPUT MODE PRO (DEEP DIVE SLIDE ARCHITECT):\n" +
+                                             "Sajikan visualisasi naskah slide yang membedah:\n" +
+                                             "1. LATAR BELAKANG & EPIDEMIOLOGI: Analisis urgensi klinis topik ini pada pasien stadium terminal.\n" +
+                                             "2. TEORI & PATOFISIOLOGI GEJALA: Mekanisme biologis, psikososial, dan spiritual secara mendalam.\n" +
+                                             "3. PROTOKOL IMPLEMENTASI KLINIS: Algoritma manajemen taktis (utamakan rute Subkutan/SC, hindari Intramuskular/IM), serta titrasi dosis farmakologi.\n" +
+                                             "4. ILUSTRASI KASUS NYATA: Narasi skenario riil pasien kompleks (multimorbiditas).\n" +
+                                             "5. BANK EVALUASI KOMPREHENSIF PART 1: Tuliskan 10-20 soal pilihan ganda berbasis kasus klinis (Vignette Case) tingkat tinggi (HOTs) lengkap dengan Kunci Jawaban dan Rasional Medis.\n\n";
+                        } else if(mode === 'story') {
+                            modeConstraint = "STRUKTUR OUTPUT MODE KISAH ILUSTRASI BERKELANJUTAN (NARATIF INTERAKTIF SLIDE):\n" +
+                                             "Sajikan visualisasi naskah slide dengan alur:\n" +
+                                             "1. Babak pertama dari Kisah Ilustrasi Naratif berbobot tinggi mengenai pasien paliatif dengan dinamika penyakit kompleks dan konflik internal keluarga.\n" +
+                                             "2. Integrasi teori patofisiologi kedokteran dan protokol manajemen gejala secara organik ke dalam alur narasi slide.\n" +
+                                             "3. Di akhir slide babak ini, ajukan 3 pertanyaan reflektif-klinis kritis yang dilematis terkait langkah penatalaksanaan berikutnya untuk memicu respons interaktif.\n\n";
+                        } else {
+                            modeConstraint = "STRUKTUR OUTPUT VERSI STANDAR (SLIDE OUTLINE):\n" +
+                                             "Sajikan visualisasi naskah slide yang berisi:\n" +
+                                             "1. Rangkuman Teori Esensial & Implementasi Klinis Praktis.\n" +
+                                             "2. 1 Ilustrasi Kasus Singkat.\n" +
+                                             "3. 3 Soal Evaluasi Vignette Klinis beserta Kunci Jawaban dan pembahasan rasional medis.\n\n";
+                        }
+
+                        // PENENTUAN MATERI BERDASARKAN TOMBOL YANG DIPILIH
+                        let topicPrompt = "";
+                        if(type === "infinite") {
+                            topicPrompt = "ARAHAN TOPIK MODUL: Aktifkan mode INFINITE DRILL. Berikan 1 soal studi kasus klinis tingkat lanjut secara acak dari seluruh spektrum keilmuan kurikulum Oxford. ";
+                            topicPrompt += "Setelah saya menjawab, jabarkan pembahasannya dalam struktur rancangan slide, berikan koreksi berbasis pedoman internasional, bedah rasional teorinya, lalu secara otomatis berikan 1 soal baru berikutnya.";
+                        } else if(type === "story_mode") {
+                            topicPrompt = "ARAHAN TOPIK MODUL: Aktifkan MODE KISAH ILUSTRASI NARATIF (UMUM). Jalankan naratif interaktif komprehensif spektrum luas mengenai penanganan kasus paliatif makro-mikro.\n" +
+                                          "Strukturkan output dalam format rancangan naskah slide presentasi, gabungkan teori-teori klinis Oxford secara implisit ke dalam plot drama medis, dan akhiri dengan 3 pertanyaan dilematis penentu keputusan tindakan.";
+                        } else {
+                            const topics = {
+                                "sec1": "BAGIAN 1: Global Policy & Ethics (Perspektif Makro)\n" +
+                                        "- The Worldwide Status: Analisis kemajuan perawatan paliatif global dan pemetaan Global Atlas of Palliative Care.\n" +
+                                        "- Human Rights & Access: Advokasi akses obat esensial (Opioid) dan integrasi paliatif sebagai hak asasi manusia fundamental.\n" +
+                                        "- Health Economics: Analisis efektivitas biaya (cost-effectiveness) dan kebijakan kesehatan publik dalam integrasi layanan paliatif nasional.",
+                                
+                                "sec2": "BAGIAN 2: Foundations of Palliative Medicine\n" +
+                                        "- Core Concepts: Definisi, filosofi, dan epidemiologi penyakit kronis progresif.\n" +
+                                        "- Cultural & Bioethical Dimensions: Pengaruh etnisitas, kepercayaan, dan budaya terhadap persepsi sakit, serta navigasi dilema etis di akhir hayat.",
+                                
+                                "sec3": "BAGIAN 3: Service Delivery & Models of Care\n" +
+                                        "- Integrated Care: Model integrasi dini (early integration) paliatif pada onkologi dan non-onkologi.\n" +
+                                        "- Care Settings: Strategi layanan di berbagai tatanan: Komunitas (Homecare), Rumah Sakit (Hospice/Palliative Unit), dan Unit Gawat Darurat.",
+                                
+                                "sec4": "BAGIAN 4: The Interdisciplinary Team (IDT)\n" +
+                                        "- Clinical Roles: Sinergi peran dokter spesialis, perawat paliatif, dan tenaga kesehatan tambahan (farmasi klinis, fisioterapi).\n" +
+                                        "- Holistic Support: Integrasi dukungan psikososial, konseling medik, dan pemenuhan kebutuhan spiritualitas pasien.",
+                                
+                                "sec5": "BAGIAN 5: Communication & Advance Care Planning (ACP)\n" +
+                                        "- Clinical Communication: Teknik komunikasi efektif (misal: protokol SPIKES) dalam penyampaian berita buruk dan manajemen konflik.\n" +
+                                        "- Advance Care Planning: Dokumentasi preferensi medis, Living Will, dan penunjukan pengambil keputusan pengganti (Surrogate decision-maker).",
+                                
+                                "sec6": "BAGIAN 6: Family & Caregiver Dynamics\n" +
+                                        "- Family Systems: Memahami dinamika keluarga dalam menghadapi penyakit terminal.\n" +
+                                        "- Caregiver Burden: Instrumen penilaian beban pengasuh dan strategi intervensi untuk mencegah burnout.",
+                                
+                                "sec7": "BAGIAN 7: Pain Management (Deep Dive)\n" +
+                                        "- Physiology of Pain: Neurobiologi nyeri kronis dan klasifikasi (Nositif, Neuropatik, Nyeri Kanker).\n" +
+                                        "- Pharmacotherapy: Prinsip tangga analgesik WHO, manajemen opioid (titrasi, rotasi, efek samping), dan ko-analgesik.\n" +
+                                        "- Specialist Interventions: Manajemen nyeri viseral, nyeri tulang metastatik, dan pendekatan nyeri pada populasi pediatrik.",
+                                
+                                "sec8": "BAGIAN 8: Symptom Control (Non-Pain)\n" +
+                                        "- Gastrointestinal: Patofisiologi mual-muntah (CINV), konstipasi opioid, obstruksi usus maligna, dan kaheksia-anoreksia.\n" +
+                                        "- Cardiorespiratory & Others: Manajemen dispnea terminal, batuk kronis, kegagalan organ, serta gejala neurologis/genitourinaria.",
+                                
+                                "sec9": "BAGIAN 9: End-of-Life Care & Special Populations\n" +
+                                        "- Terminal Phase: Identifikasi fase dying, penggunaan sedasi paliatif proporsional, dan manajemen kedaruratan terminal.\n" +
+                                        "- Special Populations: Protokol khusus untuk pediatrik, geriatri, pasien gagal ginjal kronis (ESRD), gagal jantung, serta pasien HIV/AIDS.\n" +
+                                        "- Bereavement Support: Manajemen duka cita bagi keluarga pasca-kematian (duka normal vs patologis)."
+                            };
+                            topicPrompt = "ARAHAN TOPIK MODUL: " + topics[type];
+                        }
+
+                        // INTEGRASI AKHIR ELEMEN GENERATOR
+                        let finalPrompt = baseInstruction + modeConstraint + topicPrompt + continuityRule;
+
+                        // Eksekusi Clipboard dan Pengalihan halaman
+                        navigator.clipboard.writeText(finalPrompt).then(function() {
+                            status.innerHTML = "🚀 <b>Mega-Prompt PPTx Injected Berhasil Disalin!</b> Mengalihkan ke Gemini...";
+                            setTimeout(function() {
+                                window.open('https://gemini.google.com/', '_blank');
+                            }, 900);
+                        }).catch(function(err) {
+                            status.innerText = "Gagal menyalin secara otomatis. Silakan periksa izin clipboard browser Anda.";
+                        });
+                    }
+                    //]]>
+                </script>
+            </b:includable>
+      </b:widget>
+    </b:section>
+</body>
+</html>
