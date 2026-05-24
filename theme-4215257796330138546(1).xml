@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <title>KOMPETENSI PALIATIF PRO</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'/>
+    <b:skin><![CDATA[body { margin: 0; padding: 0; background: #f8fafc; font-family: 'Inter', sans-serif; }]]></b:skin>
+    <style>
+        @import url(&#39;https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap&#39;);
+        .wrapper { display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 20px; }
+        .container { background: #ffffff; width: 100%; max-width: 480px; padding: 25px; border-radius: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); text-align: center; }
+        h1 { font-size: 1.4rem; color: #1e293b; margin-bottom: 20px; font-weight: 800; }
+        .box { background: #f1f5f9; padding: 20px; border-radius: 20px; margin-bottom: 20px; }
+        select { width: 100%; padding: 12px; border-radius: 12px; border: 2px solid #cbd5e1; font-weight: 600; font-family: &#39;Inter&#39;; margin-bottom: 5px; }
+        #status-msg { font-size: 0.75rem; color: #475569; font-weight: 600; line-height: 1.4; min-height: 40px; margin-top: 10px; padding: 5px; display: flex; flex-direction: column; justify-content: center; }
+        .btn-group { display: flex; flex-direction: column; gap: 8px; }
+        .btn { padding: 14px; border: none; border-radius: 14px; color: white; font-weight: 700; cursor: pointer; transition: 0.3s; width: 100%; font-size: 0.85rem; text-align: center; }
+        .btn-emergency { background: #ef4444; }
+        .btn-assess { background: #f59e0b; }
+        .btn-grad-1 { background: linear-gradient(90deg, #3b82f6, #4f46e5); }
+        .btn-grad-2 { background: linear-gradient(90deg, #4f46e5, #6366f1); }
+        .btn-grad-3 { background: linear-gradient(90deg, #6366f1, #06b6d4); }
+        .btn-grad-4 { background: linear-gradient(90deg, #06b6d4, #14b8a6); }
+        .btn-grad-5 { background: linear-gradient(90deg, #14b8a6, #10b981); }
+        .btn-new-1 { background: #7c3aed; }
+        .btn-new-2 { background: #db2777; }
+        .btn-acp { background: #0891b2; }
+        .btn-pps { background: #be185d; }
+        .btn:hover { filter: brightness(1.1); transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+    <b:section id='main-section'>
+      <b:widget id='HTML1' locked='true' title='Palliative Tool' type='HTML' version='1'>
+        <b:widget-settings>
+          <b:widget-setting name='content'/>
+        </b:widget-settings>
+        <b:includable id='main'>
+                <div class='wrapper'>
+                    <div class='container'>
+                        <h1>KOMPETENSI PALIATIF</h1>
+                        <div class='box'>
+                            <select id='care-selector'>
+                                <option value='Palliative Care'>Palliative Care</option>
+                                <option value='Hospice Care'>Hospice Care</option>
+                                <option value='End-of-Care'>End-of-Care Planning</option>
+                            </select>
+                            <div id='status-msg'>
+                                <span>Silakan pilih modul,</span>
+                                <span>klik tombol di bawah ini untuk copy-paste di Gemini.</span>
+                            </div>
+                        </div>
+                        <div class='btn-group'>
+                            <button class='btn btn-emergency' onclick='action(&quot;emergency&quot;)'>&#9889; EMERGENCY CHEAT SHEET</button>
+                            <button class='btn btn-assess' onclick='action(&quot;assess&quot;)'>📊 CLINICAL ASSESSMENT</button>
+                            <button class='btn btn-pps' onclick='action(&quot;pps&quot;)'>📋 PPS v2 (Victoria Hospice)</button>
+                            <button class='btn btn-acp' onclick='action(&quot;acp&quot;)'>📋 ADVANCED CARE PLANNING</button>
+                            <button class='btn btn-grad-1' onclick='action(&quot;guide&quot;)'>CLINICAL GUIDELINE</button>
+                            <button class='btn btn-new-1' onclick='action(&quot;meds&quot;)'>💊 PHARMACOLOGY &amp; PAIN</button>
+                            <button class='btn btn-grad-2' onclick='action(&quot;support&quot;)'>EMOTIONAL SUPPORT</button>
+                            <button class='btn btn-grad-3' onclick='action(&quot;case&quot;)'>CASE STUDY ANALYSIS</button>
+                            <button class='btn btn-grad-4' onclick='action(&quot;infinite&quot;)'>&#8734; INFINITE DRILL</button>
+                            <button class='btn btn-new-2' onclick='action(&quot;terminal&quot;)'>&#10024; TERMINAL HOUR CARE</button>
+                            <button class='btn btn-grad-5' onclick='action(&quot;ethics&quot;)'>ETHICAL DECISION MAKING</button>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    function action(type) {
+                        const care = document.getElementById(&#39;care-selector&#39;).value;
+                        const status = document.getElementById(&#39;status-msg&#39;);
+
+
+
+
+const base = &quot;Bertindaklah sebagai Pakar Perawatan Medis Profesional yang ahli dalam bidang &quot; + care + &quot;. &quot; +
+    &quot;Setiap respons Anda harus bersifat analitis, berbasis bukti klinis terkini (evidence-based), dan disampaikan dengan nada empati serta profesional. &quot; +
+    &quot;Untuk setiap permintaan, berikan: &quot; +
+    &quot;1. Penjelasan mendalam dan komprehensif mengenai topik yang dibahas, &quot; +
+    &quot;2. Panduan praktis langkah-demi-langkah (SOP), &quot; +
+    &quot;3. Tabel atau poin-poin penting untuk kemudahan rujukan, &quot; +
+    &quot;4. Bagian &#39;Bank Soal Evaluasi&#39;: Sediakan minimal 3 soal studi kasus (pilihan ganda/esai) yang mencakup berbagai skenario klinis, &quot; +
+    &quot;5. Kunci jawaban beserta penjelasan rasional yang mendalam untuk setiap soal. &quot; +
+    &quot;Tujuan saya adalah untuk menguasai topik ini secara paripurna. Pastikan seluruh output terstruktur rapi, logis, dan edukatif.&quot;;
+
+
+                        let prompt = &quot;&quot;;
+
+                        
+
+
+
+if(type == &quot;emergency&quot;) {
+    prompt = base + 
+        &quot;Bertindaklah sebagai instruktur klinis ahli kegawatdaruratan paliatif. &quot; +
+        &quot;1. Pilih secara acak 1 kondisi kegawatan yang sering terjadi dalam perawatan paliatif (contoh: perdarahan masif, kejang, dispnea berat, atau krisis nyeri). &quot; +
+        &quot;2. Buatkan panduan penanganan cepat &#39;Life-Saving&#39; dalam format poin-poin yang presisi, sistematis, dan mengikuti protokol medis terbaru. &quot; +
+        &quot;3. Sertakan &#39;Red Flags&#39; atau indikator yang memerlukan tindakan segera/rujukan. &quot; +
+        &quot;4. Buatkan 3 Bank Soal (Studi Kasus Klinis) terkait kegawatdaruratan tersebut dan topik kegawatan paliatif lainnya. Setiap soal harus disertai 4 pilihan jawaban (A, B, C, D). &quot; +
+        &quot;5. Berikan kunci jawaban beserta penjelasan rasional yang mendalam untuk setiap soal agar saya memahami dasar pengambilan keputusan klinisnya. &quot; +
+        &quot;Sajikan seluruh materi dalam format modul yang terstruktur, profesional, dan mudah dipahami untuk keperluan pelatihan mandiri.&quot;;
+}
+
+else if(type == &quot;assess&quot;) {
+    prompt = base + 
+        &quot;Bertindaklah sebagai ahli klinis senior. Susun sebuah modul panduan komprehensif mengenai &#39;Alat Penilaian Klinis (Clinical Assessment Tools)&#39; yang paling tepat dan esensial untuk pasien &quot; + care + &quot;. &quot; +
+        &quot;Modul ini wajib mencakup: &quot; +
+        &quot;1. Katalog Alat Penilaian: Berikan daftar alat penilaian (seperti skala nyeri, skala fungsional, skala depresi/kecemasan, dll) yang tervalidasi secara internasional untuk kondisi tersebut. &quot; +
+        &quot;2. Analisis Kegunaan: Untuk setiap alat, jelaskan kapan, mengapa, dan bagaimana cara menggunakannya secara praktis di lingkungan klinis. &quot; +
+        &quot;3. Interpretasi Hasil: Berikan panduan ringkas cara membaca skor atau hasil dari alat penilaian tersebut agar dapat membantu pengambilan keputusan klinis. &quot; +
+        &quot;4. Bank Soal (3 Pertanyaan): Buatlah 3 soal studi kasus pilihan ganda yang menguji kemampuan klinis saya dalam memilih dan menginterpretasikan alat penilaian yang tepat untuk berbagai skenario pasien. &quot; +
+        &quot;5. Kunci Jawaban &amp; Rasional: Sertakan kunci jawaban beserta penjelasan rasional yang mendalam untuk setiap soal agar saya memahami logika di balik pemilihan alat tersebut. &quot; +
+        &quot;Sajikan dalam format yang sangat terstruktur, profesional, menggunakan heading yang jelas, dan bahasa klinis yang presisi.&quot;;
+}
+
+
+else if(type == &quot;pps&quot;) {
+    prompt = base + 
+        &quot;Bertindaklah sebagai instruktur klinis ahli paliatif. Berikan pembahasan yang sangat komprehensif, paripurna, dan mendalam mengenai Palliative Performance Scale (PPS v2) dari Victoria Hospice. &quot; +
+        &quot;Struktur output wajib mencakup: &quot; +
+        &quot;1. Analisis Mendalam: Penjelasan rinci untuk setiap 11 level PPS (dari 100% hingga 0%), disertai dengan kriteria objektif pada setiap kategori (ambulasi, aktivitas, asupan, tingkat kesadaran). &quot; +
+        &quot;2. Panduan Penilaian Praktikal: Tips klinis untuk menentukan skor secara akurat bagi pasien dengan kondisi fluktuatif. &quot; +
+        &quot;3. Studi Kasus Komprehensif: Berikan 5 skenario klinis yang kompleks untuk melatih kemampuan scoring. &quot; +
+        &quot;4. Bank Soal (3 Pertanyaan): Buatkan 3 soal studi kasus pilihan ganda yang bervariasi untuk menguji pemahaman tingkat tinggi mengenai PPS v2. &quot; +
+        &quot;5. Kunci Jawaban &amp; Rasional: Sertakan kunci jawaban beserta penjelasan medis yang rasional untuk setiap soal, sehingga saya memahami &#39;mengapa&#39; skor tersebut dipilih. &quot; +
+        &quot;Sajikan dalam format yang sangat terstruktur, profesional, dan menggunakan bahasa klinis yang presisi.&quot;;
+}
+
+
+else if(type == &quot;acp&quot;) {
+    prompt = base + 
+        &quot;Bertindaklah sebagai spesialis perawatan paliatif dan konselor ACP (Advance Care Planning). &quot; +
+        &quot;Buatkan panduan master tentang ACP untuk topik: &quot; + care + &quot;. &quot; +
+        &quot;Panduan harus mencakup: &quot; +
+        &quot;1. Strategi Komunikasi: Teknik memulai percakapan ACP yang sensitif, empatik, dan efektif dengan pasien serta keluarga (termasuk cara mengatasi resistensi). &quot; +
+        &quot;2. Elemen Legal &amp; Medis: Komponen krusial yang wajib ada dalam dokumen legal ACP (seperti penunjukan kuasa asuhan, instruksi do-not-resuscitate, dan preferensi perawatan). &quot; +
+        &quot;3. Tahapan Implementasi: Panduan langkah-demi-langkah dari diskusi awal hingga legalisasi dokumen. &quot; +
+        &quot;4. Bank Soal (3 soal): Susun 3 studi kasus/soal pilihan ganda yang menguji pemahaman tentang etika, hukum, dan manajemen komunikasi dalam ACP. &quot; +
+        &quot;5. Rasional: Sertakan kunci jawaban dan penjelasan mendalam untuk setiap soal agar saya dapat memahami logika pengambilan keputusan di balik setiap jawaban. &quot; +
+        &quot;Sajikan dalam format yang sangat terstruktur, profesional, dan menggunakan pendekatan klinis yang etis.&quot;;
+}
+                        
+
+
+
+
+
+else if(type == &quot;guide&quot;) {
+    prompt = base + 
+        &quot;Bertindaklah sebagai konsultan ahli medis. Berikan panduan klinis (clinical guideline) yang paling komprehensif, paripurna, dan mutakhir untuk topik: &quot; + care + &quot;. &quot; +
+        &quot;Struktur panduan harus mencakup: &quot; +
+        &quot;1. Pendahuluan &amp; Definisi: Dasar klinis dan urgensi penanganan untuk kondisi tersebut, &quot; +
+        &quot;2. Protokol Penanganan Standar: Prosedur operasional langkah-demi-langkah, mulai dari asesmen awal, stabilisasi, hingga manajemen jangka panjang, &quot; +
+        &quot;3. Algoritma Pengambilan Keputusan: Poin-poin kritis dalam menentukan tindakan medis berdasarkan kondisi pasien, &quot; +
+        &quot;4. Checklist Keselamatan: Peringatan akan kontraindikasi dan risiko yang harus dihindari, &quot; +
+        &quot;5. Bank Soal (3 soal): Buatlah 3 soal studi kasus yang menantang (pilihan ganda dan esai klinis) yang menguji pemahaman mendalam tentang panduan ini. &quot; +
+        &quot;Sertakan kunci jawaban yang lengkap dengan rasional medis/ilmiah di setiap akhir soal. &quot; +
+        &quot;Sajikan dalam format profesional, terstruktur dengan heading yang jelas, dan menggunakan bahasa klinis yang presisi.&quot;;
+}
+
+else if(type == &quot;meds&quot;) {
+    prompt = base + 
+        &quot;Bertindaklah sebagai ahli farmakologi paliatif. &quot; +
+        &quot;1. Pilih secara acak satu gejala fisik (nyeri hebat, mual, atau konstipasi). &quot; +
+        &quot;2. Buatkan panduan tata laksana komprehensif untuk gejala tersebut, mencakup: &quot; +
+        &quot;   - Protokol pemilihan obat (pilihan pertama, kedua, dan adjuvan), &quot; +
+        &quot;   - Pedoman dosis awal, rentang titrasi yang aman, serta cara pemantauan efek samping, &quot; +
+        &quot;   - Prinsip &#39;nearing end of life&#39; dalam pemberian obat. &quot; +
+        &quot;3. Sajikan 3 Bank Soal (Pilihan Ganda dan Studi Kasus Klinis): Fokuskan pada pemilihan dosis, interaksi obat, dan manajemen gejala yang tepat. &quot; +
+        &quot;4. Sertakan kunci jawaban beserta penjelasan rasional medis yang mendalam untuk setiap soal. &quot; +
+        &quot;Pastikan jawaban Anda terstruktur, menggunakan terminologi medis yang akurat, dan merujuk pada pedoman paliatif internasional terkini. &quot; +
+        &quot;Sajikan dalam format yang rapi dan mudah untuk dijadikan bahan referensi profesional.&quot;;
+}
+
+
+else if(type == &quot;support&quot;) {
+    prompt = base + 
+        &quot;Buatkan modul panduan komprehensif mengenai &#39;Teknik Komunikasi Empatik dan Dukungan Emosional bagi Keluarga Pasien &quot; + care + &quot;&#39;. &quot; +
+        &quot;Modul ini harus mencakup: &quot; +
+        &quot;1. Prinsip Dasar Komunikasi Terapeutik: Teknik mendengarkan aktif, validasi perasaan, dan penyampaian berita buruk (breaking bad news) yang beretika, &quot; +
+        &quot;2. Strategi Dukungan Emosional: Cara menghadapi berbagai fase kedukaan (grief) dan teknik menenangkan keluarga dalam kondisi krisis, &quot; +
+        &quot;3. Contoh Dialog: Berikan 5 skenario dialog praktis yang bisa langsung diterapkan oleh tenaga medis, &quot; +
+        &quot;4. Bank Soal (3 Pertanyaan): Susunlah 3 soal (pilihan ganda dan studi kasus esai) yang menguji pemahaman tentang komunikasi empatik, pengelolaan emosi keluarga, dan etika dukungan psikososial. Sertakan kunci jawaban dan penjelasan rasional untuk setiap soal. &quot; +
+        &quot;Sajikan dalam format profesional, terstruktur dengan poin-poin yang jelas, dan menggunakan bahasa yang berempati serta inspiratif.&quot;;
+}
+
+
+else if(type == &quot;case&quot;) {
+    prompt = base + 
+        &quot;Bertindaklah sebagai instruktur klinis yang ahli dalam bidang &quot; + care + &quot;. &quot; +
+        &quot;Tugas Anda adalah menyajikan modul latihan studi kasus yang paripurna. &quot; +
+        &quot;Langkah-langkahnya: &quot; +
+        &quot;1. Berikan 1 skenario kasus nyata yang kompleks dan menantang terkait &quot; + care + &quot;, &quot; +
+        &quot;2. Setelah skenario tersebut, lampirkan &#39;Bank Soal Latihan&#39; yang berisi 3 soal studi kasus tambahan (pilihan ganda dan esai klinis) yang mencakup berbagai aspek diagnosis, tindakan, dan etika, &quot; +
+        &quot;3. Sertakan kunci jawaban beserta penjelasan rasional yang mendalam untuk setiap soal di bagian akhir (atau dalam format spoiler/tersembunyi agar saya bisa mencoba menjawabnya sendiri terlebih dahulu), &quot; +
+        &quot;4. Gunakan standar medis/profesional terkini dalam penyusunan soal. &quot; +
+        &quot;Tampilkan output dengan format yang rapi, terstruktur, dan mudah dibaca.&quot;;
+}
+                        
+
+
+else if(type == &quot;infinite&quot;) {
+    prompt = base + 
+        &quot;Aktifkan &#39;Mode INFINITE DRILL&#39;: Bertindaklah sebagai penguji ahli di bidang perawatan paliatif. &quot; +
+        &quot;Tugas Anda: &quot; +
+        &quot;1. Berikan 1 soal studi kasus kompleks secara acak dari topik: Emergency, Assessment, Guideline, Farmakologi, ACP, PPS v2, Dukungan Emosional, Terminal Care, atau Etika. &quot; +
+        &quot;2. Setelah saya menjawab, berikan analisis mendalam: tentukan apakah jawaban saya benar/salah, jelaskan rasional medisnya dengan merujuk pada standar klinis terkini, dan koreksi jika ada pemahaman yang keliru. &quot; +
+        &quot;3. Tanyakan apakah saya ingin melanjutkan ke soal berikutnya, atau berikan soal baru secara otomatis jika saya memberikan instruksi untuk lanjut. &quot; +
+        &quot;4. Simpan catatan kecil tentang topik mana yang saya jawab dengan lemah, dan sesuaikan tingkat kesulitan soal berikutnya agar fokus pada area perbaikan tersebut (adaptif). &quot; +
+        &quot;5. Mulailah sesi pertama sekarang dengan 1 soal studi kasus yang menantang beserta 4 pilihan jawaban (A, B, C, D). &quot; +
+        &quot;Gunakan gaya bahasa yang profesional, suportif, dan edukatif.&quot;;
+}
+                        
+
+else if(type == &quot;terminal&quot;) {
+    prompt = base + 
+        &quot;Bertindaklah sebagai ahli perawatan paliatif. Berikan panduan &#39;Terminal Hour Care&#39; (perawatan di jam-jam terakhir kehidupan) yang sangat komprehensif, mendalam, dan paripurna. &quot; +
+        &quot;Panduan harus mencakup: &quot; +
+        &quot;1. Manajemen Gejala Fisik: Penjelasan mendalam dan protokol penanganan gejala seperti death rattle, dispnea (sesak napas), nyeri, kegelisahan terminal, dan perawatan mulut/kulit, &quot; +
+        &quot;2. Pendekatan Spiritual &amp; Psikososial: Strategi memberikan dukungan bagi pasien dan pendampingan bagi keluarga yang berduka, &quot; +
+        &quot;3. Etika &amp; Komunikasi: Cara berkomunikasi dengan keluarga di saat kritis, &quot; +
+        &quot;4. Bank Soal (3 Pertanyaan): Buatlah 3 soal studi kasus pilihan ganda dan esai yang komprehensif mengenai skenario klinis, manajemen gejala, dan dilema etis dalam &#39;Terminal Hour Care&#39;. Sertakan kunci jawaban beserta penjelasan rasionalnya untuk setiap soal. &quot; +
+        &quot;Sajikan seluruh materi dalam format yang terstruktur, menggunakan bahasa profesional yang berempati, dan sesuai dengan standar medis paliatif terkini.&quot;;
+}
+
+
+
+
+
+else if(type == &quot;ethics&quot;) {
+    prompt = base + 
+        &quot;Buatkan panduan komprehensif mengenai dilema etis yang sering terjadi dalam profesi atau bidang &quot; + care + &quot;. &quot; +
+        &quot;Panduan ini harus mencakup: &quot; +
+        &quot;1. Penjelasan mendalam mengenai 5 dilema etis yang paling umum, &quot; +
+        &quot;2. Framework atau langkah-langkah sistematis dalam mengambil keputusan yang bijak dan beretika, &quot; +
+        &quot;3. Analisis pro dan kontra dari setiap dilema, &quot; +
+        &quot;4. Sediakan 3 bank soal studi kasus dilema etis yang bervariasi (lengkap dengan pilihan jawaban atau panduan diskusinya) untuk tujuan pelatihan atau refleksi. &quot; +
+        &quot;Sajikan jawaban dalam format yang terstruktur, profesional, dan mudah dipahami.&quot;;
+}
+
+
+
+
+                        
+                        navigator.clipboard.writeText(prompt).then(function() {
+                            status.style.color = &quot;#059669&quot;;
+                            status.innerHTML = &quot;<span>Instruksi disalin!</span><span>Silakan paste di Gemini.</span>&quot;;
+                            setTimeout(function() { 
+                                status.style.color = &quot;#475569&quot;;
+                                status.innerHTML = &quot;<span>Silakan pilih modul,</span><span>klik tombol di bawah ini untuk copy-paste di Gemini.</span>&quot;; 
+                            }, 10000);
+                            window.open(&#39;https://gemini.google.com/&#39;, &#39;_blank&#39;);
+                        });
+                    }
+                </script>
+            </b:includable>
+      </b:widget>
+    </b:section>
+</body>
+</html>
