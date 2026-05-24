@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <title>KOMPETENSI PALIATIF PRO</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'/>
+    <b:skin><![CDATA[body { margin: 0; padding: 0; background: #f8fafc; font-family: 'Inter', sans-serif; }]]></b:skin>
+    <style>
+        @import url(&#39;https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap&#39;);
+        .wrapper { display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 20px; }
+        .container { background: #ffffff; width: 100%; max-width: 480px; padding: 25px; border-radius: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); text-align: center; }
+        h1 { font-size: 1.4rem; color: #1e293b; margin-bottom: 20px; font-weight: 800; }
+        .box { background: #f1f5f9; padding: 20px; border-radius: 20px; margin-bottom: 20px; }
+        select { width: 100%; padding: 12px; border-radius: 12px; border: 2px solid #cbd5e1; font-weight: 600; font-family: &#39;Inter&#39;; margin-bottom: 5px; }
+        #status-msg { font-size: 0.75rem; color: #475569; font-weight: 600; line-height: 1.4; min-height: 40px; margin-top: 10px; padding: 5px; }
+        .btn-group { display: flex; flex-direction: column; gap: 8px; }
+        .btn { padding: 14px; border: none; border-radius: 14px; color: white; font-weight: 700; cursor: pointer; transition: 0.3s; width: 100%; font-size: 0.85rem; text-align: center; }
+        .btn-emergency { background: #ef4444; }
+        .btn-assess { background: #f59e0b; }
+        .btn-grad-1 { background: linear-gradient(90deg, #3b82f6, #4f46e5); }
+        .btn-grad-2 { background: linear-gradient(90deg, #4f46e5, #6366f1); }
+        .btn-grad-3 { background: linear-gradient(90deg, #6366f1, #06b6d4); }
+        .btn-grad-4 { background: linear-gradient(90deg, #06b6d4, #14b8a6); }
+        .btn-grad-5 { background: linear-gradient(90deg, #14b8a6, #10b981); }
+        .btn-new-1 { background: #7c3aed; }
+        .btn-new-2 { background: #db2777; }
+        .btn-acp { background: #0891b2; }
+        .btn-pps { background: #be185d; }
+        .btn-story { background: #059669; }
+        .btn:hover { filter: brightness(1.1); transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+    <b:section id='main-section'>
+      <b:widget id='HTML1' locked='true' title='Palliative Tool' type='HTML' version='1'>
+        <b:widget-settings>
+          <b:widget-setting name='content'/>
+        </b:widget-settings>
+        <b:includable id='main'>
+                <div class='wrapper'>
+                    <div class='container'>
+                        <h1>KOMPETENSI PALIATIF</h1>
+  
+                        <div class='box'>
+                            <select id='care-selector'>
+                                <option value='Palliative Care'>Palliative Care</option>
+                                <option value='Hospice Care'>Hospice Care</option>
+                                <option value='End-of-Care'>End-of-Care Planning</option>
+                            </select>
+                
+                            <select id='mode-selector'>
+                                <option value='standard'>Versi Standar (Pembahasan Singkat + 3 Soal)</option>
+                                <option value='pro'>Versi Pro (Deep Dive Berkelanjutan + 20 Soal)</option>
+                                <option value='story'>Kisah Ilustrasi Berkelanjutan (Naratif Interaktif)</option>
+                            </select>
+                            <div id='status-msg'>Pilih modul &amp; mode, klik tombol di bawah untuk menyalin Mega-Prompt dinamis.</div>
+                        </div>
+
+                        <div class='btn-group'>
+                            <button class='btn btn-emergency' onclick='action(&quot;emergency&quot;)'>&#9889; EMERGENCY CHEAT SHEET</button>
+                            <button class='btn btn-assess' onclick='action(&quot;assess&quot;)'>📊 CLINICAL ASSESSMENT</button>
+                            <button class='btn btn-pps' onclick='action(&quot;pps&quot;)'>📋 PPS v2 (Victoria Hospice)</button>
+                            <button class='btn btn-acp' onclick='action(&quot;acp&quot;)'>📋 ADVANCED CARE PLANNING</button>
+                            <button class='btn btn-grad-1' onclick='action(&quot;guide&quot;)'>CLINICAL GUIDELINE</button>
+                            <button class='btn btn-new-1' onclick='action(&quot;meds&quot;)'>💊 PHARMACOLOGY &amp; PAIN</button>
+                            <button class='btn btn-grad-2' onclick='action(&quot;support&quot;)'>EMOTIONAL SUPPORT</button>
+                            <button class='btn btn-grad-3' onclick='action(&quot;case&quot;)'>CASE STUDY ANALYSIS</button>
+                            <button class='btn btn-story' onclick='action(&quot;story&quot;)'>📖 KISAH ILUSTRASI (NARATIF)</button>
+                            <button class='btn btn-grad-4' onclick='action(&quot;infinite&quot;)'>&#8734; INFINITE DRILL</button>
+                            <button class='btn btn-new-2' onclick='action(&quot;terminal&quot;)'>&#10024; TERMINAL HOUR CARE</button>
+                            <button class='btn btn-grad-5' onclick='action(&quot;ethics&quot;)'>ETHICAL DECISION MAKING</button>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    function action(type) {
+                        const care = document.getElementById(&#39;care-selector&#39;).value;
+                        const mode = document.getElementById(&#39;mode-selector&#39;).value;
+                        const status = document.getElementById(&#39;status-msg&#39;);
+                        
+                        // Kerangka Utama Mega-Prompt (Pakar Klinis Spektrum Luas)
+                        let baseInstruction = &quot;Bertindaklah sebagai Konsultan &amp; Pakar Medis Spesialis Kedokteran Paliatif Senior (merujuk pada Oxford Textbook of Palliative Medicine). Saya ingin Anda menyusun sebuah modul masterclass tingkat tinggi dengan fokus utama pada layanan: &quot; + care + &quot;. \n\nLakukan pendekatan &#39;Deep Dive&#39; yang seluas samudra, lengkap, rinci, terstruktur, matang, dan berbasis bukti (evidence-based). Pembahasan harus mengeksplorasi aspek anatomi-fisiologi, patofisiologi gejala, penatalaksanaan multimodal, hingga dilema hukum etis jika relevan.\n\n&quot;;
+
+                        // Aturan Kritis: Membuka kesempatan kelanjutan bahasan di akhir respons
+                        let continuityRule = &quot;\n\nCRITICAL RULE UNTUK GEMINI:\nJangan mengakhiri sesi atau menyimpulkan materi secara final di satu respons ini saja. Pada akhir output Anda, WAJIB berikan &#39;Prompt Hook&#39; berupa pertanyaan terbuka atau opsi sub-topik lanjutan yang spesifik (misal: analisis dosis molekular, implikasi hukum lokal, atau bagian evaluasi berikutnya) dan instruksikan saya untuk mengetik &#39;Lanjut&#39; atau memasukkan umpan balik baru guna meneruskan eksplorasi materi yang lebih dalam.&quot;;
+
+                        // Parameter Keluaran Berdasarkan Mode
+                        let modeConstraint = &quot;&quot;;
+                        if(mode === &#39;pro&#39;) {
+                            modeConstraint = &quot;STRUKTUR OUTPUT MODE PRO (DEEP DIVE + BANK SOAL BERKELANJUTAN):\n&quot; +
+                                             &quot;1. LATAR BELAKANG &amp; EPIDEMIOLOGI: Analisis urgensi klinis topik ini pada pasien stadium terminal.\n&quot; +
+                                             &quot;2. TEORI &amp; PATOFISIOLOGI GEJALA: Jelaskan mekanisme biologis, psikososial, dan spiritual yang mendasari manifestasi klinis secara mendalam.\n&quot; +
+                                             &quot;3. PROTOKOL IMPLEMENTASI KLINIS: Berikan algoritma manajemen taktis lini pertama dan kedua, rute intervensi (utamakan rute non-invasif seperti Subkutan/SC, hindari Intramuskular/IM), serta titrasi dosis farmakologi yang rigid.\n&quot; +
+                                             &quot;4. ILUSTRASI KASUS NYATA: Buat narasi skenario riil pasien kompleks (multimorbiditas) di lapangan.\n&quot; +
+                                             &quot;5. BANK EVALUASI KOMPREHENSIF PART 1: Tuliskan 10-20 soal pilihan ganda berbasis kasus klinis (Vignette Case) tingkat tinggi (HOTs) lengkap dengan Kunci Jawaban dan Rasional Medis yang mendalam.&quot;;
+                        } else if(mode === &#39;story&#39;) {
+                            modeConstraint = &quot;STRUKTUR OUTPUT MODE KISAH ILUSTRASI BERKELANJUTAN (NARATIF INTERAKTIF):\n&quot; +
+                                             &quot;1. Mulailah babak pertama dari Kisah Ilustrasi Naratif berbobot tinggi mengenai seorang pasien paliatif dengan dinamika penyakit kompleks, konflik internal keluarga, dan penurunan fisik masif.\n&quot; +
+                                             &quot;2. Integrasikan teori patofisiologi kedokteran dan protokol manajemen gejala secara organik ke dalam alur cerita.\n&quot; +
+                                             &quot;3. Di akhir narasi babak ini, jangan berikan kesimpulan. Ajukan 3 pertanyaan reflektif-klinis kritis yang bersifat dilematis terkait langkah penatalaksanaan berikutnya. Berikan instruksi agar saya merespons, sehingga Anda bisa melanjutkan alur kisah babak berikutnya secara dinamis.&quot;;
+                        } else {
+                            modeConstraint = &quot;STRUKTUR OUTPUT VERSI STANDAR:\n&quot; +
+                                             &quot;1. Rangkuman Teori Esensial &amp; Implementasi Klinis Praktis.\n&quot; +
+                                             &quot;2. 1 Ilustrasi Kasus Singkat.\n&quot; +
+                                             &quot;3. 3 Soal Evaluasi Vignette Klinis beserta Kunci Jawaban dan pembahasan rasional medis.&quot;;
+                        }
+
+                        // Penentuan Fokus Topik Spesifik Berdasarkan Tombol Modul
+                        let topicPrompt = &quot;&quot;;
+                        if(type === &quot;story&quot;) {
+                            topicPrompt = &quot;\n\nARAHAN TOPIK MODUL: Jalankan mode Kisah Naratif Interaktif komprehensif spektrum luas dari kedokteran paliatif.&quot;;
+                        } else if(type === &quot;infinite&quot;) {
+                            topicPrompt = &quot;\n\nARAHAN TOPIK MODUL: Aktifkan mode INFINITE DRILL. Berikan 1 soal studi kasus klinis tingkat lanjut secara acak dari seluruh spektrum keilmuan paliatif. Setelah saya menjawab, berikan koreksi berbasis pedoman internasional, bedah rasional teorinya, lalu secara otomatis berikan 1 soal baru berikutnya tanpa henti hingga saya memberikan instruksi berhenti.&quot;;
+                        } else {
+                            const topics = {
+                                &quot;emergency&quot;: &quot;EMERGENCY CHEAT SHEET (Kegawatan Paliatif): Bahas tuntas kegawatan fisik dan psikologis kritis seperti Spinal Cord Compression, Superior Vena Cava Obstruction, dan Perdarahan Masif (Catastrophic Bleeding) menggunakan protokol penenang kedaruratan.&quot;,
+                                &quot;assess&quot;: &quot;CLINICAL ASSESSMENT TOOLS: Bedah instrumen penilaian klinis objektif seperti ESAS-r (Edmonton Symptom Assessment System), Abbey Pain Scale untuk kelompok demensia/afasia, dan HADS (Hospital Anxiety and Depression Scale) beserta interpretasi skornya.&quot;,
+                                &quot;pps&quot;: &quot;PALLIATIVE PERFORMANCE SCALE (PPS v2) VICTORIA HOSPICE: Kupas tuntas tata cara skoring fungsional performa pasien secara akurat, parameter penilaian (ambulasi, aktivitas, perawatan diri, asupan, tingkat kesadaran), penentuan prognosis, dan analisis aplikatifnya pada kasus nyata.&quot;,
+                                &quot;acp&quot;: &quot;ADVANCED CARE PLANNING (ACP): Struktur percakapan penyampaian kabar buruk (Protokol SPIKES), penunjukan formal Subrogasi Medis (Proxy/Surrogate Decision Maker), penyusunan klausa Living Will, serta konsensus hukum dokumen DNR (Do Not Resuscitate).&quot;,
+                                &quot;guide&quot;: &quot;CLINICAL GUIDELINE KENYAMANAN: Protokol standar medis terupdate mengenai pencegahan penderitaan pasien terminal, rasionalisasi eliminasi tindakan futility medik yang mencederai kenyamanan.&quot;,
+                                &quot;meds&quot;: &quot;MANAJEMEN FARMAKOLOGI &amp; NYERI: Eksplorasi mendalam mengenai titrasi opioid kontinu, perhitungan rumus konversi ekuivalensi dosis (misal: oral ke subkutan), manajemen breakthrough pain (1/6 s.d 1/10 dosis total 24 jam), pencegahan efek samping wajib seperti konstipasi sekunder, dan konsep &#39;Total Pain&#39; (spiritual/sosial/finansial).&quot;,
+                                &quot;support&quot;: &quot;EMOTIONAL &amp; BEREAVEMENT SUPPORT: Strategi komunikasi empatik makro, manajemen duka, mengatasi ansietas eksistensial pasien, serta program pendampingan keluarga pasca-kematian pasien (bereavement support) lintas budaya.&quot;,
+                                &quot;case&quot;: &quot;CASE STUDY ANALYSIS: Bedah skenario riil kasus paliatif yang kompleks, multimorbiditas, dan menantang untuk merumuskan clinical reasoning serta rencana asuhan keperawatan/medis komprehensif terpadu.&quot;,
+                                &quot;terminal&quot;: &quot;TERMINAL HOUR CARE (Perawatan Fase Kritis Jam-Jam Terakhir): Protokol tata laksana aktif sakaratul maut, penanganan Death Rattle menggunakan antikolinergik (Hyoscine Butylbromide SC) tanpa suction agresif, mouth care, pemenuhan kenyamanan fisik akhir hayat, dan fasilitasi kebutuhan spiritual religius.&quot;,
+                                &quot;ethics&quot;: &quot;ETHICAL DECISION MAKING IN PALLIATIVE: Resolusi dilema etika-hukum medis berdasarkan 4 pilar bioetika (Autonomy, Beneficence, Non-Maleficence, Justice), penanganan penolakan terapi (Refusal of Treatment), serta pembatasan intervensi sia-sia pada kondisi menjelang ajal.&quot;
+                            };
+                            topicPrompt = &quot;\n\nARAHAN TOPIK MODUL: &quot; + topics[type];
+                        }
+
+                        // Menggabungkan struktur menjadi Mega-Prompt Tunggal Berkelanjutan
+                        let finalPrompt = baseInstruction + modeConstraint + topicPrompt + continuityRule;
+
+                        // Salin Otomatis ke Clipboard dan Alihkan ke Gemini
+                        navigator.clipboard.writeText(finalPrompt).then(function() {
+                            status.innerText = &quot;🚀 Mega-Prompt Berhasil Disalin! Mengalihkan ke Gemini...&quot;;
+                            setTimeout(function() {
+                                window.open(&#39;https://gemini.google.com/&#39;, &#39;_blank&#39;);
+                            }, 900);
+                        }).catch(function(err) {
+                            status.innerText = &quot;Gagal menyalin secara otomatis. Silakan periksa izin clipboard browser Anda.&quot;;
+                        });
+                    }
+                </script>
+            </b:includable>
+      </b:widget>
+    </b:section>
+</body>
+</html>
