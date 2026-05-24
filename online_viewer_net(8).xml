@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <title>KOMPETENSI PALIATIF PRO</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'/>
+    <b:skin><![CDATA[body { margin: 0; padding: 0; background: #f8fafc; font-family: 'Inter', sans-serif; }]]></b:skin>
+    <style>
+        @import url(&#39;https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap&#39;);
+        .wrapper { display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 20px; }
+        .container { background: #ffffff; width: 100%; max-width: 480px; padding: 25px; border-radius: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); text-align: center; }
+        h1 { font-size: 1.4rem; color: #1e293b; margin-bottom: 20px; font-weight: 800; }
+        .box { background: #f1f5f9; padding: 20px; border-radius: 20px; margin-bottom: 20px; }
+        select { width: 100%; padding: 12px; border-radius: 12px; border: 2px solid #cbd5e1; font-weight: 600; font-family: &#39;Inter&#39;; margin-bottom: 5px; }
+        #status-msg { font-size: 0.75rem; color: #475569; font-weight: 600; line-height: 1.4; min-height: 40px; margin-top: 10px; padding: 5px; }
+        .btn-group { display: flex; flex-direction: column; gap: 8px; }
+        .btn { padding: 14px; border: none; border-radius: 14px; color: white; font-weight: 700; cursor: pointer; transition: 0.3s; width: 100%; font-size: 0.85rem; text-align: center; }
+        .btn-emergency { background: #ef4444; }
+        .btn-assess { background: #f59e0b; }
+        .btn-grad-1 { background: linear-gradient(90deg, #3b82f6, #4f46e5); }
+        .btn-grad-2 { background: linear-gradient(90deg, #4f46e5, #6366f1); }
+        .btn-grad-3 { background: linear-gradient(90deg, #6366f1, #06b6d4); }
+        .btn-grad-4 { background: linear-gradient(90deg, #06b6d4, #14b8a6); }
+        .btn-grad-5 { background: linear-gradient(90deg, #14b8a6, #10b981); }
+        .btn-new-1 { background: #7c3aed; }
+        .btn-new-2 { background: #db2777; }
+        .btn-acp { background: #0891b2; }
+        .btn-pps { background: #be185d; }
+        .btn-story { background: #059669; }
+        .btn:hover { filter: brightness(1.1); transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+    <b:section id='main-section'>
+      <b:widget id='HTML1' locked='true' title='Palliative Tool' type='HTML' version='1'>
+        <b:widget-settings>
+          <b:widget-setting name='content'/>
+        </b:widget-settings>
+        <b:includable id='main'>
+                <div class='wrapper'>
+                    <div class='container'>
+                        <h1>KOMPETENSI PALIATIF</h1>
+                        <div class='box'>
+                            <select id='care-selector'>
+                                <option value='Palliative Care'>Palliative Care</option>
+                                <option value='Hospice Care'>Hospice Care</option>
+                                <option value='End-of-Care'>End-of-Care Planning</option>
+                            </select>
+                            <select id='mode-selector'>
+                                <option value='standard'>Versi Standar (3 Soal)</option>
+                                <option value='pro'>Versi Pro (20+ Soal)</option>
+                                <option value='story'>Kisah Ilustrasi Berkelanjutan (Naratif)</option>
+                            </select>
+                            <div id='status-msg'>Pilih modul &amp; mode, klik tombol di bawah.</div>
+                        </div>
+                        <div class='btn-group'>
+                            <button class='btn btn-emergency' onclick='action(&quot;emergency&quot;)'>&#9889; EMERGENCY CHEAT SHEET</button>
+                            <button class='btn btn-assess' onclick='action(&quot;assess&quot;)'>📊 CLINICAL ASSESSMENT</button>
+                            <button class='btn btn-pps' onclick='action(&quot;pps&quot;)'>📋 PPS v2 (Victoria Hospice)</button>
+                            <button class='btn btn-acp' onclick='action(&quot;acp&quot;)'>📋 ADVANCED CARE PLANNING</button>
+                            <button class='btn btn-grad-1' onclick='action(&quot;guide&quot;)'>CLINICAL GUIDELINE</button>
+                            <button class='btn btn-new-1' onclick='action(&quot;meds&quot;)'>💊 PHARMACOLOGY &amp; PAIN</button>
+                            <button class='btn btn-grad-2' onclick='action(&quot;support&quot;)'>EMOTIONAL SUPPORT</button>
+                            <button class='btn btn-grad-5' onclick='action(&quot;ethics&quot;)'>ETHICAL DECISION MAKING</button>
+                            <button class='btn btn-new-2' onclick='action(&quot;terminal&quot;)'>&#10024; TERMINAL HOUR CARE</button>
+                            <button class='btn btn-grad-3' onclick='action(&quot;case&quot;)'>CASE STUDY ANALYSIS</button>
+                            <button class='btn btn-story' onclick='action(&quot;story&quot;)'>📖 KISAH ILUSTRASI (NARATIF)</button>
+                            <button class='btn btn-grad-4' onclick='action(&quot;infinite&quot;)'>&#8734; INFINITE DRILL</button>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    function action(type) {
+                        const care = document.getElementById(&#39;care-selector&#39;).value;
+                        const mode = document.getElementById(&#39;mode-selector&#39;).value;
+                        const status = document.getElementById(&#39;status-msg&#39;);
+                        const base = &quot;Bertindaklah sebagai Pakar Medis. Fokus: &quot; + care + &quot;. &quot;;
+                        let instruction = &quot;&quot;;
+
+                        // Tambahan instruksi berdasarkan mode
+                        let modeInfo = (mode == &#39;pro&#39;) ? &quot; Berikan tantangan tingkat Pro (20+ soal komprehensif).&quot; : ((mode == &#39;story&#39;) ? &quot; Gunakan format naratif/bercerita (Kisah Ilustrasi Berkelanjutan) untuk menjelaskan topik ini. Masukkan aspek klinis, psikologis, dan etika ke dalam kisah pasien. Ajukan pertanyaan reflektif untuk saya jawab.&quot; : &quot; Berikan penjelasan ringkas dan 3 soal evaluasi.&quot;);
+
+                        if(type==&quot;emergency&quot;) instruction = &quot;Berikan Emergency Cheat Sheet tentang kegawatan paliatif (nyeri/sesak/psikologis).&quot; + modeInfo;
+                        else if(type==&quot;assess&quot;) instruction = &quot;Berikan alat penilaian klinis (assessment tool).&quot; + modeInfo;
+                        else if(type==&quot;pps&quot;) instruction = &quot;Bahasa PPS v2 Victoria Hospice secara komprehensif.&quot; + modeInfo;
+                        else if(type==&quot;acp&quot;) instruction = &quot;Panduan cara memulai percakapan ACP dan elemen dokumen legal.&quot; + modeInfo;
+                        else if(type==&quot;guide&quot;) instruction = &quot;Berikan protokol standar atau clinical guideline.&quot; + modeInfo;
+                        else if(type==&quot;meds&quot;) instruction = &quot;Manajemen Farmakologi (nyeri/mual/konstipasi, titrasi, dosis).&quot; + modeInfo;
+                        else if(type==&quot;support&quot;) instruction = &quot;Teknik komunikasi empatik dan dukungan emosional keluarga.&quot; + modeInfo;
+                        else if(type==&quot;case&quot;) instruction = &quot;Skenario kasus nyata.&quot; + modeInfo;
+                        else if(type==&quot;story&quot;) instruction = &quot;Mulailah Kisah Ilustrasi Naratif. Saya ingin menelusuri perjalanan pasien secara bertahap dari aspek klinis hingga dukungan terminal.&quot;;
+                        else if(type==&quot;infinite&quot;) instruction = &quot;Mode INFINITE DRILL: Berikan soal acak dari semua topik paliatif. Umpan balik setelah jawaban, lalu lanjut soal berikutnya.&quot;;
+                        else if(type==&quot;terminal&quot;) instruction = &quot;Fokus Terminal Hour Care (fisik, death rattle, spiritual).&quot; + modeInfo;
+                        else if(type==&quot;ethics&quot;) instruction = &quot;Dilema etis dan kerangka pengambilan keputusan.&quot; + modeInfo;
+                        
+                        let finalPrompt = base + instruction;
+
+                        navigator.clipboard.writeText(finalPrompt).then(function() {
+                            status.innerText = &quot;Disalin! Membuka Gemini...&quot;;
+                            window.open(&#39;https://gemini.google.com/&#39;, &#39;_blank&#39;);
+                        });
+                    }
+                </script>
+            </b:includable>
+      </b:widget>
+    </b:section>
+</body>
+</html>
