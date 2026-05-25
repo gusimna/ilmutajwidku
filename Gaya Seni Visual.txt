@@ -1,0 +1,150 @@
+<div class='input-group'>
+    <label for='styleDropdown'>Estetika Desain &amp; Gaya Seni Visual</label>
+    <select id='styleDropdown'>
+        
+        <!-- 1. Animation &amp; 3D -->
+        <optgroup label="🎬 Animation &amp; 3D">
+            <option value='3D Pixar animation style, soft lighting, playful details, cute characters, vibrant background'>3D Pixar Animation Style</option>
+            <option value='Disney Animation style, golden hour lighting, rich colors, cinematic composition'>Disney Classic Animation</option>
+            <option value='DreamWorks animation style, dynamic lighting, expressive characters'>DreamWorks 3D Style</option>
+            <option value='Illumination animation style, bright colors, humorous details'>Illumination Style</option>
+            <option value='Laika stop-motion style, textured, detailed, atmospheric'>Laika Stop-Motion</option>
+            <option value='Low poly 3D style, geometric shapes, vibrant gradients'>Low Poly 3D</option>
+            <option value='Isometric 3D illustration, detailed miniature world, clean shadows'>Isometric 3D World</option>
+            <option value='Claymation style, textured clay, warm lighting'>Claymation / Stop Motion</option>
+            <option value='Blender 3D render, realistic materials, cinematic lighting'>Blender Cinematic Render</option>
+        </optgroup>
+
+        <!-- 2. Anime &amp; Manga -->
+        <optgroup label="🌸 Anime &amp; Manga">
+            <option value='Studio Ghibli aesthetic, anime concept art, watercolor textures, nostalgic serene background'>Studio Ghibli Nostalgic</option>
+            <option value='Anime 90s style, detailed linework, soft cel shading'>90s Anime Style</option>
+            <option value='Modern anime style, sharp lines, dramatic lighting, studio MAPPA quality'>Modern Anime (MAPPA)</option>
+            <option value='Kyoto Animation style, beautiful lighting, emotional expression'>Kyoto Animation</option>
+            <option value='Chibi anime style, exaggerated proportions, adorable expressions'>Chibi Anime</option>
+            <option value='Manga style, clean lines, screentones, dynamic angles'>Japanese Manga Style</option>
+            <option value='Mecha anime style, giant robots, intricate machinery'>Mecha Anime</option>
+            <option value='Isekai anime style, fantasy world, vibrant magic effects'>Isekai Fantasy Anime</option>
+            <option value='Shonen action style, dynamic poses, dramatic effects'>Shonen Action Style</option>
+        </optgroup>
+
+        <!-- 3. Cyberpunk &amp; Futuristic -->
+        <optgroup label="🌃 Cyberpunk &amp; Futuristic">
+            <option value='Neon cyberpunk, high-contrast lighting, futuristic synthwave interface elements, dark techno background'>Neon Cyberpunk</option>
+            <option value='Cyberpunk 2077 style, rainy neon streets, holographic elements'>Cyberpunk 2077</option>
+            <option value='Synthwave / Outrun style, purple pink sunset, grid lines'>Synthwave Outrun</option>
+            <option value='Solarpunk aesthetic, lush greenery, futuristic eco-architecture'>Solarpunk Utopia</option>
+            <option value='Atompunk retro-futurism style, 1950s tech blueprint'>Atompunk Retro-Futurism</option>
+            <option value='Lunarpunk aesthetic, glowing moon motifs, mystical tech'>Lunarpunk</option>
+            <option value='Biopunk style, organic technology, veins and flesh tech'>Biopunk Organic</option>
+        </optgroup>
+
+        <!-- 4. Realistic &amp; Photorealistic -->
+        <optgroup label="📸 Realistic &amp; Photorealistic">
+            <option value='Realistic 3D render, octane render, cinematic lighting, photorealistic details'>Photorealistic Octane Render</option>
+            <option value='Hyper realistic portrait, studio lighting, extreme detail, 8k'>Hyper Realistic Portrait</option>
+            <option value='National Geographic style photography, sharp detail, natural lighting'>National Geographic Photography</option>
+            <option value='Cinematic photography style, dramatic lighting, film grain, 85mm lens'>Cinematic Photography</option>
+            <option value='Architectural visualization, ultra realistic, sunlight rays, 8k'>Architectural Visualization</option>
+            <option value='Product visualization, studio lighting, clean background, photorealistic'>Studio Product Render</option>
+            <option value='Fashion photography style, studio lighting, elegant pose'>Fashion Photography</option>
+            <option value='Wildlife photography style, sharp focus, natural habitat'>Wildlife Photography</option>
+            <option value='Macro photography style, extreme detail, bokeh background'>Macro Photography</option>
+        </optgroup>
+
+        <!-- 5. Fantasy &amp; Magical -->
+        <optgroup label="🧚 Fantasy &amp; Magical">
+            <option value='High fantasy epic style, majestic landscapes, golden lighting'>Epic High Fantasy</option>
+            <option value='Dark fantasy style, moody atmosphere, intricate gothic details'>Dark Fantasy Gothic</option>
+            <option value='Mythological gods style, divine lighting, epic composition'>Mythological Divine</option>
+            <option value='Fairycore aesthetic, magical glow, pastel colors, ethereal details'>Fairycore Ethereal</option>
+            <option value='Witchy aesthetic, moonlight, herbs, crystals, mystical'>Witchy Moonlight</option>
+            <option value='Alchemist laboratory, mystical potions, dark academia'>Alchemist Mystic</option>
+            <option value='Dragon fantasy style, majestic creatures, epic scale'>Dragon Fantasy</option>
+            <option value='Enchanted forest style, volumetric god rays, magical particles'>Enchanted Forest</option>
+        </optgroup>
+
+        <!-- 6. Retro &amp; Vintage -->
+        <optgroup label="📼 Retro &amp; Vintage">
+            <option value='Retro-vintage design, 1970s mid-century modern illustration style, warm muted earthy tones'>Retro-Vintage 1970s</option>
+            <option value='Vaporwave aesthetic, retro 80s, palm trees, pink and teal'>Vaporwave</option>
+            <option value='Y2K aesthetic, metallic pink, holographic elements'>Y2K Futuristic</option>
+            <option value='Frutiger Aero aesthetic, glossy buttons, sky blue gradients'>Frutiger Aero</option>
+            <option value='Steampunk aesthetic, brass and copper machinery'>Victorian Steampunk</option>
+            <option value='Dieselpunk style, gritty industrial, brown and orange tones'>Dieselpunk</option>
+            <option value='Cassette Futurism style, retro tech, warm analog tones'>Cassette Futurism</option>
+        </optgroup>
+
+        <!-- 7. Modern Design &amp; UI -->
+        <optgroup label="🎨 Modern &amp; UI Design">
+            <option value='Minimalist flat design, clean lines, pastel colors, ample white space'>Minimalist Flat Design</option>
+            <option value='Glassmorphism design, frosted glass effects, vibrant backdrop'>Glassmorphism</option>
+            <option value='Neumorphism design, soft shadows, extruded buttons'>Neumorphism</option>
+            <option value='Dopamine Maximalist design style, exploding saturated colors, hyper-detailed'>Dopamine Maximalist</option>
+            <option value='Brutalist design, raw concrete textures, geometric shapes'>Brutalist Style</option>
+            <option value='Metallicism, shiny chrome surfaces, reflective materials'>Metallic Chrome</option>
+            <option value='Holographic iridescent style, rainbow sheen, futuristic'>Holographic Iridescent</option>
+        </optgroup>
+
+        <!-- 8. Surreal &amp; Dreamlike -->
+        <optgroup label="🌌 Surreal &amp; Dreamlike">
+            <option value='Weirdcore glitch aesthetic, surreal liminal spaces, dreamlike uncanny'>Weirdcore Glitch</option>
+            <option value='Surrealism style, dreamlike scenes, bizarre juxtapositions'>Surrealist Dreamscape</option>
+            <option value='Dreamcore / Dreamy surreal, soft focus, floating elements'>Dreamcore Surreal</option>
+            <option value='Liminal space aesthetic, empty rooms, eerie calm'>Liminal Space</option>
+            <option value='The Backrooms style, yellow fluorescent lights, endless rooms'>The Backrooms</option>
+            <option value='Psychedelic style, swirling patterns, vibrant contrasting colors'>Psychedelic 70s</option>
+        </optgroup>
+
+        <!-- 9. Pixel &amp; Game Art -->
+        <optgroup label="🕹️ Pixel &amp; Game Art">
+            <option value='Pixel Art Retro 16-bit arcade video game style, isometric crisp rendering'>Pixel Art 16-Bit</option>
+            <option value='8-bit pixel art style, limited color palette, retro'>8-Bit Pixel Art</option>
+            <option value='32-bit pixel art style, rich colors, detailed sprites'>32-Bit Pixel Art</option>
+            <option value='Concept art style, detailed environment, cinematic mood'>Professional Concept Art</option>
+            <option value='Character design sheet, turnarounds, clean style'>Character Design Sheet</option>
+        </optgroup>
+
+        <!-- 10. Nature &amp; Core Aesthetics -->
+        <optgroup label="🌿 Nature &amp; Core Aesthetics">
+            <option value='Cottagecore aesthetic, soft natural lighting, flowers, cozy warmth'>Cottagecore</option>
+            <option value='Goblincore aesthetic, frogs, mushrooms, earthy tones'>Goblincore</option>
+            <option value='Dark Academia aesthetic, old library, warm lamp light'>Dark Academia</option>
+            <option value='Light Academia aesthetic, bright sunlight, classical architecture'>Light Academia</option>
+            <option value='Lo-fi aesthetic, cozy room, rain window, warm lamp'>Lo-fi Cozy</option>
+            <option value='Oceanpunk / Nautical aesthetic, deep sea, bioluminescence'>Oceanpunk</option>
+            <option value='Desert golden hour aesthetic, warm sand tones'>Desert Golden Hour</option>
+            <option value='Tropical paradise aesthetic, vibrant greens, turquoise water'>Tropical Paradise</option>
+        </optgroup>
+
+        <!-- 11. Dark &amp; Horror -->
+        <optgroup label="🌑 Dark &amp; Horror">
+            <option value='Horror dark art style, creepy atmosphere, dim lighting'>Dark Horror Art</option>
+            <option value='Post-apocalyptic style, ruined buildings, dramatic sky'>Post-Apocalyptic Wasteland</option>
+            <option value='Nordic noir aesthetic, cold lighting, minimalist, moody'>Nordic Noir</option>
+            <option value='Tim Burton style, gothic quirky, dark whimsical'>Tim Burton Gothic</option>
+        </optgroup>
+
+        <!-- 12. Historical &amp; Art Movements -->
+        <optgroup label="🖼️ Historical &amp; Art Movements">
+            <option value='Art Deco style, geometric patterns, luxurious gold accents'>Art Deco</option>
+            <option value='Art Nouveau style, flowing organic lines, floral motifs'>Art Nouveau</option>
+            <option value='Impressionist painting style, soft brush strokes, natural light'>Impressionist</option>
+            <option value='Oil painting style, thick brush strokes, classical lighting'>Classical Oil Painting</option>
+            <option value='Renaissance painting style, realistic anatomy, dramatic lighting'>Renaissance Masterpiece</option>
+            <option value='Baroque style, dramatic lighting, rich ornamentation'>Baroque Dramatic</option>
+            <option value='Pop Art style, bold colors, comic imagery'>Pop Art</option>
+            <option value='Cubism style, geometric fragmentation'>Cubist Art</option>
+        </optgroup>
+
+        <!-- 13. Additional Illustration Styles -->
+        <optgroup label="✍️ Illustration Styles">
+            <option value='Watercolor illustration style, soft edges, translucent layers'>Watercolor Soft</option>
+            <option value='Pencil sketch style, rough shading, artistic draft'>Pencil Sketch Art</option>
+            <option value='Ink illustration style, bold black lines, detailed hatching'>Ink Illustration</option>
+            <option value='Fashion illustration style, elegant poses, detailed clothing'>Fashion Illustration</option>
+            <option value='Children book illustration style, colorful, whimsical'>Children Book Illustration</option>
+        </optgroup>
+
+    </select>
+</div>

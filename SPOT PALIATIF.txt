@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' dir='ltr' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <meta charset='UTF-8'/>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <title>PALLIATIVE CARE EMPATHY MATRIX OS</title>
+    <b:skin>
+        <![CDATA[
+        /* ========================================================
+           ANTI CORE LEAKING (CLEAN PLATFORM INFRASTRUCTURE)
+           ======================================================== */
+        #header-wrapper, .header-outer, #sidebar-wrapper, .sidebar-outer,
+        #footer-wrapper, .footer-outer, .post-footer, .feed-links,
+        .comments, #blog-pager, .status-msg-wrap, .attribution,
+        .blog-feeds, .report_abuse, .SearchThisBlog, #BlogSearch1,
+        .footer, .post-feeds, .breadcrumbs, .nav,
+        .widget-item-control, .avatar-image-container {
+            display: none !important; visibility: hidden !important; height: 0 !important; padding: 0 !important; margin: 0 !important;
+        }
+        .main-inner, .date-header, .post-title, .post-body, .blog-posts,
+        .main-outer, .columns, .fauxcolumn-left-outer, .fauxcolumn-right-outer {
+            background: none !important; border: none !important; box-shadow: none !important; padding: 0 !important; margin: 0 !important;
+        }
+
+        /* ========================================================
+           CALMING MEDITATIVE THEME SYSTEM (LAVENDER MIST & SAGE LILAC)
+           ======================================================== */
+        :root {
+            --bg-palliative: #f2f3f7;
+            --card-surface: #ffffff;
+            --text-primary: #2a2a3a;
+            --text-secondary: #65657a;
+            --border-clinical: #dadbe3;
+            --input-light: #f8f9fc;
+            
+            /* Empathy Palette Accents */
+            --lavender-serene: #6d74b8;
+            --sage-heal: #5c8374;
+            --rose-comfort: #cc8b86;
+            --shadow-subtle: rgba(109, 116, 184, 0.04);
+            
+            --empathy-gradient: linear-gradient(135deg, #4f527d 0%, #6d74b8 50%, #5c8374 100%);
+            --heal-gradient: linear-gradient(135deg, #6d74b8, #5c8374);
+        }
+
+        * { box-sizing: border-box; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg-palliative);
+            color: var(--text-primary);
+            margin: 0; padding: 0; line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Ambient Comfort Glow Background Patterns */
+        body::before {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 10% 30%, rgba(109, 116, 184, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 90% 70%, rgba(92, 131, 116, 0.05) 0%, transparent 50%);
+            z-index: -1; pointer-events: none;
+        }
+
+        .care-wrapper { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
+
+        /* App Header Framework */
+        .care-header { text-align: center; margin-bottom: 45px; }
+        .care-header h1 {
+            font-size: 2.5rem; font-weight: 800; margin: 0; letter-spacing: -1px;
+            background: var(--empathy-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .care-header p { color: var(--text-secondary); font-size: 1.05rem; margin: 10px 0 0 0; font-weight: 500; }
+
+        /* Workspace Core Splits */
+        .care-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 30px; }
+        @media (max-width: 1024px) { .care-grid { grid-template-columns: 1fr; } }
+
+        .care-panel {
+            background: var(--card-surface); border: 1px solid var(--border-clinical);
+            border-radius: 24px; padding: 35px; box-shadow: 0 10px 30px var(--shadow-subtle);
+            position: relative; overflow: hidden;
+        }
+        
+        .panel-caption-node {
+            font-size: 1.1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;
+            margin-top: 0; margin-bottom: 25px; color: var(--lavender-serene);
+            display: flex; align-items: center; gap: 10px; border-bottom: 2px solid #f0f1f5; padding-bottom: 12px;
+        }
+
+        .slot-frame { margin-bottom: 20px; }
+        .slot-frame label {
+            display: block; font-size: 0.75rem; font-weight: 700; color: var(--lavender-serene);
+            text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;
+        }
+
+        input[type="text"], select, textarea {
+            width: 100%; padding: 15px; background: var(--input-light);
+            border: 1px solid var(--border-clinical); border-radius: 14px;
+            color: var(--text-primary); font-size: 0.95rem; outline: none;
+        }
+        textarea { min-height: 100px; resize: vertical; }
+        input[type="text"]:focus, select:focus, textarea:focus {
+            border-color: var(--lavender-serene); box-shadow: 0 0 0 4px rgba(109, 116, 184, 0.12);
+            background: #ffffff;
+        }
+
+        .split-row-block { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+        @media (max-width: 480px) { .split-row-block { grid-template-columns: 1fr; } }
+
+        /* Action Buttons Core Control */
+        .btn-care-cluster { display: flex; gap: 14px; margin-top: 25px; flex-wrap: wrap; }
+        .care-btn {
+            flex: 1; min-width: 180px; padding: 16px 24px; border: none; border-radius: 14px;
+            font-size: 0.95rem; font-weight: 800; text-transform: uppercase; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; gap: 8px; color: #ffffff;
+        }
+        .btn-generate-empathy { background: var(--heal-gradient); box-shadow: 0 4px 15px rgba(109, 116, 184, 0.2); }
+        .btn-generate-empathy:hover { filter: brightness(1.08); transform: translateY(-1.5px); box-shadow: 0 6px 20px rgba(109, 116, 184, 0.3); }
+        .btn-reset-canvas { background: transparent; border: 1px solid var(--border-clinical); color: var(--text-secondary); }
+        .btn-reset-canvas:hover { background: #f8f9fc; color: var(--text-primary); border-color: var(--text-secondary); }
+
+        /* Preset Scroll Stream Deck */
+        .preset-deck-scroller {
+            max-height: 310px; overflow-y: auto; border: 1px solid var(--border-clinical);
+            border-radius: 14px; padding: 12px; background: var(--input-light);
+        }
+        .preset-deck-scroller::-webkit-scrollbar { width: 5px; }
+        .preset-deck-scroller::-webkit-scrollbar-thumb { background: var(--border-clinical); border-radius: 4px; }
+        
+        .preset-card-trigger {
+            width: 100%; padding: 13px 16px; margin-bottom: 8px; border: 1px solid rgba(218, 219, 227, 0.5); border-radius: 10px;
+            color: var(--text-primary); font-weight: 700; text-align: left; cursor: pointer; font-size: 0.85rem;
+            background: #ffffff; border-left: 4px solid var(--rose-comfort);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .preset-card-trigger:hover { background: #f0f1f5; transform: translateX(3px); }
+
+        /* 4-Output Stream Panel Node */
+        .care-output-cluster { display: grid; grid-template-columns: repeat(auto-fill, minmax(48%, 1fr)); gap: 24px; margin-top: 40px; }
+        @media (max-width: 768px) { .care-output-cluster { grid-template-columns: 1fr; } }
+        
+        .matrix-output-card {
+            background: var(--card-surface); border: 1px solid rgba(218, 219, 227, 0.6);
+            border-radius: 20px; padding: 25px; position: relative; box-shadow: 0 4px 20px rgba(109, 116, 184, 0.01);
+            display: flex; flex-direction: column; justify-content: space-between;
+            animation: empathyFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        
+        @keyframes empathyFadeIn {
+            from { opacity: 0; transform: translateY(12px) scale(0.99); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .card-tag-block { margin-bottom: 15px; }
+        .empathy-badge {
+            display: inline-block; font-size: 0.72rem; font-weight: 800; text-transform: uppercase;
+            padding: 5px 12px; border-radius: 8px; letter-spacing: 0.5px;
+            background: rgba(109, 116, 184, 0.08); color: var(--lavender-serene); border: 1px solid rgba(109, 116, 184, 0.2);
+        }
+        
+        .string-terminal-box {
+            background: var(--input-light); border: 1px solid #e7e8ee;
+            padding: 16px; border-radius: 12px; font-family: 'Courier New', monospace; font-size: 0.9rem;
+            color: #38384a; line-height: 1.6; word-break: break-word; min-height: 140px; max-height: 220px; overflow-y: auto;
+        }
+        
+        .copy-utility-btn {
+            width: 100%; margin-top: 15px; padding: 12px; border-radius: 10px; border: 1px solid var(--border-clinical);
+            background: #ffffff; color: var(--lavender-serene); font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;
+        }
+        .copy-utility-btn:hover { background: var(--lavender-serene); color: #ffffff; border-color: var(--lavender-serene); }
+
+        /* Floating Alert Notification Toast */
+        .clinical-toast {
+            position: fixed; bottom: -100px; left: 50%; transform: translateX(-50%);
+            background: var(--empathy-gradient); color: white; padding: 14px 32px;
+            border-radius: 50px; font-weight: 700; font-size: 0.92rem; z-index: 999999;
+            box-shadow: 0 10px 25px rgba(79, 82, 125, 0.2); opacity: 0;
+        }
+        .clinical-toast.show-hud { bottom: 40px; opacity: 1; }
+        ]]>
+    </b:skin>
+</head>
+<body>
+    <b:section class='main' id='main' showaddelement='yes'>
+        <b:widget id='HTML1' locked='true' title='Palliative Empathy Terminal' type='HTML' version='2' visible='true'>
+            <b:widget-settings>
+                <b:widget-setting name='content'/>
+            </b:widget-settings>
+            <b:includable id='main'>
+                <div class='care-wrapper'>
+                    
+                    <div class='care-header'>
+                        <h1>🎨 PALLIATIVE CARE EMPATHY MATRIX OS</h1>
+                        <p>Generator Formula Prompt Visual Aspek Fisik, Psikis, Sosial, Spiritual &amp; Kualitas Hidup Paliatif</p>
+                    </div>
+
+                    <div class='care-grid'>
+                        
+                        <div class='care-panel'>
+                            <div class='panel-caption-node'>🌱 Pengondisian Pilar Paliatif &amp; Empathy Core</div>
+                            
+                            <div class='slot-frame'>
+                                <label>Subjek Utama / Narasi Adegan Paliatif (Konsep Hubungan Insani)</label>
+                                <input id='care-narrative' placeholder='Contoh: A compassionate nurse holding an elderly patient hand warmly, family gathering surrounding a bedside...' type='text'/>
+                            </div>
+
+                            <div class='split-row-block'>
+                                <div class='slot-frame'>
+                                    <label>Fokus Dimensi Utama Perawatan</label>
+                                    <select id='palliative-pilar'>
+                                        <option value='focusing on physical pain management comfort, gentle touch, professional care, soothing symptom relief atmosphere'>1. Aspek Fisik &amp; Manajemen Nyeri Nyaman</option>
+                                        <option value='focusing on deep emotional support, psychical acceptance and inner peace, tearful but healing smiles, resilient mind'>2. Aspek Psikis &amp; Ketahanan Emosional Jiwa</option>
+                                        <option value='focusing on social family support bond, cross-generational unity, sharing memories, loving companion environment'>3. Aspek Sosial &amp; Kehangatan Kebersamaan Keluarga</option>
+                                        <option value='focusing on spiritual serenity, profound faith connection, quiet prayer devotion, comforting cosmic transcendence'>4. Aspek Spiritual, Doa Khusyuk &amp; Kedamaian Iman</option>
+                                        <option value='focusing on celebrating quality of life with absolute dignity, creating a memory legacy project, beautiful final days'>5. Kualitas Hidup, Martabat Diri &amp; Warisan Kenangan</option>
+                                    </select>
+                                </div>
+                                <div class='slot-frame'>
+                                    <label>Modifikator Deteksi Pencahayaan Medis</label>
+                                    <select id='care-lighting'>
+                                        <option value='illuminated by soft diffused warm window sunlight, volumetric golden rays casting gentle healing mood'>Warm Window Rays (Cahaya Matahari Jendela Kamar yang Hangat)</option>
+                                        <option value='ambient clinical soft studio lighting, subtle clean highlights, peaceful calming illumination'>Diffused Ambient (Cahaya Kamar Lembut Bersih &amp; Tenang)</option>
+                                        <option value='moody low-key chiaroscuro lighting, emotional golden lamp glow, deeply intimate dramatic shadows'>Intimate Low-Key Glow (Cahaya Lampu Meja yang Syahdu &amp; Intim)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class='split-row-block'>
+                                <div class='slot-frame'>
+                                    <label>Atmosfer &amp; Detail Simbolis</label>
+                                    <select id='care-symbolism'>
+                                        <option value='featuring a stethoscope neatly resting around neck, clean medical uniform, profound genuine eye-contact, empathy'>Professional Care Touch (Seragam Medis &amp; Stetoskop Simbol Dedikasi)</option>
+                                        <option value='surrounded by personal vintage photo frames, a small fresh flower vase on nightstand, comforting interior decor'>Home-like Comfort (Dekorasi Foto Kenangan Lama &amp; Vas Bunga Segar)</option>
+                                        <option value='featuring a patient wearing a beautifully textured premium traditional silk hijab with fine floral lace embroidery'>Modern Elegant Hijab (Sentuhan Hijab Silk Bordir yang Anggun)</option>
+                                    </select>
+                                </div>
+                                <div class='slot-frame'>
+                                    <label>Aspek Rasio Kanvas</label>
+                                    <select id='care-ratio'>
+                                        <option value='--ar 3:2'>DSLR Professional Portfolio (3:2)</option>
+                                        <option value='--ar 16:9'>Cinematic Storytelling Screen (16:9)</option>
+                                        <option value='--ar 4:5'>Vertical Poster / Social Slide (4:5)</option>
+                                        <option value='--ar 1:1'>Square Standard Booklet (1:1)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class='btn-care-cluster'>
+                                <button class='care-btn btn-generate-empathy' onclick='awakenPalliativeEmpathyPrompts()'>🚀 PRODUKSI 4 MULTI-GAYA LUKISAN &amp; FOTO</button>
+                                <button class='care-btn btn-reset-canvas' onclick='clearCareConsole()'>🗑️ KOSONGKAN KONSOL</button>
+                            </div>
+                        </div>
+
+                        <div class='care-panel'>
+                            <div class='ops-panel-indicator' style='font-size: 1.05rem; font-weight: 800; text-transform: uppercase; color: var(--sage-heal); border-bottom: 2px solid #f0f1f5; padding-bottom:12px; margin-bottom:25px;'>📋 Blueprint Maestro Skenario Paliatif</div>
+                            <div class='slot-frame'>
+                                <label>Detail Ruang Lingkup Kebudayaan/Lokasi (Opsional)</label>
+                                <textarea id='care-extra-context' placeholder='Tulis latar belakang sosiokultural (misal: set in a serene home facing a view of the grand peaceful Borobudur temple in morning fog)...'/>
+                            </div>
+
+                            <label style='display:block; font-size:0.75rem; font-weight:700; color:var(--lavender-serene); text-transform:uppercase; margin-bottom:10px;'>Pilih Preset Kasus untuk Inspirasi Cepat</label>
+                            <div class='preset-deck-scroller'>
+                                <button class='preset-card-trigger' onclick='injectCarePreset(&quot;nurse_hijab_comfort&quot;)'>🧕 1. Manajemen Nyeri &amp; Sentuhan Hijab Medis <span>APPLY</span></button>
+                                <button class='preset-card-trigger' onclick='injectCarePreset(&quot;family_batik_legacy&quot;)'>🎭 3. Kebersamaan Sosial &amp; Warisan Batik Keluarga <span>APPLY</span></button>
+                                <button class='preset-card-trigger' onclick='injectCarePreset(&quot;spiritual_prayer_peace&quot;)'>🕌 4. Kedamaian Spiritual &amp; Doa Khusyuk Akhir Hayat <span>APPLY</span></button>
+                                <button class='preset-card-trigger' onclick='injectCarePreset(&quot;graphic_comic_healing&quot;)'>📖 2&amp;5. Komik Edukasi Penerimaan Psikologis <span>APPLY</span></button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class='care-output-cluster' id='care-terminal-output-grid'/>
+
+                </div>
+
+                <div class='clinical-toast' id='care-toast-node'>Empathy Engine Active</div>
+
+                <script type='text/javascript'>
+                //<![CDATA[
+                
+                // Basis Data Framework Konseptual Perawatan Paliatif Komprehensif Lintas Media
+                const CORE_PALLIATIVE_PRESETS = {
+                    nurse_hijab_comfort: {
+                        narrative: "A kind female Muslim nurse wearing a clean medical uniform and a soft pastel teal hijab, smiling with deep empathy as she carefully adjusts the blanket for an elderly woman",
+                        pilar: "focusing on physical pain management comfort, gentle touch, professional care, soothing symptom relief atmosphere",
+                        lighting: "illuminated by soft diffused warm window sunlight, volumetric golden rays casting gentle healing mood",
+                        symbol: "featuring a stethoscope neatly resting around neck, clean medical uniform, profound genuine eye-contact, empathy",
+                        extra: "inside a cozy comfortable home hospice care room, calm pastel color palette, radiating safety, warmth and genuine compassionate healthcare professional care definition"
+                    },
+                    family_batik_legacy: {
+                        narrative: "A peaceful elderly grandfather sitting up in a comfortable bed, laughing softly with his adult son and young granddaughter as they look through an old photo album book together",
+                        pilar: "focusing on social family support bond, cross-generational unity, sharing memories, loving companion environment",
+                        lighting: "ambient clinical soft studio lighting, subtle clean highlights, peaceful calming illumination",
+                        symbol: "surrounded by personal vintage photo frames, a small fresh flower vase on nightstand, comforting interior decor",
+                        extra: "everyone is wearing beautiful traditional Indonesian batik shirts with intricate organic patterns, background shows a wide open window viewing a misty tranquil Borobudur temple silhouette at distance, celebrating life legacy"
+                    },
+                    spiritual_prayer_peace: {
+                        narrative: "A beautiful serene close-up of an elderly mother resting in deep peace, her face full of spiritual acceptance, while a family member sits by her side quietly reciting deep heartfelt prayers",
+                        pilar: "focusing on spiritual serenity, profound faith connection, quiet prayer devotion, comforting cosmic transcendence",
+                        lighting: "moody low-key chiaroscuro lighting, emotional golden lamp glow, deeply intimate dramatic shadows",
+                        symbol: "featuring a patient wearing a beautifully textured premium traditional silk hijab with fine floral lace embroidery",
+                        extra: "a beautiful antique rosary bead or holy scripture resting gently nearby on dark velvet wood table, absolute dignity, sacred moment of transition, ethereal soft-focus background, highly moving composition"
+                    },
+                    graphic_comic_healing: {
+                        narrative: "A touching interaction between a clinical psychologist counselor and an adult child of a terminal patient, learning the path of emotional acceptance, holding a warm cup of spiced tea together",
+                        pilar: "focusing on deep emotional support, psychical acceptance and inner peace, tearful but healing smiles, resilient mind",
+                        lighting: "illuminated by soft diffused warm window sunlight, volumetric golden rays casting gentle healing mood",
+                        symbol: "surrounded by personal vintage photo frames, a small fresh flower vase on nightstand, comforting interior decor",
+                        extra: "graphic novel panel layout style, clean comic book ink linework, warm watercolor color washes, deep psychological healing process, educational infographic vibe, highly engaging narrative art"
+                    }
+                };
+
+                function injectCarePreset(key) {
+                    const data = CORE_PALLIATIVE_PRESETS[key];
+                    
+                    document.getElementById('care-narrative').value = data.narrative;
+                    document.getElementById('palliative-pilar').value = data.pilar;
+                    document.getElementById('care-lighting').value = data.lighting;
+                    document.getElementById('care-symbolism').value = data.symbol;
+                    document.getElementById('care-extra-context').value = data.extra;
+                    
+                    triggerClinicalToaster("Matriks Pilar Paliatif Sukses Disuntikkan! 🌱", "success");
+                }
+
+                // ENGINE UTAMA: MEMBENTUK 4 PROMPT LINTAS FORMAT SENI SEKALIGUS
+                function awakenPalliativeEmpathyPrompts() {
+                    const intiNarasi = document.getElementById('care-narrative').value.trim();
+                    const pilarPaliatif = document.getElementById('palliative-pilar').value;
+                    const cahayaKamar = document.getElementById('care-lighting').value;
+                    const simbolKunci = document.getElementById('care-symbolism').value;
+                    const konteksTambahan = document.getElementById('care-extra-context').value.trim();
+                    const rasioGambar = document.getElementById('care-ratio').value;
+
+                    if (!intiNarasi) {
+                        triggerClinicalToaster("Gagal! Mohon isi narasi adegan paliatif terlebih dahulu.", "danger");
+                        return;
+                    }
+
+                    const gridDisplay = document.getElementById('care-terminal-output-grid');
+                    gridDisplay.innerHTML = ""; // Bersihkan terminal dari sisa data sebelumnya
+
+                    // Mengatur 4 Ragam Format Media Seni (Foto, Cat Air, Flat Ilustrasi, Panel Komik)
+                    const mediaFormulations = [
+                        { type: "📷 RAW REALISTIC DOCUMENTARY PHOTOGRAPHY", framework: "An authentic unedited raw documentary masterpiece photograph shot on Hasselblad H6D-100c camera, 85mm lens f/2.0, hyper-realistic skin texture, genuine human emotions, natural skin pores, realistic medical setting", antiComputer: "3d render, low fidelity digital painting, smooth artificial skin, generic clip-art, heavy filters" },
+                        { type: "🎨 TRANSNUCENT WATERCOLOR HEALING FINE ART", framework: "A masterfully executed traditional fine art watercolor painting, luminous translucent wet-on-wet paint layers bleeding naturally, elegant hand-drawn ink outlines on heavy cold-press cotton paper texture", antiComputer: "photograph, dslr shot, neon digital vector, clean continuous gradients, airbrush texture" },
+                        { type: "🧸 WARM HEARTFELT GRAPHIC ILLUSTRATION", framework: "A cozy aesthetic modern digital lifestyle illustration, soft clean lines, flat stylized color palette with organic texture overlay, highly comforting design language, minimalist award-winning editorial art", antiComputer: "scary textures, hyper-realistic skin, grainy noise camera, messy scribbles, low quality sketch" },
+                        { type: "📖 STORYTELLING NARRATIVE COMIC BOOK PANEL", framework: "An evocative graphic novel comic book style sequential panel art, precise clean black ink line borders, professional narrative sketch illustration, rich emotional character expressions, educational indie comic aesthetic", antiComputer: "photorealistic capture, real camera optics, bokeh circles, messy abstract splash art" }
+                    ];
+
+                    // Loop Otomatis Menyusun Ke-4 Card Hasil Prompts Sekaligus
+                    mediaFormulations.forEach((media, index) => {
+                        const randomEmpathySeed = Math.floor(Math.random() * 89999999) + 10000000;
+                        
+                        // Menjahit seluruh variabel masukan menjadi satu kesatuan narasi visual yang kuat
+                        let comprehensiveCarePrompt = `${media.framework} depicting ${intiNarasi}, ${pilarPaliatif}, ${cahayaKamar}, ${simbolKunci}`;
+                        if (konteksTambahan) {
+                            comprehensiveCarePrompt += `, ${konteksTambahan}`;
+                        }
+                        comprehensiveCarePrompt += `, profound impactful composition, deeply inspiring masterpiece ${rasioGambar} --seed ${randomEmpathySeed} --no ${media.antiComputer}, ugly, distorted bodies, depressing dark horror vibe --style raw --v 6.0`;
+
+                        // Inisiasi DOM Card Node secara dinamis dan aman
+                        const cardBoxNode = document.createElement('div');
+                        cardBoxNode.className = "matrix-output-card";
+                        cardBoxNode.style.animationDelay = `${index * 0.1}s`; // Efek gelombang memancar sejuk
+
+                        cardBoxNode.innerHTML = `
+                            <div class="card-tag-block">
+                                <span class="empathy-badge">${media.type}</span>
+                            </div>
+                            <div class="string-terminal-box" id="care-box-${index}">${comprehensiveCarePrompt}</div>
+                            <button class="copy-utility-btn" onclick="copyCarePromptText(this, ${index})">📋 SALIN PROMPT FORMAT ${index + 1}</button>
+                        `;
+
+                        gridDisplay.appendChild(cardBoxNode);
+                    });
+
+                    triggerClinicalToaster("Inspirasi Terkunci! 4 Format Visual Paliatif Berhasil Dirajut 🚀", "success");
+                }
+
+                function clearCareConsole() {
+                    document.getElementById('care-narrative').value = "";
+                    document.getElementById('care-extra-context').value = "";
+                    document.getElementById('care-terminal-output-grid').innerHTML = "";
+                    triggerClinicalToaster("Konsol Kreatif Paliatif Dibersihkan 🗑️", "info");
+                }
+
+                function copyCarePromptText(buttonElement, boxIndex) {
+                    const textString = document.getElementById(`care-box-${boxIndex}`).innerText;
+                    navigator.clipboard.writeText(textString).then(() => {
+                        triggerClinicalToaster(`Prompt Format ${boxIndex + 1} Berhasil Disalin ke Clipboard! 📋`, "success");
+                    }).catch(() => {
+                        triggerClinicalToaster("Sistem gagal menyalin teks formula.", "danger");
+                    });
+                }
+
+                function triggerClinicalToaster(messageString, typeStatus) {
+                    const toasterElement = document.getElementById('care-toast-node');
+                    toasterElement.innerText = messageString;
+                    
+                    if (typeStatus === "success") {
+                        toasterElement.style.background = "linear-gradient(135deg, #6d74b8, #5c8374)";
+                    } else if (typeStatus === "danger") {
+                        toasterElement.style.background = "linear-gradient(135deg, #cc8b86, #b0625d)";
+                    } else {
+                        toasterElement.style.background = "linear-gradient(135deg, #4f527d, #2a2a3a)";
+                    }
+                    
+                    toasterElement.classList.add("show-hud");
+                    setTimeout(() => { toasterElement.classList.remove("show-hud"); }, 2600);
+                }
+                //]]>
+                </script>
+            </b:includable>
+        </b:widget>
+    </b:section>
+</body>
+</html>
