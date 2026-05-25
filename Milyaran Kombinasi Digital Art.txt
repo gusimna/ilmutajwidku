@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' dir='ltr' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <title>PROMPT MASTER PRO - Milyaran Kombinasi Digital Art</title>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+    
+    <b:skin><![CDATA[
+        :root { 
+            --bg: #090d16; 
+            --card: #151c2c; 
+            --accent: #f59e0b; 
+            --accent-hover: #d97706;
+            --danger: #ef4444;
+            --danger-hover: #dc2626;
+            --secondary: #4b5563;
+            --secondary-hover: #374151;
+            --text: #f3f4f6; 
+            --text-muted: #9ca3af;
+            --border: #1e293b;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); padding: 20px; margin: 0; }
+        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        .panel { background: var(--card); padding: 30px; border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3); text-align: center; }
+        h1 { margin-top: 0; font-size: 2.5rem; letter-spacing: -1px; background: linear-gradient(to right, #f59e0b, #ef4444); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        p.subtitle { color: var(--text-muted); margin-bottom: 25px; }
+        
+        /* Input & Button Layout */
+        .input-group { display: flex; gap: 10px; margin-bottom: 15px; }
+        input { flex: 1; padding: 15px; border-radius: 10px; border: 1px solid var(--border); background: #0b0f19; color: #fff; font-size: 1rem; transition: 0.3s; }
+        input:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2); }
+        
+        .button-group { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 10px; }
+        button { padding: 12px 24px; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 0.95rem; transition: 0.2s; display: flex; align-items: center; gap: 8px; }
+        
+        .btn-generate { background: var(--accent); color: #000; flex: 2; min-width: 200px; justify-content: center; }
+        .btn-generate:hover { background: var(--accent-hover); transform: translateY(-1px); }
+        
+        .btn-refresh { background: var(--secondary); color: #fff; }
+        .btn-refresh:hover { background: var(--secondary-hover); }
+        
+        .btn-reset { background: transparent; color: var(--danger); border: 1px solid var(--danger); }
+        .btn-reset:hover { background: rgba(239, 68, 68, 0.1); }
+        
+        .counter-info { font-size: 0.85rem; color: var(--text-muted); margin-top: 15px; text-align: left; padding-left: 5px;}
+        
+        /* Output Layout */
+        #output { margin-top: 25px; display: flex; flex-direction: column; gap: 15px; }
+        .prompt-box { background: #1e293b; padding: 20px; border-radius: 12px; cursor: pointer; transition: 0.2s; border: 1px solid transparent; text-align: left; position: relative; }
+        .prompt-box:hover { background: #273549; border-color: var(--accent); transform: scale(1.01); }
+        .prompt-tag { display: inline-block; font-size: 0.75rem; background: rgba(245, 158, 11, 0.15); color: var(--accent); padding: 3px 8px; border-radius: 5px; margin-bottom: 10px; font-weight: 600; text-transform: uppercase; }
+        .prompt-text { font-size: 1.05rem; line-height: 1.5; color: #e5e7eb; }
+        .copy-hint { font-size: 0.75rem; color: var(--text-muted); margin-top: 10px; display: block; text-align: right; }
+        
+        /* Toast Notification */
+        .toast { position: fixed; bottom: 20px; right: 20px; background: #10b981; color: white; padding: 12px 25px; border-radius: 8px; font-weight: bold; opacity: 0; transition: 0.3s; pointer-events: none; z-index: 9999; }
+        .toast.show { opacity: 1; transform: translateY(-5px); }
+        .toast.info { background: #3b82f6; }
+    ]]></b:skin>
+</head>
+
+<body>
+    <div class='container'>
+        <div class='panel'>
+            <h1>AI Prompt Generator Ultra</h1>
+            <p class='subtitle'>Hasilkan miliaran kombinasi prompt spektakuler untuk Midjourney, DALL-E 3, dan Stable Diffusion.</p>
+            
+            <div class='input-group'>
+                <input id='subject' placeholder='Masukkan Subjek Utama (cth: Lone Samurai, Cyberpunk City, Cat)...' type='text'/>
+            </div>
+            
+            <div class='button-group'>
+                <button class='btn-generate' onclick='generate()'>&#10024; GENERATE NEW PROMPTS</button>
+                <button class='btn-refresh' onclick='refreshStyles()' title='Acak Ulang Gaya Art'>🔄 REFRESH STYLE</button>
+                <button class='btn-reset' onclick='resetForm()' title='Bersihkan Semua'>🗑&#65039; RESET</button>
+            </div>
+            
+            <div class='counter-info' id='math-info'/>
+        </div>
+        <div id='output'/>
+    </div>
+
+    <div class='toast' id='toast'>Prompt berhasil disalin!</div>
+
+    <script>
+    //<![CDATA[
+        // Database komponen prompt global
+        const database = {
+            styles: [
+                "Cyberpunk Aesthetic", "Steampunk Engine Core", "Surrealism oil painting", "Hyper-realistic 3D Digital Art", 
+                "Futuristic Solarpunk", "Dark Fantasy Grimdark", "Mythological Ethereal Art", "Synthwave Retro-futurism", 
+                "Psychedelic Liquid Ink", "Biomechanical Gigeresque", "Ukiyo-e Modern Fusion", "Baroque Dramatic Chiaroscuro",
+                "Minimalist Vector Flat Art", "Gothic Victorian Watercolor", "Vibrant Pop Art Andy Warhol style", "Concept Art Splash Art",
+                "Cinematic Moody Film Still", "Abstract Expressionism", "Dieselpunk Blueprint", "Ancient Mythology Fresco",
+                "Glitch Art Holographic", "Cosmic Horror Lovecraftian", "Magical Realism", "Stained Glass Windows Style"
+            ],
+            lighting: [
+                "cinematic lighting", "volumetric god rays", "neon glow", "golden hour warmth", "dramatic chiaroscuro",
+                "bioluminescent luminescence", "cyberpunk moody neon", "soft diffuse morning light", "rim lighting, epic mood",
+                "studio lighting, clean highlights", "mystical twilight shadow", "harsh direct sunlight with deep shadows",
+                "quantum particle glow", "iridescent pearlescent light", "ambient occlusion, soft shadows"
+            ],
+            details: [
+                "intricate details", "hyper-detailed textures", "masterpiece composition", "award-winning digital art",
+                "breathtaking environment", "highly polished finish", "complex geometry", "octane render crispness",
+                "photorealistic fidelity", "epic scale, magnificent", "surreal details", "unreal engine 5 render quality",
+                "fine lines and sharp focus", "4k resolution rendering", "impeccable craftsmanship"
+            ],
+            cameras: [
+                "shot on 85mm lens", "macro photography detail", "wide-angle panoramic view", "aerial drone perspective",
+                "isometric 3D view", "close-up portrait angle", "dramatic low-angle shot", "orthographic view, architectural render",
+                "ray-traced reflections", "depth of field, blurred background", "Hasselblad medium format capture"
+            ],
+            platforms: [
+                "ArtStation trending", "Pixiv masterpiece", "Behance featured", "CGSociety highlight", "DeviantArt top list"
+            ]
+        };
+
+        const defaultSubjects = ["Cybernetic Deity", "Enchanted Ancient Forest", "Astronaut on Floating Island", "Lost Futuristic City", "Mythical Phoenix"];
+
+        function hitungKombinasi() {
+            const total = database.styles.length * database.lighting.length * database.details.length * database.cameras.length * database.platforms.length;
+            document.getElementById('math-info').innerText = `Sistem siap mengacak dari sekitar ${total.toLocaleString()}+ kombinasi gaya dasar otomatis (Belum termasuk variasi subjek Anda).`;
+        }
+
+        function getRandomElement(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        // Fungsi utama Generate
+        function generate() {
+            const subjectInput = document.getElementById('subject').value.trim();
+            const finalSubject = subjectInput || getRandomElement(defaultSubjects);
+            
+            const output = document.getElementById('output');
+            output.innerHTML = ""; 
+            
+            for(let i = 0; i < 5; i++) {
+                const style = getRandomElement(database.styles);
+                const light = getRandomElement(database.lighting);
+                const detail = getRandomElement(database.details);
+                const cam = getRandomElement(database.cameras);
+                const platform = getRandomElement(database.platforms);
+                
+                const promptText = `${finalSubject}, ${style}, ${light}, ${detail}, ${cam}, featured on ${platform}, hyperrealistic, sharp focus, --ar 16:9 --v 6.0`;
+                
+                const card = document.createElement('div');
+                card.className = 'prompt-box';
+                
+                const tag = document.createElement('span');
+                tag.className = 'prompt-tag';
+                tag.innerText = style.split(' ')[0] + " Art"; 
+                
+                const textDiv = document.createElement('div');
+                textDiv.className = 'prompt-text';
+                textDiv.innerText = promptText;
+                
+                const hint = document.createElement('span');
+                hint.className = 'copy-hint';
+                hint.innerText = "Klik untuk menyalin prompt 📋";
+                
+                card.appendChild(tag);
+                card.appendChild(textDiv);
+                card.appendChild(hint);
+                
+                card.onclick = () => {
+                    navigator.clipboard.writeText(promptText).then(() => {
+                        showToast("Prompt berhasil disalin!", false);
+                    });
+                };
+                
+                output.appendChild(card);
+            }
+        }
+
+        // Fitur Baru: Refresh Style (Mengacak ulang gaya dari subjek yang saat ini ada di input)
+        function refreshStyles() {
+            const subjectInput = document.getElementById('subject').value.trim();
+            if (!subjectInput && document.getElementById('output').children.length === 0) {
+                showToast("Ketik subjek terlebih dahulu atau langsung klik Generate!", true);
+                return;
+            }
+            generate();
+            showToast("Gaya seni berhasil diacak ulang! 🔄", true);
+        }
+
+        // Fitur Baru: Reset Form (Membersihkan text input dan daftar prompt)
+        function resetForm() {
+            document.getElementById('subject').value = "";
+            document.getElementById('output').innerHTML = "";
+            showToast("Formulir dan hasil dibersihkan! 🗑️", true);
+        }
+
+        // Sistem Toast serbaguna
+        function showToast(message, isInfo = false) {
+            const toast = document.getElementById('toast');
+            toast.innerText = message;
+            if(isInfo) {
+                toast.className = "toast show info";
+            } else {
+                toast.className = "toast show";
+            }
+            setTimeout(() => { toast.className = "toast"; }, 2000);
+        }
+
+        window.onload = hitungKombinasi;
+    //]]>
+    </script>
+   
+
+   
+<div class='abc-container'>
+      <section class='abc'>
+        <b:section id='abc' maxwidgets='1' showaddelement='yes'/>
+      </section>
+</div>
+
+  
+
+
+</body>
+</html>

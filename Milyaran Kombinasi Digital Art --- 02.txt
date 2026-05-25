@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' dir='ltr' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <title>PROMPT MASTER PRO - Milyaran Kombinasi Digital Art</title>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+    
+    <b:skin><![CDATA[
+        :root { 
+            --bg: #f4f7fc; 
+            --card: #ffffff; 
+            --text: #1e293b; 
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --input-bg: #f8fafc;
+            
+            /* Grasi Warna Soft & Cerah (Bright Soft Gradients) */
+            --gradient-primary: linear-gradient(135deg, #4f46e5, #06b6d4);
+            --gradient-accent: linear-gradient(135deg, #3b82f6, #10b981);
+            --btn-generate-bg: linear-gradient(135deg, #6366f1, #3b82f6);
+            --btn-refresh-bg: linear-gradient(135deg, #ec4899, #f43f5e);
+            
+            --danger: #ef4444;
+            --toast-success: #10b981;
+            --toast-info: #3b82f6;
+            
+            --shadow-sm: 0 2px 4px rgba(148, 163, 184, 0.05);
+            --shadow-md: 0 10px 25px -5px rgba(148, 163, 184, 0.15);
+        }
+        
+        * { box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+            background: var(--bg); 
+            color: var(--text); 
+            padding: 20px; 
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        
+        /* Layout Utama Responsif */
+        .container { 
+            width: 100%;
+            max-width: 850px; 
+            margin: 20px auto; 
+            padding: 0 10px; 
+        }
+        
+        .panel { 
+            background: var(--card); 
+            padding: 40px 30px; 
+            border-radius: 24px; 
+            border: 1px solid var(--border); 
+            box-shadow: var(--shadow-md); 
+            text-align: center; 
+            transition: all 0.3s ease;
+        }
+        
+        /* Judul Dengan Gradasi Warna Lembut */
+        h1 { 
+            margin-top: 0; 
+            font-size: 2.6rem; 
+            font-weight: 800;
+            letter-spacing: -1px; 
+            background: var(--gradient-primary); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            margin-bottom: 10px;
+        }
+        
+        p.subtitle { 
+            color: var(--text-muted); 
+            margin-bottom: 35px; 
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+        
+        /* Input Field */
+        .input-group { 
+            width: 100%;
+            margin-bottom: 20px; 
+        }
+        
+        input { 
+            width: 100%; 
+            padding: 16px 20px; 
+            border-radius: 14px; 
+            border: 1px solid var(--border); 
+            background: var(--input-bg); 
+            color: var(--text); 
+            font-size: 1rem; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            box-shadow: var(--shadow-sm);
+        }
+        
+        input:focus { 
+            border-color: #6366f1; 
+            background: #ffffff;
+            outline: none; 
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15); 
+        }
+        
+        /* Tata Letak Tombol Pintar (Grid Responsif Otomatis) */
+        .button-group { 
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 12px; 
+            margin-top: 15px; 
+        }
+        
+        button { 
+            padding: 15px 20px; 
+            border: none; 
+            border-radius: 14px; 
+            cursor: pointer; 
+            font-weight: 700; 
+            font-size: 0.95rem; 
+            transition: all 0.2s ease; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            gap: 8px; 
+            box-shadow: var(--shadow-sm);
+        }
+        
+        button:active {
+            transform: scale(0.98);
+        }
+        
+        .btn-generate { 
+            background: var(--btn-generate-bg); 
+            color: #ffffff; 
+        }
+        .btn-generate:hover { 
+            opacity: 0.95;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+        }
+        
+        .btn-refresh { 
+            background: var(--btn-refresh-bg); 
+            color: #ffffff; 
+        }
+        .btn-refresh:hover { 
+            opacity: 0.95;
+            box-shadow: 0 4px 12px rgba(236, 72, 153, 0.25);
+        }
+        
+        .btn-reset { 
+            background: #ffffff; 
+            color: var(--danger); 
+            border: 1px solid rgba(239, 68, 68, 0.3); 
+        }
+        .btn-reset:hover { 
+            background: rgba(239, 68, 68, 0.04); 
+            border-color: var(--danger);
+        }
+        
+        .counter-info { 
+            font-size: 0.85rem; 
+            color: var(--text-muted); 
+            margin-top: 25px; 
+            text-align: center; 
+            font-weight: 500;
+            border-top: 1px dashed var(--border);
+            padding-top: 15px;
+        }
+        
+        /* Kartu Hasil Prompt */
+        #output { 
+            margin-top: 25px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 16px; 
+        }
+        
+        .prompt-box { 
+            background: var(--card); 
+            padding: 22px; 
+            border-radius: 18px; 
+            cursor: pointer; 
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
+            border: 1px solid var(--border); 
+            text-align: left; 
+            position: relative; 
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .prompt-box:hover { 
+            border-color: #6366f1; 
+            transform: translateY(-2px); 
+            box-shadow: 0 12px 20px -8px rgba(99, 102, 241, 0.15);
+        }
+        
+        .prompt-tag { 
+            display: inline-block; 
+            font-size: 0.75rem; 
+            background: rgba(99, 102, 241, 0.08); 
+            color: #4f46e5; 
+            padding: 4px 10px; 
+            border-radius: 8px; 
+            margin-bottom: 12px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px;
+        }
+        
+        .prompt-text { 
+            font-size: 1.05rem; 
+            line-height: 1.6; 
+            color: var(--text); 
+            font-weight: 500;
+            word-break: break-word;
+        }
+        
+        .copy-hint { 
+            font-size: 0.75rem; 
+            color: var(--text-muted); 
+            margin-top: 12px; 
+            display: flex; 
+            align-items: center;
+            justify-content: flex-end;
+            gap: 4px;
+            font-weight: 600;
+        }
+        
+        /* Notifikasi Toast Mengambang Modern */
+        .toast { 
+            position: fixed; 
+            bottom: -60px; 
+            left: 50%; 
+            transform: translateX(-50%);
+            background: #1e293b; 
+            color: white; 
+            padding: 14px 28px; 
+            border-radius: 50px; 
+            font-weight: 600; 
+            font-size: 0.95rem;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.3);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            pointer-events: none; 
+            z-index: 9999; 
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0;
+        }
+        .toast.show { 
+            bottom: 30px; 
+            opacity: 1;
+        }
+        .toast.success-style { background: var(--toast-success); }
+        .toast.info-style { background: var(--toast-info); }
+        
+        /* --- MEDIA QUERIES (Sistem Responsif HP & Tablet) --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.1rem; }
+            .panel { padding: 30px 20px; }
+            .button-group {
+                grid-template-columns: 1fr; /* Susunan tombol otomatis vertikal di Tablet Kecil/HP */
+                gap: 10px;
+            }
+            button { width: 100%; padding: 14px; }
+        }
+        
+        @media (max-width: 480px) {
+            body { padding: 12px; }
+            h1 { font-size: 1.8rem; }
+            p.subtitle { font-size: 0.95rem; margin-bottom: 25px; }
+            .panel { padding: 25px 15px; border-radius: 20px; }
+            .prompt-box { padding: 16px; border-radius: 14px; }
+            .prompt-text { font-size: 0.95rem; }
+        }
+    ]]></b:skin>
+</head>
+
+<body>
+    <div class='container'>
+        <div class='panel'>
+            <h1>AI Prompt Generator Ultra</h1>
+            <p class='subtitle'>Hasilkan miliaran kombinasi prompt spektakuler untuk Midjourney, DALL-E 3, dan Stable Diffusion.</p>
+            
+            <div class='input-group'>
+                <input id='subject' placeholder='Masukkan Subjek Utama (cth: Lone Samurai, Cyberpunk City, Cat)...' type='text'/>
+            </div>
+            
+            <div class='button-group'>
+                <button class='btn-generate' onclick='generate()'>&#10024; Generate Prompts</button>
+                <button class='btn-refresh' onclick='refreshStyles()' title='Acak Ulang Gaya Art'>🔄 Refresh Style</button>
+                <button class='btn-reset' onclick='resetForm()' title='Bersihkan Semua'>🗑&#65039; Reset</button>
+            </div>
+            
+            <div class='counter-info' id='math-info'/>
+        </div>
+        <div id='output'/>
+    </div>
+
+    <div class='toast' id='toast'>Prompt berhasil disalin!</div>
+
+    <script>
+    //<![CDATA[
+        const database = {
+            styles: [
+    "Cyberpunk Aesthetic", "Steampunk Engine Core", "Surrealism oil painting", "Hyper-realistic 3D Digital Art",
+    "Futuristic Solarpunk", "Dark Fantasy Grimdark", "Mythological Ethereal Art", "Synthwave Retro-futurism",
+    "Psychedelic Liquid Ink", "Biomechanical Gigeresque", "Ukiyo-e Modern Fusion", "Baroque Dramatic Chiaroscuro",
+    "Minimalist Vector Flat Art", "Gothic Victorian Watercolor", "Vibrant Pop Art Andy Warhol style", "Concept Art Splash Art",
+    "Cinematic Moody Film Still", "Abstract Expressionism", "Dieselpunk Blueprint", "Ancient Mythology Fresco",
+    "Glitch Art Holographic", "Cosmic Horror Lovecraftian", "Magical Realism", "Stained Glass Windows Style",
+    "Anamorphic Lens Flare Cinema", "Technicolor Vintage Film", "Kodachrome Saturation Look", "Polaroid Instant Photo Retro",
+    "Daguerreotype Vintage Metallic", "Cyanotype Prussian Blue", "Tintype Antique Portrait", "Black and White Film Noir",
+    "High-Contrast Chiaroscuro Photo", "Golden Hour Warm Glow", "Blue Hour Twilight Serene", "Macro Photography Extreme Detail",
+    "Tilt-Shift Miniature Effect", "Astrophotography Milky Way", "Long Exposure Motion Blur", "Double Exposure Surreal Overlay",
+    "Infrared False-Color Photography", "Drone Bird's Eye View", "Underwater Abyssal Photography", "Street Photography Candid",
+    "Fashion Editorial High-Glamour", "Paparazzi Flash Aesthetics", "Gothic Architecture Photo", "Candid Portrait Shallow Depth",
+    "Studio Lighting Rim Glow", "Rembrandt Lighting Portrait", "Volumetric Foggy Cinematic", "Cyberpunk Street Photography",
+    "Documentary Gritty Realism", "Architectural Minimalist Photo", "Food Photography Editorial", "Product Showcase Studio Shot",
+    "X-Ray Skeletal Art", "Satellite Earth Topography", "Thermal Imaging Heat-Map", "Microscopic Cell Structure",
+    "Pinhole Camera Distorted", "Fisheye Lens Action Shot", "Bokeh Background Pastel", "Light Painting Long Exposure",
+    "High-Speed Water Splash", "Storm Chaser Lightning Photo", "Volcanic Eruption Dramatic", "Aurora Borealis Neon Sky",
+    "Desert Dunes Pattern Shot", "Glacier Ice Caves Blue", "Deep Jungle Canopy Flare", "Foggy Mountain Ridge Sunrise",
+    "Urban Exploration Abandoned", "Traditional Japanese Kimono Silk", "Indonesian Kebaya Embroidery", "Indian Bollywood Sari Gold",
+    "Chinese Cheongsam Brocade", "Korean Hanbok Pastel Elegance", "Scottish Highland Kilt Tartan", "Mexican Huipil Hand-Woven",
+    "Native American Beaded Art", "Maori Tā Moko Carving", "African Kente Cloth Vibrant", "Zulu Beaded Geometric",
+    "Massai Vibrant Ochre Art", "Tibetan Mandala Thangka", "Peruvian Inca Geometric", "Aztec Calendar Stone",
+    "Mayan Jade Carving", "Inuit Soapstone Sculpture", "Aborginal Australian Dot Painting", "Persian Miniature Painting",
+    "Ottoman Illuminating Art", "Moorish Arched Architecture", "Byzantine Golden Mosaic", "Viking Urnes Style Carving",
+    "Celtic High Cross Relief", "Slavic Khokhloma Painting", "Gzhel Blue Ceramic Style", "Matryoshka Folk Art",
+    "Portuguese Azulejo Tile", "Flamenco Red Ruffle Motion", "Venetian Carnival Mask", "Bavarian Lederhosen Embroidery",
+    "Greek Key Meander Motif", "Roman Triumphal Relief", "Egyptian Papyrus Illustration", "Mesopotamian Cuneiform Tablet",
+    "Persian Carpet Intricate", "Navajo Rug Handwoven", "Huichol Yarn Painting", "Alebrije Folk Art Sculpture",
+    "Talavera Mexican Pottery", "Murano Glass Blown Color", "Delft Blue Pottery Art", "Meissen Porcelain Detailed",
+    "Limoges Enamel Miniature", "Cloisonné Enamel Inlay", "Filigree Silver Wire Art", "Repoussé Metal Relief",
+    "Damascening Gold Inlay", "Champlevé Enamel Inlay", "Niello Dark Metal Inlay"
+            ],
+            lighting: [
+                "cinematic lighting", "volumetric god rays", "neon glow", "golden hour warmth", "dramatic chiaroscuro",
+                "bioluminescent luminescence", "cyberpunk moody neon", "soft diffuse morning light", "rim lighting, epic mood",
+                "studio lighting, clean highlights", "mystical twilight shadow", "harsh direct sunlight with deep shadows",
+                "quantum particle glow", "iridescent pearlescent light", "ambient occlusion, soft shadows"
+            ],
+            details: [
+                "intricate details", "hyper-detailed textures", "masterpiece composition", "award-winning digital art",
+                "breathtaking environment", "highly polished finish", "complex geometry", "octane render crispness",
+                "photorealistic fidelity", "epic scale, magnificent", "surreal details", "unreal engine 5 render quality",
+                "fine lines and sharp focus", "4k resolution rendering", "impeccable craftsmanship"
+            ],
+            cameras: [
+                "shot on 85mm lens", "macro photography detail", "wide-angle panoramic view", "aerial drone perspective",
+                "isometric 3D view", "close-up portrait angle", "dramatic low-angle shot", "orthographic view, architectural render",
+                "ray-traced reflections", "depth of field, blurred background", "Hasselblad medium format capture"
+            ],
+            platforms: [
+                "ArtStation trending", "Pixiv masterpiece", "Behance featured", "CGSociety highlight", "DeviantArt top list"
+            ]
+        };
+
+        const defaultSubjects = ["Cybernetic Deity", "Enchanted Ancient Forest", "Astronaut on Floating Island", "Lost Futuristic City", "Mythical Phoenix"];
+
+        function hitungKombinasi() {
+            const total = database.styles.length * database.lighting.length * database.details.length * database.cameras.length * database.platforms.length;
+            document.getElementById('math-info').innerText = `Sistem siap mengacak dari sekitar ${total.toLocaleString()}+ kombinasi gaya dasar otomatis (Belum termasuk variasi subjek Anda).`;
+        }
+
+        function getRandomElement(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        function generate() {
+            const subjectInput = document.getElementById('subject').value.trim();
+            const finalSubject = subjectInput || getRandomElement(defaultSubjects);
+            
+            const output = document.getElementById('output');
+            output.innerHTML = ""; 
+            
+            for(let i = 0; i < 5; i++) {
+                const style = getRandomElement(database.styles);
+                const light = getRandomElement(database.lighting);
+                const detail = getRandomElement(database.details);
+                const cam = getRandomElement(database.cameras);
+                const platform = getRandomElement(database.platforms);
+                
+                const promptText = `${finalSubject}, ${style}, ${light}, ${detail}, ${cam}, featured on ${platform}, hyperrealistic, sharp focus, --ar 16:9 --v 6.0`;
+                
+                const card = document.createElement('div');
+                card.className = 'prompt-box';
+                
+                const tag = document.createElement('span');
+                tag.className = 'prompt-tag';
+                tag.innerText = style.split(' ')[0] + " Art"; 
+                
+                const textDiv = document.createElement('div');
+                textDiv.className = 'prompt-text';
+                textDiv.innerText = promptText;
+                
+                const hint = document.createElement('span');
+                hint.className = 'copy-hint';
+                hint.innerText = "Salin Prompt 📋";
+                
+                card.appendChild(tag);
+                card.appendChild(textDiv);
+                card.appendChild(hint);
+                
+                card.onclick = () => {
+                    navigator.clipboard.writeText(promptText).then(() => {
+                        showToast("Prompt berhasil disalin! 📋", "success");
+                    });
+                };
+                
+                output.appendChild(card);
+            }
+        }
+
+        function refreshStyles() {
+            const subjectInput = document.getElementById('subject').value.trim();
+            if (!subjectInput && document.getElementById('output').children.length === 0) {
+                showToast("Ketik subjek terlebih dahulu atau klik Generate!", "info");
+                return;
+            }
+            generate();
+            showToast("Gaya seni berhasil diacak ulang! 🔄", "info");
+        }
+
+        function resetForm() {
+            document.getElementById('subject').value = "";
+            document.getElementById('output').innerHTML = "";
+            showToast("Formulir telah dibersihkan! 🗑️", "info");
+        }
+
+        function showToast(message, type) {
+            const toast = document.getElementById('toast');
+            toast.innerText = message;
+            toast.className = "toast";
+            
+            if(type === "success") {
+                toast.classList.add("show", "success-style");
+            } else if(type === "info") {
+                toast.classList.add("show", "info-style");
+            } else {
+                toast.classList.add("show");
+            }
+            
+            setTimeout(() => { 
+                toast.classList.remove("show"); 
+            }, 2000);
+        }
+
+        window.onload = hitungKombinasi;
+    //]]>
+    </script>
+  
+   
+<div class='abc-container'>
+      <section class='abc'>
+        <b:section id='abc' maxwidgets='1' showaddelement='yes'/>
+      </section>
+</div>
+
+  
+
+
+
+</body>
+</html>
