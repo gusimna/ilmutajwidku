@@ -1,0 +1,804 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' dir='ltr' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+
+<head>
+  <meta charset='UTF-8'/>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+  <title>QUANTUM PALLIATIVE CARE &#8212; INTEGRATED SYSTEM PLATFORM</title>
+
+  <b:skin><![CDATA[
+    /* ========================================================
+       SUNTIKAN ANTI-BOCOR: MEMBERSIHKAN ELEMEN BAWAAN BLOGGER
+       ======================================================== */
+    #header-wrapper, .header-outer, #sidebar-wrapper, .sidebar-outer,
+    #footer-wrapper, .footer-outer, .post-footer, .feed-links,
+    .comments, #blog-pager, .status-msg-wrap, .attribution,
+    .blog-feeds, .report_abuse, .SearchThisBlog, #BlogSearch1,
+    .footer, .post-feeds, .breadcrumbs, .nav,
+    .widget-item-control, .avatar-image-container {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .main-inner, .date-header, .post-title, .post-body, .blog-posts,
+    .main-outer, .columns, .fauxcolumn-left-outer, .fauxcolumn-right-outer {
+        background: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* ========================================================
+       VARIABEL WARNA GLOBAL: THEME LIGHT SYSTEM (SWEET, CALM, FRESH)
+       ======================================================== */
+    :root {
+        --bg-gradient-start: #eef7f6; /* Sejuk - Soft Mint Light */
+        --bg-gradient-end: #fff5ee;   /* Hangat - Pale Peach Cream */
+        --card: rgba(255, 255, 255, 0.85);
+        --text: #2d3748;              /* Charcoal Dark Text ramah mata */
+        --text-secondary: #62728d;
+        --border: rgba(160, 174, 192, 0.3);
+        --input-bg: #f7fafc;
+        
+        /* Aksen Kalem Berwarna */
+        --accent: #0284c7;            /* Ocean blue sejuk */
+        --purple: #7c3aed;            /* Soft violet manis */
+        --amber: #ea580c;             /* Soft orange hangat */
+        --blue-premium: #3b82f6;      /* Royal blue corporate */
+        --blue-hover: #1d4ed8;
+    }
+
+    * { box-sizing: border-box; }
+    
+    body {
+        font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+        background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+        color: var(--text);
+        margin: 0;
+        padding: 0;
+        line-height: 1.5;
+        min-height: 100vh;
+        background-attachment: fixed;
+    }
+
+    .app-container {
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 30px;
+    }
+
+    .app-header {
+        text-align: center;
+        padding: 20px 0 10px;
+    }
+    .app-header h1 {
+        color: #1a202c;
+        font-size: 2.5rem;
+        margin: 0;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+    }
+    .app-header h1 span {
+        background: linear-gradient(to right, #0284c7, #7c3aed, #ea580c);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .app-header p {
+        color: var(--text-secondary);
+        font-size: 1.05rem;
+        margin-top: 8px;
+        font-weight: 600;
+    }
+
+    .stats-banner {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-bottom: 35px;
+        flex-wrap: wrap;
+    }
+    .stat-badge {
+        background: var(--card);
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-size: 0.82rem;
+        border: 1px solid var(--border);
+        color: #4a5568;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    }
+    .stat-badge strong { color: #0284c7; }
+    .stat-badge.premium-badge strong { color: #7c3aed; }
+
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 30px;
+    }
+
+    @media (max-width: 1100px) {
+        .dashboard-grid { grid-template-columns: 1fr; }
+    }
+
+    .panel-box {
+        background: var(--card);
+        padding: 30px;
+        border-radius: 24px;
+        border: 1px solid var(--border);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 10px 25px rgba(160, 174, 192, 0.15);
+        margin-bottom: 30px;
+    }
+    .panel-box.right-panel {
+        border-color: rgba(168, 85, 247, 0.25);
+    }
+
+    .panel-title {
+        font-size: 1.15rem;
+        color: #1a202c;
+        font-weight: 800;
+        margin-top: 0;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    .panel-title span.accent-text { color: #0284c7; }
+    .panel-title span.purple-text { color: #7c3aed; }
+
+    .input-group {
+        margin-bottom: 20px;
+        position: relative;
+    }
+    label {
+        display: block;
+        font-size: 0.72rem;
+        color: var(--text-secondary);
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+    }
+    
+    input, select, textarea {
+        width: 100%;
+        padding: 14px 16px;
+        background: var(--input-bg);
+        border: 1px solid rgba(160, 174, 192, 0.4);
+        border-radius: 12px;
+        color: var(--text);
+        font-size: 0.92rem;
+        font-family: inherit;
+        outline: none;
+        transition: all 0.2s;
+    }
+    textarea { resize: vertical; min-height: 120px; line-height: 1.5; }
+    
+    input:focus, select:focus, textarea:focus { 
+        background: #ffffff;
+        border-color: #0284c7; 
+        box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15); 
+    }
+    .panel-box.right-panel input:focus, 
+    .panel-box.right-panel select:focus, 
+    .panel-box.right-panel textarea:focus {
+        border-color: #7c3aed;
+        box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.15);
+    }
+
+    .form-actions { display: flex; gap: 10px; margin-top: 10px; }
+    .btn-action { 
+        flex: 1; padding: 12px; border: none; border-radius: 10px; 
+        font-weight: 700; font-size: 0.75rem; cursor: pointer; transition: 0.2s; 
+        display: flex; align-items: center; justify-content: center; gap: 6px; 
+        text-transform: uppercase;
+    }
+    .btn-save { background: var(--blue-premium); color: white; }
+    .btn-save:hover { background: var(--blue-hover); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); }
+    .btn-reset-form { background: #ef4444; color: white; max-width: 100px; }
+    .btn-reset-form:hover { background: #dc2626; }
+
+    .scroll-menu-container {
+        max-height: 480px;
+        overflow-y: auto;
+        padding-right: 5px;
+        margin-top: 15px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 10px;
+        background: rgba(247, 250, 252, 0.8);
+    }
+    .scroll-menu-container::-webkit-scrollbar { width: 6px; }
+    .scroll-menu-container::-webkit-scrollbar-thumb { background: rgba(160, 174, 192, 0.5); border-radius: 10px; }
+    
+    .section-title { 
+        font-size: 0.72rem; color: #1a202c; font-weight: 800; 
+        margin: 15px 0 8px 2px; text-transform: uppercase; letter-spacing: 0.08em; 
+        border-left: 3px solid var(--blue-premium); padding-left: 8px; 
+    }
+    
+    .btn-matrix { 
+        padding: 12px 14px; border: none; border-radius: 10px; color: white; 
+        font-weight: 700; cursor: pointer; transition: all 0.2s ease; width: 100%; 
+        font-size: 0.8rem; text-align: left; display: flex; align-items: center; 
+        gap: 10px; margin-bottom: 6px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .btn-matrix:hover { filter: brightness(1.1); transform: translateX(3px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+    
+    .btn-sec-1 { background: linear-gradient(135deg, #2563eb, #60a5fa); }
+    .btn-sec-2 { background: linear-gradient(135deg, #1d4ed8, #3b82f6); }
+    .btn-sec-3 { background: linear-gradient(135deg, #0f766e, #14b8a6); }
+    .btn-sec-4 { background: linear-gradient(135deg, #0369a1, #0ea5e9); }
+    .btn-sec-5 { background: linear-gradient(135deg, #6d28d9, #a855f7); }
+    .btn-sec-6 { background: linear-gradient(135deg, #be185d, #f472b6); }
+    .btn-sec-7 { background: linear-gradient(135deg, #dc2626, #f87171); }
+    .btn-sec-8 { background: linear-gradient(135deg, #ea580c, #fb923c); }
+    .btn-sec-9 { background: linear-gradient(135deg, #059669, #34d399); }
+    .btn-special-drill { background: linear-gradient(135deg, #334155, #64748b); justify-content: center; }
+    .btn-special-story { background: linear-gradient(135deg, #4d7c0f, #84cc16); justify-content: center; }
+
+    .trending-container { margin-top: 15px; margin-bottom: 15px; }
+    .trending-label { font-size: 0.72rem; color: #7c3aed; font-weight: 800; margin-bottom: 8px; display: block; }
+    .trend-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .trend-item {
+        background: #edf2f7; color: #4a5568; font-size: 11px; padding: 6px 12px; border-radius: 8px; cursor: pointer;
+        transition: 0.2s; border: 1px solid transparent; font-weight: 600;
+    }
+    .trend-item:hover { background: rgba(124, 58, 237, 0.08); color: #7c3aed; border-color: #7c3aed; }
+
+    .status-msg-box { 
+        font-size: 0.8rem; color: #2d3748; font-weight: 600; min-height: 45px; 
+        margin: 15px 0; padding: 12px; background: #f7fafc; border-radius: 10px; 
+        border: 1px dashed #0284c7; display: flex; align-items: center; justify-content: center; text-align: center;
+    }
+    .panel-box.right-panel .status-msg-box { border-color: #7c3aed; }
+
+    .quantum-btn-box { display: flex; gap: 10px; margin-top: 15px; }
+    .btn-go-quantum {
+        background: linear-gradient(135deg, #0284c7, #0369a1); color: white;
+        flex: 2; padding: 14px; border: none; border-radius: 12px; cursor: pointer;
+        font-size: 1rem; font-weight: 900; text-transform: uppercase;
+        box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+    }
+    .btn-go-quantum:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(2, 132, 199, 0.4); }
+    .btn-export-all { background: #475569; color: white; font-weight: 700; padding: 14px; border-radius: 12px; border: none; cursor: pointer; }
+    .btn-export-all:hover { background: #334155; }
+
+    .output-header-title {
+        font-size: 1.25rem; font-weight: 800; color: #1a202c; margin: 25px 0 15px 5px;
+    }
+    .output-header-title span { color: #0284c7; }
+    
+    #grid-matrix {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+        gap: 20px;
+        margin-top: 15px;
+    }
+    
+    .matrix-card {
+        background: #ffffff; padding: 20px; border-radius: 18px; border: 1px solid var(--border);
+        display: flex; flex-direction: column; position: relative;
+        box-shadow: 0 6px 15px rgba(160, 174, 192, 0.1);
+    }
+    .matrix-card:hover { border-color: #0284c7; box-shadow: 0 8px 20px rgba(2, 132, 199, 0.15); }
+    
+    .tag-container { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+    .matrix-tag {
+        font-size: 10px; background: rgba(2, 132, 199, 0.06); color: #0284c7; padding: 4px 10px; border-radius: 50px;
+        font-weight: 800; border: 1px solid rgba(2, 132, 199, 0.12);
+    }
+    .matrix-tag.purple-tag { background: rgba(124, 58, 237, 0.08); color: #7c3aed; border-color: rgba(124, 58, 237, 0.15); }
+    .matrix-tag.orange-tag { background: rgba(234, 88, 12, 0.08); color: #ea580c; border-color: rgba(234, 88, 12, 0.15); }
+
+    .prompt-content-text {
+        font-size: 0.85rem; line-height: 1.5; color: #2d3748; margin-bottom: 15px; flex-grow: 1;
+        white-space: pre-wrap; word-break: break-word; font-family: monospace;
+        background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid rgba(160, 174, 192, 0.2);
+    }
+
+    .card-actions-grid {
+        display: flex;
+        gap: 8px;
+    }
+    
+    .btn-card-action {
+        flex: 1; padding: 11px; border-radius: 8px; cursor: pointer; font-weight: 800;
+        text-transform: uppercase; font-size: 0.75rem; display: flex; align-items: center;
+        justify-content: center; gap: 5px; transition: all 0.2s ease;
+    }
+    .btn-copy-only {
+        background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1;
+    }
+    .btn-copy-only:hover {
+        background: #e2e8f0; color: #1e293b; border-color: #94a3b8;
+    }
+    .btn-send-gemini {
+        background: #ffffff; color: #0284c7; border: 1px solid #0284c7;
+    }
+    .btn-send-gemini:hover { 
+        background: linear-gradient(135deg, #0284c7, #0369a1); color: white; 
+        box-shadow: 0 4px 12px rgba(2,132,199,0.2); 
+    }
+
+    .immersive-focus-btn {
+        position: fixed; bottom: 20px; right: 20px; z-index: 5000;
+        background: linear-gradient(135deg, #ea580c, #c2410c); color: white;
+        border: none; border-radius: 50px; padding: 12px 24px; font-weight: 900; cursor: pointer; font-size: 0.75rem;
+        box-shadow: 0 4px 12px rgba(234, 88, 12, 0.3);
+    }
+    body.minimal-mode .app-header, body.minimal-mode .stats-banner, body.minimal-mode .dashboard-grid { display: none !important; }
+
+    #backToTop {
+        position: fixed; bottom: 20px; left: 20px; width: 45px; height: 45px; background-color: #0284c7;
+        color: white; font-size: 20px; display: flex; align-items: center; justify-content: center;
+        border-radius: 50%; cursor: pointer; z-index: 4999; opacity: 0; visibility: hidden; transition: 0.3s;
+        box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2);
+    }
+    #backToTop.show { opacity: 1; visibility: visible; }
+  ]]></b:skin>
+</head>
+
+<body>
+  <b:section class='main' id='main' showaddelement='yes'>
+    <b:widget id='HTML1' locked='true' title='Quantum Palliative Care Core' type='HTML' version='2' visible='true'>
+      <b:widget-settings>
+        <b:widget-setting name='content'/>
+      </b:widget-settings>
+      <b:includable id='main'>
+        
+        <div class='app-container'>
+          
+          <div class='app-header'>
+            <h1>&#9889; <span>QUANTUM PALLIATIVE CARE</span></h1>
+            <p>Quantum Infographic Generator &amp; Comprehensive Clinical Palliative Architect</p>
+          </div>
+
+          <div class='stats-banner'>
+            <div class='stat-badge'>Engine Strategy: <strong>HYBRID SYSTEM PRO v3.0</strong></div>
+            <div class='stat-badge premium-badge'>Combinatorial Matrix: <strong>96.4 Trillion Structures</strong></div>
+            <div class='stat-badge'>Clinical Base: <strong>Oxford Curriculum Atlas</strong></div>
+            <div class='stat-badge'>Output Framework: <strong>Clean Template System</strong></div>
+          </div>
+
+          <div class='dashboard-grid'>
+            
+            <div class='panel-box'>
+              <div class='panel-title'><span class='accent-text'>🧬 MODULE 1:</span> Clinical Palliative Architecture</div>
+              
+              <div class='input-group'>
+                <label for='user-thought'>Fokus Pokok Pikiran / Kasus Spesifik (Jangkar Kontekstual Sistem)</label>
+                <textarea id='user-thought' placeholder='Ketik kasus pasien riil, hambatan klinis, parameter demografis, atau tujuan strategis promosi kesehatan di sini untuk mengunci benang merah...'/>
+                <div class='form-actions'>
+                  <button class='btn-action btn-save' id='btn-lock-save' onclick='toggleClinicalFormLock()'>🔒 SIMPAN &amp; KUNCI DATA</button>
+                  <button class='btn-action btn-reset-form' onclick='resetClinicalForm()'>🔄 RESET</button>
+                </div>
+              </div>
+
+              <div class='input-group'>
+                <label for='care-selector'>Fokus Spesialisasi Layanan Medis</label>
+                <select id='care-selector'>
+                  <option value='Palliative Care'>Palliative Care Core System</option>
+                  <option value='Hospice Care'>Hospice Care Intensive</option>
+                  <option value='End-of-Care'>End-of-Care Advanced Planning</option>
+                </select>
+              </div>
+
+              <div class='input-group'>
+                <label for='mode-selector'>Metode Kedalaman Prompting</label>
+                <select id='mode-selector'>
+                  <option value='standard'>Versi Standar (Pembahasan Singkat + 3 Soal Visual PPT)</option>
+                  <option selected='selected' value='pro'>Versi Pro (Deep Dive Berkelanjutan + 20 Soal HOTs + Slide Architect)</option>
+                  <option value='story'>Kisah Ilustrasi Berkelanjutan (Naratif Interaktif Kontekstual)</option>
+                </select>
+              </div>
+
+              <div class='status-msg-box' id='clinical-status-msg'>
+                Status: System Ready. Ketik draf kasus di atas lalu klik menu tombol di bawah ini.
+              </div>
+
+              <div class='scroll-menu-container'>
+                <div class='section-title'>Akselerator Pola Belajar Dinamis</div>
+                <button class='btn-matrix btn-special-drill' onclick='triggerClinicalPrompt(&quot;infinite&quot;)'>👉 INFINITE DRILL (ALL SPECTRUM OXFORD)</button>
+                <button class='btn-matrix btn-special-story' onclick='triggerClinicalPrompt(&quot;story_mode&quot;)'>📖 KISAH ILUSTRASI NARATIF (UMUM)</button>
+
+                <div class='section-title'>BAGIAN 1: Global Policy &amp; Ethics</div>
+                <button class='btn-matrix btn-sec-1' onclick='triggerClinicalPrompt(&quot;sec1_status&quot;)'>🌍 The Worldwide Status &amp; Global Atlas</button>
+                <button class='btn-matrix btn-sec-1' onclick='triggerClinicalPrompt(&quot;sec1_rights&quot;)'>&#9878;&#65039; Human Rights &amp; Opioid Access</button>
+                <button class='btn-matrix btn-sec-1' onclick='triggerClinicalPrompt(&quot;sec1_economics&quot;)'>📊 Health Economics &amp; Policy</button>
+
+                <div class='section-title'>BAGIAN 2: Foundations of Palliative Medicine</div>
+                <button class='btn-matrix btn-sec-2' onclick='triggerClinicalPrompt(&quot;sec2_core&quot;)'>🧬 Core Concepts &amp; Epidemiology</button>
+                <button class='btn-matrix btn-sec-2' onclick='triggerClinicalPrompt(&quot;sec2_culture&quot;)'>🕌 Cultural &amp; Bioethical Dimensions</button>
+
+                <div class='section-title'>BAGIAN 3: Service Delivery &amp; Models of Care</div>
+                <button class='btn-matrix btn-sec-3' onclick='triggerClinicalPrompt(&quot;sec3_integrated&quot;)'>🔄 Integrated Care (Early Integration)</button>
+                <button class='btn-matrix btn-sec-3' onclick='triggerClinicalPrompt(&quot;sec3_settings&quot;)'>🏥 Care Settings (Homecare, Hospice, UGD)</button>
+
+                <div class='section-title'>BAGIAN 4: The Interdisciplinary Team (IDT)</div>
+                <button class='btn-matrix btn-sec-4' onclick='triggerClinicalPrompt(&quot;sec4_roles&quot;)'>🤝 Clinical Roles &amp; Sinergi IDT</button>
+                <button class='btn-matrix btn-sec-4' onclick='triggerClinicalPrompt(&quot;sec4_holistic&quot;)'>🕊&#65039; Holistic, Psychosocial &amp; Spiritual</button>
+
+                <div class='section-title'>BAGIAN 5: Communication &amp; ACP</div>
+                <button class='btn-matrix btn-sec-5' onclick='triggerClinicalPrompt(&quot;sec5_communication&quot;)'>🗣&#65039; Clinical Communication (SPIKES Model)</button>
+                <button class='btn-matrix btn-sec-5' onclick='triggerClinicalPrompt(&quot;sec5_acp&quot;)'>📝 Advance Care Planning &amp; Living Will</button>
+
+                <div class='section-title'>BAGIAN 6: Family &amp; Caregiver Dynamics</div>
+                <button class='btn-matrix btn-sec-6' onclick='triggerClinicalPrompt(&quot;sec6_systems&quot;)'>👨&#8205;👩&#8205;👧&#8205;👦 Family Systems &amp; Terminal Illness</button>
+                <button class='btn-matrix btn-sec-6' onclick='triggerClinicalPrompt(&quot;sec6_burden&quot;)'>📉 Caregiver Burden &amp; Burnout Interventions</button>
+
+                <div class='section-title'>BAGIAN 7: Pain Management (Deep Dive)</div>
+                <button class='btn-matrix btn-sec-7' onclick='triggerClinicalPrompt(&quot;sec7_physiology&quot;)'>🧠 Physiology &amp; Classification of Pain</button>
+                <button class='btn-matrix btn-sec-7' onclick='triggerClinicalPrompt(&quot;sec7_pharmacotherapy&quot;)'>💊 Pharmacotherapy &amp; WHO Pain Ladder</button>
+                <button class='btn-matrix btn-sec-7' onclick='triggerClinicalPrompt(&quot;sec7_specialist&quot;)'>🎯 Specialist Interventions &amp; Opioid Rotation</button>
+
+                <div class='section-title'>BAGIAN 8: Symptom Control (Non-Pain)</div>
+                <button class='btn-matrix btn-sec-8' onclick='triggerClinicalPrompt(&quot;sec8_gastro&quot;)'>🤢 Gastrointestinal Symptom Pathophysiology</button>
+                <button class='btn-matrix btn-sec-8' onclick='triggerClinicalPrompt(&quot;sec8_cardio&quot;)'>🫁 Cardiorespiratory &amp; Neuropsychiatric</button>
+
+                <div class='section-title'>BAGIAN 9: End-of-Life Care &amp; Special Pop.</div>
+                <button class='btn-matrix btn-sec-9' onclick='triggerClinicalPrompt(&quot;sec9_terminal&quot;)'>&#8987; Terminal Phase &amp; Palliative Sedation</button>
+                <button class='btn-matrix btn-sec-9' onclick='triggerClinicalPrompt(&quot;sec9_populations&quot;)'>👥 Pediatric, Geriatric &amp; Organ Failure Protocols</button>
+                <button class='btn-matrix btn-sec-9' onclick='triggerClinicalPrompt(&quot;sec9_bereavement&quot;)'>🖤 Bereavement Support (Manajemen Duka Cita)</button>
+              </div>
+            </div>
+
+            <div class='panel-box right-panel'>
+              <div class='panel-title'><span class='purple-text'>🔮 MODULE 2:</span> Quantum Infographic Permutation Engine</div>
+              
+              <div class='input-group'>
+                <label for='dataInput'>Formulir Deskripsi Konten Visual / Alur Informasi Kompleks</label>
+                <textarea id='dataInput' placeholder='Masukkan draf penjelasan, gagasan, data mentah kesehatan, blueprint bisnis, atau alur yang ingin ditransformasi menjadi struktur mega-prompt visual kuantum...'/>
+                <button class='btn-action' onclick='bridgeClinicalToQuantum()' style='position:absolute; right:10px; bottom:10px; background:rgba(124, 58, 237, 0.1); color:#7c3aed; border:1px solid #7c3aed; width:auto; padding:6px 12px; border-radius:8px;' type='button'>📡 Sync Dari Modul 1</button>
+              </div>
+
+              <div class='trending-container'>
+                <span class='trending-label'>🎯 LINKED QUICK INJECTION STRATEGIC PLATFORMS:</span>
+                <div class='trend-tags'>
+                  <span class='trend-item' onclick='injectQuantumFramework(&quot;Medical Palliative Care Framework and Clinical Performance Scale, immaculate healthcare blueprint&quot;)'>🩺 Dokumentasi Medis / Paliatif</span>
+                  <span class='trend-item' onclick='injectQuantumFramework(&quot;Exponential Business Canvas Model, high-impact commercial scaling strategy&quot;)'>💼 Strategi Bisnis / Modal Untung</span>
+                  <span class='trend-item' onclick='injectQuantumFramework(&quot;Healthy Habits and Preventive Healthcare Awareness, engaging medical guidance&quot;)'>🍏 Pola Hidup Sehat &amp; Awareness</span>
+                  <span class='trend-item' onclick='injectQuantumFramework(&quot;Historical City Landmark Exploration Map, cultural tourism infographic timeline&quot;)'>🏙&#65039; Pariwisata &amp; Landmark Kota</span>
+                  <span class='trend-item' onclick='injectQuantumFramework(&quot;Phyto Fresh Premium Organic Product Campaign, natural premium dropper bottle advertising layout&quot;)'>🌿 Phyto Fresh Product Campaign</span>
+                </div>
+              </div>
+
+              <div class='input-group'>
+                <label for='ratioDropdown'>Aspek Rasio Dimensi Desain</label>
+                <select id='ratioDropdown'>
+                  <option value='square composition aspect ratio 1:1'>Square Composition (1:1 Feed Instagram)</option>
+                  <option value='portrait composition aspect ratio 9:16'>Vertical Composition (9:16 Instagram Stories/Reels)</option>
+                  <option value='infographic composition aspect ratio 4:5'>Standard Infographic (4:5 Premium Microblog)</option>
+                  <option value='presentation landscape aspect ratio 16:9'>Presentation Landscape (16:9 Widescreen Projector/PPT)</option>
+                </select>
+              </div>
+
+              <div class='input-group'>
+                <label for='styleDropdown'>Estetika Desain &amp; Gaya Seni Visual</label>
+                <select id='styleDropdown'>
+                  <option value='3D Pixar animation style, soft lighting, playful details, cute characters, vibrant background'>3D Pixar Animation Style (Vibrant &amp; Cute)</option>
+                  <option value='Studio Ghibli aesthetic, anime concept art, watercolor textures, nostalgic serene background'>Studio Ghibli Nostalgic Aesthetic</option>
+                  <option value='Neon cyberpunk, high-contrast lighting, futuristic synthwave interface elements, dark techno background'>Neon Cyberpunk Futuristic Interface</option>
+                  <option value='Retro-vintage design, 1970s mid-century modern illustration style, warm muted earthy tones'>Retro-Vintage Muted Design</option>
+                  <option value='Dopamine Maximalist design style, exploding saturated colors, hyper-detailed whimsical layers'>Dopamine Maximalist Saturated Style</option>
+                  <option value='Atompunk retro-futurism style, 1950s tech blueprint design, sleek silver and deep teal accent'>Atompunk Retro-Futurism Blueprint</option>
+                  <option value='Weirdcore glitch aesthetic, surreal liminal spaces, dreamlike uncanny juxtaposition'>Weirdcore Glitch Surreal Aesthetic</option>
+                  <option value='Pixel Art Retro 16-bit arcade video game style, isometric crisp rendering'>Pixel Art Retro 16-Bit Arcade</option>
+                </select>
+              </div>
+
+              <div class='input-group'>
+                <label for='numIn'>Jumlah Output Permutasi Generasi</label>
+                <input id='numIn' max='1000' min='1' type='number' value='12'/>
+              </div>
+
+              <div class='status-msg-box' id='quantum-status-msg'>
+                Status Engine: Quantum Permutation Ready.
+              </div>
+
+              <div class='quantum-btn-box'>
+                <button class='btn-go-quantum' onclick='executeQuantumMatrix()'>&#9889; RUN INTEGRATED MATRIX GENERATOR</button>
+                <button class='btn-export-all' onclick='downloadMatrixDatabase()' title='Export Database to Text File'>💾 EXPORT</button>
+              </div>
+
+            </div>
+          </div>
+
+          <div class='output-header-title'>
+            <span>📊 INTEGRATED OUTPUT MATRIX ENGINE:</span> RENDERED DYNAMIC CONTAINER
+          </div>
+          
+          <div id='grid-matrix'/>
+
+        </div>
+
+        <button class='immersive-focus-btn' onclick='toggleImmersiveFocus()'>TOGGLE IMMERSIVE FOCUS</button>
+        <div id='backToTop' onclick='scrollToTop()'>&#9650;</div>
+
+        <script type='text/javascript'>
+          //<![CDATA[
+          
+          const clinicalDatabase = {
+              sec1_status: { title: "Worldwide Status & Global Atlas", tags: ["Policy", "Ethics", "Global Health"], desc: "Global framework development for monitoring national development in palliative care." },
+              sec1_rights: { title: "Human Rights & Opioid Access", tags: ["Human Rights", "Narcotics Control", "Legislation"], desc: "Balancing prevention of non-medical opioid use with ensuring adequate medical access for pain relief." },
+              sec1_economics: { title: "Health Economics & Policy Integration", tags: ["Economics", "Public Policy", "Financing"], desc: "Analyzing cost-effectiveness of early integration models in universal health coverage (UHC)." },
+              sec2_core: { title: "Core Concepts & Epidemiology", tags: ["Foundations", "Epidemiology", "Prognostication"], desc: "Differentiating trajectory of chronic life-limiting illnesses and clinical criteria for palliative eligibility." },
+              sec2_culture: { title: "Cultural & Bioethical Dimensions", tags: ["Bioethics", "Autonomy", "Cross-Cultural"], desc: "Resolving ethical dilemmas concerning withholding or withdrawing life-sustaining treatment across diverse demographics." },
+              sec3_integrated: { title: "Integrated Care (Early Integration)", tags: ["Care Models", "Oncology Liaison", "Referral Pathway"], desc: "Operational criteria for standardizing oncology and cardiology co-management models." },
+              sec3_settings: { title: "Care Settings (Homecare, Hospice, ER)", tags: ["Logistics", "Crisis Intervention", "Ambulatory"], desc: "Designing rapid triage algorithms for palliative emergencies presenting to emergency departments." },
+              sec4_roles: { title: "Clinical Roles & IDT Synergy", tags: ["Team Dynamics", "Interdisciplinary", "Conflict Management"], desc: "Standard operating procedures for managing cognitive boundaries and inter-professional friction in high-stress clinical environments." },
+              sec4_holistic: { title: "Holistic, Psychosocial & Spiritual Support", tags: ["Psychology", "Spiritual Distress", "Existential Pain"], desc: "Assessment and mitigation of total pain, severe existential angst, and multi-layered existential distress." },
+              sec5_communication: { title: "Clinical Communication (SPIKES Model)", tags: ["Communication", "Bad News", "Empathy Protocols"], desc: "Advanced protocols for delivering catastrophic news and facilitating family consensus during diagnostic uncertainty." },
+              sec5_acp: { title: "Advance Care Planning & Living Will", tags: ["ACP", "Legal Documentation", "Surrogate Selection"], desc: "Fostering formal mechanisms for translating patient preferences into actionable clinical parameters before cognitive failure." },
+              sec6_systems: { title: "Family Systems & Terminal Illness", tags: ["Family Therapy", "Anticipatory Grief", "Collusion Systems"], desc: "Navigating maladaptive system architectures and cross-generational defensive collusion within families." },
+              sec6_burden: { title: "Caregiver Burden & Burnout Interventions", tags: ["Burnout", "Resilience Training", "System Support"], desc: "Structured clinical strategies for reducing long-term psycho-emotional decay in main home caregivers." },
+              sec7_physiology: { title: "Physiology & Classification of Pain", tags: ["Neuroanatomy", "Nociceptive", "Neuropathic Signaling"], desc: "Differentiating mixed nociceptive-neuropathic matrices and centralized hyperalgesia pathways." },
+              sec7_pharmacotherapy: { title: "Pharmacotherapy & WHO Pain Ladder", tags: ["Pharmacology", "Opioid Titration", "Adjuvant Synergy"], desc: "Equianalgesic math rules, rapid titration protocols, and strategic introduction of strong adjuvant agents." },
+              sec7_specialist: { title: "Specialist Interventions & Opioid Rotation", tags: ["Interventional Pain", "Neurolytic Blocks", "Equianalgesic Shift"], desc: "Calculating multi-channel equianalgesic conversion factors during refractory pain syndromes or acute tolerance." },
+              sec8_gastro: { title: "Gastrointestinal Symptom Pathophysiology", tags: ["Symptom Control", "Emetic Triggers", "Bowel Obstruction"], desc: "Mechanistic algorithms for treating multi-factorial nausea, cachexia-anorexia syndrome, and malignant bowel management." },
+              sec8_cardio: { title: "Cardiorespiratory & Neuropsychiatric Symptoms", tags: ["Dyspnea Crisis", "Delirium Subtypes", "Secretions"], desc: "Pharmacological containment of terminal dyspnea crises, hyperactive delirium spikes, and death rattle secretions." },
+              sec9_terminal: { title: "Terminal Phase & Palliative Sedation", tags: ["EOL Care", "Proportional Sedation", "Active Dying"], desc: "Proportional palliative sedation clinical pathways for severe, refractory distress during the final active hours of life." },
+              sec9_populations: { title: "Pediatric, Geriatric & Organ Failure Protocols", tags: ["Special Pop", "Fragile Mechanics", "Non-Malignant Trajectories"], desc: "Custom titration matrix adjustments for pediatric weight constraints, frail geriatric networks, and end-stage organ systems." },
+              sec9_bereavement: { title: "Bereavement Support (Manajemen Duka Cita)", tags: ["Grief Models", "Complicated Grief", "Post-Mortem Protocols"], desc: "Psychological surveillance tracking architectures for identifying pathological grief risk profiles within the social circle." },
+              infinite: { title: "Infinite Drill (All Spectrum Oxford)", tags: ["Comprehensive", "Multi-System", "Adaptive Framework"], desc: "Full-scale comprehensive cross-examination analyzing the entirety of medical palliative knowledge structures simultaneously." },
+              story_mode: { title: "Kisah Ilustrasi Naratif (Umum)", tags: ["Narrative", "Contextual Care", "Empathy Simulator"], desc: "Simulating structural medical dilemmas through continuous serial case narratives." }
+          };
+
+          const layouts = [
+              "step-by-step structural infographic layout with sequential modular nodes",
+              "comparative split-screen analytical canvas framework, parallel comparison design",
+              "central hub and spoke network design layout, core matrix visualization structure",
+              "hierarchical pyramid data layer model stack with clear section block divisions",
+              "horizontal chronological historical development timeline layout graph structure",
+              "multi-dimensional quadrant data system blueprint layout model"
+          ];
+
+          const cameraSpecs = [
+              "Shot on Sony A1 camera, FE 90mm f/2.8 Macro G OSS lens, stunning professional studio setup lighting, hyper-realistic macro presentation texture, 8k resolution render",
+              "Shot on Hasselblad H6D-100c camera, HC 50mm lens, professional soft high-end product advertisement environment lighting, unmatched depth of field, crisp clear micro-details, ultra-realistic rendering",
+              "Shot on Arri Alexa 65 cinematic setup, supreme volumetric god rays studio ambiance, professional color grading palette, pristine hyper-detailed digital art photography masterclass specification"
+          ];
+
+          const designAccents = [
+              "3d rendered glossy floating geometric interface nodes, glassmorphic labels, subtle glowing datastreams running through dark carbon background matte finish",
+              "Ultra-clean minimal modern aesthetic typography grid, high contrast premium elements, immaculate micro-shadowing beneath vector data containers, subtle gradient mesh background",
+              "Futuristic digital dashboard accent overlays, crisp glowing neon information vectors, technical high-fidelity blueprint line-art decorations, multi-layered data arrays"
+          ];
+
+          let isClinicalLocked = false;
+          let currentClinicalKey = null;
+
+          function toggleClinicalFormLock() {
+              const txtArea = document.getElementById('user-thought');
+              const btn = document.getElementById('btn-lock-save');
+              const status = document.getElementById('clinical-status-msg');
+
+              if (!isClinicalLocked) {
+                  status.innerHTML = txtArea.value.trim() === "" ? 
+                      "⚠️ <span style='color: #ea580c;'><b>Baseline Terkunci:</b> Kasus kosong, memicu generasi otomatis kasus kompleks...</span>" : 
+                      "🔒 <span style='color: #059669;'><b>Jangkar Kasus Terkunci!</b> Data tersinkronisasi ke memori platform...</span>";
+                  isClinicalLocked = true;
+                  txtArea.disabled = true;
+                  btn.innerHTML = "🔓 BUKA KUNCI DATA";
+                  btn.style.background = "#64748b";
+              } else {
+                  isClinicalLocked = false;
+                  txtArea.disabled = false;
+                  btn.innerHTML = "🔒 SIMPAN &amp; KUNCI DATA";
+                  btn.style.background = "var(--blue-premium)";
+                  status.innerHTML = "🔓 <span style='color: #2563eb;'>Data dibuka. Silakan modifikasi teks jangkar kasus Anda.</span>";
+              }
+          }
+
+          function resetClinicalForm() {
+              isClinicalLocked = false;
+              const txtArea = document.getElementById('user-thought');
+              txtArea.value = "";
+              txtArea.disabled = false;
+              const btn = document.getElementById('btn-lock-save');
+              btn.innerHTML = "🔒 SIMPAN &amp; KUNCI DATA";
+              btn.style.background = "var(--blue-premium)";
+              document.getElementById('clinical-status-msg').innerHTML = "Status: System Ready.";
+              currentClinicalKey = null;
+          }
+
+          function triggerClinicalPrompt(key) {
+              const caseAnchor = document.getElementById('user-thought').value.trim();
+              const careSelection = document.getElementById('care-selector').value;
+              const modeSelection = document.getElementById('mode-selector').value;
+              const targetModule = clinicalDatabase[key];
+              
+              if(!targetModule) return;
+              currentClinicalKey = key;
+              
+              let prompt = `ROLE SPECIFICATION & EXPERTISE CONTEXT:
+You are an expert Medical Professor, world-class clinician, and Oxford Curriculum Senior Architect specializing in ${careSelection}. 
+
+CORE OBJECTIVE:
+Deliver an elite, comprehensive, deep-dive training module based on the topic: "${targetModule.title}". 
+System focus parameter: "${targetModule.desc}".
+
+CONTEXTUAL CORE CASE ANCHOR (BENANG MERAH):
+${caseAnchor !== "" ? `Apply this exact clinical scenario or core problem as the continuous thread running through all analysis, exercises, and examples: "${caseAnchor}"` : "No specific case submitted. Generate an elite, highly complex clinical case trajectory automatically to act as the baseline narrative thread."}
+
+METHODOLOGY & DEPTH SETTING:
+You must strictly format your output according to the [${modeSelection.toUpperCase()} MODE] framework guidelines:
+- Continuous hyper-rigorous analysis mapping out full pathophysiological or practical logic.
+- Include advanced structural framework, taxonomy charts, and critical case reasoning maps.
+- Provide direct, flawless, fully engineered instructional materials, real-world blueprints, and concrete solutions. Do not summarize or explain *how* to answer; provide the absolute expert response itself.
+
+ADDITIONAL SYSTEM VISUAL REQUIREMENTS:
+- Embed precise slide/graphic wireframe directions for presentation layout builders.
+- Apply structural signature: Include the core framework design layout documentation guidelines in the response.
+
+EXECUTION:
+Begin generation for the topic "${targetModule.title}" immediately following these specifications.`;
+
+              copyTextToClipboard(prompt);
+              
+              const statusEl = document.getElementById('clinical-status-msg');
+              statusEl.innerHTML = `🚀 <span style='color: #059669;'><b>M-Prompt [${targetModule.title}] Tersemat!</b></span> Dialihkan otomatis ke Gemini...`;
+              
+              document.getElementById('dataInput').value = `Comprehensive Healthcare Framework: ${targetModule.title}. Core Matrix: ${targetModule.desc}. ${caseAnchor !== "" ? `Target Context: ${caseAnchor}` : ""}`;
+              
+              setTimeout(() => {
+                  window.open('https://gemini.google.com/', '_blank');
+              }, 800);
+          }
+
+          function bridgeClinicalToQuantum() {
+              const caseAnchor = document.getElementById('user-thought').value.trim();
+              if (currentClinicalKey && clinicalDatabase[currentClinicalKey]) {
+                  const data = clinicalDatabase[currentClinicalKey];
+                  document.getElementById('dataInput').value = `Comprehensive Healthcare Blueprint for [${data.title}]. Core Concept: ${data.desc}. ${caseAnchor !== "" ? `Target Scenario Anchor: ${caseAnchor}` : ""}`;
+                  document.getElementById('quantum-status-msg').innerHTML = "📡 Data Modul Medis Berhasil Disinkronisasikan ke Input Matriks!";
+              } else if (caseAnchor !== "") {
+                  document.getElementById('dataInput').value = `Target Information System: ${caseAnchor}`;
+                  document.getElementById('quantum-status-msg').innerHTML = "📡 Teks Pokok Pikiran Kasus Disinkronisasikan ke Input Matriks!";
+              } else {
+                  document.getElementById('quantum-status-msg').innerHTML = "⚠️ Gagal Sync: Mohon isi jangkar kasus atau klik salah satu tombol menu terlebih dahulu!";
+              }
+          }
+
+          function injectQuantumFramework(text) {
+              document.getElementById('dataInput').value = text;
+              document.getElementById('quantum-status-msg').innerHTML = "🎯 Injeksi Blueprint Kerangka Kerja Berhasil Diaplikasikan!";
+          }
+
+          function executeQuantumMatrix() {
+              const dataContent = document.getElementById('dataInput').value.trim();
+              const totalOutputs = parseInt(document.getElementById('numIn').value) || 12;
+              const ratioSelected = document.getElementById('ratioDropdown').value;
+              const styleSelected = document.getElementById('styleDropdown').value;
+              const gridMatrix = document.getElementById('grid-matrix');
+              
+              if(dataContent === "") {
+                  document.getElementById('quantum-status-msg').innerHTML = "⚠️ <span style='color:#ef4444;'><b>Error:</b> Mohon isi formulir deskripsi konten visual terlebih dahulu!</span>";
+                  return;
+              }
+              
+              gridMatrix.innerHTML = "";
+              document.getElementById('quantum-status-msg').innerHTML = "⏳ Running Matrix Permutations Engine... Mengkalkulasi Kombinasi Optima...";
+              
+              setTimeout(() => {
+                  for (let i = 0; i < totalOutputs; i++) {
+                      const randomLayout = layouts[i % layouts.length];
+                      const randomCamera = cameraSpecs[i % cameraSpecs.length];
+                      const randomAccent = designAccents[i % designAccents.length];
+                      const seedID = Math.floor(100000 + Math.random() * 900000);
+                      
+                      let generatedPrompt = `Infographic composition poster vector artwork rendering: ${randomLayout}, ${ratioSelected}. ${styleSelected}. Conceptual Information Matrix Input Content: "${dataContent}". Design Accents & Details: ${randomAccent}. ${randomCamera}. Advanced layout direction: Clean infographic template layout design grids, clear typographic hierarchy flow nodes, explicit vector structure lines. Master execution parameters: ultra-sharp details, maximum composition clarity, professional studio marketing assets presentation. Matrix Data Seed ID #${seedID}.`;
+                      
+                      const card = document.createElement('div');
+                      card.className = 'matrix-card';
+                      card.innerHTML = `
+                          <div class="tag-container">
+                              <span class="matrix-tag">PERMUTATION #${i+1}</span>
+                              <span class="matrix-tag purple-tag">SEED ${seedID}</span>
+                              <span class="matrix-tag orange-tag">${ratioSelected.split(' ').slice(-1)[0]}</span>
+                          </div>
+                          <div class="prompt-content-text" id="ptext-${i}">${generatedPrompt}</div>
+                          <div class="card-actions-grid">
+                              <button class="btn-card-action btn-copy-only" onclick="copyPromptOnly(this, ${i})">📋 COPY PROMPT</button>
+                              <button class="btn-card-action btn-send-gemini" onclick="sendToGemini(this, ${i})">🚀 SEND TO GEMINI</button>
+                          </div>
+                      `;
+                      gridMatrix.appendChild(card);
+                  }
+                  document.getElementById('quantum-status-msg').innerHTML = `⚡ <b>Matrix Generation Complete!</b> Salin atau kirim prompt pilihan Anda langsung ke Gemini melalui kartu di bawah.`;
+              }, 300);
+          }
+
+          function copyPromptOnly(btn, index) {
+              const textContent = document.getElementById(`ptext-${index}`).textContent;
+              copyTextToClipboard(textContent);
+              const originalText = btn.innerHTML;
+              btn.innerHTML = "✅ COPIED TO CLIPBOARD!";
+              btn.style.background = "#dcfce7";
+              btn.style.color = "#16a34a";
+              btn.style.borderColor = "#bbf7d0";
+              setTimeout(() => {
+                  btn.innerHTML = originalText;
+                  btn.style.background = "";
+                  btn.style.color = "";
+                  btn.style.borderColor = "";
+              }, 1500);
+          }
+
+          function sendToGemini(btn, index) {
+              const textContent = document.getElementById(`ptext-${index}`).textContent;
+              copyTextToClipboard(textContent);
+              const originalText = btn.textContent;
+              btn.textContent = "🚀 COPIED &amp; OPENING...";
+              btn.style.background = "#7c3aed";
+              btn.style.color = "#fff";
+              setTimeout(() => {
+                  btn.textContent = originalText;
+                  btn.style.background = "";
+                  btn.style.color = "";
+                  window.open('https://gemini.google.com/', '_blank');
+              }, 800);
+          }
+
+          function downloadMatrixDatabase() {
+              const texts = document.querySelectorAll('.prompt-content-text');
+              if (texts.length === 0) {
+                  alert("Database kosong! Jalankan generator terlebih dahulu.");
+                  return;
+              }
+              let fileContent = '⚡ QUANTUM PALLIATIVE CARE — PRO ENGINE DATABASE EXPORT\n\n';
+              texts.forEach((el, i) => {
+                  fileContent += `--- QUANTUM MATRIX CONTAINER ENTRY [${i + 1}] ---\n${el.textContent}\n\n`;
+              });
+              const blob = new Blob([fileContent], {type: "text/plain;charset=utf-8"});
+              const dlAnchor = document.createElement('a');
+              dlAnchor.href = URL.createObjectURL(blob);
+              dlAnchor.download = 'quantum-palliative-care-database-' + Date.now() + '.txt';
+              document.body.appendChild(dlAnchor);
+              dlAnchor.click();
+              document.body.removeChild(dlAnchor);
+          }
+
+          function copyTextToClipboard(text) {
+              if (navigator.clipboard && navigator.clipboard.writeText) {
+                  navigator.clipboard.writeText(text);
+              } else {
+                  const textArea = document.createElement("textarea");
+                  textArea.value = text;
+                  textArea.style.position = "fixed"; 
+                  textArea.style.left = "-999999px";
+                  document.body.appendChild(textArea);
+                  textArea.focus();
+                  textArea.select();
+                  document.execCommand('copy');
+                  document.body.removeChild(textArea);
+              }
+          }
+
+          function toggleImmersiveFocus() {
+              document.body.classList.toggle('minimal-mode');
+          }
+
+          window.onscroll = function() {
+              const bttBox = document.getElementById("backToTop");
+              if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                  bttBox.className = "show";
+              } else {
+                  bttBox.className = "";
+              }
+          };
+
+          function scrollToTop() {
+              window.scrollTo({top: 0, behavior: 'smooth'});
+          }
+          //]]>
+        </script>
+      </b:includable>
+    </b:widget>
+  </b:section>
+</body>
+</html>
